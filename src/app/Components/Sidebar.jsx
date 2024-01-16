@@ -3,6 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { IoHomeOutline } from "react-icons/io5";
 import { CiSquareChevLeft } from "react-icons/ci";
+import { HiOutlineDocumentReport } from "react-icons/hi";
+import { IoDocumentOutline } from "react-icons/io5";
 
 const Sidebar = ({ children, show, setter}) => {
 
@@ -22,18 +24,55 @@ const Sidebar = ({ children, show, setter}) => {
                 <IoHomeOutline className="flex justify-center " size={25} />
               </div>
               <div className={`${show ? "" : "hidden"} w-full text-center`}>
-                <h2 className=" text-gray-700">Teams</h2>
+                <h2 className=" text-black-700">Site</h2>
                 <p className="text-gray-400">Happy Arkansas</p>
               </div>
             </div>
           </Link>
           <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
+          <Link href='/'>
+            <div className='bg-gray-100 hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block flex'>
+              <div className="flex justify-center items-center">
+                <HiOutlineDocumentReport  className="flex justify-center " size={25} />
+              </div>
+              <div className={`${show ? "" : "hidden"} w-full text-center`}>
+                {/* <h2 className=" text-gray-700">Reports</h2> */}
+                <p className="text-gray-400">Reports</p>
+              </div>
+            </div>
+          </Link>
+          <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
+          <Link href='/'>
+            <div className='bg-gray-100 hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block flex'>
+              <div className="flex justify-center items-center">
+                <IoDocumentOutline  className="flex justify-center " size={25} />
+              </div>
+              <div className={`${show ? "" : "hidden"} w-full text-center`}>
+                {/* <h2 className=" text-gray-700">Reports</h2> */}
+                <p className="text-gray-400">Teams</p>
+              </div>
+            </div>
+          </Link>
+          <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
+          <Link href='/'>
+            <div className='bg-gray-100 hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block flex'>
+              <div className="flex justify-center items-center">
+                <IoDocumentOutline  className="flex justify-center " size={25} />
+              </div>
+              <div className={`${show ? "" : "hidden"} w-full text-center`}>
+                {/* <h2 className=" text-gray-700">Reports</h2> */}
+                <p className="text-gray-400">Documentation</p>
+              </div>
+            </div>
+          </Link>
+          <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
+          {/* Add new shortcut */}
           <div className='bg-gray-100 hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block flex justify-center' onClick={()=> {setter(oldval => !oldval )}}>
             <CiSquareChevLeft size={25} />
           </div>
         </div>
       </div>
-      <main className="ml-20 w-full">{children}</main>
+      <main className={`${show ? "ml-18" : "ml-20"} w-full`}>{children}</main>
     </div>
   );
 };
