@@ -1,0 +1,11 @@
+.panel_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.panel {
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 80%;
+}
