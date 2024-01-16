@@ -1,8 +1,7 @@
 'use client'
 import './globals.css';
 import React, {useState} from 'react';
-import Sidebar from './Components/Sidebar';
-import Header from './Components/Header';
+import Sidebar from './components/Sidebar';
 
 // export const metadata = {
 //   title: 'Project Manager',
@@ -15,7 +14,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Header></Header>
         <Sidebar children={children} show={showSidebar} setter={setShowSidebar}/>
       </body>
     </html>

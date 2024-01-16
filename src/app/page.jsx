@@ -1,5 +1,5 @@
-import { GridProvider } from './Contexts/GridContext'
-import Home from './Home/page'
+import { GridProvider } from './contexts/GridContext'
+import Home from './home/page'
 
 export default function App() {
   return (
