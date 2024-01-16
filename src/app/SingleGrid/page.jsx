@@ -1,10 +1,10 @@
 "use client";
 
 import { useContext, useState, useRef } from "react";
-import { GridContext } from "../Contexts/GridContext";
-import { BootstrapLoader } from "../Document/page";
+import { GridContext } from "../contexts/GridContext";
+import { BootstrapLoader } from "../document/page";
 import styles from "../Styles/Singlegrid.module.css";
-import { ContainerRacks } from "../Components/ContainerRacksComponent";
+import { ContainerRacks } from "../components/ContainerRacksComponent";
 
 export default function SingleGrid() {
     const {

@@ -1,8 +1,8 @@
 "use client";
 
 import { createContext, useState, useEffect } from "react";
-import { TorqueTubesLocalStorage } from "../LocalStorage/TorqueTubesLocalStorage";
-import { PanelsLocalStorage } from "../LocalStorage/PanelsLocalStorage";
+import { TorqueTubesLocalStorage } from "../localstorage/TorqueTubesLocalStorage";
+import { PanelsLocalStorage } from "../localstorage/PanelsLocalStorage";
 
 const GridContext = createContext();
 

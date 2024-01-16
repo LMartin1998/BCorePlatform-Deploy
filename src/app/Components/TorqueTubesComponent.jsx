@@ -1,10 +1,10 @@
-import { GridContext } from "../Contexts/GridContext";
+import { GridContext } from "../contexts/GridContext";
 import styles from "../Styles/TorqueTube.module.css";
 import { useContext, useEffect } from "react";
 import { FixedSizeList } from "react-window";
 import { Panels } from "./PanelsComponent";
-import { TorqueTubesLocalStorage } from "../LocalStorage/TorqueTubesLocalStorage";
-import { changeState } from "../Utils/stateChanges";
+import { TorqueTubesLocalStorage } from "../localstorage/TorqueTubesLocalStorage";
+import { changeState } from "../utils/stateChanges";
 
 export function TorqueTubes(props) {
     const { panelsInput, handleTorqueTubes, mouseDownTT } =

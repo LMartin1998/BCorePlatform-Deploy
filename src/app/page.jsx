@@ -1,6 +1,6 @@
-import { GridProvider } from './Contexts/GridContext'
-import MapSite from './Home/page'
-import SingleGrid from './SingleGrid/page'
+import { GridProvider } from './contexts/GridContext'
+import MapSite from './home/page'
+import SingleGrid from './singlegrid/page'
 
 export default function Home() {
   return (

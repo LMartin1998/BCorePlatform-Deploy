@@ -1,6 +1,6 @@
 import { FixedSizeGrid } from "react-window";
 import { useContext, createRef, useState, useEffect } from "react";
-import { GridContext } from "../Contexts/GridContext";
+import { GridContext } from "../contexts/GridContext";
 import styles from "../Styles/Singlegrid.module.css";
 import { TorqueTubes } from "./TorqueTubesComponent";
 

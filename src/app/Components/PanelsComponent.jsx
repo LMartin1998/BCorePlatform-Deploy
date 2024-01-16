@@ -1,8 +1,8 @@
 import styles from "../Styles/Panels.module.css";
-import { PanelsLocalStorage } from "../LocalStorage/PanelsLocalStorage";
-import { changeState } from "../Utils/stateChanges";
+import { PanelsLocalStorage } from "../localstorage/PanelsLocalStorage";
+import { changeState } from "../utils/stateChanges";
 import { useContext } from "react";
-import { GridContext } from "../Contexts/GridContext";
+import { GridContext } from "../contexts/GridContext";
 
 export function Panels(props) {
     const { handlePanels, mouseDownPanel } = useContext(GridContext);
