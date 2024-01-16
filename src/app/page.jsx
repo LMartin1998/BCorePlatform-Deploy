@@ -1,10 +1,10 @@
 import { GridProvider } from './Contexts/GridContext'
-import MapSite from './Home/page'
+import Home from './Home/page'
 
-export default function Home() {
+export default function App() {
   return (
     <GridProvider>
-      <MapSite></MapSite>
+      <Home></Home>
     </GridProvider>
   )
 }
