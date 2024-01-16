@@ -5,6 +5,7 @@ import { IoHomeOutline } from "react-icons/io5";
 import { CiSquareChevLeft } from "react-icons/ci";
 import { HiOutlineDocumentReport } from "react-icons/hi";
 import { IoDocumentOutline } from "react-icons/io5";
+import { AiOutlineTeam } from "react-icons/ai";
 
 const Sidebar = ({ children, show, setter}) => {
 
@@ -19,9 +20,11 @@ const Sidebar = ({ children, show, setter}) => {
           </Link>
           <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
           <Link href='/'>
-            <div className='bg-gray-100 hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block flex'>
+            <div className='bg-gray-100 hover:bg-gray-200 flex justify-center  cursor-pointer my-4 p-3 rounded-lg inline-block flex'>
               <div className="flex justify-center items-center">
-                <IoHomeOutline className="flex justify-center " size={25} />
+                <p className="bg-blue-800 flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]">
+                  <IoHomeOutline className="flex justify-center" style={{ color: "white" }} size={25} />
+                </p>
               </div>
               <div className={`${show ? "" : "hidden"} w-full text-center`}>
                 <h2 className=" text-black-700">Site</h2>
@@ -31,9 +34,11 @@ const Sidebar = ({ children, show, setter}) => {
           </Link>
           <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
           <Link href='/'>
-            <div className='bg-gray-100 hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block flex'>
+            <div className='bg-gray-100 hover:bg-gray-200 flex justify-center cursor-pointer my-4 p-3 rounded-lg inline-block flex'>
               <div className="flex justify-center items-center">
-                <HiOutlineDocumentReport  className="flex justify-center " size={25} />
+                <p className="bg-white flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]">
+                  <HiOutlineDocumentReport  className="flex justify-center" style={{ color: "#1E40AF" }} size={25} />
+                </p>
               </div>
               <div className={`${show ? "" : "hidden"} w-full text-center`}>
                 {/* <h2 className=" text-gray-700">Reports</h2> */}
@@ -43,9 +48,11 @@ const Sidebar = ({ children, show, setter}) => {
           </Link>
           <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
           <Link href='/'>
-            <div className='bg-gray-100 hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block flex'>
+            <div className='bg-gray-100 hover:bg-gray-200 flex justify-center cursor-pointer my-4 p-3 rounded-lg inline-block flex'>
               <div className="flex justify-center items-center">
-                <IoDocumentOutline  className="flex justify-center " size={25} />
+                <p className="bg-white flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]">
+                  <AiOutlineTeam   className="flex justify-center " style={{ color: "#1E40AF" }} size={25} />
+                </p>
               </div>
               <div className={`${show ? "" : "hidden"} w-full text-center`}>
                 {/* <h2 className=" text-gray-700">Reports</h2> */}
@@ -55,9 +62,11 @@ const Sidebar = ({ children, show, setter}) => {
           </Link>
           <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
           <Link href='/'>
-            <div className='bg-gray-100 hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block flex'>
+            <div className='bg-gray-100 hover:bg-gray-200 flex justify-center cursor-pointer my-4 p-3 rounded-lg inline-block flex'>
               <div className="flex justify-center items-center">
-                <IoDocumentOutline  className="flex justify-center " size={25} />
+                <p className="bg-white flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]">
+                  <IoDocumentOutline  className="flex justify-center " style={{ color: "#1E40AF" }} size={25} />
+                </p>
               </div>
               <div className={`${show ? "" : "hidden"} w-full text-center`}>
                 {/* <h2 className=" text-gray-700">Reports</h2> */}
@@ -67,7 +76,7 @@ const Sidebar = ({ children, show, setter}) => {
           </Link>
           <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
           {/* Add new shortcut */}
-          <div className='bg-gray-100 hover:bg-gray-200 cursor-pointer my-4 p-3 rounded-lg inline-block flex justify-center' onClick={()=> {setter(oldval => !oldval )}}>
+          <div className='bg-gray-100 hover:bg-gray-200 flex justify-center cursor-pointer my-4 p-3 rounded-lg inline-block flex justify-center' onClick={()=> {setter(oldval => !oldval )}}>
             <CiSquareChevLeft size={25} />
           </div>
         </div>
