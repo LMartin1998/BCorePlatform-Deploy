@@ -13,21 +13,29 @@ import TopCards from "@/app/Components/TopCards";
 
 export default function SingleGrid() {
   const params = useParams();
-  const id = params.id;
+    const id = params.id;
 
-  const item = data.find((info) => info.id === id);
+    const {
+        rowsInput,
+        rowsInputChange,
+        racksInput,
+        racksInputChange,
+        panelsInput,
+        panelsInputChange,
+        changeToolMode,
+        filterMode,
+        changeFilterMode,
+        json,
+        updateJson,
+        viewBox,
+        jid,
+        points,
+        background,
+    } = useContext(GridContext);
 
-  const {
-    rowsInput,
-    rowsInputChange,
-    racksInput,
-    racksInputChange,
-    panelsInput,
-    panelsInputChange,
-    changeToolMode,
-    filterMode,
-    changeFilterMode,
-  } = useContext(GridContext);
+    useEffect(() => {
+        updateJson(id);
+    }, [id]);
 
   return (
     <div className="w-full h-[120vh] bg-gray-100">
@@ -133,7 +141,7 @@ export default function SingleGrid() {
                       type="number"
                       placeholder="Rows"
                       min="1"
-                      defaultValue={!item.rows ? rowsInput : item.rows}
+                      value={rowsInput}
                       onChange={rowsInputChange}
                       className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500"
                     />
@@ -162,7 +170,7 @@ export default function SingleGrid() {
                       type="number"
                       placeholder="Rows"
                       min="1"
-                      defaultValue={!item.racks ? racksInput : item.racks}
+                      value={racksInput}
                       onChange={racksInputChange}
                       className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500"
                     />
@@ -191,7 +199,7 @@ export default function SingleGrid() {
                       type="number"
                       placeholder="Rows"
                       min="1"
-                      defaultValue={!item.panels ? panelsInput : item.panels}
+                      value={panelsInput}
                       onChange={panelsInputChange}
                       className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500"
                     />
@@ -216,19 +224,19 @@ export default function SingleGrid() {
                       xmlnsXlink="http://www.w3.org/1999/xlink"
                       x="0px"
                       y="0px"
-                      viewBox={item.viewBox}
+                      viewBox={viewBox}
                       style={{
-                        enableBackground: item.background,
+                        enableBackground: background,
                       }}
                       xmlSpace="preserve"
                     >
                       <polygon
-                        id={item.id}
+                        id={jid}
                         className={styles.st0}
-                        points={item.points}
+                        points={points}
                       />
                     </svg>
-                    <p>{item.id}</p>
+                    <p>{jid}</p>
                   </div>
                 </div>
               </div>
