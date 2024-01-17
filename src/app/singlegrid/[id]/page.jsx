@@ -163,12 +163,12 @@ export default function SingleGrid() {
                       htmlFor="example-input"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Rows:
+                      Racks:
                     </label>
                     <input
                       id="example-input"
                       type="number"
-                      placeholder="Rows"
+                      placeholder="Racks"
                       min="1"
                       value={racksInput}
                       onChange={racksInputChange}
@@ -192,12 +192,12 @@ export default function SingleGrid() {
                       htmlFor="example-input"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Rows:
+                      Panels:
                     </label>
                     <input
                       id="example-input"
                       type="number"
-                      placeholder="Rows"
+                      placeholder="Panels"
                       min="1"
                       value={panelsInput}
                       onChange={panelsInputChange}
