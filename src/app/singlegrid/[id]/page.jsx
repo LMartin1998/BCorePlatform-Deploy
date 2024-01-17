@@ -1,12 +1,19 @@
 "use client";
 
 import { useContext, useState, useRef } from "react";
-import { GridContext } from "../contexts/GridContext";
-import { BootstrapLoader } from "../document/page";
-import styles from "../Styles/Singlegrid.module.css";
-import { ContainerRacks } from "../components/ContainerRacksComponent";
+import { GridContext } from "@/app/contexts/GridContext";
+import { BootstrapLoader } from "@/app/document/page";
+import styles from "@/app/styles/Singlegrid.module.css";
+import { ContainerRacks } from "../../components/ContainerRacksComponent";
+import { useParams } from "next/navigation";
+import data from "@/app/data/data";
 
 export default function SingleGrid() {
+    const params = useParams();
+    const id = params.id;
+
+    const item = data.find((info) => info.id === id);
+
     const {
         rowsInput,
         rowsInputChange,
@@ -14,6 +21,9 @@ export default function SingleGrid() {
         racksInputChange,
         panelsInput,
         panelsInputChange,
+        changeToolMode,
+        filterMode,
+        changeFilterMode,
     } = useContext(GridContext);
 
     return (
@@ -153,22 +163,40 @@ export default function SingleGrid() {
                         <div className={`${styles.filter_and_tools} pb-2 pt-2`}>
                             <div className={styles.show_buttons}>
                                 <button
-                                    className={`show-torque-tube`}
+                                    className={`show-torque-tube ${
+                                        filterMode === 0 ? styles.active : ""
+                                    }`}
                                     id="show-torque-tube"
+                                    onClick={changeFilterMode}
                                 >
                                     TT
                                 </button>
 
-                                <button className={`show-MODS`} id="show-MODS">
+                                <button
+                                    className={`show-MODS ${
+                                        filterMode === 1 ? styles.active : ""
+                                    }`}
+                                    id="show-MODS"
+                                    onClick={changeFilterMode}
+                                >
                                     MODS
                                 </button>
                                 <button
-                                    className={`show-panels`}
+                                    className={`show-panels ${
+                                        filterMode === 2 ? styles.active : ""
+                                    }`}
                                     id="show-panels"
+                                    onClick={changeFilterMode}
                                 >
                                     Panels
                                 </button>
-                                <button className={`show-both`} id="show-both">
+                                <button
+                                    className={`show-both ${
+                                        filterMode === 3 ? styles.active : ""
+                                    }`}
+                                    id="show-both"
+                                    onClick={changeFilterMode}
+                                >
                                     Racks
                                 </button>
                             </div>
@@ -190,12 +218,17 @@ export default function SingleGrid() {
                                         <a
                                             className={"dropdown-item"}
                                             id="progress"
+                                            onClick={changeToolMode}
                                         >
                                             Progress
                                         </a>
                                     </li>
                                     <li>
-                                        <a className={"dropdown-item"} id="spr">
+                                        <a
+                                            className={"dropdown-item"}
+                                            id="spr"
+                                            onClick={changeToolMode}
+                                        >
                                             Delete
                                         </a>
                                     </li>
@@ -203,6 +236,7 @@ export default function SingleGrid() {
                                         <a
                                             className={"dropdown-item"}
                                             id="hide"
+                                            onClick={changeToolMode}
                                         >
                                             Hide
                                         </a>
@@ -211,6 +245,7 @@ export default function SingleGrid() {
                                         <a
                                             className={"dropdown-item"}
                                             id="oneHalfTT"
+                                            onClick={changeToolMode}
                                         >
                                             One half torque tube
                                         </a>
@@ -219,6 +254,7 @@ export default function SingleGrid() {
                                         <a
                                             className={"dropdown-item"}
                                             id="quarterHalfTT"
+                                            onClick={changeToolMode}
                                         >
                                             Quarter torque tube
                                         </a>
@@ -227,6 +263,7 @@ export default function SingleGrid() {
                                         <a
                                             className={"dropdown-item"}
                                             id="threeQuartersHalfTT"
+                                            onClick={changeToolMode}
                                         >
                                             Three quarters torque tube
                                         </a>

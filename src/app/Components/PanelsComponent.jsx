@@ -1,16 +1,17 @@
 import styles from "../Styles/Panels.module.css";
-import { PanelsLocalStorage } from "../localstorage/PanelsLocalStorage";
 import { changeState } from "../utils/stateChanges";
 import { useContext } from "react";
 import { GridContext } from "../contexts/GridContext";
 
 export function Panels(props) {
-    const { handlePanels, mouseDownPanel } = useContext(GridContext);
+    const { handlePanels, mouseDownPanel, toolMode, filterMode } =
+        useContext(GridContext);
 
-    const { state, updateState } = handlePanels(
+    const { state, show, updatePanel } = handlePanels(
         props.columnIndex,
         props.rowIndex,
-        props.index
+        props.index,
+        toolMode
     );
 
     return (
@@ -29,8 +30,10 @@ export function Panels(props) {
                         position: "relative",
                         pointerEvents: "auto",
                         backgroundColor: changeState(state),
+                        opacity: !show ? "0.05" : "1",
+                        visibility: filterMode === 0 ? "hidde" : "visible",
                     }}
-                    onMouseOver={mouseDownPanel ? updateState : undefined}
+                    onMouseOver={mouseDownPanel ? updatePanel : undefined}
                 ></div>
             </div>
         </>

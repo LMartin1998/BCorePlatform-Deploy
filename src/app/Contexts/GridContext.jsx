@@ -3,10 +3,26 @@
 import { createContext, useState, useEffect } from "react";
 import { TorqueTubesLocalStorage } from "../localstorage/TorqueTubesLocalStorage";
 import { PanelsLocalStorage } from "../localstorage/PanelsLocalStorage";
+import { toolSelect } from "../utils/toolSelect";
+import { filterSelect } from "../utils/filterSelect";
 
 const GridContext = createContext();
 
 function GridProvider({ children }) {
+    const [toolMode, setToolMode] = useState(0);
+    const changeToolMode = (e) => {
+        e.stopPropagation();
+        const newTool = toolSelect(e.target.id);
+        setToolMode(newTool);
+    };
+
+    const [filterMode, setFilterMode] = useState(3);
+    const changeFilterMode = (e) => {
+        e.stopPropagation();
+        const newFilter = filterSelect(e.target.id);
+        setFilterMode(newFilter);
+    };
+
     const [rowsInput, setRowsInput] = useState(1);
     const rowsInputChange = (e) => {
         const newValue = parseInt(e.target.value, 10);
@@ -26,11 +42,11 @@ function GridProvider({ children }) {
     };
 
     const handleTorqueTubes = (columnIndex, rowIndex) => {
-        return TorqueTubesLocalStorage(columnIndex, rowIndex);
+        return TorqueTubesLocalStorage(columnIndex, rowIndex, toolMode);
     };
 
     const handlePanels = (columnIndex, rowIndex, index) => {
-        return PanelsLocalStorage(columnIndex, rowIndex, index);
+        return PanelsLocalStorage(columnIndex, rowIndex, index, toolMode);
     };
 
     const [mouseDownTT, setMouseDownTT] = useState(false);
@@ -47,9 +63,9 @@ function GridProvider({ children }) {
         }
     };
 
-    // useEffect(() => {
-    //     console.log(mouseDownContainer, mouseDownPanel, mouseDownTT);
-    // }, [mouseDownContainer, mouseDownPanel, mouseDownTT]);
+    useEffect(() => {
+        console.log(filterMode);
+    }, [filterMode]);
 
     const handleMouseUpContainer = () => {
         setMouseDownContainer(false);
@@ -72,6 +88,9 @@ function GridProvider({ children }) {
                 handleMouseUpContainer,
                 mouseDownTT,
                 mouseDownPanel,
+                changeToolMode,
+                filterMode,
+                changeFilterMode,
             }}
         >
             {children}

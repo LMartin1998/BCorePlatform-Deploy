@@ -1,18 +1,23 @@
 import { GridContext } from "../contexts/GridContext";
-import styles from "../Styles/TorqueTube.module.css";
+import styles from "@/app/styles/TorqueTube.module.css";
 import { useContext, useEffect } from "react";
 import { FixedSizeList } from "react-window";
 import { Panels } from "./PanelsComponent";
-import { TorqueTubesLocalStorage } from "../localstorage/TorqueTubesLocalStorage";
 import { changeState } from "../utils/stateChanges";
 
 export function TorqueTubes(props) {
-    const { panelsInput, handleTorqueTubes, mouseDownTT } =
-        useContext(GridContext);
+    const {
+        panelsInput,
+        handleTorqueTubes,
+        mouseDownTT,
+        toolMode,
+        filterMode,
+    } = useContext(GridContext);
 
-    const { state, updateState } = handleTorqueTubes(
+    const { state, show, updateTT } = handleTorqueTubes(
         props.columnIndex,
-        props.rowIndex
+        props.rowIndex,
+        toolMode
     );
 
     return (
@@ -33,25 +38,32 @@ export function TorqueTubes(props) {
                         width: "40%",
                         backgroundColor: changeState(state),
                         pointerEvents: "auto",
+                        opacity: !show ? "0.05" : "1",
+                        visibility:
+                            filterMode === 0 || filterMode === 3
+                                ? "visible"
+                                : "hidden",
                     }}
-                    onMouseOver={mouseDownTT ? updateState : undefined}
+                    onMouseOver={mouseDownTT ? updateTT : undefined}
                 >
-                    <FixedSizeList
-                        height={45 * panelsInput}
-                        itemCount={panelsInput}
-                        itemSize={45}
-                        width={100}
-                        style={{ pointerEvents: "none" }}
-                    >
-                        {({ index, style }) => (
-                            <Panels
-                                style={style}
-                                columnIndex={props.columnIndex}
-                                rowIndex={props.rowIndex}
-                                index={index}
-                            ></Panels>
-                        )}
-                    </FixedSizeList>
+                    {filterMode !== 0 && (
+                        <FixedSizeList
+                            height={45 * panelsInput}
+                            itemCount={panelsInput}
+                            itemSize={45}
+                            width={100}
+                            style={{ pointerEvents: "none" }}
+                        >
+                            {({ index, style }) => (
+                                <Panels
+                                    style={style}
+                                    columnIndex={props.columnIndex}
+                                    rowIndex={props.rowIndex}
+                                    index={index}
+                                ></Panels>
+                            )}
+                        </FixedSizeList>
+                    )}
                 </div>
             </div>
         </>
