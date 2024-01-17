@@ -327,7 +327,7 @@ export default function SingleGrid() {
                                             className="form-control"
                                             placeholder="Rows"
                                             min="1"
-                                            defaultValue={rowsInput}
+                                            defaultValue={!item.rows ? rowsInput : item.rows}
                                             onChange={rowsInputChange}
                                         />
                                         <label htmlFor="inputRows">Rows</label>
@@ -339,7 +339,7 @@ export default function SingleGrid() {
                                             className="form-control"
                                             placeholder="Racks"
                                             min="1"
-                                            defaultValue={racksInput}
+                                            defaultValue={!item.racks ? racksInput : item.racks}
                                             onChange={racksInputChange}
                                         />
                                         <label htmlFor="inputRacks">
@@ -353,7 +353,7 @@ export default function SingleGrid() {
                                             className="form-control"
                                             placeholder="Panels"
                                             min="1"
-                                            defaultValue={panelsInput}
+                                            defaultValue={!item.panels ? panelsInput : item.panels}
                                             onChange={panelsInputChange}
                                         />
                                         <label htmlFor="inputPanels">
