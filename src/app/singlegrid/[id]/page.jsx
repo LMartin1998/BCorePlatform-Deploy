@@ -6,7 +6,6 @@ import { BootstrapLoader } from "@/app/document/page";
 import styles from "@/app/styles/Singlegrid.module.css";
 import { ContainerRacks } from "../../components/ContainerRacksComponent";
 import { useParams } from "next/navigation";
-import data from "@/app/data/data";
 
 export default function SingleGrid() {
     const params = useParams();

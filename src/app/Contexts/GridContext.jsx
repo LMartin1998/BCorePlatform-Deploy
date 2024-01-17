@@ -56,7 +56,6 @@ function GridProvider({ children }) {
 
     useEffect(() => {
         if (json) {
-            // Aquí actualizas los estados con los valores del json
             setRowsInput(!json.rows ? 1 : json.rows);
             setRacksInput(!json.racks ? 1 : json.racks);
             setPanelsInput(!json.panels ? 1 : json.panels);
@@ -66,12 +65,6 @@ function GridProvider({ children }) {
             setBackground(!json.background ? 1 : json.background);
         }
     }, [json]);
-    // const updateInputs = (id) => {
-    //     const item = data.find((info) => info.id === id);
-    //     setPanelsInput(!item.panels ? panelsInput : item.panels);
-    //     setRacksInput(!item.racks ? racksInput : item.racks);
-    //     setRowsInput(!item.rows ? rowsInput : item.rows);
-    // };
 
     const handleTorqueTubes = (columnIndex, rowIndex) => {
         return TorqueTubesLocalStorage(columnIndex, rowIndex, toolMode);
@@ -94,10 +87,6 @@ function GridProvider({ children }) {
             setMouseDownContainer(true);
         }
     };
-
-    // useEffect(() => {
-    //     console.log(filterMode);
-    // }, [filterMode]);
 
     const handleMouseUpContainer = () => {
         setMouseDownContainer(false);
