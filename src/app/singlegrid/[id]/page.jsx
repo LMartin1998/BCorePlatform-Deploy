@@ -5,9 +5,11 @@ import { GridContext } from "@/app/contexts/GridContext";
 import { BootstrapLoader } from "@/app/document/page";
 import styles from "@/app/styles/Singlegrid.module.css";
 import { ContainerRacks } from "../../components/ContainerRacksComponent";
+import Header from "../../components/Header";
 import { useParams } from "next/navigation";
 import data from "@/app/data/data";
 import ToggleButton from "@/app/Components/ToggleButton";
+import TopCards from "@/app/Components/TopCards";
 
 export default function SingleGrid() {
   const params = useParams();
@@ -28,7 +30,9 @@ export default function SingleGrid() {
   } = useContext(GridContext);
 
   return (
-    <div className="w-full">
+    <div className="w-full h-[120vh] bg-gray-100">
+      <Header></Header>
+      <TopCards></TopCards>
       <div className="container pt-1 pb-1">
         <div className="flex justify-center">
           <div className="w-4/6 pt-1 ttPanelsContainer">
