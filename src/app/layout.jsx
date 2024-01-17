@@ -10,7 +10,7 @@ import { GridProvider } from "./contexts/GridContext";
 // }
 
 export default function RootLayout({ children }) {
-    const [showSidebar, setShowSidebar] = useState(true);
+    const [showSidebar, setShowSidebar] = useState(false);
 
     return (
         <html lang="en">

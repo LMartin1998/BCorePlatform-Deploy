@@ -6,6 +6,8 @@ import { PanelsLocalStorage } from "../localstorage/PanelsLocalStorage";
 import { toolSelect } from "../utils/toolSelect";
 import { filterSelect } from "../utils/filterSelect";
 
+import data from "@/app/data/data";
+
 const GridContext = createContext();
 
 function GridProvider({ children }) {
@@ -41,6 +43,27 @@ function GridProvider({ children }) {
         setPanelsInput(newValue);
     };
 
+    const [json, setJson] = useState("");
+    const updateJson = (id) => {
+        const item = data.find((item) => item.id === id);
+        setJson(item);
+    };
+
+    useEffect(() => {
+        if (json) {
+            // Aquí actualizas los estados con los valores del json
+            setRowsInput(!json.rows ? 1 : json.rows);
+            setRacksInput(!json.racks ? 1 : json.racks);
+            setPanelsInput(!json.panels ? 1 : json.panels);
+        }
+    }, [json]);
+    // const updateInputs = (id) => {
+    //     const item = data.find((info) => info.id === id);
+    //     setPanelsInput(!item.panels ? panelsInput : item.panels);
+    //     setRacksInput(!item.racks ? racksInput : item.racks);
+    //     setRowsInput(!item.rows ? rowsInput : item.rows);
+    // };
+
     const handleTorqueTubes = (columnIndex, rowIndex) => {
         return TorqueTubesLocalStorage(columnIndex, rowIndex, toolMode);
     };
@@ -63,9 +86,9 @@ function GridProvider({ children }) {
         }
     };
 
-    useEffect(() => {
-        console.log(filterMode);
-    }, [filterMode]);
+    // useEffect(() => {
+    //     console.log(filterMode);
+    // }, [filterMode]);
 
     const handleMouseUpContainer = () => {
         setMouseDownContainer(false);
@@ -91,6 +114,8 @@ function GridProvider({ children }) {
                 changeToolMode,
                 filterMode,
                 changeFilterMode,
+                json,
+                updateJson,
             }}
         >
             {children}

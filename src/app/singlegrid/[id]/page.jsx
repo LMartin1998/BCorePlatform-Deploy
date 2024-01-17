@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useState, useRef } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import { GridContext } from "@/app/contexts/GridContext";
 import { BootstrapLoader } from "@/app/document/page";
 import styles from "@/app/styles/Singlegrid.module.css";
@@ -12,8 +12,6 @@ export default function SingleGrid() {
     const params = useParams();
     const id = params.id;
 
-    const item = data.find((info) => info.id === id);
-
     const {
         rowsInput,
         rowsInputChange,
@@ -24,7 +22,13 @@ export default function SingleGrid() {
         changeToolMode,
         filterMode,
         changeFilterMode,
+        json,
+        updateJson,
     } = useContext(GridContext);
+
+    useEffect(() => {
+        updateJson(id);
+    }, [id]);
 
     return (
         <>
@@ -327,7 +331,7 @@ export default function SingleGrid() {
                                             className="form-control"
                                             placeholder="Rows"
                                             min="1"
-                                            defaultValue={!item.rows ? rowsInput : item.rows}
+                                            value={rowsInput}
                                             onChange={rowsInputChange}
                                         />
                                         <label htmlFor="inputRows">Rows</label>
@@ -339,7 +343,7 @@ export default function SingleGrid() {
                                             className="form-control"
                                             placeholder="Racks"
                                             min="1"
-                                            defaultValue={!item.racks ? racksInput : item.racks}
+                                            value={racksInput}
                                             onChange={racksInputChange}
                                         />
                                         <label htmlFor="inputRacks">
@@ -353,7 +357,7 @@ export default function SingleGrid() {
                                             className="form-control"
                                             placeholder="Panels"
                                             min="1"
-                                            defaultValue={!item.panels ? panelsInput : item.panels}
+                                            value={panelsInput}
                                             onChange={panelsInputChange}
                                         />
                                         <label htmlFor="inputPanels">
