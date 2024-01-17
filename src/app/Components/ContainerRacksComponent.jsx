@@ -50,7 +50,9 @@ export function ContainerRacks() {
                     rowCount={rowsInput}
                     rowHeight={45 * panelsInput + 50} //Agregar espacio entre filas
                     width={dimension.width}
-                    style={{ userSelect: "none" }}
+                    style={{ userSelect: "none", width: "100%", height : "100%" }}
+                    overscanColumnCount={2}
+                    overscanRowCount={2}
                 >
                     {({ columnIndex, rowIndex, style }) => (
                         <TorqueTubes

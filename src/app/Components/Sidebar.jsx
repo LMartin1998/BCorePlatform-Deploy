@@ -10,7 +10,7 @@ import { AiOutlineTeam } from "react-icons/ai";
 const Sidebar = ({ children, show, setter}) => {
 
   return (
-    <div className="flex">
+    <div className="">
       <div className={`${show ? "w-72" : "w-20"} fixed h-screen p-4 bg-white border-r-[1px] flex flex-col justify-between`}>
         <div className="flex gap-x-4 flex-col ">
           <Link href="/">
@@ -81,7 +81,7 @@ const Sidebar = ({ children, show, setter}) => {
           </div>
         </div>
       </div>
-      <main className={`${show ? "ml-18" : "ml-20"} w-full`}>{children}</main>
+      <main className={`${show ? "ml-18" : "ml-20"}`}>{children}</main>
     </div>
   );
 };
