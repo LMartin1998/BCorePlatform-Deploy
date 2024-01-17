@@ -24,6 +24,10 @@ export default function SingleGrid() {
         changeFilterMode,
         json,
         updateJson,
+        viewBox,
+        jid,
+        points,
+        background,
     } = useContext(GridContext);
 
     useEffect(() => {
@@ -377,7 +381,28 @@ export default function SingleGrid() {
                         <div className="row pt-1">
                             <div className="col-12">
                                 <div className={styles.notes}>
-                                    <div className={styles.map_div}></div>
+                                    <div className={styles.map_div}>
+                                        <svg
+                                            version="1.1"
+                                            id="BLACKBEAR"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            xmlnsXlink="http://www.w3.org/1999/xlink"
+                                            x="0px"
+                                            y="0px"
+                                            viewBox={viewBox}
+                                            style={{
+                                                enableBackground: background,
+                                            }}
+                                            xmlSpace="preserve"
+                                        >
+                                            <polygon
+                                                id={jid}
+                                                className={styles.st0}
+                                                points={points}
+                                            />
+                                        </svg>
+                                        <p>{jid}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

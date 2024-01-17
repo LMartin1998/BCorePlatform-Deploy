@@ -43,6 +43,11 @@ function GridProvider({ children }) {
         setPanelsInput(newValue);
     };
 
+    const [viewBox, setViewBox] = useState("");
+    const [jid, setJid] = useState("");
+    const [points, setPoints] = useState("");
+    const [background, setBackground] = useState("");
+
     const [json, setJson] = useState("");
     const updateJson = (id) => {
         const item = data.find((item) => item.id === id);
@@ -55,6 +60,10 @@ function GridProvider({ children }) {
             setRowsInput(!json.rows ? 1 : json.rows);
             setRacksInput(!json.racks ? 1 : json.racks);
             setPanelsInput(!json.panels ? 1 : json.panels);
+            setJid(!json.id ? 1 : json.id);
+            setViewBox(!json.viewBox ? 1 : json.viewBox);
+            setPoints(!json.points ? 1 : json.points);
+            setBackground(!json.background ? 1 : json.background);
         }
     }, [json]);
     // const updateInputs = (id) => {
@@ -116,6 +125,10 @@ function GridProvider({ children }) {
                 changeFilterMode,
                 json,
                 updateJson,
+                viewBox,
+                jid,
+                points,
+                background,
             }}
         >
             {children}
