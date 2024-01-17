@@ -43,6 +43,11 @@ function GridProvider({ children }) {
         setPanelsInput(newValue);
     };
 
+    const [viewBox, setViewBox] = useState("");
+    const [jid, setJid] = useState("");
+    const [points, setPoints] = useState("");
+    const [background, setBackground] = useState("");
+
     const [json, setJson] = useState("");
     const updateJson = (id) => {
         const item = data.find((item) => item.id === id);
@@ -51,18 +56,15 @@ function GridProvider({ children }) {
 
     useEffect(() => {
         if (json) {
-            // Aquí actualizas los estados con los valores del json
             setRowsInput(!json.rows ? 1 : json.rows);
             setRacksInput(!json.racks ? 1 : json.racks);
             setPanelsInput(!json.panels ? 1 : json.panels);
+            setJid(!json.id ? 1 : json.id);
+            setViewBox(!json.viewBox ? 1 : json.viewBox);
+            setPoints(!json.points ? 1 : json.points);
+            setBackground(!json.background ? 1 : json.background);
         }
     }, [json]);
-    // const updateInputs = (id) => {
-    //     const item = data.find((info) => info.id === id);
-    //     setPanelsInput(!item.panels ? panelsInput : item.panels);
-    //     setRacksInput(!item.racks ? racksInput : item.racks);
-    //     setRowsInput(!item.rows ? rowsInput : item.rows);
-    // };
 
     const handleTorqueTubes = (columnIndex, rowIndex) => {
         return TorqueTubesLocalStorage(columnIndex, rowIndex, toolMode);
@@ -85,10 +87,6 @@ function GridProvider({ children }) {
             setMouseDownContainer(true);
         }
     };
-
-    // useEffect(() => {
-    //     console.log(filterMode);
-    // }, [filterMode]);
 
     const handleMouseUpContainer = () => {
         setMouseDownContainer(false);
@@ -116,6 +114,10 @@ function GridProvider({ children }) {
                 changeFilterMode,
                 json,
                 updateJson,
+                viewBox,
+                jid,
+                points,
+                background,
             }}
         >
             {children}
