@@ -56,7 +56,7 @@ export function TorqueTubes(props) {
                             className="PanelGrid"
                             height={perspectiveMode ? 100 : 45 * panelsInput}
                             itemCount={panelsInput}
-                            itemSize={45}
+                            itemSize={perspectiveMode ? 25 : 45}
                             width={perspectiveMode ? 45 * panelsInput : 100}
                             style={{
                                 pointerEvents: "none",
