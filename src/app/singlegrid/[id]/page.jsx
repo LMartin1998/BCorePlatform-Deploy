@@ -10,6 +10,7 @@ import { useParams } from "next/navigation";
 import data from "@/app/data/data";
 import ToggleButton from "@/app/Components/ToggleButton";
 import TopCards from "@/app/Components/TopCards";
+import Dropdown from "@/app/Components/Dropdown";
 
 export default function SingleGrid() {
   const params = useParams();
@@ -84,6 +85,7 @@ export default function SingleGrid() {
                   Racks
                 </button>
               </div>
+              <Dropdown></Dropdown>
             </div>
             <div className={styles.grid_notes}>
               <ContainerRacks></ContainerRacks>
@@ -224,7 +226,7 @@ export default function SingleGrid() {
                       xmlnsXlink="http://www.w3.org/1999/xlink"
                       x="0px"
                       y="0px"
-                      viewBox={viewBox}
+                      viewBox='0 0 100 100'
                       style={{
                         enableBackground: background,
                       }}
