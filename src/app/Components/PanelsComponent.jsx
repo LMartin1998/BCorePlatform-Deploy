@@ -33,6 +33,7 @@ export function Panels(props) {
                         height: perspectiveMode ? "100%" : "35px",
                         width: perspectiveMode ? "35px" : "100%",
                         top: "0",
+                        left: "0",
                         position: "relative",
                         pointerEvents: "auto",
                         backgroundColor: changeState(state),
