@@ -12,6 +12,7 @@ export function TorqueTubes(props) {
         mouseDownTT,
         toolMode,
         filterMode,
+        perspectiveMode,
     } = useContext(GridContext);
 
     const { state, show, updateTT } = handleTorqueTubes(
@@ -34,8 +35,12 @@ export function TorqueTubes(props) {
                         position: "relative",
                         top: "0",
                         left: "0",
-                        height: `${45 * panelsInput + 10}px`,
-                        width: "40%",
+                        height: !perspectiveMode
+                            ? "40%"
+                            : `${45 * panelsInput + 10}px`,
+                        width: !perspectiveMode
+                            ? `${45 * panelsInput + 10}px`
+                            : "40%",
                         backgroundColor: changeState(state),
                         pointerEvents: "auto",
                         opacity: !show ? "0.05" : "1",
@@ -48,6 +53,7 @@ export function TorqueTubes(props) {
                 >
                     {filterMode !== 0 && (
                         <FixedSizeList
+                            className="PanelGrid"
                             height={45 * panelsInput}
                             itemCount={panelsInput}
                             itemSize={45}
