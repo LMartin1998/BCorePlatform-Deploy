@@ -58,7 +58,10 @@ export function TorqueTubes(props) {
                             itemCount={panelsInput}
                             itemSize={45}
                             width={perspectiveMode ? 45 * panelsInput : 100}
-                            style={{ pointerEvents: "none" }}
+                            style={{
+                                pointerEvents: "none",
+                            }}
+                            layout={perspectiveMode ? "horizontal" : "vertical"}
                         >
                             {({ index, style }) => (
                                 <Panels
