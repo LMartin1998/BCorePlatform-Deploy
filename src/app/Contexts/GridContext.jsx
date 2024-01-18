@@ -12,9 +12,8 @@ const GridContext = createContext();
 
 function GridProvider({ children }) {
     const [toolMode, setToolMode] = useState(0);
-    const changeToolMode = (e) => {
-        e.stopPropagation();
-        const newTool = toolSelect(e.target.id);
+    const changeToolMode = (mode) => {
+        const newTool = toolSelect(mode);
         setToolMode(newTool);
     };
 
