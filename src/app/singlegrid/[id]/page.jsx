@@ -29,6 +29,7 @@ export default function SingleGrid() {
         jid,
         points,
         background,
+        perspectiveMode,
     } = useContext(GridContext);
 
     useEffect(() => {
@@ -120,7 +121,11 @@ export default function SingleGrid() {
                                 <div className={styles.notes}>
                                     <div className="">
                                         <ToggleButton></ToggleButton>
-                                        <label>Portrait Mode</label>
+                                        <label>
+                                            {perspectiveMode
+                                                ? "Portrait Mode"
+                                                : "Landscape Mode"}
+                                        </label>
                                     </div>
                                     <div className="mb-4">
                                         <label

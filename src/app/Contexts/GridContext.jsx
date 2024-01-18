@@ -24,6 +24,11 @@ function GridProvider({ children }) {
         setFilterMode(newFilter);
     };
 
+    const [perspectiveMode, setPerspectiveMode] = useState(false);
+    const changePerspectiveMode = () => {
+        setPerspectiveMode((prevState) => !prevState);
+    };
+
     const [rowsInput, setRowsInput] = useState(1);
     const rowsInputChange = (e) => {
         const newValue = parseInt(e.target.value, 10);
@@ -117,6 +122,8 @@ function GridProvider({ children }) {
                 jid,
                 points,
                 background,
+                perspectiveMode,
+                changePerspectiveMode,
             }}
         >
             {children}
