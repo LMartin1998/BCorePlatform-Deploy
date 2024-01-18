@@ -35,10 +35,10 @@ export function TorqueTubes(props) {
                         position: "relative",
                         top: "0",
                         left: "0",
-                        height: !perspectiveMode
+                        height: perspectiveMode
                             ? "40%"
                             : `${45 * panelsInput + 10}px`,
-                        width: !perspectiveMode
+                        width: perspectiveMode
                             ? `${45 * panelsInput + 10}px`
                             : "40%",
                         backgroundColor: changeState(state),
@@ -54,10 +54,10 @@ export function TorqueTubes(props) {
                     {filterMode !== 0 && (
                         <FixedSizeList
                             className="PanelGrid"
-                            height={45 * panelsInput}
+                            height={perspectiveMode ? 100 : 45 * panelsInput}
                             itemCount={panelsInput}
                             itemSize={45}
-                            width={100}
+                            width={perspectiveMode ? 45 * panelsInput : 100}
                             style={{ pointerEvents: "none" }}
                         >
                             {({ index, style }) => (
