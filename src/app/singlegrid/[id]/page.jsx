@@ -2,15 +2,14 @@
 
 import { useContext, useState, useRef, useEffect } from "react";
 import { GridContext } from "@/app/contexts/GridContext";
-import { BootstrapLoader } from "@/app/document/page";
 import styles from "@/app/styles/Singlegrid.module.css";
 import { ContainerRacks } from "../../components/ContainerRacksComponent";
 import Header from "../../components/Header";
 import { useParams } from "next/navigation";
-import data from "@/app/data/data";
-import ToggleButton from "@/app/Components/ToggleButton";
 import TopCards from "@/app/Components/TopCards";
 import Dropdown from "@/app/Components/Dropdown";
+import ToggleSwitch from "@/app/Components/ToggleSwitch";
+
 
 export default function SingleGrid() {
   const params = useParams();
@@ -37,6 +36,11 @@ export default function SingleGrid() {
     useEffect(() => {
         updateJson(id);
     }, [id]);
+    const [switchValue, setSwitchValue] = useState(false);
+
+    const handleToggle = (value) => {
+      setSwitchValue(value);
+    };
 
   return (
     <div className="w-full h-[120vh] bg-gray-100">
@@ -115,22 +119,10 @@ export default function SingleGrid() {
             <div className="flex">
               <div className="w-full">
                 <div className={styles.notes}>
-                  <div className="">
-                    <ToggleButton></ToggleButton>
-                    <label>Portrait Mode</label>
+                  <div className="mb-4 flex items-center flex-wrap">
+                    <ToggleSwitch onChange={handleToggle} checked={switchValue}></ToggleSwitch>
+                    <label className="text-sm font-medium text-gray-700 pl-2">{`${switchValue ? 'Portrait' : 'Landscape'} `}</label>
                   </div>
-                  {/* <div className="form-floating mb-3">
-                    <input
-                      id="inputRows"
-                      type="number"
-                      className="form-control"
-                      placeholder="Rows"
-                      min="1"
-                      defaultValue={!item.rows ? rowsInput : item.rows}
-                      onChange={rowsInputChange}
-                    />
-                    <label htmlFor="inputRows">Rows</label>
-                  </div> */}
                   <div className="mb-4">
                     <label
                       htmlFor="example-input"
@@ -148,18 +140,6 @@ export default function SingleGrid() {
                       className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500"
                     />
                   </div>
-                  {/* <div className="form-floating mb-3">
-                    <input
-                      id="inputRacks"
-                      type="number"
-                      className="form-control"
-                      placeholder="Racks"
-                      min="1"
-                      defaultValue={!item.racks ? racksInput : item.racks}
-                      onChange={racksInputChange}
-                    />
-                    <label htmlFor="inputRacks">Racks</label>
-                  </div> */}
                   <div className="mb-4">
                     <label
                       htmlFor="example-input"
@@ -177,18 +157,6 @@ export default function SingleGrid() {
                       className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500"
                     />
                   </div>
-                  {/* <div className="form-floating mb-3">
-                    <input
-                      id="inputPanels"
-                      type="number"
-                      className="form-control"
-                      placeholder="Panels"
-                      min="1"
-                      defaultValue={!item.panels ? panelsInput : item.panels}
-                      onChange={panelsInputChange}
-                    />
-                    <label htmlFor="inputPanels">Panels</label>
-                  </div> */}
                   <div className="mb-4">
                     <label
                       htmlFor="example-input"
