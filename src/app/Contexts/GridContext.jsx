@@ -56,6 +56,7 @@ function GridProvider({ children }) {
     const updateJson = (id) => {
         const item = data.find((item) => item.id === id);
         setJson(item);
+        torqueTubeBySections(id);
     };
 
     const sectionsById = (id) => {
@@ -65,21 +66,21 @@ function GridProvider({ children }) {
 
     const torqueTubeBySections = (id) => {
         const item = data.find((item) => item.id === id);
-        
+
+        const dataArray = [];
         const torqueTubeBySections = item.sections;
         torqueTubeBySections.forEach((element) => {
             const sectionsId = element.sectionId;
-            const torqueTubeById = element.torqueTubes;
-            torqueTubeById.forEach((element) =>{
-                const torqueTubeId = element.torqueTubeId;
+            const torqueTube = element.torqueTubes;
 
-                var secTt = {};
-                secTt[sectionsId] = torqueTubeId;
-                console.log(secTt);                
-            });
-
+            const sectionArray = torqueTube.map((tt) => `${sectionsId}, ${tt.torqueTubeId}`);
+            dataArray.push(sectionArray);
         });
+
+        console.log(dataArray);
     }
+
+
 
     const panelsByTorqueTube = (id) => {
         const item = data.find((item) => item.id === id);
@@ -88,10 +89,10 @@ function GridProvider({ children }) {
             element.torqueTubes.forEach((torqueTube) => {
                 const torqueTubeId = torqueTube.torqueTubeId;
                 const panelCount = torqueTube.panels.length;
-        
+
                 var ttPanels = {};
                 ttPanels[torqueTubeId] = panelCount;
-        
+
             });
         });
     }
