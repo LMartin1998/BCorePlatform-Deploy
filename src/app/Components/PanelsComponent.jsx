@@ -4,8 +4,13 @@ import { useContext } from "react";
 import { GridContext } from "../contexts/GridContext";
 
 export function Panels(props) {
-    const { handlePanels, mouseDownPanel, toolMode, filterMode } =
-        useContext(GridContext);
+    const {
+        handlePanels,
+        mouseDownPanel,
+        toolMode,
+        filterMode,
+        perspectiveMode,
+    } = useContext(GridContext);
 
     const { state, show, updatePanel } = handlePanels(
         props.columnIndex,
@@ -25,8 +30,10 @@ export function Panels(props) {
                     className={styles.panel}
                     style={{
                         ...props.style,
-                        height: `${35}px`,
+                        height: perspectiveMode ? "100%" : "35px",
+                        width: perspectiveMode ? "35px" : "100%",
                         top: "0",
+                        left: "0",
                         position: "relative",
                         pointerEvents: "auto",
                         backgroundColor: changeState(state),

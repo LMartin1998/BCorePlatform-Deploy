@@ -12,9 +12,8 @@ const GridContext = createContext();
 
 function GridProvider({ children }) {
     const [toolMode, setToolMode] = useState(0);
-    const changeToolMode = (e) => {
-        e.stopPropagation();
-        const newTool = toolSelect(e.target.id);
+    const changeToolMode = (mode) => {
+        const newTool = toolSelect(mode);
         setToolMode(newTool);
     };
 
@@ -23,6 +22,11 @@ function GridProvider({ children }) {
         e.stopPropagation();
         const newFilter = filterSelect(e.target.id);
         setFilterMode(newFilter);
+    };
+
+    const [perspectiveMode, setPerspectiveMode] = useState(false);
+    const changePerspectiveMode = () => {
+        setPerspectiveMode((prevState) => !prevState);
     };
 
     const [rowsInput, setRowsInput] = useState(1);
@@ -118,6 +122,8 @@ function GridProvider({ children }) {
                 jid,
                 points,
                 background,
+                perspectiveMode,
+                changePerspectiveMode,
             }}
         >
             {children}

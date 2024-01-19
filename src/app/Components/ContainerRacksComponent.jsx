@@ -11,46 +11,39 @@ export function ContainerRacks() {
         panelsInput,
         handleMouseDownContainer,
         handleMouseUpContainer,
+        perspectiveMode,
     } = useContext(GridContext);
 
-    const containerRacksRef = createRef();
-
-    const [dimension, setDimensions] = useState({ width: 0, height: 0 });
+    let containerStyle = { width: "100%", height: "100%" };
 
     useEffect(() => {
-        const newDimension = () => {
-            if (containerRacksRef.current) {
-                const width = containerRacksRef.current.clientWidth;
-                const height = containerRacksRef.current.clientHeight;
-                setDimensions({ width, height });
-            }
+        const updateStyle = () => {
+            containerStyle = { width: "100%", height: "100%" };
         };
-        newDimension();
-
-        window.addEventListener("resize", newDimension);
-
-        return () => {
-            window.removeEventListener("resize", newDimension);
-        };
-    }, []);
+        window.addEventListener("resize", updateStyle);
+        window.removeEventListener("resize", updateStyle);
+    }, [containerStyle]);
 
     return (
         <>
             <div
                 className={styles.container_racks}
-                ref={containerRacksRef}
                 onMouseDown={handleMouseDownContainer}
                 onMouseUp={handleMouseUpContainer}
             >
                 <FixedSizeGrid
                     className="TorqueGrid"
-                    columnCount={racksInput}
-                    columnWidth={120}
-                    height={dimension.height}
-                    rowCount={rowsInput}
-                    rowHeight={45 * panelsInput + 50} //Agregar espacio entre filas
-                    width={dimension.width}
-                    style={{ userSelect: "none", width: "100%", height : "100%" }}
+                    columnCount={perspectiveMode ? rowsInput : racksInput}
+                    columnWidth={perspectiveMode ? 45 * panelsInput + 50 : 120}
+                    height={900}
+                    rowCount={perspectiveMode ? racksInput : rowsInput}
+                    rowHeight={perspectiveMode ? 120 : 45 * panelsInput + 50} //Agregar espacio entre filas
+                    width={900}
+                    style={{
+                        userSelect: "none",
+                        width: containerStyle.width,
+                        height: containerStyle.width,
+                    }}
                     overscanColumnCount={2}
                     overscanRowCount={2}
                 >

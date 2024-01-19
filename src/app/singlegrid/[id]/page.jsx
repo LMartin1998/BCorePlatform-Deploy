@@ -12,7 +12,7 @@ import ToggleSwitch from "@/app/Components/ToggleSwitch";
 
 
 export default function SingleGrid() {
-  const params = useParams();
+    const params = useParams();
     const id = params.id;
 
     const {
@@ -22,7 +22,6 @@ export default function SingleGrid() {
         racksInputChange,
         panelsInput,
         panelsInputChange,
-        changeToolMode,
         filterMode,
         changeFilterMode,
         json,
@@ -31,6 +30,7 @@ export default function SingleGrid() {
         jid,
         points,
         background,
+        perspectiveMode,
     } = useContext(GridContext);
 
     useEffect(() => {
@@ -42,24 +42,24 @@ export default function SingleGrid() {
       setSwitchValue(value);
     };
 
-  return (
-    <div className="w-full h-[120vh] bg-gray-100">
-      <Header></Header>
-      <TopCards></TopCards>
-      <div className="container pt-1 pb-1">
-        <div className="flex justify-center">
-          <div className="w-4/6 pt-1 ttPanelsContainer">
-            <div className={`${styles.filter_and_tools} pb-2 pt-2`}>
-              <div className={styles.show_buttons}>
-                <button
-                  className={`show-torque-tube ${
-                    filterMode === 0 ? styles.active : ""
-                  }`}
-                  id="show-torque-tube"
-                  onClick={changeFilterMode}
-                >
-                  TT
-                </button>
+    return (
+        <div className="w-full h-[120vh] bg-gray-100">
+            <Header></Header>
+            <TopCards></TopCards>
+            <div className="container pt-1 pb-1">
+                <div className="flex justify-center">
+                    <div className="w-4/6 pt-1 ttPanelsContainer">
+                        <div className={`${styles.filter_and_tools} pb-2 pt-2`}>
+                            <div className={styles.show_buttons}>
+                                <button
+                                    className={`show-torque-tube ${
+                                        filterMode === 0 ? styles.active : ""
+                                    }`}
+                                    id="show-torque-tube"
+                                    onClick={changeFilterMode}
+                                >
+                                    TT
+                                </button>
 
                 <button
                   className={`show-MODS ${
@@ -181,39 +181,7 @@ export default function SingleGrid() {
                     Enviar
                   </button>
                 </div>
-              </div>
             </div>
-            <div className="flex pt-1">
-              <div className="w-full">
-                <div className={styles.notes}>
-                  <div className={styles.map_div}>
-                    <svg
-                      version="1.1"
-                      id="BLACKBEAR"
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlnsXlink="http://www.w3.org/1999/xlink"
-                      x="0px"
-                      y="0px"
-                      viewBox='0 0 100 100'
-                      style={{
-                        enableBackground: background,
-                      }}
-                      xmlSpace="preserve"
-                    >
-                      <polygon
-                        id={jid}
-                        className={styles.st0}
-                        points={points}
-                      />
-                    </svg>
-                    <p>{jid}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
