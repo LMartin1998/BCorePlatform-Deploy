@@ -69,11 +69,15 @@ function GridProvider({ children }) {
         const torqueTubeBySections = item.sections;
         torqueTubeBySections.forEach((element) => {
             const sectionsId = element.sectionId;
-            const torqueTubeCount = element.torqueTubes.length;
+            const torqueTubeById = element.torqueTubes;
+            torqueTubeById.forEach((element) =>{
+                const torqueTubeId = element.torqueTubeId;
 
-            var secTt = {};
-            secTt[sectionsId] = torqueTubeCount;
-            
+                var secTt = {};
+                secTt[sectionsId] = torqueTubeId;
+                console.log(secTt);                
+            });
+
         });
     }
 
