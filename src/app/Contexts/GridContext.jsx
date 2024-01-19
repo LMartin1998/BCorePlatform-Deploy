@@ -56,7 +56,8 @@ function GridProvider({ children }) {
     const updateJson = (id) => {
         const item = data.find((item) => item.id === id);
         setJson(item);
-        torqueTubeBySections(id);
+        
+        // torqueTubeBySections(id);
     };
 
     const sectionsById = (id) => {
@@ -64,9 +65,9 @@ function GridProvider({ children }) {
         const sections = item.sections.length;
     }
 
+    const [readtt, setReadtt] = useState("");
     const torqueTubeBySections = (id) => {
         const item = data.find((item) => item.id === id);
-
         const dataArray = [];
         const torqueTubeBySections = item.sections;
         torqueTubeBySections.forEach((element) => {
@@ -77,7 +78,9 @@ function GridProvider({ children }) {
             dataArray.push(sectionArray);
         });
 
-        console.log(dataArray);
+        // return dataArray;
+        setReadtt(dataArray);
+        console.log(readtt);
     }
 
 
@@ -165,6 +168,8 @@ function GridProvider({ children }) {
                 background,
                 perspectiveMode,
                 changePerspectiveMode,
+                readtt,
+                torqueTubeBySections,
             }}
         >
             {children}
