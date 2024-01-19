@@ -6,9 +6,9 @@ import styles from "@/app/styles/Singlegrid.module.css";
 import { ContainerRacks } from "../../components/ContainerRacksComponent";
 import Header from "../../components/Header";
 import { useParams } from "next/navigation";
-import TopCards from "@/app/Components/TopCards";
-import Dropdown from "@/app/Components/Dropdown";
-import ToggleSwitch from "@/app/Components/ToggleSwitch";
+import TopCards from "@/app/components/TopCards";
+import Dropdown from "@/app/components/Dropdown";
+import ToggleSwitch from "@/app/components/ToggleSwitch";
 
 
 export default function SingleGrid() {
@@ -36,11 +36,6 @@ export default function SingleGrid() {
   useEffect(() => {
     updateJson(id);
   }, [id]);
-  const [switchValue, setSwitchValue] = useState(false);
-
-  const handleToggle = (value) => {
-    setSwitchValue(value);
-  };
 
   return (
     <div className="w-full h-[120vh] bg-gray-100">
@@ -121,10 +116,8 @@ export default function SingleGrid() {
                 <div className={styles.notes}>
                   <div className="mb-4 flex items-center flex-wrap">
                     <ToggleSwitch
-                      onChange={handleToggle}
-                      checked={switchValue}
                     ></ToggleSwitch>
-                    <label className="text-sm font-medium text-gray-700 pl-2">{`${switchValue ? 'Portrait' : 'Landscape'} `}</label>
+                    <label className="text-sm font-medium text-gray-700 pl-2">{`${perspectiveMode ? 'Portrait' : 'Landscape'} `}</label>
                   </div>
                   <div className="mb-4">
                     <label
