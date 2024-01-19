@@ -31,12 +31,19 @@ export default function SingleGrid() {
     points,
     background,
     perspectiveMode,
-    torqueTubeBySections
+    torqueTubeBySections,
+    readtt,
+    maxtt,
+    countMaxtt,
+    sections,
+    sectionsById,
   } = useContext(GridContext);
 
   useEffect(() => {
     updateJson(id);
-    console.log(torqueTubeBySections(id));
+    torqueTubeBySections(id);
+    countMaxtt(id);
+    sectionsById(id);
   }, [id]);
 
   const data = [
@@ -52,11 +59,11 @@ export default function SingleGrid() {
   ];
   const columnWidth = 100;
   const rowHeight = 50;
-  const gridWidth = 5 * columnWidth; // Máximo de columnas o TT
-  const gridHeight = 2 * rowHeight; // Máximo de Secciones
+  const gridWidth = maxtt * columnWidth; // Máximo de columnas o TT
+  const gridHeight = sections * rowHeight; // Máximo de Secciones
   const Cell = ({ columnIndex, rowIndex, style }) => (
     <div style={{ ...style, border: "1px solid gray", padding: "5px" }}>
-      {data[rowIndex][columnIndex]}
+      {readtt[rowIndex][columnIndex]}
     </div>
   );
 
@@ -70,9 +77,8 @@ export default function SingleGrid() {
             <div className={`${styles.filter_and_tools} pb-2 pt-2`}>
               <div className={styles.show_buttons}>
                 <button
-                  className={`show-torque-tube ${
-                    filterMode === 0 ? styles.active : ""
-                  }`}
+                  className={`show-torque-tube ${filterMode === 0 ? styles.active : ""
+                    }`}
                   id="show-torque-tube"
                   onClick={changeFilterMode}
                 >
@@ -80,27 +86,24 @@ export default function SingleGrid() {
                 </button>
 
                 <button
-                  className={`show-MODS ${
-                    filterMode === 1 ? styles.active : ""
-                  }`}
+                  className={`show-MODS ${filterMode === 1 ? styles.active : ""
+                    }`}
                   id="show-MODS"
                   onClick={changeFilterMode}
                 >
                   MODS
                 </button>
                 <button
-                  className={`show-panels ${
-                    filterMode === 2 ? styles.active : ""
-                  }`}
+                  className={`show-panels ${filterMode === 2 ? styles.active : ""
+                    }`}
                   id="show-panels"
                   onClick={changeFilterMode}
                 >
                   Panels
                 </button>
                 <button
-                  className={`show-both ${
-                    filterMode === 3 ? styles.active : ""
-                  }`}
+                  className={`show-both ${filterMode === 3 ? styles.active : ""
+                    }`}
                   id="show-both"
                   onClick={changeFilterMode}
                 >
@@ -113,8 +116,8 @@ export default function SingleGrid() {
               <FixedSizeGrid
                 width={gridWidth}
                 height={gridHeight}
-                columnCount={5} // Máximo de columnas o TT 
-                rowCount={2}   // Máximo de Secciones
+                columnCount={maxtt} // Máximo de columnas o TT 
+                rowCount={sections}   // Máximo de Secciones
                 columnWidth={columnWidth}
                 rowHeight={rowHeight}
               >
@@ -149,9 +152,8 @@ export default function SingleGrid() {
                 <div className={styles.notes}>
                   <div className="mb-4 flex items-center flex-wrap">
                     <ToggleSwitch></ToggleSwitch>
-                    <label className="text-sm font-medium text-gray-700 pl-2">{`${
-                      perspectiveMode ? "Portrait" : "Landscape"
-                    } `}</label>
+                    <label className="text-sm font-medium text-gray-700 pl-2">{`${perspectiveMode ? "Portrait" : "Landscape"
+                      } `}</label>
                   </div>
                   <div className="mb-4">
                     <label

@@ -35,6 +35,16 @@ const data = [
                             { panelId: "p-2", show: true, state: 0 },
                         ],
                     },
+                    {
+                        torqueTubeId: "t-4",
+                        state: 0,
+                        show: true,
+                        panels: [
+                            { panelId: "p-1", show: true, state: 0 },
+                            { panelId: "p-2", show: true, state: 0 },
+                            { panelId: "p-3", show: true, state: 0 },
+                        ],
+                    },
                 ],
             },
             {
@@ -71,6 +81,38 @@ const data = [
             },
             {
                 sectionId: "s-3",
+                torqueTubes: [
+                    {
+                        torqueTubeId: "t-1",
+                        state: 0,
+                        show: true,
+                        panels: [
+                            { panelId: "p-1", show: true, state: 0 },
+                            { panelId: "p-2", show: true, state: 0 },
+                        ],
+                    },
+                    {
+                        torqueTubeId: "t-2",
+                        state: 0,
+                        show: true,
+                        panels: [
+                            { panelId: "p-1", show: true, state: 0 },
+                            { panelId: "p-2", show: true, state: 0 },
+                        ],
+                    },
+                    {
+                        torqueTubeId: "t-3",
+                        state: 0,
+                        show: true,
+                        panels: [
+                            { panelId: "p-1", show: true, state: 0 },
+                            { panelId: "p-2", show: true, state: 0 },
+                        ],
+                    },
+                ],
+            },
+            {
+                sectionId: "s-4",
                 torqueTubes: [
                     {
                         torqueTubeId: "t-1",

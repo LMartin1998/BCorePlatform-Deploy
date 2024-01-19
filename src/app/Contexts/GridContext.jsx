@@ -62,7 +62,14 @@ function GridProvider({ children }) {
     const sectionsById = (id) => {
         const item = data.find((item) => item.id === id);
         const sections = item.sections.length;
+        setSections(sections);
     }
+
+    useEffect(() => {
+        if(sections) {
+            console.log(sections);
+        }
+    })
 
     const [readtt, setReadtt] = useState("");
     const torqueTubeBySections = (id) => {
@@ -76,11 +83,28 @@ function GridProvider({ children }) {
             const sectionArray = torqueTube.map((tt) => `${sectionsId}, ${tt.torqueTubeId}`);
             dataArray.push(sectionArray);
         });
-
-        return dataArray;
+        setReadtt(dataArray);
     }
 
+    const [maxtt, setMaxtt] = useState(0);
+    const countMaxtt = (id) => {
+        let nMax = 0;
+        const item = data.find((item) => item.id === id);
+        const torqueTubeBySections = item.sections;
 
+        torqueTubeBySections.forEach((element) => {
+            const torqueTubeCount = element.torqueTubes.length; // Accede a la propiedad torqueTubes y luego a su length
+            nMax = Math.max(nMax, torqueTubeCount);
+        });
+
+        setMaxtt(nMax);
+    };
+
+    useEffect(() => {
+        if (maxtt) {
+            console.log(maxtt);
+        }
+    }, [maxtt]);
 
     const panelsByTorqueTube = (id) => {
         const item = data.find((item) => item.id === id);
@@ -97,8 +121,6 @@ function GridProvider({ children }) {
         });
     }
 
-
-
     useEffect(() => {
         if (json) {
             setRowsInput(!json.rows ? 1 : json.rows);
@@ -110,6 +132,12 @@ function GridProvider({ children }) {
             setBackground(!json.background ? 1 : json.background);
         }
     }, [json]);
+
+    useEffect(() => {
+        if (readtt) {
+            console.log(readtt);
+        }
+    }, [readtt]);
 
     const handleTorqueTubes = (columnIndex, rowIndex) => {
         return TorqueTubesLocalStorage(columnIndex, rowIndex, toolMode);
@@ -165,7 +193,12 @@ function GridProvider({ children }) {
                 background,
                 perspectiveMode,
                 changePerspectiveMode,
-                torqueTubeBySections
+                torqueTubeBySections,
+                readtt,
+                maxtt,
+                countMaxtt,
+                sections,
+                sectionsById,
             }}
         >
             {children}
