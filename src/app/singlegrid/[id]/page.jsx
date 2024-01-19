@@ -12,54 +12,54 @@ import ToggleSwitch from "@/app/Components/ToggleSwitch";
 
 
 export default function SingleGrid() {
-    const params = useParams();
-    const id = params.id;
+  const params = useParams();
+  const id = params.id;
 
-    const {
-        rowsInput,
-        rowsInputChange,
-        racksInput,
-        racksInputChange,
-        panelsInput,
-        panelsInputChange,
-        filterMode,
-        changeFilterMode,
-        json,
-        updateJson,
-        viewBox,
-        jid,
-        points,
-        background,
-        perspectiveMode,
-    } = useContext(GridContext);
+  const {
+    rowsInput,
+    rowsInputChange,
+    racksInput,
+    racksInputChange,
+    panelsInput,
+    panelsInputChange,
+    filterMode,
+    changeFilterMode,
+    json,
+    updateJson,
+    viewBox,
+    jid,
+    points,
+    background,
+    perspectiveMode,
+  } = useContext(GridContext);
 
-    useEffect(() => {
-        updateJson(id);
-    }, [id]);
-    const [switchValue, setSwitchValue] = useState(false);
+  useEffect(() => {
+    updateJson(id);
+  }, [id]);
+  const [switchValue, setSwitchValue] = useState(false);
 
-    const handleToggle = (value) => {
-      setSwitchValue(value);
-    };
+  const handleToggle = (value) => {
+    setSwitchValue(value);
+  };
 
-    return (
-        <div className="w-full h-[120vh] bg-gray-100">
-            <Header></Header>
-            <TopCards></TopCards>
-            <div className="container pt-1 pb-1">
-                <div className="flex justify-center">
-                    <div className="w-4/6 pt-1 ttPanelsContainer">
-                        <div className={`${styles.filter_and_tools} pb-2 pt-2`}>
-                            <div className={styles.show_buttons}>
-                                <button
-                                    className={`show-torque-tube ${
-                                        filterMode === 0 ? styles.active : ""
-                                    }`}
-                                    id="show-torque-tube"
-                                    onClick={changeFilterMode}
-                                >
-                                    TT
-                                </button>
+  return (
+    <div className="w-full h-[120vh] bg-gray-100">
+      <Header></Header>
+      <TopCards></TopCards>
+      <div className="container pt-1 pb-1">
+        <div className="flex justify-center">
+          <div className="w-4/6 pt-1 ttPanelsContainer">
+            <div className={`${styles.filter_and_tools} pb-2 pt-2`}>
+              <div className={styles.show_buttons}>
+                <button
+                  className={`show-torque-tube ${
+                    filterMode === 0 ? styles.active : ""
+                  }`}
+                  id="show-torque-tube"
+                  onClick={changeFilterMode}
+                >
+                  TT
+                </button>
 
                 <button
                   className={`show-MODS ${
@@ -120,7 +120,10 @@ export default function SingleGrid() {
               <div className="w-full">
                 <div className={styles.notes}>
                   <div className="mb-4 flex items-center flex-wrap">
-                    <ToggleSwitch onChange={handleToggle} checked={switchValue}></ToggleSwitch>
+                    <ToggleSwitch
+                      onChange={handleToggle}
+                      checked={switchValue}
+                    ></ToggleSwitch>
                     <label className="text-sm font-medium text-gray-700 pl-2">{`${switchValue ? 'Portrait' : 'Landscape'} `}</label>
                   </div>
                   <div className="mb-4">
@@ -181,7 +184,12 @@ export default function SingleGrid() {
                     Enviar
                   </button>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 }
+
