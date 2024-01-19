@@ -14,32 +14,20 @@ export function ContainerRacks() {
         perspectiveMode,
     } = useContext(GridContext);
 
-    // const containerRacksRef = createRef();
+    let containerStyle = { width: "100%", height: "100%" };
 
-    // const [dimension, setDimensions] = useState({ width: 0, height: 0 });
-
-    // useEffect(() => {
-    //     const newDimension = () => {
-    //         if (containerRacksRef.current) {
-    //             const width = containerRacksRef.current.clientWidth;
-    //             const height = containerRacksRef.current.clientHeight;
-    //             setDimensions({ width, height });
-    //         }
-    //     };
-    //     newDimension();
-
-    //     window.addEventListener("resize", newDimension);
-
-    //     return () => {
-    //         window.removeEventListener("resize", newDimension);
-    //     };
-    // }, []);
+    useEffect(() => {
+        const updateStyle = () => {
+            containerStyle = { width: "100%", height: "100%" };
+        };
+        window.addEventListener("resize", updateStyle);
+        window.removeEventListener("resize", updateStyle);
+    }, [containerStyle]);
 
     return (
         <>
             <div
                 className={styles.container_racks}
-                // ref={containerRacksRef}
                 onMouseDown={handleMouseDownContainer}
                 onMouseUp={handleMouseUpContainer}
             >
@@ -53,8 +41,8 @@ export function ContainerRacks() {
                     width={900}
                     style={{
                         userSelect: "none",
-                        width: "100%",
-                        height: "100%",
+                        width: containerStyle.width,
+                        height: containerStyle.width,
                     }}
                     overscanColumnCount={2}
                     overscanRowCount={2}
