@@ -58,15 +58,15 @@ const data = [
                             { panelId: "p-2", show: true, state: 0 },
                         ],
                     },
-                    {
-                        torqueTubeId: "t-3",
-                        state: 0,
-                        show: true,
-                        panels: [
-                            { panelId: "p-1", show: true, state: 0 },
-                            { panelId: "p-2", show: true, state: 0 },
-                        ],
-                    },
+                    // {
+                    //     torqueTubeId: "t-3",
+                    //     state: 0,
+                    //     show: true,
+                    //     panels: [
+                    //         { panelId: "p-1", show: true, state: 0 },
+                    //         { panelId: "p-2", show: true, state: 0 },
+                    //     ],
+                    // },
                 ],
             },
             {

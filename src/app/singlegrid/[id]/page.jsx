@@ -9,7 +9,7 @@ import { useParams } from "next/navigation";
 import TopCards from "@/app/components/TopCards";
 import Dropdown from "@/app/components/Dropdown";
 import ToggleSwitch from "@/app/components/ToggleSwitch";
-
+import { FixedSizeGrid } from "react-window";
 
 export default function SingleGrid() {
   const params = useParams();
@@ -31,11 +31,34 @@ export default function SingleGrid() {
     points,
     background,
     perspectiveMode,
+    torqueTubeBySections
   } = useContext(GridContext);
 
   useEffect(() => {
     updateJson(id);
+    console.log(torqueTubeBySections(id));
   }, [id]);
+
+  const data = [
+    [
+      "Row 1, Col 1",
+      "Row 1, Col 2",
+      "Row 1, Col 3",
+      "Row 1, Col 4",
+      "Row 1, Col 5",
+    ],
+    ["Row 2, Col 1", "Row 2, Col 2", "Row 2, Col 3"],
+    ['Row 3, Col 1', 'Row 3, Col 2'],
+  ];
+  const columnWidth = 100;
+  const rowHeight = 50;
+  const gridWidth = 5 * columnWidth; // Máximo de columnas o TT
+  const gridHeight = 2 * rowHeight; // Máximo de Secciones
+  const Cell = ({ columnIndex, rowIndex, style }) => (
+    <div style={{ ...style, border: "1px solid gray", padding: "5px" }}>
+      {data[rowIndex][columnIndex]}
+    </div>
+  );
 
   return (
     <div className="w-full h-[120vh] bg-gray-100">
@@ -87,7 +110,17 @@ export default function SingleGrid() {
               <Dropdown></Dropdown>
             </div>
             <div className={styles.grid_notes}>
-              <ContainerRacks></ContainerRacks>
+              <FixedSizeGrid
+                width={gridWidth}
+                height={gridHeight}
+                columnCount={5} // Máximo de columnas o TT 
+                rowCount={2}   // Máximo de Secciones
+                columnWidth={columnWidth}
+                rowHeight={rowHeight}
+              >
+                {Cell}
+              </FixedSizeGrid>
+              {/* <ContainerRacks></ContainerRacks> */}
             </div>
             <div
               id={styles.delete_container}
@@ -115,9 +148,10 @@ export default function SingleGrid() {
               <div className="w-full">
                 <div className={styles.notes}>
                   <div className="mb-4 flex items-center flex-wrap">
-                    <ToggleSwitch
-                    ></ToggleSwitch>
-                    <label className="text-sm font-medium text-gray-700 pl-2">{`${perspectiveMode ? 'Portrait' : 'Landscape'} `}</label>
+                    <ToggleSwitch></ToggleSwitch>
+                    <label className="text-sm font-medium text-gray-700 pl-2">{`${
+                      perspectiveMode ? "Portrait" : "Landscape"
+                    } `}</label>
                   </div>
                   <div className="mb-4">
                     <label
@@ -185,4 +219,3 @@ export default function SingleGrid() {
     </div>
   );
 }
-

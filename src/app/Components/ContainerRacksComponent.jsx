@@ -12,6 +12,7 @@ export function ContainerRacks() {
         handleMouseDownContainer,
         handleMouseUpContainer,
         perspectiveMode,
+        
     } = useContext(GridContext);
 
     let containerStyle = { width: "100%", height: "100%" };
