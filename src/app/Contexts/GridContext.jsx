@@ -58,6 +58,42 @@ function GridProvider({ children }) {
         setJson(item);
     };
 
+    const sectionsById = (id) => {
+        const item = data.find((item) => item.id === id);
+        const sections = item.sections.length;
+    }
+
+    const torqueTubeBySections = (id) => {
+        const item = data.find((item) => item.id === id);
+        
+        const torqueTubeBySections = item.sections;
+        torqueTubeBySections.forEach((element) => {
+            const sectionsId = element.sectionId;
+            const torqueTubeCount = element.torqueTubes.length;
+
+            var secTt = {};
+            secTt[sectionsId] = torqueTubeCount;
+            
+        });
+    }
+
+    const panelsByTorqueTube = (id) => {
+        const item = data.find((item) => item.id === id);
+        const torqueTubeBySections = item.sections;
+        torqueTubeBySections.forEach((element) => {
+            element.torqueTubes.forEach((torqueTube) => {
+                const torqueTubeId = torqueTube.torqueTubeId;
+                const panelCount = torqueTube.panels.length;
+        
+                var ttPanels = {};
+                ttPanels[torqueTubeId] = panelCount;
+        
+            });
+        });
+    }
+
+
+
     useEffect(() => {
         if (json) {
             setRowsInput(!json.rows ? 1 : json.rows);
