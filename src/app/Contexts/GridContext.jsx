@@ -29,10 +29,36 @@ function GridProvider({ children }) {
         setPerspectiveMode((prevState) => !prevState);
     };
 
+    const [viewBox, setViewBox] = useState("");
+    const [jid, setJid] = useState("");
+    const updateJid = (id) => {
+        setJid(id);
+    }
+
+
+    const [points, setPoints] = useState("");
+    const [background, setBackground] = useState("");
+
+    const [json, setJson] = useState("");
+    const updateJson = () => {
+        if (jid) {
+            const item = data.find((item) => item.id === jid);
+            setJson(item); return;
+        }
+        setJson("");
+    };
+
+
     const [rowsInput, setRowsInput] = useState(1);
     const rowsInputChange = (e) => {
         const newValue = parseInt(e.target.value, 10);
         setRowsInput(newValue);
+    };
+
+    const updateRowInput = () => {
+        if (json) {
+            setRowsInput(json.rows);
+        }
     };
 
     const [racksInput, setRacksInput] = useState(1);
@@ -40,71 +66,74 @@ function GridProvider({ children }) {
         const newValue = parseInt(e.target.value, 10);
         setRacksInput(newValue);
     };
+    const updateRacksInput = () => {
+        if (json) {
+            setRacksInput(json.racks);
+        }
+    };
 
     const [panelsInput, setPanelsInput] = useState(1);
     const panelsInputChange = (e) => {
         const newValue = parseInt(e.target.value, 10);
         setPanelsInput(newValue);
     };
-
-    const [viewBox, setViewBox] = useState("");
-    const [jid, setJid] = useState("");
-    const [points, setPoints] = useState("");
-    const [background, setBackground] = useState("");
-
-    const [json, setJson] = useState("");
-    const updateJson = (id) => {
-        const item = data.find((item) => item.id === id);
-        setJson(item);
+    const updatePanelsInput = () => {
+        if (json) {
+            setPanelsInput(json.panels);
+        }
     };
 
-    const [sections, setSections] = useState('');
-    const sectionsById = (id) => {
-        const item = data.find((item) => item.id === id);
-        const sections = item.sections.length;
-        setSections(sections);
-    }
-
-    useEffect(() => {
-        if(sections) {
-            console.log(sections);
+    const [sections, setSections] = useState(0);
+    const sectionsById = () => {
+        if (jid) {
+            const item = data.find((item) => item.id === jid);
+            const sections = item.sections.length;
+            setSections(sections);
+            return;
         }
-    })
+        setSections(0);
+    }
 
     const [readtt, setReadtt] = useState("");
-    const torqueTubeBySections = (id) => {
-        const item = data.find((item) => item.id === id);
-        const dataArray = [];
-        const torqueTubeBySections = item.sections;
-        torqueTubeBySections.forEach((element) => {
-            const sectionsId = element.sectionId;
-            const torqueTube = element.torqueTubes;
+    const torqueTubeBySections = () => {
+        if (jid) {
+            const item = data.find((item) => item.id === jid);
+            const dataArray = [];
+            const torqueTubeBySections = item.sections;
+            torqueTubeBySections.forEach((element) => {
+                const sectionsId = element.sectionId;
+                const torqueTube = element.torqueTubes;
 
-            const sectionArray = torqueTube.map((tt) => `${sectionsId}, ${tt.torqueTubeId}`);
-            dataArray.push(sectionArray);
-        });
-        setReadtt(dataArray);
+                const sectionArray = torqueTube.map((tt) => `${sectionsId}, ${tt.torqueTubeId}`);
+                dataArray.push(sectionArray);
+            });
+            setReadtt(dataArray);
+            return;
+        }
+        setReadtt("");
     }
 
-    const [maxtt, setMaxtt] = useState(0);
-    const countMaxtt = (id) => {
-        let nMax = 0;
-        const item = data.find((item) => item.id === id);
-        const torqueTubeBySections = item.sections;
-
-        torqueTubeBySections.forEach((element) => {
-            const torqueTubeCount = element.torqueTubes.length; // Accede a la propiedad torqueTubes y luego a su length
-            nMax = Math.max(nMax, torqueTubeCount);
-        });
-
-        setMaxtt(nMax);
-    };
-
     useEffect(() => {
-        if (maxtt) {
-            console.log(maxtt);
+        console.log(readtt);
+    }, [readtt]);
+
+    const [maxtt, setMaxtt] = useState(0);
+    const countMaxtt = () => {
+        let nMax = 0;
+        if (jid) {
+            const item = data.find((item) => item.id === jid);
+            console.log(item);
+            const torqueTubeBySections = item.sections;
+
+            torqueTubeBySections.forEach((element) => {
+                const torqueTubeCount = element.torqueTubes.length; // Accede a la propiedad torqueTubes y luego a su length
+                nMax = Math.max(nMax, torqueTubeCount);
+            });
+            setMaxtt(nMax);
+            return;
         }
-    }, [maxtt]);
+        setMaxtt(1);
+    };
 
     const panelsByTorqueTube = (id) => {
         const item = data.find((item) => item.id === id);
@@ -120,24 +149,6 @@ function GridProvider({ children }) {
             });
         });
     }
-
-    useEffect(() => {
-        if (json) {
-            setRowsInput(!json.rows ? 1 : json.rows);
-            setRacksInput(!json.racks ? 1 : json.racks);
-            setPanelsInput(!json.panels ? 1 : json.panels);
-            setJid(!json.id ? 1 : json.id);
-            setViewBox(!json.viewBox ? 1 : json.viewBox);
-            setPoints(!json.points ? 1 : json.points);
-            setBackground(!json.background ? 1 : json.background);
-        }
-    }, [json]);
-
-    useEffect(() => {
-        if (readtt) {
-            console.log(readtt);
-        }
-    }, [readtt]);
 
     const handleTorqueTubes = (columnIndex, rowIndex) => {
         return TorqueTubesLocalStorage(columnIndex, rowIndex, toolMode);
@@ -172,10 +183,13 @@ function GridProvider({ children }) {
             value={{
                 rowsInput,
                 rowsInputChange,
+                updateRowInput,
                 racksInput,
                 racksInputChange,
+                updateRacksInput,
                 panelsInput,
                 panelsInputChange,
+                updatePanelsInput,
                 handleTorqueTubes,
                 handlePanels,
                 handleMouseDownContainer,
@@ -189,6 +203,7 @@ function GridProvider({ children }) {
                 updateJson,
                 viewBox,
                 jid,
+                updateJid,
                 points,
                 background,
                 perspectiveMode,

@@ -12,8 +12,20 @@ export function ContainerRacks() {
         handleMouseDownContainer,
         handleMouseUpContainer,
         perspectiveMode,
-        
+        jid,
+        json,
+        maxTT,
+        countMaxtt,
+        sections,
+        sectionsById,
+        torqueTubeBySections,
     } = useContext(GridContext);
+
+    useEffect(() => {
+        countMaxtt();
+        sectionsById();
+        torqueTubeBySections();
+    }, [jid, json]);
 
     let containerStyle = { width: "100%", height: "100%" };
 
@@ -24,6 +36,8 @@ export function ContainerRacks() {
         window.addEventListener("resize", updateStyle);
         window.removeEventListener("resize", updateStyle);
     }, [containerStyle]);
+
+    const torqueTubeContainer = ({});
 
     return (
         <>

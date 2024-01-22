@@ -18,54 +18,32 @@ export default function SingleGrid() {
   const {
     rowsInput,
     rowsInputChange,
+    updateRowInput,
     racksInput,
     racksInputChange,
+    updateRacksInput,
     panelsInput,
     panelsInputChange,
+    updatePanelsInput,
     filterMode,
     changeFilterMode,
     json,
     updateJson,
     viewBox,
     jid,
+    updateJid,
     points,
     background,
     perspectiveMode,
-    torqueTubeBySections,
-    readtt,
-    maxtt,
-    countMaxtt,
-    sections,
-    sectionsById,
   } = useContext(GridContext);
 
   useEffect(() => {
-    updateJson(id);
-    torqueTubeBySections(id);
-    countMaxtt(id);
-    sectionsById(id);
-  }, [id]);
-
-  const data = [
-    [
-      "Row 1, Col 1",
-      "Row 1, Col 2",
-      "Row 1, Col 3",
-      "Row 1, Col 4",
-      "Row 1, Col 5",
-    ],
-    ["Row 2, Col 1", "Row 2, Col 2", "Row 2, Col 3"],
-    ['Row 3, Col 1', 'Row 3, Col 2'],
-  ];
-  const columnWidth = 100;
-  const rowHeight = 50;
-  const gridWidth = maxtt * columnWidth; // Máximo de columnas o TT
-  const gridHeight = sections * rowHeight; // Máximo de Secciones
-  const Cell = ({ columnIndex, rowIndex, style }) => (
-    <div style={{ ...style, border: "1px solid gray", padding: "5px" }}>
-      {readtt[rowIndex][columnIndex]}
-    </div>
-  );
+    updateJid(id);
+    updateJson();
+    updateRowInput();
+    updateRacksInput();
+    updatePanelsInput();
+  }, [id, json]);
 
   return (
     <div className="w-full h-[120vh] bg-gray-100">
@@ -113,17 +91,7 @@ export default function SingleGrid() {
               <Dropdown></Dropdown>
             </div>
             <div className={styles.grid_notes}>
-              <FixedSizeGrid
-                width={gridWidth}
-                height={gridHeight}
-                columnCount={maxtt} // Máximo de columnas o TT 
-                rowCount={sections}   // Máximo de Secciones
-                columnWidth={columnWidth}
-                rowHeight={rowHeight}
-              >
-                {Cell}
-              </FixedSizeGrid>
-              {/* <ContainerRacks></ContainerRacks> */}
+              {jid && <ContainerRacks></ContainerRacks>}
             </div>
             <div
               id={styles.delete_container}
