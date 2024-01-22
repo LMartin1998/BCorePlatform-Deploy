@@ -35,17 +35,17 @@ function GridProvider({ children }) {
         setJid(id);
     }
 
-
     const [points, setPoints] = useState("");
     const [background, setBackground] = useState("");
 
-    const [json, setJson] = useState("");
+    const [json, setJson] = useState({});
     const updateJson = () => {
         if (jid) {
             const item = data.find((item) => item.id === jid);
-            setJson(item); return;
+            setJson(item || {});
+            return;
         }
-        setJson("");
+        setJson({});
     };
 
 
@@ -54,7 +54,6 @@ function GridProvider({ children }) {
         const newValue = parseInt(e.target.value, 10);
         setRowsInput(newValue);
     };
-
     const updateRowInput = () => {
         if (json) {
             setRowsInput(json.rows);
@@ -94,11 +93,7 @@ function GridProvider({ children }) {
         setSections(0);
     }
 
-    useEffect(() => {
-        console.log(sections);
-    }, [sections]);
-
-    const [readtt, setReadtt] = useState("");
+    const [readtt, setReadtt] = useState([]);
     const torqueTubeBySections = () => {
         if (jid) {
             const item = data.find((item) => item.id === jid);
@@ -111,15 +106,11 @@ function GridProvider({ children }) {
                 const sectionArray = torqueTube.map((tt) => `${sectionsId}, ${tt.torqueTubeId}`);
                 dataArray.push(sectionArray);
             });
-            setReadtt(dataArray);
+            setReadtt(dataArray || []);
             return;
         }
-        setReadtt("");
+        setReadtt([]);
     }
-
-    useEffect(() => {
-        console.log(readtt);
-    }, [readtt]);
 
     const [maxtt, setMaxtt] = useState(0);
     const countMaxtt = () => {
@@ -138,10 +129,6 @@ function GridProvider({ children }) {
         }
         setMaxtt(1);
     };
-
-    useEffect(() => {
-        console.log(`max: ${maxtt}`);
-    }, [maxtt]);
 
     const panelsByTorqueTube = (id) => {
         const item = data.find((item) => item.id === id);
