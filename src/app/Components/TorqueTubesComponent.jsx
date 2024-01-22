@@ -34,7 +34,7 @@ export function TorqueTubes(props) {
                     left: "0",
                     height: perspectiveMode
                         ? "40%"
-                        : `${45 * panelsInput + 10}px`,
+                        : `100%`,
                     width: perspectiveMode
                         ? `${45 * panelsInput + 10}px`
                         : "40%",

@@ -1,4 +1,4 @@
-import { FixedSizeGrid } from "react-window";
+import { FixedSizeGrid, VariableSizeGrid } from "react-window";
 import { useContext, createRef, useState, useEffect } from "react";
 import { GridContext } from "../contexts/GridContext";
 import styles from "@/app/styles/Singlegrid.module.css";
@@ -38,6 +38,20 @@ export function ContainerRacks() {
         window.removeEventListener("resize", updateStyle);
     }, [containerStyle]);
 
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min);
+    }
+
+    const getColumnWidth = () => {
+        return getRandomInt(120, 120);
+    };
+
+    const getRowHeight = (columnIndex, rowIndex) => {
+        return getRandomInt(10, 120);
+    };
+
     const torqueTubeContaier = ({ columnIndex, rowIndex, style }) => (
         <div className="flex items-center justify-center" style={{ ...style }}>
             {readtt && readtt[rowIndex][columnIndex] ? (<TorqueTubes
@@ -58,13 +72,13 @@ export function ContainerRacks() {
                 onMouseDown={handleMouseDownContainer}
                 onMouseUp={handleMouseUpContainer}
             >
-                <FixedSizeGrid
+                <VariableSizeGrid
                     className="TorqueGrid"
                     columnCount={maxtt}
-                    columnWidth={perspectiveMode ? 45 * panelsInput + 50 : 120}
+                    columnWidth={getColumnWidth}
                     height={900}
                     rowCount={sections}
-                    rowHeight={perspectiveMode ? 120 : 45 * panelsInput + 50} //Agregar espacio entre filas
+                    rowHeight={getRowHeight} //Agregar espacio entre filas
                     width={900}
                     style={{
                         userSelect: "none",
@@ -75,7 +89,7 @@ export function ContainerRacks() {
                     overscanRowCount={2}
                 >
                     {torqueTubeContaier}
-                </FixedSizeGrid>
+                </VariableSizeGrid>
             </div>
         </>
     );
