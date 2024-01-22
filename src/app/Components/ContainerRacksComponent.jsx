@@ -60,10 +60,10 @@ export function ContainerRacks() {
             >
                 <FixedSizeGrid
                     className="TorqueGrid"
-                    columnCount={perspectiveMode ? sections : maxtt}
+                    columnCount={maxtt}
                     columnWidth={perspectiveMode ? 45 * panelsInput + 50 : 120}
                     height={900}
-                    rowCount={perspectiveMode ? maxtt : sections}
+                    rowCount={sections}
                     rowHeight={perspectiveMode ? 120 : 45 * panelsInput + 50} //Agregar espacio entre filas
                     width={900}
                     style={{

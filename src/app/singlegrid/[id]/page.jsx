@@ -120,7 +120,7 @@ export default function SingleGrid() {
                 <div className={styles.notes}>
                   <div className="mb-4 flex items-center flex-wrap">
                     <ToggleSwitch></ToggleSwitch>
-                    <label className="text-sm font-medium text-gray-700 pl-2">{`${perspectiveMode ? "Portrait" : "Landscape"
+                    <label className="text-sm font-medium text-gray-700 pl-2">{`${!perspectiveMode ? "Portrait" : "Landscape"
                       } `}</label>
                   </div>
                   <div className="mb-4">
