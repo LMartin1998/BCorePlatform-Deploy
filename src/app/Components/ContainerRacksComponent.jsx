@@ -14,7 +14,8 @@ export function ContainerRacks() {
         perspectiveMode,
         jid,
         json,
-        maxTT,
+        readtt,
+        maxtt,
         countMaxtt,
         sections,
         sectionsById,
@@ -37,7 +38,18 @@ export function ContainerRacks() {
         window.removeEventListener("resize", updateStyle);
     }, [containerStyle]);
 
-    const torqueTubeContainer = ({});
+    const torqueTubeContaier = ({ columnIndex, rowIndex, style }) => (
+        <div className="flex items-center justify-center" style={{ ...style }}>
+            {readtt && readtt[rowIndex][columnIndex] ? (<TorqueTubes
+                style={style}
+                columnIndex={columnIndex}
+                rowIndex={rowIndex}
+            ></TorqueTubes>)
+                : (
+                    <></>
+                )}
+        </div>
+    );
 
     return (
         <>
@@ -48,10 +60,10 @@ export function ContainerRacks() {
             >
                 <FixedSizeGrid
                     className="TorqueGrid"
-                    columnCount={perspectiveMode ? rowsInput : racksInput}
+                    columnCount={perspectiveMode ? sections : maxtt}
                     columnWidth={perspectiveMode ? 45 * panelsInput + 50 : 120}
                     height={900}
-                    rowCount={perspectiveMode ? racksInput : rowsInput}
+                    rowCount={perspectiveMode ? maxtt : sections}
                     rowHeight={perspectiveMode ? 120 : 45 * panelsInput + 50} //Agregar espacio entre filas
                     width={900}
                     style={{
@@ -62,13 +74,7 @@ export function ContainerRacks() {
                     overscanColumnCount={2}
                     overscanRowCount={2}
                 >
-                    {({ columnIndex, rowIndex, style }) => (
-                        <TorqueTubes
-                            style={style}
-                            columnIndex={columnIndex}
-                            rowIndex={rowIndex}
-                        ></TorqueTubes>
-                    )}
+                    {torqueTubeContaier}
                 </FixedSizeGrid>
             </div>
         </>

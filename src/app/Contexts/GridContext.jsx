@@ -94,6 +94,10 @@ function GridProvider({ children }) {
         setSections(0);
     }
 
+    useEffect(() => {
+        console.log(sections);
+    }, [sections]);
+
     const [readtt, setReadtt] = useState("");
     const torqueTubeBySections = () => {
         if (jid) {
@@ -134,6 +138,10 @@ function GridProvider({ children }) {
         }
         setMaxtt(1);
     };
+
+    useEffect(() => {
+        console.log(`max: ${maxtt}`);
+    }, [maxtt]);
 
     const panelsByTorqueTube = (id) => {
         const item = data.find((item) => item.id === id);
