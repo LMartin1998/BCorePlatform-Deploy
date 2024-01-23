@@ -62,7 +62,7 @@ export function ContainerRacks() {
     };
 
     const torqueTubeContaier = ({ columnIndex, rowIndex, style }) => (
-        <div className="flex items-center justify-center" style={{ ...style }}>
+        <div className="flex mt-2 justify-center" style={{ ...style }}>
             {readtt && readtt[rowIndex][columnIndex] ? (<TorqueTubes
                 style={style}
                 columnIndex={columnIndex}

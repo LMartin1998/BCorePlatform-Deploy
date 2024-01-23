@@ -25,7 +25,7 @@ export function TorqueTubes(props) {
     );
 
     const panelsContainer = ({ index, style }) => (
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-start items-center">
             {readtt && readtt[props.rowIndex][props.columnIndex] ? (
                 <Panels
                     style={style}
