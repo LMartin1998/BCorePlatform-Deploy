@@ -11,9 +11,10 @@
   "dependencies": {
     "next": "14.0.4",
     "react": "^18",
+    "react-datepicker": "^4.25.0",
     "react-dom": "^18",
-    "react-window": "^1.8.10",
-    "react-icons": "^5.0.1"
+    "react-icons": "^5.0.1",
+    "react-window": "^1.8.10"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
