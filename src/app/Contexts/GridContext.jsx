@@ -11,6 +11,23 @@ import data from "@/app/data/data";
 const GridContext = createContext();
 
 function GridProvider({ children }) {
+
+    const [zoom, setZoom] = useState(1);
+    const increaseZoom = (e) => {
+        e.stopPropagation();
+        setZoom((prevZoom) => {
+            const newZoom = prevZoom + 0.1;
+            return newZoom >= 3 ? 3 : parseFloat(newZoom.toFixed(1));
+        });
+    };
+    const decreaseZoom = (e) => {
+        e.stopPropagation();
+        setZoom((prevZoom) => {
+            const newZoom = prevZoom - 0.1;
+            return newZoom <= 0.1 ? 0.1 : parseFloat(newZoom.toFixed(1));
+        });
+    };
+
     const [toolMode, setToolMode] = useState(0);
     const changeToolMode = (mode) => {
         const newTool = toolSelect(mode);
@@ -232,6 +249,7 @@ function GridProvider({ children }) {
                 sectionsById,
                 maxPanels,
                 panelsByTorqueTube,
+                zoom, increaseZoom, decreaseZoom,
             }}
         >
             {children}

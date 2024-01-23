@@ -9,7 +9,6 @@ import { useParams } from "next/navigation";
 import TopCards from "@/app/components/TopCards";
 import Dropdown from "@/app/components/Dropdown";
 import ToggleSwitch from "@/app/components/ToggleSwitch";
-import { FixedSizeGrid } from "react-window";
 
 export default function SingleGrid() {
   const params = useParams();

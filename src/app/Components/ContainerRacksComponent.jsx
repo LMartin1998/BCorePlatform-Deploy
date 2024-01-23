@@ -3,6 +3,7 @@ import { useContext, createRef, useState, useEffect } from "react";
 import { GridContext } from "../contexts/GridContext";
 import styles from "@/app/styles/Singlegrid.module.css";
 import { TorqueTubes } from "./TorqueTubesComponent";
+import Zoom from "./ZoomComponent";
 
 export function ContainerRacks() {
     const {
@@ -99,6 +100,9 @@ export function ContainerRacks() {
                 >
                     {torqueTubeContaier}
                 </VariableSizeGrid>
+                <div className="relative right-0 bottom-0 p-2">
+                    <Zoom></Zoom>
+                </div>
             </div>
         </>
     );
