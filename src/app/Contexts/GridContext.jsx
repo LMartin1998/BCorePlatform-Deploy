@@ -142,7 +142,7 @@ function GridProvider({ children }) {
                     });
                 });
             }
-            return nMax;
+            return 45 * nMax + 10;
         }
         return 0;
     };

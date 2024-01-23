@@ -56,9 +56,16 @@ export function ContainerRacks() {
         return getRandomInt(120, 120);
     };
 
-    const getRowHeight = (columnIndex, rowIndex) => {
+    const getRowHeight = (index) => {
+        if (readtt && readtt[index]) {
+            const sectionId = readtt[index][0].split(", ")[0];
+            return maxPanels(sectionId);
+        }
         return getRandomInt(10, 120);
     };
+
+    const getHeight = (index) => {
+    }
 
     const torqueTubeContaier = ({ columnIndex, rowIndex, style }) => (
         <div className="flex items-center justify-center" style={{ ...style }}>
