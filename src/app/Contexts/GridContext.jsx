@@ -55,7 +55,7 @@ function GridProvider({ children }) {
         setRowsInput(newValue);
     };
     const updateRowInput = () => {
-        if (json) {
+        if (json && json.rows) {
             setRowsInput(json.rows);
         }
     };
@@ -66,7 +66,7 @@ function GridProvider({ children }) {
         setRacksInput(newValue);
     };
     const updateRacksInput = () => {
-        if (json) {
+        if (json && json.racks) {
             setRacksInput(json.racks);
         }
     };
@@ -77,7 +77,7 @@ function GridProvider({ children }) {
         setPanelsInput(newValue);
     };
     const updatePanelsInput = () => {
-        if (json) {
+        if (json && json.panels) {
             setPanelsInput(json.panels);
         }
     };
@@ -117,9 +117,7 @@ function GridProvider({ children }) {
         let nMax = 0;
         if (jid) {
             const item = data.find((item) => item.id === jid);
-            console.log(item);
             const torqueTubeBySections = item.sections;
-
             torqueTubeBySections.forEach((element) => {
                 const torqueTubeCount = element.torqueTubes.length; // Accede a la propiedad torqueTubes y luego a su length
                 nMax = Math.max(nMax, torqueTubeCount);
@@ -128,6 +126,15 @@ function GridProvider({ children }) {
             return;
         }
         setMaxtt(1);
+    };
+
+    const maxPanels = (sectionId) => {
+
+        if (jid) {
+
+        }
+
+        return 0;
     };
 
     const panelsByTorqueTube = (id) => {
