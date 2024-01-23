@@ -102,7 +102,6 @@ function GridProvider({ children }) {
             torqueTubeBySections.forEach((element) => {
                 const sectionsId = element.sectionId;
                 const torqueTube = element.torqueTubes;
-
                 const sectionArray = torqueTube.map((tt) => `${sectionsId}, ${tt.torqueTubeId}`);
                 dataArray.push(sectionArray);
             });
@@ -141,26 +140,31 @@ function GridProvider({ children }) {
                         nMax = Math.max(nMax, panelsCount);
                     });
                 });
+                return 45 * nMax + 50;
             }
-            return 45 * nMax + 50;
         }
         return 0;
     };
 
     const panelsByTorqueTube = (id) => {
-        const item = data.find((item) => item.id === id);
-        const torqueTubeBySections = item.sections;
-        torqueTubeBySections.forEach((element) => {
-            element.torqueTubes.forEach((torqueTube) => {
-                const torqueTubeId = torqueTube.torqueTubeId;
-                const panelCount = torqueTube.panels.length;
-
-                var ttPanels = {};
-                ttPanels[torqueTubeId] = panelCount;
-
-            });
-        });
-    }
+        const sectionId = id.split(", ")[0];
+        const torqueTubeId = id.split(", ")[1];
+        if (jid) {
+            const item = data.find((item) => item.id === jid);
+            if (item) {
+                const torqueTubeBySections = item.sections || [];
+                const matchingSections = torqueTubeBySections.filter((section) => section.sectionId === sectionId);
+                for (const section of matchingSections) {
+                    for (const tt of section.torqueTubes) {
+                        if (tt.torqueTubeId === torqueTubeId) {
+                            return tt.panels.length;
+                        }
+                    }
+                }
+            }
+        }
+        return 0;
+    };
 
     const handleTorqueTubes = (columnIndex, rowIndex) => {
         return TorqueTubesLocalStorage(columnIndex, rowIndex, toolMode);
@@ -227,6 +231,7 @@ function GridProvider({ children }) {
                 sections,
                 sectionsById,
                 maxPanels,
+                panelsByTorqueTube,
             }}
         >
             {children}

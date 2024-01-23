@@ -45,8 +45,12 @@ export function ContainerRacks() {
         return Math.floor(Math.random() * (max - min) + min);
     }
 
+    const constWidth = () => {
+        return 120;
+    }
+
     const getColumnWidth = () => {
-        return getRandomInt(120, 120);
+        return constWidth();
     };
 
     const getRowHeight = (index) => {

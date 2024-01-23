@@ -13,12 +13,30 @@ export function TorqueTubes(props) {
         toolMode,
         filterMode,
         perspectiveMode,
+        jid,
+        readtt,
+        panelsByTorqueTube,
     } = useContext(GridContext);
 
     const { state, show, updateTT } = handleTorqueTubes(
         props.columnIndex,
         props.rowIndex,
         toolMode
+    );
+
+    const panelsContainer = ({ index, style }) => (
+        <div className="flex flex-col justify-center items-center">
+            {readtt && readtt[props.rowIndex][props.columnIndex] ? (
+                <Panels
+                    style={style}
+                    columnIndex={props.columnIndex}
+                    rowIndex={props.rowIndex}
+                    index={index}
+                />
+            ) : (
+                <></>
+            )}
+        </div>
     );
 
     return (
@@ -34,9 +52,9 @@ export function TorqueTubes(props) {
                     left: "0",
                     height: perspectiveMode
                         ? "40%"
-                        : `90%`,
+                        : readtt && readtt[props.rowIndex][props.columnIndex] ? `${45 * panelsByTorqueTube(readtt[props.rowIndex][props.columnIndex]) + 10}px` : "0",
                     width: perspectiveMode
-                        ? `90%`
+                        ? readtt && readtt[props.rowIndex][props.columnIndex] ? `${45 * panelsByTorqueTube(readtt[props.rowIndex][props.columnIndex]) + 10}px` : "0"
                         : "40%",
                     backgroundColor: changeState(state),
                     pointerEvents: "auto",
@@ -48,29 +66,26 @@ export function TorqueTubes(props) {
                 }}
                 onMouseOver={mouseDownTT ? updateTT : undefined}
             >
-                {/* {filterMode !== 0 && (
+                {
+                    readtt && readtt[props.rowIndex][props.columnIndex] &&
+                    filterMode !== 0 && (
                         <FixedSizeList
                             className="PanelGrid"
-                            height={perspectiveMode ? 100 : 45 * panelsInput}
-                            itemCount={panelsInput}
+                            height={perspectiveMode ? 100 : 45 * panelsByTorqueTube(readtt[props.rowIndex][props.columnIndex])}
+                            itemCount={
+                                panelsByTorqueTube(readtt[props.rowIndex][props.columnIndex])
+                            }
                             itemSize={45}
-                            width={perspectiveMode ? 45 * panelsInput : 100}
+                            width={perspectiveMode ? 45 * panelsByTorqueTube(readtt[props.rowIndex][props.columnIndex]) : 100}
                             style={{
                                 pointerEvents: "none",
                             }}
                             layout={perspectiveMode ? "horizontal" : "vertical"}
                         >
-                            {({ index, style }) => (
-                                <Panels
-                                    style={style}
-                                    columnIndex={props.columnIndex}
-                                    rowIndex={props.rowIndex}
-                                    index={index}
-                                ></Panels>
-                            )}
+                            {panelsContainer}
                         </FixedSizeList>
-                    )} */}
-            </div>
+                    )}
+            </div >
 
         </>
     );
