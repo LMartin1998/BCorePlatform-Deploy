@@ -27,13 +27,6 @@ export function ContainerRacks() {
         countMaxtt();
         sectionsById();
         torqueTubeBySections();
-        console.log(maxPanels("s-1"));
-        // console.log(maxPanels(readtt[0][0]));
-        // if (readtt && readtt[0]) {
-        //     const secId = readtt[0][0].split(", ")[0];
-        //     console.log(`section: ${secId}`);
-        //     console.log(maxPanels(secId));
-        // }
     }, [jid, json]);
 
     let containerStyle = { width: "100%", height: "100%" };
@@ -64,9 +57,6 @@ export function ContainerRacks() {
         return getRandomInt(10, 120);
     };
 
-    const getHeight = (index) => {
-    }
-
     const torqueTubeContaier = ({ columnIndex, rowIndex, style }) => (
         <div className="flex items-center justify-center" style={{ ...style }}>
             {readtt && readtt[rowIndex][columnIndex] ? (<TorqueTubes
@@ -90,10 +80,10 @@ export function ContainerRacks() {
                 <VariableSizeGrid
                     className="TorqueGrid"
                     columnCount={maxtt}
-                    columnWidth={getColumnWidth}
+                    columnWidth={perspectiveMode ? getRowHeight : getColumnWidth}
                     height={900}
                     rowCount={sections}
-                    rowHeight={getRowHeight} //Agregar espacio entre filas
+                    rowHeight={perspectiveMode ? getColumnWidth : getRowHeight}
                     width={900}
                     style={{
                         userSelect: "none",

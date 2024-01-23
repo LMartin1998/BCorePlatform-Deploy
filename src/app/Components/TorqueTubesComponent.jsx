@@ -34,9 +34,9 @@ export function TorqueTubes(props) {
                     left: "0",
                     height: perspectiveMode
                         ? "40%"
-                        : `100%`,
+                        : `90%`,
                     width: perspectiveMode
-                        ? `${45 * panelsInput + 10}px`
+                        ? `90%`
                         : "40%",
                     backgroundColor: changeState(state),
                     pointerEvents: "auto",
