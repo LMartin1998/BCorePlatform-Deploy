@@ -129,11 +129,21 @@ function GridProvider({ children }) {
     };
 
     const maxPanels = (sectionId) => {
-
         if (jid) {
-
+            let nMax = 0;
+            const item = data.find((item) => item.id === jid);
+            if (item) {
+                const torqueTubeBySections = item.sections || [];
+                const matchingSections = torqueTubeBySections.filter((section) => section.sectionId === sectionId);
+                matchingSections.forEach((section) => {
+                    section.torqueTubes.forEach((tt) => {
+                        const panelsCount = tt.panels.length;
+                        nMax = Math.max(nMax, panelsCount);
+                    });
+                });
+            }
+            return nMax;
         }
-
         return 0;
     };
 
@@ -216,6 +226,7 @@ function GridProvider({ children }) {
                 countMaxtt,
                 sections,
                 sectionsById,
+                maxPanels,
             }}
         >
             {children}

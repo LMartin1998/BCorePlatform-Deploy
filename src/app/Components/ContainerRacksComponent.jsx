@@ -20,12 +20,20 @@ export function ContainerRacks() {
         sections,
         sectionsById,
         torqueTubeBySections,
+        maxPanels,
     } = useContext(GridContext);
 
     useEffect(() => {
         countMaxtt();
         sectionsById();
         torqueTubeBySections();
+        console.log(maxPanels("s-1"));
+        // console.log(maxPanels(readtt[0][0]));
+        // if (readtt && readtt[0]) {
+        //     const secId = readtt[0][0].split(", ")[0];
+        //     console.log(`section: ${secId}`);
+        //     console.log(maxPanels(secId));
+        // }
     }, [jid, json]);
 
     let containerStyle = { width: "100%", height: "100%" };
