@@ -22,6 +22,7 @@ export function ContainerRacks() {
         sectionsById,
         torqueTubeBySections,
         maxPanels,
+        zoom,
     } = useContext(GridContext);
 
     useEffect(() => {
@@ -94,6 +95,7 @@ export function ContainerRacks() {
                         userSelect: "none",
                         width: containerStyle.width,
                         height: containerStyle.width,
+                        zoom: zoom, transformOrigin: "center",
                     }}
                     overscanColumnCount={2}
                     overscanRowCount={2}
