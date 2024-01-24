@@ -16,12 +16,13 @@ export function TorqueTubes(props) {
         jid,
         readtt,
         panelsByTorqueTube,
+        initialState,
     } = useContext(GridContext);
 
     const { state, show, updateTT } = handleTorqueTubes(
         props.columnIndex,
         props.rowIndex,
-        toolMode
+        toolMode,
     );
 
     const panelsContainer = ({ index, style }) => (

@@ -128,6 +128,34 @@ function GridProvider({ children }) {
         setReadtt([]);
     }
 
+    const torqueTubeState = (sectionId, torqueTubeId) => {
+        if (jid) {
+            const item = data.find((item) =>
+                item.id === jid
+            );
+            const sections = item.sections;
+            const section = sections.find((section) => section.sectionId === sectionId);
+            const torqueTubes = section.torqueTubes;
+            const torqueTube = torqueTubes.find((tt) => tt.torqueTubeId === torqueTubeId);
+            return torqueTube.state || 0;
+        }
+        return 0;
+    };
+
+    const torqueTubeShow = (sectionId, torqueTubeId) => {
+        if (jid) {
+            const item = data.find((item) =>
+                item.id === jid
+            );
+            const sections = item.sections;
+            const section = sections.find((section) => section.sectionId === sectionId);
+            const torqueTubes = section.torqueTubes;
+            const torqueTube = torqueTubes.find((tt) => tt.torqueTubeId === torqueTubeId);
+            return torqueTube.show || true;
+        }
+        return true;
+    };
+
     const [maxtt, setMaxtt] = useState(0);
     const countMaxtt = () => {
         let nMax = 0;
@@ -183,8 +211,17 @@ function GridProvider({ children }) {
         return 0;
     };
 
+    const initialState = (sectionId, torqueTubeId) => {
+        const readSectionId = readtt && readtt[sectionId] ? readtt[sectionId][torqueTubeId].split(", ")[0] : "s-1";
+        const readTorqueTubeId = readtt && readtt[sectionId] ? readtt[sectionId][torqueTubeId].split(", ")[1] : "t-1";
+        return {
+            state: torqueTubeState(readSectionId, readTorqueTubeId),
+            show: torqueTubeShow(readSectionId, readTorqueTubeId),
+        };
+    };
+
     const handleTorqueTubes = (columnIndex, rowIndex) => {
-        return TorqueTubesLocalStorage(columnIndex, rowIndex, toolMode);
+        return TorqueTubesLocalStorage(columnIndex, rowIndex, toolMode, initialState(rowIndex, columnIndex));
     };
 
     const handlePanels = (columnIndex, rowIndex, index) => {
@@ -250,6 +287,9 @@ function GridProvider({ children }) {
                 maxPanels,
                 panelsByTorqueTube,
                 zoom, increaseZoom, decreaseZoom,
+                torqueTubeState,
+                torqueTubeShow,
+                initialState,
             }}
         >
             {children}
