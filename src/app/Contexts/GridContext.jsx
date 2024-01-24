@@ -137,7 +137,7 @@ function GridProvider({ children }) {
             const section = sections.find((section) => section.sectionId === sectionId);
             const torqueTubes = section.torqueTubes;
             const torqueTube = torqueTubes.find((tt) => tt.torqueTubeId === torqueTubeId);
-            return torqueTube.state || 0;
+            return torqueTube.state;
         }
         return 0;
     };
@@ -151,7 +151,7 @@ function GridProvider({ children }) {
             const section = sections.find((section) => section.sectionId === sectionId);
             const torqueTubes = section.torqueTubes;
             const torqueTube = torqueTubes.find((tt) => tt.torqueTubeId === torqueTubeId);
-            return torqueTube.show || true;
+            return torqueTube.show;
         }
         return true;
     };
