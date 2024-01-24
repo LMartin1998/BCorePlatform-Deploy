@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function PanelsLocalStorage(columnIndex, rowIndex, index, toolMode) {
+export function PanelsLocalStorage(columnIndex, rowIndex, index, toolMode, initialState) {
     // const initialState = {
     //     state: 0,
     //     show: true,

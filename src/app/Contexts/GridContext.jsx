@@ -144,6 +144,7 @@ function GridProvider({ children }) {
 
     const panelState = (sectionId, torqueTubeId, panelId) => {
         if(jid){
+            const id = `p-${panelId + 1}`;
             const item = data.find((item) => 
                 item.id === jid
             );
@@ -152,7 +153,7 @@ function GridProvider({ children }) {
             const torqueTubes = section.torqueTubes;
             const torqueTube = torqueTubes.find((tt) => tt.torqueTubeId === torqueTubeId);
             const panels = torqueTube.panels;
-            const panel = panels.find((pa) => pa.panelId === panelId);
+            const panel = panels.find((pa) => pa.panelId === id);
             return panel.state;
         }
         return 0;
@@ -174,6 +175,7 @@ function GridProvider({ children }) {
 
     const panelShow = (sectionId, torqueTubeId, panelId) => {
         if(jid){
+            const id = `p-${panelId + 1}`;
             const item = data.find((item) => 
                 item.id === jid
             );
@@ -182,8 +184,7 @@ function GridProvider({ children }) {
             const torqueTubes = section.torqueTubes;
             const torqueTube = torqueTubes.find((tt) => tt.torqueTubeId === torqueTubeId);
             const panels = torqueTube.panels;
-            const panel = panels.find((pa) => pa.panelId === panelId);
-            console.log(panel);
+            const panel = panels.find((pa) => pa.panelId === id);
             return panel.show;
         }
         return 0;
