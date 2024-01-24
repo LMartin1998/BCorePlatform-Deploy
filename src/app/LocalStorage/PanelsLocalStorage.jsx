@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
 export function PanelsLocalStorage(columnIndex, rowIndex, index, toolMode) {
-    const initialState = {
-        state: 0,
-        show: true,
-    };
+    // const initialState = {
+    //     state: 0,
+    //     show: true,
+    // };
 
     const key = `panel_${columnIndex}_${rowIndex}_${index}`;
 

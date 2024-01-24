@@ -142,6 +142,22 @@ function GridProvider({ children }) {
         return 0;
     };
 
+    const panelState = (sectionId, torqueTubeId, panelId) => {
+        if(jid){
+            const item = data.find((item) => 
+                item.id === jid
+            );
+            const sections = item.sections;
+            const section = sections.find((section) => section.sectionId === sectionId);
+            const torqueTubes = section.torqueTubes;
+            const torqueTube = torqueTubes.find((tt) => tt.torqueTubeId === torqueTubeId);
+            const panels = torqueTube.panels;
+            const panel = panels.find((pa) => pa.panelId === panelId);
+            return panel.state;
+        }
+        return 0;
+    }
+
     const torqueTubeShow = (sectionId, torqueTubeId) => {
         if (jid) {
             const item = data.find((item) =>
@@ -155,6 +171,23 @@ function GridProvider({ children }) {
         }
         return true;
     };
+
+    const panelShow = (sectionId, torqueTubeId, panelId) => {
+        if(jid){
+            const item = data.find((item) => 
+                item.id === jid
+            );
+            const sections = item.sections;
+            const section = sections.find((section) => section.sectionId === sectionId);
+            const torqueTubes = section.torqueTubes;
+            const torqueTube = torqueTubes.find((tt) => tt.torqueTubeId === torqueTubeId);
+            const panels = torqueTube.panels;
+            const panel = panels.find((pa) => pa.panelId === panelId);
+            console.log(panel);
+            return panel.show;
+        }
+        return 0;
+    }
 
     const [maxtt, setMaxtt] = useState(0);
     const countMaxtt = () => {
@@ -211,7 +244,7 @@ function GridProvider({ children }) {
         return 0;
     };
 
-    const initialState = (sectionId, torqueTubeId) => {
+    const initialStateTT = (sectionId, torqueTubeId) => {
         const readSectionId = readtt && readtt[sectionId] ? readtt[sectionId][torqueTubeId].split(", ")[0] : "s-1";
         const readTorqueTubeId = readtt && readtt[sectionId] ? readtt[sectionId][torqueTubeId].split(", ")[1] : "t-1";
         return {
@@ -220,12 +253,21 @@ function GridProvider({ children }) {
         };
     };
 
+    const initialStatePanel = (sectionId, torqueTubeId, panelId) => {
+        const readSectionId = readtt && readtt[sectionId] ? readtt[sectionId][torqueTubeId].split(", ")[0] : "s-1";
+        const readTorqueTubeId = readtt && readtt[sectionId] ? readtt[sectionId][torqueTubeId].split(", ")[1] : "t-1";
+        return {
+            show:  panelShow(readSectionId, readTorqueTubeId, panelId),
+            state: panelState(readSectionId, readTorqueTubeId, panelId),
+        };
+    } 
+
     const handleTorqueTubes = (columnIndex, rowIndex) => {
-        return TorqueTubesLocalStorage(columnIndex, rowIndex, toolMode, initialState(rowIndex, columnIndex));
+        return TorqueTubesLocalStorage(columnIndex, rowIndex, toolMode, initialStateTT(rowIndex, columnIndex));
     };
 
     const handlePanels = (columnIndex, rowIndex, index) => {
-        return PanelsLocalStorage(columnIndex, rowIndex, index, toolMode);
+        return PanelsLocalStorage(columnIndex, rowIndex, index, toolMode, initialStatePanel(rowIndex, columnIndex, index));
     };
 
     const [mouseDownTT, setMouseDownTT] = useState(false);
@@ -289,7 +331,8 @@ function GridProvider({ children }) {
                 zoom, increaseZoom, decreaseZoom,
                 torqueTubeState,
                 torqueTubeShow,
-                initialState,
+                initialStateTT,
+                initialStatePanel
             }}
         >
             {children}
