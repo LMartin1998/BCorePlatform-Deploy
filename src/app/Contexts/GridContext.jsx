@@ -143,9 +143,9 @@ function GridProvider({ children }) {
     };
 
     const panelState = (sectionId, torqueTubeId, panelId) => {
-        if(jid){
-            const id = `p-${panelId + 1}`;
-            const item = data.find((item) => 
+        if (jid) {
+            const id = `p-${panelId}`;
+            const item = data.find((item) =>
                 item.id === jid
             );
             const sections = item.sections;
@@ -174,9 +174,9 @@ function GridProvider({ children }) {
     };
 
     const panelShow = (sectionId, torqueTubeId, panelId) => {
-        if(jid){
-            const id = `p-${panelId + 1}`;
-            const item = data.find((item) => 
+        if (jid) {
+            const id = `p-${panelId}`;
+            const item = data.find((item) =>
                 item.id === jid
             );
             const sections = item.sections;
@@ -258,10 +258,10 @@ function GridProvider({ children }) {
         const readSectionId = readtt && readtt[sectionId] ? readtt[sectionId][torqueTubeId].split(", ")[0] : "s-1";
         const readTorqueTubeId = readtt && readtt[sectionId] ? readtt[sectionId][torqueTubeId].split(", ")[1] : "t-1";
         return {
-            show:  panelShow(readSectionId, readTorqueTubeId, panelId),
+            show: panelShow(readSectionId, readTorqueTubeId, panelId),
             state: panelState(readSectionId, readTorqueTubeId, panelId),
         };
-    } 
+    }
 
     const handleTorqueTubes = (columnIndex, rowIndex) => {
         return TorqueTubesLocalStorage(columnIndex, rowIndex, toolMode, initialStateTT(rowIndex, columnIndex));
