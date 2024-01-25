@@ -1,10 +1,11 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 const UserContext = createContext();
 
 function UserProvider({ children }) {
     const [logged, setLogged] = useState(false);
-    const updateLogged = () => {
+    const updateLogged = (e) => {
+        e.stopPropagation();
         setLogged((prevLogged) => !prevLogged);
     };
 
