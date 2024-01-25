@@ -1,20 +1,10 @@
 // src/DonaChart.js
-'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Doughnut } from 'react-chartjs-2';
-import 'chart.js';
-import { Chart as Chartjs,
-         ArcElement,
-         Tooltip,
-         Legend 
-} from 'chart.js';
-
-Chartjs.register(
-  ArcElement, Tooltip, Legend
-)
+import 'chart.js/auto';
 const DonaChart = () => {
-  // Datos del gráfico
-  const data = {
+
+  const [data, setData] = useState({
     labels: ['A', 'B'],
     datasets: [
       {
@@ -23,7 +13,7 @@ const DonaChart = () => {
         hoverBackgroundColor: ['#4A90E2', '#D3D3D3'],
       },
     ],
-  };
+  });
 
   const options = {
     cutoutPercentage: 70, // Porcentaje de recorte para crear un efecto de dona
