@@ -1,7 +1,7 @@
 "use client";
 import "./globals.css";
-import React, { useState } from "react";
 import { GridProvider } from "./contexts/GridContext";
+import { UserProvider } from "./contexts/UserContext";
 
 // export const metadata = {
 //   title: 'Project Manager',
@@ -13,9 +13,11 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
-                <GridProvider>
-                    {children}
-                </GridProvider>
+                <UserProvider>
+                    <GridProvider>
+                        {children}
+                    </GridProvider>
+                </UserProvider>
             </body>
         </html>
     );
