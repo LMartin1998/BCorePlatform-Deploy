@@ -1,4 +1,5 @@
 // src/DonaChart.js
+'use client';
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import 'chart.js';
@@ -11,25 +12,29 @@ import { Chart as Chartjs,
 Chartjs.register(
   ArcElement, Tooltip, Legend
 )
-
 const DonaChart = () => {
   // Datos del gráfico
   const data = {
-    labels: ['Categoria 1', 'Categoria 2', 'Categoria 3'],
+    labels: ['A', 'B'],
     datasets: [
       {
-        data: [30, 40, 30], // Porcentajes para cada categoría
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'], // Colores para cada categoría
-        hoverBackgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+        data: [60, 40], // Porcentajes para cada categoría
+        backgroundColor: ['#1E40AF', '#E0E0E0'], // Colores para cada categoría
+        hoverBackgroundColor: ['#4A90E2', '#D3D3D3'],
       },
     ],
   };
 
+  const options = {
+    cutoutPercentage: 70, // Porcentaje de recorte para crear un efecto de dona
+    legend: {
+      display: true,
+      position: 'bottom',
+    },
+  };
+
   return (
-    <div>
-      <h2>Gráfico de Dona</h2>
-      <Doughnut data={data} />
-    </div>
+      <Doughnut data={data} options={options}/>
   );
 };
 
