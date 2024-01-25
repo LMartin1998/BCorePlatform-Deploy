@@ -1,8 +1,8 @@
 "use client";
 
 import { createContext, useState, useEffect } from "react";
-import { TorqueTubesLocalStorage } from "../localStorage/TorqueTubesLocalStorage";
-import { PanelsLocalStorage } from "../localStorage/PanelsLocalStorage";
+import { TorqueTubesLocalStorage } from "../localstorage/TorqueTubesLocalStorage";
+import { PanelsLocalStorage } from "../localstorage/PanelsLocalStorage";
 import { toolSelect } from "../utils/toolSelect";
 import { filterSelect } from "../utils/filterSelect";
 

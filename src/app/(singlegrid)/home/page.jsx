@@ -1,6 +1,6 @@
-import Header from "../components/Header";
-import { MapSite } from "../components/MapSite";
-import TopCards from "../components/TopCards";
+import Header from "../../components/Header";
+import { MapSite } from "../../components/MapSite";
+import TopCards from "../../components/TopCards";
 
 
 export default function Home() {

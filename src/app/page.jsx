@@ -1,7 +1,10 @@
-import Home from './home/page'
+import Home from './(singlegrid)/home/page'
+import GridLayout from './(singlegrid)/layout'
 
 export default function App() {
   return (
-      <Home></Home>
-  )
+    <GridLayout>
+      <Home />
+    </GridLayout>
+  );
 }

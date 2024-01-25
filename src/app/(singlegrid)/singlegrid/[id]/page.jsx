@@ -3,8 +3,8 @@
 import { useContext, useState, useRef, useEffect } from "react";
 import { GridContext } from "@/app/contexts/GridContext";
 import styles from "@/app/styles/Singlegrid.module.css";
-import { ContainerRacks } from "../../components/ContainerRacksComponent";
-import Header from "../../components/Header";
+import { ContainerRacks } from "../../../components/ContainerRacksComponent";
+import Header from "../../../components/Header";
 import { useParams } from "next/navigation";
 import TopCards from "@/app/components/TopCards";
 import Dropdown from "@/app/components/Dropdown";

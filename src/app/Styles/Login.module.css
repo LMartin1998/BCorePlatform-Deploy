@@ -1,0 +1,22 @@
+#P{
+    text-decoration-color: white;
+}
+
+.image_container {
+    height: 100vh;
+    width: 100%;
+    background-color: gray;
+    display: flex;
+}
+
+.form_container {
+    height: 100%;
+    width: 40%;
+    background-color: black;
+    opacity: 0.5;
+    text-align: center;
+}
+
+.email_container {
+
+}

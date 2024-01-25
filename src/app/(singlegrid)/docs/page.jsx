@@ -1,5 +1,5 @@
-import Header from "../components/Header";
-import TopCards from "../components/TopCards";
+import Header from "../../components/Header";
+import TopCards from "../../components/TopCards";
 
 export default function Docs() {
     return (
