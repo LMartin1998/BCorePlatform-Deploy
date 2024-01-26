@@ -12,9 +12,9 @@ export default function Login() {
   const { updateLogged } = useContext(UserContext);
 
   return (
-    <div className="bg-gray-100 flex items-center justify-center h-screen">
-      <div className="bg-white p-8 rounded shadow-md max-w-md w-full">
-        <div className="flex flex-col items-center justify-center mb-6">
+    <div className={styles.wrapper_main}>
+      <div className="bg-white  p-8 rounded shadow-md max-w-xl h-full w-full flex flex-col justify-center">
+        <div className="flex flex-col items-center justify-center mb-6 -mt-40">
           <img
             src="/Assets/bcore.png"
             alt="Logo Empresa"
