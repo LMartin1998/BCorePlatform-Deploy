@@ -1,8 +1,7 @@
-// src/DonaChart.js
 import React, { useState } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import 'chart.js/auto';
-const DonaChart = () => {
+const DoughnutChart = () => {
 
   const [data, setData] = useState({
     labels: ['A', 'B'],
@@ -28,4 +27,4 @@ const DonaChart = () => {
   );
 };
 
-export default DonaChart;
+export default DoughnutChart;
