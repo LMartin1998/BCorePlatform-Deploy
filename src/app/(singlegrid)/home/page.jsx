@@ -1,9 +1,9 @@
 'use client';
-import BarChart from "../Components/BarChart";
-import DonaChart from "../Components/DoughnutChart";
-import Header from "../components/Header";
-import { MapSite } from "../components/MapSite";
-import TopCards from "../components/TopCards";
+import BarChart from "../../components/BarChart";
+import DonaChart from "../../components/DoughnutChart";
+import Header from "../../components/Header";
+import { MapSite } from "../../components/MapSite";
+import TopCards from "../../components/TopCards";
 
 export default function Home() {
   return (
