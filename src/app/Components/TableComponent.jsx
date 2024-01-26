@@ -7,33 +7,17 @@ import {
     getSortedRowModel,
     getFilteredRowModel,
 } from '@tanstack/react-table';
-import data from "@/app/data/docdata.jsx";
 import { HiFolderDownload } from "react-icons/hi";
 import { RiEdit2Fill } from "react-icons/ri";
 import { AiOutlineSortAscending, AiOutlineSortDescending } from "react-icons/ai";
 import { MdDriveFolderUpload } from "react-icons/md";
 
-export default function TableComponent() {
+export default function TableComponent({data, columns}) {
 
     const handleDoc = (e) => {
         e.stopPropagation();
         console.log(e.target);
     }
-
-    const columns = [
-        {
-            header: 'ID',
-            accessorKey: 'id',
-        },
-        {
-            header: 'Name',
-            accessorKey: 'name',
-        },
-        {
-            header: 'Size',
-            accessorKey: 'size',
-        },
-    ];
 
     const table = useReactTable({
         data,
