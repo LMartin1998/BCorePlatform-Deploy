@@ -6,11 +6,12 @@
     background-color: #fff;
     border-radius: 10px;
     padding: 1rem;
+    height: 80vh;
 }
 .map_div {
     display: flex;
     width: 40%;
-    margin: auto;
+    /* margin: auto; */
     justify-content: center;
 }
 .map_div path {
