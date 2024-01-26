@@ -98,6 +98,12 @@ export default function TableComponent() {
                     ))}
                 </tbody>
             </table>
+            <button onClick={() => table.setPageIndex(0)}>Primer Pagina</button>
+            <button onClick={() => table.previousPage()}>Pagina Anterior</button>
+            <button onClick={() => table.nextPage()}>Pagina Siguiente</button>
+            <button onClick={() => table.setPageIndex(table.getPageCount() - 1)}>
+                Ultima Pagina
+            </button>
         </>
     );
 };
