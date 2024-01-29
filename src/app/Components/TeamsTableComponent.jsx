@@ -7,9 +7,11 @@ import {
     getSortedRowModel,
     getFilteredRowModel,
 } from '@tanstack/react-table';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { AiOutlineSortAscending, AiOutlineSortDescending } from "react-icons/ai";
+import { RiEdit2Fill } from "react-icons/ri";
+import { AiOutlineUserDelete } from "react-icons/ai";
 
 import data from "@/app/data/teamsdata";
 
@@ -39,8 +41,8 @@ export default function TeamsTable() {
             accessorKey: 'name',
         },
         {
-            header: 'Project',
-            accessorKey: 'project',
+            header: 'Projects',
+            accessorKey: 'projects',
         },
         {
             header: 'Role',
@@ -105,9 +107,8 @@ export default function TeamsTable() {
                                     <button onClick={() => changeOpen(row.id)}><HiOutlineDotsVertical size={25} className='hover:cursor-pointer' /></button>
                                     {openRows[row.id] && (
                                         <div>
-                                            <div>Hola1</div>
-                                            <div>Hola1</div>
-                                            <div>Hola1</div>
+                                            <div><RiEdit2Fill size={25} /></div>
+                                            <div><AiOutlineUserDelete size={25} /></div>
                                         </div>
                                     )}
                                 </div>

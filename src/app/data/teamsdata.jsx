@@ -3,7 +3,7 @@ const data = [
         id: 0,
         email: 'user0@bcore.com',
         name: 'User Name 0',
-        project: 'Happy Solar',
+        projects: 'Happy Solar',
         role: 'Worker',
         deadline: '10/10/2000'
     },
@@ -11,7 +11,7 @@ const data = [
         id: 1,
         email: 'user1@bcore.com',
         name: 'User Name 1',
-        project: 'Black Bear',
+        projects: 'Black Bear',
         role: 'Worker',
         deadline: '10/10/2001'
     },
@@ -19,7 +19,7 @@ const data = [
         id: 2,
         email: 'user2@bcore.com',
         name: 'User Name 2',
-        project: 'Happy Solar',
+        projects: 'Happy Solar',
         role: 'Team Leader',
         deadline: '10/10/2003'
     },
@@ -27,7 +27,7 @@ const data = [
         id: 3,
         email: 'user3@bcore.com',
         name: 'User Name 3',
-        project: 'Delaware',
+        projects: 'Delaware',
         role: 'Team Leader',
         deadline: '10/10/2003'
     },
@@ -35,7 +35,7 @@ const data = [
         id: 4,
         email: 'user4@bcore.com',
         name: 'User Name 4',
-        project: 'Delaware',
+        projects: 'Delaware',
         role: 'Admin',
         deadline: '10/10/2003'
     },
@@ -43,8 +43,8 @@ const data = [
         id: 5,
         email: 'user5@bcore.com',
         name: 'User Name 5',
-        project: 'Happy Solar',
-        role: 'Project Manager',
+        projects: 'Happy Solar',
+        role: 'projects Manager',
         deadline: '10/10/2010',
     },
 ];
