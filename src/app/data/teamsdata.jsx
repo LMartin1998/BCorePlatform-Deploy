@@ -44,7 +44,7 @@ const data = [
         email: 'user5@bcore.com',
         name: 'User Name 5',
         projects: 'Happy Solar',
-        role: 'projects Manager',
+        role: 'Project Manager',
         deadline: '10/10/2010',
     },
 ];
