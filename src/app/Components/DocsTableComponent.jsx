@@ -12,15 +12,26 @@ import { HiFolderDownload } from "react-icons/hi";
 import { RiEdit2Fill } from "react-icons/ri";
 import { AiOutlineSortAscending, AiOutlineSortDescending } from "react-icons/ai";
 import { MdDriveFolderUpload } from "react-icons/md";
+import { useState } from 'react';
 
 export default function DocsTable() {
 
+    const [items, setItems] = useState(2);
     const handleDoc = (e) => {
         e.stopPropagation();
         console.log(e.target);
     }
 
     const columns = [
+        {
+            id: 'select',
+            header: ({ table }) => (
+                <input type='checkbox' checked={table.getIsAllRowsSelected()} onChange={table.getToggleAllRowsSelectedHandler()}></input>
+            ),
+            cell: ({ row }) => (
+                <input type='checkbox' checked={row.getIsSelected()} disabled={!row.getCanSelect()} onChange={row.getToggleSelectedHandler()}></input>
+            ),
+        },
         {
             header: 'ID',
             accessorKey: 'id',
@@ -33,6 +44,16 @@ export default function DocsTable() {
             header: 'Size',
             accessorKey: 'size',
         },
+        {
+            id: 'download-action',
+            header: '',
+            cell: ({ row }) => <div><HiFolderDownload size={25} className='hover:cursor-pointer' /></div>
+        },
+        {
+            id: 'open-action',
+            header: '',
+            cell: ({ row }) => <div><RiEdit2Fill size={25} className='hover:cursor-pointer' /></div>
+        },
     ];
 
     const table = useReactTable({
@@ -42,6 +63,12 @@ export default function DocsTable() {
         getPaginationRowModel: getPaginationRowModel(),
         getSortedRowModel: getSortedRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
+        state: {
+            pagination: {
+                pageIndex: 0,
+                pageSize: items,
+            }
+        }
     });
 
     return (
@@ -88,12 +115,6 @@ export default function DocsTable() {
                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                 </td>
                             ))}
-                            <td>
-                                <HiFolderDownload size={25} className='hover:cursor-pointer' />
-                            </td>
-                            <td>
-                                <RiEdit2Fill size={25} className='hover:cursor-pointer' />
-                            </td>
                         </tr>
                     ))}
                 </tbody>
