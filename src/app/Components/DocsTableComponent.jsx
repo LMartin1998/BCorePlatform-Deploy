@@ -13,7 +13,7 @@ import { RiEdit2Fill } from "react-icons/ri";
 import { AiOutlineSortAscending, AiOutlineSortDescending } from "react-icons/ai";
 import { MdDriveFolderUpload } from "react-icons/md";
 
-export default function TableComponent() {
+export default function DocsTable() {
 
     const handleDoc = (e) => {
         e.stopPropagation();
