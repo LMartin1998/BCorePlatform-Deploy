@@ -39,7 +39,7 @@ export default function TeamsTable() {
         {
             header: 'Team',
             accessorKey: 'team',
-            cell: row => <div>{teamLabel[row.getValue()]} {row.getValue()}</div>
+            cell: row => <div className="flex">{teamLabel[row.getValue()]} {row.getValue()}</div>
         },
         {
             header: 'Role',
