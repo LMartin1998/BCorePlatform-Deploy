@@ -67,8 +67,12 @@ export default function TeamsTable() {
         {
             header: 'Status',
             accessorKey: 'status',
-            cell: row => <div className={`${row.getValue() ? 'bg-green-200' : 'bg-red-200'}`}>
-                <p>{`${row.getValue() ? 'Available' : 'Occuped'}`}</p>
+            cell: row => <div className="flex items-center">
+                <div
+                    className={`cursor-pointer relative ${row.getValue() ? 'bg-green-500' : 'bg-red-500'} rounded-full w-8 h-4 transition`}
+                >
+                    <div className={`absolute ${row.getValue() ? 'translate-x-4' : 'translate-x-0'} left-0 bg-white w-4 h-4 rounded-full shadow-md transition transform duration-300 ease-in-out`} />
+                </div>
             </div>
         },
     ];
