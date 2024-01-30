@@ -17,6 +17,7 @@ import data from "@/app/data/teamsdata";
 
 export default function TeamsTable() {
 
+    const [items, setItems] = useState(2);
     const [openRows, setOpenRows] = useState({});
     const changeOpen = (rowId) => {
         setOpenRows((prevOpenRows) => ({
@@ -32,6 +33,15 @@ export default function TeamsTable() {
     }
 
     const columns = [
+        {
+            id: 'select',
+            header: ({ table }) => (
+                <input type='checkbox' checked={table.getIsAllRowsSelected()} onChange={table.getToggleAllRowsSelectedHandler()}></input>
+            ),
+            cell: ({ row }) => (
+                <input type='checkbox' checked={row.getIsSelected()} disabled={!row.getCanSelect()} onChange={row.getToggleSelectedHandler()}></input>
+            ),
+        },
         {
             header: 'Email',
             accessorKey: 'email',
@@ -61,6 +71,12 @@ export default function TeamsTable() {
         getPaginationRowModel: getPaginationRowModel(),
         getSortedRowModel: getSortedRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
+        state: {
+            pagination: {
+                pageIndex: 0,
+                pageSize: items,
+            }
+        }
     });
 
     return (
