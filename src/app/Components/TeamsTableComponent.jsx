@@ -1,146 +1,135 @@
 "use client";
-import {
-    useReactTable,
-    getCoreRowModel,
-    flexRender,
-    getPaginationRowModel,
-    getSortedRowModel,
-    getFilteredRowModel,
-} from '@tanstack/react-table';
-import { useState } from 'react';
+import { flexRender, getCoreRowModel, getPaginationRowModel, useReactTable } from "@tanstack/react-table";
+import User from "../data/teamsdata";
+import { GrUserManager } from "react-icons/gr";
+import { FaTruckPlane } from "react-icons/fa6";
+import { IoCall } from "react-icons/io5";
+import { HiOutlineDotsVertical } from "react-icons/hi";
 import { AiOutlineSortAscending, AiOutlineSortDescending } from "react-icons/ai";
-import { FaUserEdit } from "react-icons/fa";
-import { IoEyeSharp } from "react-icons/io5";
+import { RiEdit2Fill } from "react-icons/ri";
+import { AiOutlineUserDelete } from "react-icons/ai";
+import { useState } from "react";
 
-import data from "@/app/data/teamsdata";
 
 export default function TeamsTable() {
 
-    const [items, setItems] = useState(2);
-    const [openRows, setOpenRows] = useState({});
-    const changeOpen = (rowId) => {
-        setOpenRows((prevOpenRows) => ({
-            ...prevOpenRows,
-            [rowId]: !prevOpenRows[rowId],
-        }));
-
+    const teamLabel = {
+        "Logistics": <FaTruckPlane size={25} />,
+        "Manager": <GrUserManager size={25} />,
+        "Operator": <IoCall size={25} />
     };
 
-    const handleDoc = (e) => {
-        e.stopPropagation();
-        console.log(e.target);
-    }
+    const [rowSelection, setRowSelection] = useState({});
 
     const columns = [
         {
-            id: 'select',
-            header: ({ table }) => (
-                <input type='checkbox' checked={table.getIsAllRowsSelected()} onChange={table.getToggleAllRowsSelectedHandler()}></input>
-            ),
-            cell: ({ row }) => (
-                <input type='checkbox' checked={row.getIsSelected()} disabled={!row.getCanSelect()} onChange={row.getToggleSelectedHandler()}></input>
-            ),
+            id: 'selector-column',
+            header: ({ table }) => <input type="checkbox" checked={table.getIsAllRowsSelected() || table.getIsSomeRowsSelected()}
+                onChange={table.getToggleAllRowsSelectedHandler()}></input>,
+            cell: ({ row }) => <input type="checkbox" checked={row.getIsSelected()}
+                disabled={!row.getCanSelect()} onChange={row.getToggleSelectedHandler()}></input>
         },
         {
-            header: 'Email',
-            accessorKey: 'email',
+            id: 'number-column',
+            header: '#',
+            cell: ({ row }) => <p>{(+row.id) + 1}</p>
         },
         {
-            header: 'Name',
-            accessorKey: 'name',
+            header: 'First Name',
+            accessorKey: 'firstName',
+            cell: row => <p>{row.getValue()}</p>
         },
         {
-            header: 'Projects',
-            accessorKey: 'projects',
+            header: 'Team',
+            accessorKey: 'team',
+            cell: row => <div>{teamLabel[row.getValue()]} {row.getValue()}</div>
         },
         {
             header: 'Role',
             accessorKey: 'role',
+            cell: row => <p>{row.getValue()}</p>
         },
         {
-            header: 'Deadline',
-            accessorKey: 'deadline',
+            header: 'Phone',
+            accessorKey: 'phone',
+            cell: row => <p>{row.getValue()}</p>
         },
         {
-            id: 'edit-column',
-            cell: ({ row }) => (
-                <FaUserEdit size={25}></FaUserEdit>
-            )
+            header: 'Buggy',
+            accessorKey: 'buggy',
+            cell: row => <p>{row.getValue()}</p>
         },
         {
-            id: 'watch-column',
-            cell: ({ row }) => (
-                <IoEyeSharp size={25}></IoEyeSharp>
-            )
+            header: 'Skidsteer',
+            accessorKey: 'skidsteer',
+            cell: row => <p>{row.getValue()}</p>
+        },
+        {
+            header: 'Status',
+            accessorKey: 'status',
+            cell: row => <div className={`${row.getValue() ? 'bg-green-200' : 'bg-red-200'}`}>
+                <p>{`${row.getValue() ? 'Available' : 'Occuped'}`}</p>
+            </div>
         },
     ];
+
+    const [data, setData] = useState(User);
 
     const table = useReactTable({
         data,
         columns,
+        state: {
+            rowSelection,
+        },
+        enableRowSelection: true,
+        onRowSelectionChange: setRowSelection,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
-        getSortedRowModel: getSortedRowModel(),
-        getFilteredRowModel: getFilteredRowModel(),
-        state: {
-            pagination: {
-                pageIndex: 0,
-                pageSize: items,
-            }
-        }
     });
 
     return (
         <>
-            <table className='w-full'>
+            <table className='w-full mt-3'>
                 <thead>
-                    {table.getHeaderGroups().map((headerGroup) => (
-                        <tr className='text-left border-b border-solid border-black select-none' key={headerGroup.id}>
-                            {headerGroup.headers.map((header) => (
-                                <th className='text-left p-2 border-b border-solid border-black'
-                                    key={header.id}
-                                    onClick={header.column.getToggleSortingHandler()}
-                                >
-                                    {header.isPlaceholder ? null : (
-                                        <div>
-                                            {flexRender(
-                                                header.column.columnDef.header,
-                                                header.getContext()
-                                            )}
-                                            {['asc', 'desc'].includes(
-                                                header.column.getIsSorted()
-                                            ) && (
-                                                    <span>
-                                                        {header.column.getIsSorted() === 'asc' ? <AiOutlineSortAscending size={20} /> : <AiOutlineSortDescending size={20} />}
-                                                    </span>
-                                                )}
-                                        </div>
-                                    )}
-                                </th>
-                            ))}
-                        </tr>
-                    ))}
+                    {
+                        table.getHeaderGroups().map(headerGroup => (
+                            <tr className='text-left bg-gray-200 select-none' key={headerGroup.id}>
+                                {
+                                    headerGroup.headers.map(header => (
+                                        <th className='text-left p-1 text-gray-700 border-b border-solid border-gray-400' key={header.id}>
+                                            {
+                                                header.isPlaceholder ? null
+                                                    : flexRender(
+                                                        header.column.columnDef.header,
+                                                        header.getContext()
+                                                    )
+                                            }
+                                        </th>
+                                    ))
+                                }
+                            </tr>
+                        ))
+                    }
                 </thead>
                 <tbody>
-                    {table.getRowModel().rows.map((row) => (
-                        <tr key={row.id} className={'bg-white border-b border-solid border-black hover:bg-blue-100 hover:font-bold'} onClick={(handleDoc)}>
-                            {row.getVisibleCells().map((cell) => (
-                                <td key={cell.id} className='py-4 px-2'>
-                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                </td>
-                            ))}
-                        </tr>
-                    ))}
+                    {table.getRowModel().rows.map(row => {
+                        return (
+                            <tr className='bg-white border-b border-solid border-gray-400 hover:bg-gray-100' key={row.id}>
+                                {row.getVisibleCells().map(cell => {
+                                    return (
+                                        <td className='py-2 px-1' key={cell.id}>
+                                            {flexRender(
+                                                cell.column.columnDef.cell,
+                                                cell.getContext()
+                                            )}
+                                        </td>
+                                    )
+                                })}
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
-            <div className='flex'>
-                <button onClick={() => table.setPageIndex(0)}>First</button>
-                <button onClick={() => table.previousPage()}>Last page</button>
-                <button onClick={() => table.nextPage()}>Next page</button>
-                <button onClick={() => table.setPageIndex(table.getPageCount() - 1 < 0 ? 0 : table.getPageCount() - 1)}>
-                    Last
-                </button>
-            </div>
         </>
     );
 };

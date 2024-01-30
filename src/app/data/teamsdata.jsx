@@ -1,52 +1,26 @@
-const data = [
+const user = [
     {
         id: 0,
-        email: 'user0@bcore.com',
-        name: 'User Name 0',
-        projects: 'Happy Solar',
-        role: 'Worker',
-        deadline: '10/10/2000'
+        firstName: 'Alex',
+        lastName: 'Arevalo',
+        team: 'Logistics',
+        role: 'Manager',
+        phone: '+1 555 23 54',
+        buggy: 'Kawasaki 41266',
+        skidsteer: '',
+        status: false,
     },
     {
         id: 1,
-        email: 'user1@bcore.com',
-        name: 'User Name 1',
-        projects: 'Black Bear',
-        role: 'Worker',
-        deadline: '10/10/2001'
-    },
-    {
-        id: 2,
-        email: 'user2@bcore.com',
-        name: 'User Name 2',
-        projects: 'Happy Solar',
-        role: 'Team Leader',
-        deadline: '10/10/2003'
-    },
-    {
-        id: 3,
-        email: 'user3@bcore.com',
-        name: 'User Name 3',
-        projects: 'Delaware',
-        role: 'Team Leader',
-        deadline: '10/10/2003'
-    },
-    {
-        id: 4,
-        email: 'user4@bcore.com',
-        name: 'User Name 4',
-        projects: 'Delaware',
-        role: 'Admin',
-        deadline: '10/10/2003'
-    },
-    {
-        id: 5,
-        email: 'user5@bcore.com',
-        name: 'User Name 5',
-        projects: 'Happy Solar',
-        role: 'Project Manager',
-        deadline: '10/10/2010',
+        firstName: 'Luizandro',
+        lastName: 'Martin',
+        team: 'Logistics',
+        role: 'Operator',
+        phone: '+1 555 81 12',
+        buggy: '',
+        skidsteer: 'CAT JX96526',
+        status: true,
     },
 ];
 
-export default data;
+export default user;
