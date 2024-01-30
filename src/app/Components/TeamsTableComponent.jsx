@@ -1,13 +1,10 @@
 "use client";
-import { flexRender, getCoreRowModel, getPaginationRowModel, useReactTable } from "@tanstack/react-table";
+import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, useReactTable } from "@tanstack/react-table";
 import User from "../data/teamsdata";
 import { GrUserManager } from "react-icons/gr";
 import { FaTruckPlane } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
-import { HiOutlineDotsVertical } from "react-icons/hi";
-import { AiOutlineSortAscending, AiOutlineSortDescending } from "react-icons/ai";
-import { RiEdit2Fill } from "react-icons/ri";
-import { AiOutlineUserDelete } from "react-icons/ai";
+import { MdFirstPage, MdChevronLeft, MdChevronRight, MdLastPage } from 'react-icons/md';
 import { useState } from "react";
 
 
@@ -89,6 +86,7 @@ export default function TeamsTable() {
         onRowSelectionChange: setRowSelection,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
+        getFilteredRowModel: getFilteredRowModel(),
     });
 
     return (
@@ -134,6 +132,25 @@ export default function TeamsTable() {
                     })}
                 </tbody>
             </table>
+            <div className='flex justify-end space-x-2 mt-2'>
+                <button className='bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-600' onClick={() => table.setPageIndex(0)} disabled={!table.getCanPreviousPage()}><MdFirstPage /></button>
+                <button className='bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-600' onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}><MdChevronLeft /></button>
+                <button className='bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-600' onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}><MdChevronRight /></button>
+                <button className='bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-600' onClick={() => table.setPageIndex(table.getPageCount() - 1)} disabled={!table.getCanNextPage()}><MdLastPage /></button>
+                <select
+                    className='bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-600'
+                    value={table.getState().pagination.pageSize}
+                    onChange={e => {
+                        table.setPageSize(Number(e.target.value))
+                    }}
+                >
+                    {[1, 2, 3, 4, 5].map(pageSize => (
+                        <option key={pageSize} value={pageSize}>
+                            Show {pageSize}
+                        </option>
+                    ))}
+                </select>
+            </div>
         </>
     );
 };
