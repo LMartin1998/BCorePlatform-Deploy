@@ -21,7 +21,6 @@ import { useState } from "react";
 import { HiOutlineTrash } from "react-icons/hi2";
 import { IoFilterOutline } from "react-icons/io5";
 import { BiSortAlt2 } from "react-icons/bi";
-import ToggleSwitch from "./ToggleSwitch";
 
 export default function TeamsTable() {
   const teamLabel = {
@@ -30,13 +29,24 @@ export default function TeamsTable() {
     Operator: <IoCall size={25} />,
   };
 
-  const changeOpen = (rowId) => {
-    setOpenRows((prevOpenRows) => ({
-        ...prevOpenRows, [rowId]: !prevOpenRows[rowId],
-    }));
-  };
+  const [data, setData] = useState(User);
 
   const [rowSelection, setRowSelection] = useState({});
+
+  const [rowStatus, setRowStatus] = useState(data.map((user) => ({
+    id: user.id,
+    status: user.status,
+  })));
+
+  const updateStatus = (rowId) => {
+    setRowStatus((prevRowStatus) => ({
+      ...prevRowStatus,
+      [rowId]: {
+        ...prevRowStatus[rowId],
+        status: !prevRowStatus[rowId].status,
+      },
+    }));
+  };
 
   const columns = [
     {
@@ -101,18 +111,16 @@ export default function TeamsTable() {
     {
       header: "Status",
       accessorKey: "status",
-      cell: (row) => (
+      cell: ({ row }) => (
         <div className="flex items-center">
-            {/* <ToggleSwitch></ToggleSwitch> */}
           <div
-            className={`cursor-pointer relative ${
-              row.getValue() ? "bg-green-500" : "bg-red-500"
-            } rounded-full w-8 h-4 transition`}
+            className={`cursor-pointer relative ${rowStatus[row.id] && rowStatus[row.id].status ? "bg-green-500" : "bg-red-500"
+              } rounded-full w-8 h-4 transition`}
+            onClick={() => updateStatus(row.id)}
           >
             <div
-              className={`absolute ${
-                row.getValue() ? "translate-x-4" : "translate-x-0"
-              } left-0 bg-white w-4 h-4 rounded-full shadow-md transition transform duration-300 ease-in-out`}
+              className={`absolute ${rowStatus[row.id] && rowStatus[row.id].status ? "translate-x-4" : "translate-x-0"
+                } left-0 bg-white w-4 h-4 rounded-full shadow-md transition transform duration-300 ease-in-out`}
             />
           </div>
         </div>
@@ -120,7 +128,6 @@ export default function TeamsTable() {
     },
   ];
 
-  const [data, setData] = useState(User);
 
   const table = useReactTable({
     data,
@@ -171,9 +178,9 @@ export default function TeamsTable() {
                   {header.isPlaceholder
                     ? null
                     : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
+                      header.column.columnDef.header,
+                      header.getContext()
+                    )}
                 </th>
               ))}
             </tr>
