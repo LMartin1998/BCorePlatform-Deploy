@@ -41,8 +41,7 @@ export default function DocsTable() {
         <input
           type="checkbox"
           checked={
-            table.getIsAllRowsSelected() || table.getIsSomeRowsSelected()
-          }
+            table.getIsAllRowsSelected()}
           onChange={table.getToggleAllRowsSelectedHandler()}
         ></input>
       ),
@@ -148,9 +147,9 @@ export default function DocsTable() {
                   {header.isPlaceholder
                     ? null
                     : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
+                      header.column.columnDef.header,
+                      header.getContext()
+                    )}
                 </th>
               ))}
             </tr>

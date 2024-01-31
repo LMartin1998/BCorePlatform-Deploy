@@ -55,8 +55,7 @@ export default function TeamsTable() {
         <input
           type="checkbox"
           checked={
-            table.getIsAllRowsSelected() || table.getIsSomeRowsSelected()
-          }
+            table.getIsAllRowsSelected()}
           onChange={table.getToggleAllRowsSelectedHandler()}
         ></input>
       ),
