@@ -16,10 +16,11 @@ import {
 } from "react-icons/md";
 import { FaFileWord, FaFilePdf } from "react-icons/fa";
 import { GiMechanicalArm, GiElectricalResistance } from "react-icons/gi";
-
 import { HiOutlineTrash } from "react-icons/hi2";
 import { IoFilterOutline } from "react-icons/io5";
 import { BiSortAlt2 } from "react-icons/bi";
+import { MdOutlineFileDownload } from "react-icons/md";
+import { IoMdEye } from "react-icons/io";
 
 export default function DocsTable() {
   const extensionLabel = {
@@ -91,6 +92,20 @@ export default function DocsTable() {
       header: "Size",
       accessorKey: "size",
       cell: (row) => <p className="text-gray-700 font-medium text-sm">{row.getValue()}</p>,
+    },
+    {
+      id: "download-column",
+      cell: (row) =>
+        <div className="flex justify-left">
+          <MdOutlineFileDownload size={25} className="hover:cursor-pointer"/>
+        </div>
+    },
+    {
+      id: "open-column",
+      cell: (row) =>
+        <div className="flex justify-left">
+          <IoMdEye size={25} className="hover:cursor-pointer"/>
+        </div>
     },
   ];
 
