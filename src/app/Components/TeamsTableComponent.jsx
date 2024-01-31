@@ -71,7 +71,7 @@ export default function TeamsTable() {
     {
       id: "number-column",
       header: "#",
-      cell: ({ row }) => <p>{+row.id + 1}</p>,
+      cell: ({ row, table }) => <p>{row.index % table.getState().pagination.pageSize + 1}</p>,
     },
     {
       header: "First Name",
