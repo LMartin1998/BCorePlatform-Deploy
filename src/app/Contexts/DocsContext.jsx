@@ -5,11 +5,10 @@ import { createContext, useState } from "react";
 const DocContext = createContext();
 
 function DocProvider({ children }) {
-  const [filter, setFilter] = useState({});
-  const updateFilter = () => {};    
+  const [filtering, setFiltering] = useState("");
 
   return (
-    <DocContext.Provider value={{ filter, updateFilter }}>
+    <DocContext.Provider value={{ filtering, setFiltering }}>
       {children}
     </DocContext.Provider>
   );

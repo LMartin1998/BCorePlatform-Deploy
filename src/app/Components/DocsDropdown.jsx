@@ -9,7 +9,7 @@ import {
 import { DocContext } from "../contexts/DocsContext";
 
 export default function DocsDropdown() {
-  const { filter, updateFilter } = useContext(DocContext);
+  const { setFiltering } = useContext(DocContext);
 
   const [open, setOpen] = useState(false);
   const [subMenu, setSubMenu] = useState({});
@@ -75,8 +75,22 @@ export default function DocsDropdown() {
                   className="flex flex-col items-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   role="menuitem"
                 >
-                  <button>Electrical</button>
-                  <button>Mechanical</button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setFiltering("Electrical");
+                    }}
+                  >
+                    Electrical
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setFiltering("Mechanical");
+                    }}
+                  >
+                    Mechanical
+                  </button>
                 </div>
               )}
             </div>
@@ -104,7 +118,14 @@ export default function DocsDropdown() {
                   className="flex flex-col items-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   role="menuitem"
                 >
-                  <button>PDF</button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setFiltering("pdf");
+                    }}
+                  >
+                    PDF
+                  </button>
                   <button>DOCX</button>
                 </div>
               )}

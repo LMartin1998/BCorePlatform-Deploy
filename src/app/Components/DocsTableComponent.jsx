@@ -8,7 +8,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import docs from "../data/docdata";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   MdFirstPage,
   MdChevronLeft,
@@ -27,8 +27,17 @@ import {
   FcAlphabeticalSortingZa,
 } from "react-icons/fc";
 import TableDropdown from "./DocsDropdown";
+import { DocContext } from "../contexts/DocsContext";
 
 export default function DocsTable() {
+  const { filtering, setFiltering } = useContext(DocContext);
+
+  const [look, setLook] = useState(false);
+
+  useEffect(() => {
+    console.log(look);
+  }, [look]);
+
   const extensionLabel = {
     docx: <FaFileWord size={25} />,
     pdf: <FaFilePdf size={25} />,
@@ -36,7 +45,6 @@ export default function DocsTable() {
 
   const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState([]);
-  const [filtering, setFiltering] = useState("");
 
   const columns = [
     {
@@ -85,6 +93,9 @@ export default function DocsTable() {
           ))}
         </div>
       ),
+      filter: (row) => {
+        return ["Electrical", "Mechanical"].some((item) => item === filtering);
+      },
     },
     {
       header: "Extension",

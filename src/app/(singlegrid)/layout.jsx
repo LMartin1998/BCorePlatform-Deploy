@@ -13,10 +13,11 @@ export default function GridLayout({ children }) {
       <GridProvider>
         <DocProvider>
           <Sidebar
-            children={children}
             show={showSidebar}
             setter={setShowSidebar}
-          />
+          >
+            {children}
+          </Sidebar>
         </DocProvider>
       </GridProvider>
     </>
