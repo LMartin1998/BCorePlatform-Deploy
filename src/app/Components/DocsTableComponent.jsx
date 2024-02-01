@@ -26,6 +26,7 @@ import {
   FcAlphabeticalSortingAz,
   FcAlphabeticalSortingZa,
 } from "react-icons/fc";
+import TableDropdown from "./DocsDropdown";
 
 export default function DocsTable() {
   const extensionLabel = {
@@ -35,6 +36,7 @@ export default function DocsTable() {
 
   const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState([]);
+  const [filtering, setFiltering] = useState("");
 
   const columns = [
     {
@@ -127,10 +129,12 @@ export default function DocsTable() {
     state: {
       rowSelection: rowSelection,
       sorting: sorting,
+      globalFilter: filtering,
     },
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
+    onGlobalFilterChange: setFiltering,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -148,10 +152,11 @@ export default function DocsTable() {
             <HiOutlineTrash size={22} className="mr-1" />
             Delete
           </button>
-          <button className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3">
+          <TableDropdown></TableDropdown>
+          {/* <button className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3">
             <IoFilterOutline size={22} className="mr-1" />
             Filter
-          </button>
+          </button> */}
           <button
             className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3"
             onClick={() => {
