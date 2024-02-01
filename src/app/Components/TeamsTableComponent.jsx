@@ -146,7 +146,7 @@ export default function TeamsTable() {
     <>
       <div className="w-full flex justify-between">
         <button className="bg-orange-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-orange-600">
-          + Add document
+          + Add teammate
         </button>
         <div className="flex space-x-2">
           <button className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3">
