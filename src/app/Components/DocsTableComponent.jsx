@@ -205,7 +205,7 @@ export default function DocsTable() {
               >
                 {row.getVisibleCells().map((cell) => {
                   return (
-                    <td className="py-2 px-1" key={cell.id}>
+                    <td className="py-1 px-1" key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()

@@ -24,9 +24,9 @@ import { BiSortAlt2 } from "react-icons/bi";
 
 export default function TeamsTable() {
   const teamLabel = {
-    Logistics: <FaTruckPlane size={25} />,
-    Manager: <GrUserManager size={25} />,
-    Operator: <IoCall size={25} />,
+    Logistics: <FaTruckPlane size={20} />,
+    Manager: <GrUserManager size={20} />,
+    Operator: <IoCall size={20} />,
   };
 
   const [data, setData] = useState(User);
@@ -71,41 +71,42 @@ export default function TeamsTable() {
     {
       id: "number-column",
       header: "#",
-      cell: ({ row, table }) => <p>{row.index % table.getState().pagination.pageSize + 1}</p>,
+      cell: ({ row, table }) => <p className="text-gray-700 font-medium text-base">{row.index % table.getState().pagination.pageSize + 1}</p>,
     },
     {
       header: "First Name",
       accessorKey: "firstName",
-      cell: (row) => <p>{row.getValue()}</p>,
+      cell: (row) => <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>,
     },
     {
       header: "Team",
       accessorKey: "team",
       cell: (row) => (
-        <div className="flex">
-          {teamLabel[row.getValue()]} {row.getValue()}
+        <div className="flex justify-center">
+          {teamLabel[row.getValue()]} 
+          <p className="text-gray-700 font-medium text-sm pl-1">{row.getValue()}</p>
         </div>
       ),
     },
     {
       header: "Role",
       accessorKey: "role",
-      cell: (row) => <p>{row.getValue()}</p>,
+      cell: (row) => <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>,
     },
     {
       header: "Phone",
       accessorKey: "phone",
-      cell: (row) => <p>{row.getValue()}</p>,
+      cell: (row) => <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>,
     },
     {
       header: "Buggy",
       accessorKey: "buggy",
-      cell: (row) => <p>{row.getValue()}</p>,
+      cell: (row) => <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>,
     },
     {
       header: "Skidsteer",
       accessorKey: "skidsteer",
-      cell: (row) => <p>{row.getValue()}</p>,
+      cell: (row) => <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>,
     },
     {
       header: "Status",
@@ -194,7 +195,7 @@ export default function TeamsTable() {
               >
                 {row.getVisibleCells().map((cell) => {
                   return (
-                    <td className="py-2 px-1" key={cell.id}>
+                    <td className="py-1 px-1" key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
