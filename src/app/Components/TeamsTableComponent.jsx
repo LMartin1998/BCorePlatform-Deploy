@@ -82,7 +82,7 @@ export default function TeamsTable() {
       header: "Team",
       accessorKey: "team",
       cell: (row) => (
-        <div className="flex justify-center">
+        <div className="flex justify-start items-center">
           {teamLabel[row.getValue()]} 
           <p className="text-gray-700 font-medium text-sm pl-1">{row.getValue()}</p>
         </div>
