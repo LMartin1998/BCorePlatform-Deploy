@@ -4,6 +4,7 @@ import {
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import docs from "../data/docdata";
@@ -21,6 +22,10 @@ import { IoFilterOutline } from "react-icons/io5";
 import { BiSortAlt2 } from "react-icons/bi";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { IoMdEye } from "react-icons/io";
+import {
+  FcAlphabeticalSortingAz,
+  FcAlphabeticalSortingZa,
+} from "react-icons/fc";
 
 export default function DocsTable() {
   const extensionLabel = {
@@ -28,12 +33,8 @@ export default function DocsTable() {
     pdf: <FaFilePdf size={25} />,
   };
 
-  const typeLabel = {
-    Electrical: <GiElectricalResistance size={25} />,
-    Mechanical: <GiMechanicalArm size={25} />,
-  };
-
   const [rowSelection, setRowSelection] = useState({});
+  const [sorting, setSorting] = useState([]);
 
   const columns = [
     {
@@ -41,8 +42,7 @@ export default function DocsTable() {
       header: ({ table }) => (
         <input
           type="checkbox"
-          checked={
-            table.getIsAllRowsSelected()}
+          checked={table.getIsAllRowsSelected()}
           onChange={table.getToggleAllRowsSelectedHandler()}
         ></input>
       ),
@@ -58,12 +58,16 @@ export default function DocsTable() {
     {
       header: "Name",
       accessorKey: "name",
-      cell: (row) => <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>,
+      cell: (row) => (
+        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
+      ),
     },
     {
       header: "Owner",
       accessorKey: "owner",
-      cell: (row) => <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>,
+      cell: (row) => (
+        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
+      ),
     },
     {
       header: "Tags",
@@ -72,7 +76,9 @@ export default function DocsTable() {
         <div className="flex items-center justify-start">
           {row.getValue().map((tag, index) => (
             <div key={index} className="bg-gray-100 rounded-lg mx-1 px-2">
-              <p className="text-gray-700 font-semibold text-sm text-center py-1 mb-1 flex-1">{tag}</p>
+              <p className="text-gray-700 font-semibold text-sm text-center py-1 mb-1 flex-1">
+                {tag}
+              </p>
             </div>
           ))}
         </div>
@@ -91,21 +97,25 @@ export default function DocsTable() {
     {
       header: "Size",
       accessorKey: "size",
-      cell: (row) => <p className="text-gray-700 font-medium text-sm">{row.getValue()}</p>,
+      cell: (row) => (
+        <p className="text-gray-700 font-medium text-sm">{row.getValue()}</p>
+      ),
     },
     {
       id: "download-column",
-      cell: (row) =>
+      cell: (row) => (
         <div className="flex justify-left">
-          <MdOutlineFileDownload size={25} className="hover:cursor-pointer"/>
+          <MdOutlineFileDownload size={25} className="hover:cursor-pointer" />
         </div>
+      ),
     },
     {
       id: "open-column",
-      cell: (row) =>
+      cell: (row) => (
         <div className="flex justify-left">
-          <IoMdEye size={25} className="hover:cursor-pointer"/>
+          <IoMdEye size={25} className="hover:cursor-pointer" />
         </div>
+      ),
     },
   ];
 
@@ -115,18 +125,20 @@ export default function DocsTable() {
     data,
     columns,
     state: {
-      rowSelection,
+      rowSelection: rowSelection,
+      sorting: sorting,
     },
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
+    onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getSortedRowModel: getSortedRowModel(),
   });
 
   return (
     <>
-      {/* Buttons Filters and add document */}
       <div className="w-full flex justify-between">
         <button className="bg-orange-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-orange-600">
           + Add document
@@ -140,7 +152,13 @@ export default function DocsTable() {
             <IoFilterOutline size={22} className="mr-1" />
             Filter
           </button>
-          <button className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3">
+          <button
+            className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3"
+            onClick={() => {
+              const nameColumn = table.getColumn("name");
+              nameColumn.toggleSorting();
+            }}
+          >
             <BiSortAlt2 size={22} className="mr-1" />
             Sort
           </button>
@@ -158,13 +176,16 @@ export default function DocsTable() {
                 <th
                   className="text-left p-1 text-gray-700 border-b border-solid border-gray-400"
                   key={header.id}
+                  onClick={header.column.getToggleSortingHandler()}
                 >
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
+                  <div className="flex jusity-start">
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                  </div>
                 </th>
               ))}
             </tr>
