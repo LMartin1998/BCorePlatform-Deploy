@@ -1,4 +1,4 @@
 
 export default function TaskInfo(){
-    return <></>;
+    return <>Select a task</>;
 }

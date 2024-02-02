@@ -5,10 +5,15 @@ import TopCards from "../../components/TopCards";
 import StepperControl from "@/app/components/StepperControl";
 import SelectBlock from "@/app/components/steps/SelectBlock";
 import TaskInfo from "@/app/components/steps/TaskInfo";
+import Resume from "@/app/components/steps/Resume";
 import { useState } from "react";
+
+import { StepperContext } from "@/app/contexts/StepperContext"; 
 
 export default function Reports() {
     const [currentStep, setCurrentStep] = useState(1);
+    const [userData, setUserData] = useState('');
+    const [finalData, setFinalData] = useState([]);
     
     const steps = [
         "Block",
@@ -45,7 +50,18 @@ export default function Reports() {
                         <Stepper
                             steps = {steps}
                             currentStep = {currentStep}
-                        ></Stepper>
+                        />
+                        {/* Display components */}
+                        <div className="my-10 p-10">
+                            <StepperContext.Provider value={{
+                                userData,
+                                setUserData,
+                                finalData,
+                                setFinalData
+                            }}>
+                                {displayStep(currentStep)}
+                            </StepperContext.Provider>
+                        </div>
                     </div>
                     <StepperControl
                         handleClick={handleClick}
