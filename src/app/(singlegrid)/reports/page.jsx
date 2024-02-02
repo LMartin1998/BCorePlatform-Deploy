@@ -27,7 +27,14 @@ export default function Reports() {
             default:
         }
     }
-    
+
+    const handleClick = (direction) => {
+        let newStep = currentStep;
+
+        direction === "next" ? newStep++ : newStep--;
+        newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
+    }
+      
     return (
         <main className="bg-gray-100 min-h-screen">
             <Header></Header>
@@ -40,7 +47,11 @@ export default function Reports() {
                             currentStep = {currentStep}
                         ></Stepper>
                     </div>
-                    <StepperControl></StepperControl>
+                    <StepperControl
+                        handleClick={handleClick}
+                        steps = {steps}
+                        currentStep = {currentStep}
+                    ></StepperControl>
                 </div>
             </div>
         </main>
