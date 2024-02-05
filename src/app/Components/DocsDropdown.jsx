@@ -8,152 +8,100 @@ import {
 } from "react-icons/fa6";
 import { DocContext } from "../contexts/DocsContext";
 
-export default function DocsDropdown() {
-  const { setFiltering } = useContext(DocContext);
-
+export default function DocsDropdown({
+  globalFilter,
+  setGlobalFilter,
+  columnFilter,
+  setColumnFilter,
+}) {
   const [open, setOpen] = useState(false);
-  const [subMenu, setSubMenu] = useState({});
-
-  const changeOpen = (e) => {
-    e.stopPropagation();
-    setOpen((prevOpen) => !prevOpen);
-  };
-
-  const changeSubMenu = (e, id) => {
-    e.stopPropagation();
-    setSubMenu((prevSubMenu) => ({
-      ...prevSubMenu,
-      [id]: !prevSubMenu[id],
-    }));
-  };
 
   return (
-    <div
-      className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3"
-      onClick={(e) => changeOpen(e)}
-    >
-      <div
-        type="button"
-        id="dropdownMenuButton1"
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : "false"}
-      >
-        <div className="flex justify-start">
-          {open ? <FaArrowTurnUp size={18} /> : <FaArrowTurnDown size={18} />}
+    <div className="flex flex-row">
+      <input
+        className="border border-gray-500 rounded mr-1 focus:outline-none focus:border-black focus:border-2"
+        type="text"
+        placeholder="Search..."
+      ></input>
+      <div className="relative inline-block text-left">
+        <button
+          id="menu-button"
+          className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3"
+          type="text"
+          aria-haspopup="true"
+          onClick={(e) => {
+            e.stopPropagation();
+            setOpen((prevOpen) => !prevOpen);
+          }}
+        >
           Filter
-        </div>
-      </div>
-      {open && (
-        <div className="origin-top-right absolute right-30 mt-28 z-30 w-30 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+        </button>
+        {open && (
           <div
-            className="py-1"
+            class="absolute left-0 z-10 mt-1 w-28 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             role="menu"
             aria-orientation="vertical"
-            aria-labelledby="options-menu"
+            aria-labelledby="menu-button"
+            tabindex="-1"
           >
-            <div
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-              role="menuitem"
-            >
-              <div
-                id="tags"
-                className="flex justify-start"
-                onClick={(e) => changeSubMenu(e, "tags")}
+            <div className="py-1" role="none">
+              <a
+                href="#"
+                class="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-0"
               >
-                <div className="flex justify-start">
-                  {subMenu["tags"] ? (
-                    <FaArrowLeftLong size={18} />
-                  ) : (
-                    <FaArrowRightLong size={18} />
-                  )}
-                  Tags
-                </div>
-              </div>
-              {subMenu["tags"] && (
-                <div
-                  className="flex flex-col items-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                  role="menuitem"
-                >
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setFiltering("Electrical");
-                    }}
-                  >
-                    Electrical
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setFiltering("Mechanical");
-                    }}
-                  >
-                    Mechanical
-                  </button>
-                </div>
-              )}
+                File
+              </a>
             </div>
-            <div
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-              role="menuitem"
-            >
-              <div
-                id="extension"
-                className="flex justify-start"
-                onClick={(e) => changeSubMenu(e, "extension")}
+            <div className="py-1" role="none">
+              <a
+                href="#"
+                class="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-1"
               >
-                <div className="flex justify-start">
-                  {subMenu["extension"] ? (
-                    <FaArrowLeftLong size={18} />
-                  ) : (
-                    <FaArrowRightLong size={18} />
-                  )}
-                  Extensions
-                </div>
-              </div>
-              {subMenu["extension"] && (
-                <div
-                  className="flex flex-col items-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                  role="menuitem"
-                >
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setFiltering("pdf");
-                    }}
-                  >
-                    PDF
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setFiltering("docx");
-                    }}
-                  >
-                    DOCX
-                  </button>
-                </div>
-              )}
+                Owner
+              </a>
             </div>
-            <div
-              href="#"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-              role="menuitem"
-            >
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setFiltering("");
-                }}
+            <div className="py-1" role="none">
+              <a
+                href="#"
+                class="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-1"
               >
-                Reset
-              </button>
+                Tags
+              </a>
+            </div>
+            <div className="py-1" role="none">
+              <a
+                href="#"
+                class="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-1"
+              >
+                Extension
+              </a>
+            </div>
+            <div className="py-1" role="none">
+              <a
+                href="#"
+                class="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-1"
+              >
+                Size
+              </a>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 const docs = [
   {
     id: 0,
-    name: "doc0",
+    file: "doc0.pdf",
     tags: ["Electrical", "Mechanical"],
     extension: "pdf",
     owner: "Jeronimo Molina",
@@ -9,7 +9,7 @@ const docs = [
   },
   {
     id: 1,
-    name: "map1",
+    file: "map1.pdf",
     tags: ["Electrical", "Mechanical"],
     extension: "pdf",
     owner: "Alex Arevalo",
@@ -17,7 +17,7 @@ const docs = [
   },
   {
     id: 2,
-    name: "map1info",
+    file: "map1info.docx",
     tags: ["Electrical"],
     extension: "docx",
     owner: "Alex Arevalo",
@@ -25,7 +25,7 @@ const docs = [
   },
   {
     id: 3,
-    name: "doc1",
+    file: "doc1.pdf",
     tags: ["Mechanical"],
     extension: "pdf",
     owner: "Luizandro Martin",

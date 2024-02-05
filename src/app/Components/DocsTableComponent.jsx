@@ -26,26 +26,19 @@ import {
   FcAlphabeticalSortingAz,
   FcAlphabeticalSortingZa,
 } from "react-icons/fc";
-import TableDropdown from "./DocsDropdown";
+import DocsDropdown from "./DocsDropdown";
 import { DocContext } from "../contexts/DocsContext";
 
 export default function DocsTable() {
-  const { filtering, setFiltering } = useContext(DocContext);
-
-  const [look, setLook] = useState(false);
-
-  useEffect(() => {
-    console.log(look);
-  }, [look]);
+  const [globalFilter, setGlobalFilter] = useState("");
+  const [columnFilter, setColumnFilter] = useState([]);
+  const [rowSelection, setRowSelection] = useState({});
+  const [sorting, setSorting] = useState([]);
 
   const extensionLabel = {
     docx: <FaFileWord size={25} />,
     pdf: <FaFilePdf size={25} />,
   };
-
-  const [rowSelection, setRowSelection] = useState({});
-  const [sorting, setSorting] = useState([]);
-
   const columns = [
     {
       id: "selector-column",
@@ -66,13 +59,16 @@ export default function DocsTable() {
       ),
     },
     {
-      header: "Name",
-      accessorKey: "name",
+      id: "file",
+      header: "File",
+      accessorFn: (row) =>
+        `${row.file.replace(".".concat("", row.extension), "")}`,
       cell: (row) => (
         <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
       ),
     },
     {
+      id: "owner",
       header: "Owner",
       accessorKey: "owner",
       cell: (row) => (
@@ -80,6 +76,7 @@ export default function DocsTable() {
       ),
     },
     {
+      id: "tags",
       header: "Tags",
       accessorKey: "tags",
       cell: (row) => (
@@ -93,11 +90,9 @@ export default function DocsTable() {
           ))}
         </div>
       ),
-      filter: (row) => {
-        return ["Electrical", "Mechanical"].some((item) => item === filtering);
-      },
     },
     {
+      id: "extension",
       header: "Extension",
       accessorKey: "extension",
       cell: (row) => (
@@ -108,6 +103,7 @@ export default function DocsTable() {
       ),
     },
     {
+      id: "size",
       header: "Size",
       accessorKey: "size",
       cell: (row) => (
@@ -140,12 +136,10 @@ export default function DocsTable() {
     state: {
       rowSelection: rowSelection,
       sorting: sorting,
-      globalFilter: filtering,
     },
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
-    onGlobalFilterChange: setFiltering,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -163,15 +157,17 @@ export default function DocsTable() {
             <HiOutlineTrash size={22} className="mr-1" />
             Delete
           </button>
-          <TableDropdown></TableDropdown>
-          {/* <button className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3">
-            <IoFilterOutline size={22} className="mr-1" />
-            Filter
-          </button> */}
+          <DocsDropdown
+            globalFilter={globalFilter}
+            setGlobalFilter={setGlobalFilter}
+            columnFilter={columnFilter}
+            setColumnFilter={setColumnFilter}
+          ></DocsDropdown>
           <button
             className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3"
             onClick={() => {
-              const nameColumn = table.getColumn("name");
+              const nameColumn = table.getColumn("file");
+              console.log(nameColumn);
               nameColumn.toggleSorting();
             }}
           >
@@ -199,7 +195,7 @@ export default function DocsTable() {
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                   </div>
                 </th>
@@ -219,7 +215,7 @@ export default function DocsTable() {
                     <td className="py-1 px-1" key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </td>
                   );
@@ -230,7 +226,6 @@ export default function DocsTable() {
         </tbody>
       </table>
 
-      {/* Buttons for pagination */}
       <div className="flex justify-end space-x-2 mt-2">
         <button
           className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-600"
