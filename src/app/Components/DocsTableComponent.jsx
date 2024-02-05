@@ -147,13 +147,13 @@ export default function DocsTable() {
     state: {
       rowSelection: rowSelection,
       sorting: sorting,
-      columnFilter: columnFilter,
+      columnFilters: columnFilter,
       globalFilter: globalFilter,
     },
     enableRowSelection: true,
     enableFilters: true,
     onRowSelectionChange: setRowSelection,
-    onColumnFilterChange: setColumnFilter,
+    onColumnFiltersChange: setColumnFilter,
     onGlobalFilterChange: setGlobalFilter,
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
@@ -211,7 +211,7 @@ export default function DocsTable() {
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext(),
+                          header.getContext()
                         )}
                   </div>
                 </th>
@@ -231,7 +231,7 @@ export default function DocsTable() {
                     <td className="py-1 px-1" key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext(),
+                        cell.getContext()
                       )}
                     </td>
                   );
