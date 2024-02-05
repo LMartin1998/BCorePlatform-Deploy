@@ -39,6 +39,13 @@ export default function DocsTable() {
     docx: <FaFileWord size={25} />,
     pdf: <FaFilePdf size={25} />,
   };
+
+  const tagsFilter = (row, columnId, value) => {
+    return row
+      .getValue(columnId)
+      .some((r) => r.toLowerCase().includes(value.toLowerCase()));
+  };
+
   const columns = [
     {
       id: "selector-column",
@@ -90,6 +97,7 @@ export default function DocsTable() {
           ))}
         </div>
       ),
+      filterFn: "tagsFiltering",
     },
     {
       id: "extension",
@@ -133,12 +141,20 @@ export default function DocsTable() {
   const table = useReactTable({
     data,
     columns,
+    filterFns: {
+      tagsFiltering: tagsFilter,
+    },
     state: {
       rowSelection: rowSelection,
       sorting: sorting,
+      columnFilter: columnFilter,
+      globalFilter: globalFilter,
     },
     enableRowSelection: true,
+    enableFilters: true,
     onRowSelectionChange: setRowSelection,
+    onColumnFilterChange: setColumnFilter,
+    onGlobalFilterChange: setGlobalFilter,
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),

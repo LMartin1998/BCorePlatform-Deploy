@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import {
   FaArrowTurnUp,
   FaArrowTurnDown,
@@ -15,6 +15,25 @@ export default function DocsDropdown({
   setColumnFilter,
 }) {
   const [open, setOpen] = useState(false);
+  const [filter, setFilter] = useState("tags");
+
+  const inputChange = (e) => {
+    e.stopPropagation();
+    if (filter !== "tags") {
+      setGlobalFilter(e.target.value);
+    } else {
+      setColumnFilter([
+        {
+          id: "tags",
+          value: e.target.value,
+        },
+      ]);
+    }
+  };
+
+  useEffect(() => {
+    console.log(columnFilter);
+  }, [columnFilter]);
 
   return (
     <div className="flex flex-row">
@@ -22,6 +41,7 @@ export default function DocsDropdown({
         className="border border-gray-500 rounded mr-1 focus:outline-none focus:border-black focus:border-2"
         type="text"
         placeholder="Search..."
+        onChange={inputChange}
       ></input>
       <div className="relative inline-block text-left">
         <button
@@ -38,19 +58,23 @@ export default function DocsDropdown({
         </button>
         {open && (
           <div
-            class="absolute left-0 z-10 mt-1 w-28 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            className="absolute left-0 z-10 mt-1 w-28 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="menu-button"
-            tabindex="-1"
+            tabIndex="-1"
           >
             <div className="py-1" role="none">
               <a
                 href="#"
-                class="text-gray-700 block px-4 py-2 text-sm"
+                className="text-gray-700 block px-4 py-2 text-sm"
                 role="menuitem"
-                tabindex="-1"
+                tabIndex="-1"
                 id="menu-item-0"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFilter("file");
+                }}
               >
                 File
               </a>
@@ -58,10 +82,14 @@ export default function DocsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                class="text-gray-700 block px-4 py-2 text-sm"
+                className="text-gray-700 block px-4 py-2 text-sm"
                 role="menuitem"
-                tabindex="-1"
+                tabIndex="-1"
                 id="menu-item-1"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFilter("owner");
+                }}
               >
                 Owner
               </a>
@@ -69,10 +97,14 @@ export default function DocsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                class="text-gray-700 block px-4 py-2 text-sm"
+                className="text-gray-700 block px-4 py-2 text-sm"
                 role="menuitem"
-                tabindex="-1"
+                tabIndex="-1"
                 id="menu-item-1"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFilter("tags");
+                }}
               >
                 Tags
               </a>
@@ -80,10 +112,14 @@ export default function DocsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                class="text-gray-700 block px-4 py-2 text-sm"
+                className="text-gray-700 block px-4 py-2 text-sm"
                 role="menuitem"
-                tabindex="-1"
+                tabIndex="-1"
                 id="menu-item-1"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFilter("extension");
+                }}
               >
                 Extension
               </a>
@@ -91,10 +127,14 @@ export default function DocsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                class="text-gray-700 block px-4 py-2 text-sm"
+                className="text-gray-700 block px-4 py-2 text-sm"
                 role="menuitem"
-                tabindex="-1"
+                tabIndex="-1"
                 id="menu-item-1"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFilter("Size");
+                }}
               >
                 Size
               </a>
