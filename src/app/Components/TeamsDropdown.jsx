@@ -37,7 +37,11 @@ export default function TeamsDropdown({
       <div className="relative inline-block text-left">
         <button
           id="menu-button"
-          className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3"
+          className={`flex items-center text-gray-700 rounded-lg ${
+            open
+              ? "bg-slate-400 text-white"
+              : "hover:bg-slate-400 hover:text-white"
+          } py-1 px-3`}
           type="text"
           aria-haspopup="true"
           onClick={(e) => {
@@ -76,7 +80,9 @@ export default function TeamsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
+                className={`text-gray-700 block px-4 py-2 text-sm ${
+                  filter === "all" ? "bg-blue-100" : ""
+                }`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
@@ -91,7 +97,9 @@ export default function TeamsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
+                className={`text-gray-700 block px-4 py-2 text-sm ${
+                  filter === "name" ? "bg-blue-100" : ""
+                }`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
@@ -106,7 +114,9 @@ export default function TeamsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
+                className={`text-gray-700 block px-4 py-2 text-sm ${
+                  filter === "team" ? "bg-blue-100" : ""
+                }`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
@@ -121,7 +131,9 @@ export default function TeamsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
+                className={`text-gray-700 block px-4 py-2 text-sm ${
+                  filter === "role" ? "bg-blue-100" : ""
+                }`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
@@ -136,7 +148,9 @@ export default function TeamsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
+                className={`text-gray-700 block px-4 py-2 text-sm ${
+                  filter === "phone" ? "bg-blue-100" : ""
+                }`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
@@ -151,7 +165,9 @@ export default function TeamsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
+                className={`text-gray-700 block px-4 py-2 text-sm ${
+                  filter === "buggy" ? "bg-blue-100" : ""
+                }`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
@@ -166,7 +182,9 @@ export default function TeamsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
+                className={`text-gray-700 block px-4 py-2 text-sm ${
+                  filter === "skidsteer" ? "bg-blue-100" : ""
+                }`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
@@ -181,7 +199,9 @@ export default function TeamsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
+                className={`text-gray-700 block px-4 py-2 text-sm ${
+                  filter === "status" ? "bg-blue-100" : ""
+                }`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
