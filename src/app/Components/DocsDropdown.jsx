@@ -8,20 +8,30 @@ export default function DocsDropdown({
   setColumnFilter,
 }) {
   const [open, setOpen] = useState(false);
-  const [filter, setFilter] = useState("tags");
+  const [filter, setFilter] = useState("all");
 
-  const inputChange = (e) => {
+  const filterSearch = (e) => {
     e.stopPropagation();
-    if (filter !== "tags") {
+    if (filter === "all") {
       setGlobalFilter(e.target.value);
     } else {
       setColumnFilter([
         {
-          id: "tags",
+          id: filter,
           value: e.target.value,
         },
       ]);
     }
+    // if (filter !== "tags") {
+    //   setGlobalFilter(e.target.value);
+    // } else {
+    //   setColumnFilter([
+    //     {
+    //       id: "tags",
+    //       value: e.target.value,
+    //     },
+    //   ]);
+    // }
   };
 
   useEffect(() => {
@@ -34,7 +44,7 @@ export default function DocsDropdown({
         className="border border-gray-500 rounded mr-1 focus:outline-none focus:border-black focus:border-2"
         type="text"
         placeholder="Search..."
-        onChange={inputChange}
+        onChange={filterSearch}
       ></input>
       <div className="relative inline-block text-left">
         <button
@@ -57,6 +67,21 @@ export default function DocsDropdown({
             aria-labelledby="menu-button"
             tabIndex="-1"
           >
+            <div className="py-1" role="none">
+              <a
+                href="#"
+                className="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabIndex="-1"
+                id="menu-item-0"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFilter("all");
+                }}
+              >
+                All
+              </a>
+            </div>
             <div className="py-1" role="none">
               <a
                 href="#"
