@@ -75,21 +75,6 @@ export default function TeamsDropdown({
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setFilter("#");
-                }}
-              >
-                #
-              </a>
-            </div>
-            <div className="py-1" role="none">
-              <a
-                href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
-                role="menuitem"
-                tabIndex="-1"
-                id="menu-item-1"
-                onClick={(e) => {
-                  e.stopPropagation();
                   setFilter("name");
                 }}
               >

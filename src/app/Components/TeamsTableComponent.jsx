@@ -90,7 +90,6 @@ export default function TeamsTable() {
           {(row.index % table.getState().pagination.pageSize) + 1}
         </p>
       ),
-      filterFn: "rowFiltering",
     },
     {
       id: "name",
@@ -175,9 +174,9 @@ export default function TeamsTable() {
   const table = useReactTable({
     data,
     columns,
-    filterFns: {
-      rowFiltering: rowFilter,
-    },
+    // filterFns: {
+    //   rowFiltering: rowFilter,
+    // },
     state: {
       pagination: pagination,
       rowSelection: rowSelection,
