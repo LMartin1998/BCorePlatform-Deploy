@@ -60,11 +60,6 @@ export default function TeamsTable() {
     }));
   };
 
-  const rowFilter = (row, columnId, value) => {
-    console.log(row.getValue());
-    return row.getValue(columnId).toLowerCase().includes(value.toLowerCase());
-  };
-
   const columns = [
     {
       id: "selector-column",
@@ -184,7 +179,6 @@ export default function TeamsTable() {
       globalFilter: globalFilter,
     },
     enableRowSelection: true,
-    enableFilters: true,
     onPaginationChange: setPagination,
     onRowSelectionChange: setRowSelection,
     onColumnFiltersChange: setColumnFilter,
@@ -227,6 +221,7 @@ export default function TeamsTable() {
                 <th
                   className="text-left p-1 text-gray-700 border-b border-solid border-gray-400"
                   key={header.id}
+                  onClick={header.column.getToggleSortingHandler()}
                 >
                   {header.isPlaceholder
                     ? null
