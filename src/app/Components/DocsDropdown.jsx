@@ -22,16 +22,6 @@ export default function DocsDropdown({
         },
       ]);
     }
-    // if (filter !== "tags") {
-    //   setGlobalFilter(e.target.value);
-    // } else {
-    //   setColumnFilter([
-    //     {
-    //       id: "tags",
-    //       value: e.target.value,
-    //     },
-    //   ]);
-    // }
   };
 
   useEffect(() => {
