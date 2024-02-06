@@ -1,5 +1,8 @@
 import { StepperContext } from "@/app/contexts/StepperContext";
 import { useContext } from "react";
+import SearchBlock from "../SearchBlock/SearchBlock";
+import BlockList from "../BlockList";
+import BlockItem from "../BlockItem";
 
 export default function SelectBlock(){
     const { userData, setUserData } = useContext(StepperContext);
@@ -9,5 +12,13 @@ export default function SelectBlock(){
         setUserData({ ...userData, [name]: value});
     };
 
-    return <div className="flex flex-col">Select a block</div>
+    return(   
+    <div className="flex flex-col">
+        <SearchBlock></SearchBlock>
+        <BlockList>
+            <BlockItem></BlockItem>
+        </BlockList>
+    </div>
+    ); 
+ 
 }
