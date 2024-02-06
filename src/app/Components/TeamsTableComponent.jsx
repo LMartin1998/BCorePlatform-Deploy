@@ -36,6 +36,10 @@ export default function TeamsTable() {
   const [columnFilter, setColumnFilter] = useState([]);
   const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState([]);
+  const [pagination, setPagination] = useState({
+    pageIndex: 0,
+    pageSize: 3,
+  });
 
   const [rowStatus, setRowStatus] = useState(
     data.map((user) => ({
@@ -52,6 +56,11 @@ export default function TeamsTable() {
         status: !prevRowStatus[rowId].status,
       },
     }));
+  };
+
+  const rowFilter = (row, columnId, value) => {
+    console.log(row.getValue());
+    return row.getValue(columnId).toLowerCase().includes(value.toLowerCase());
   };
 
   const columns = [
@@ -74,15 +83,17 @@ export default function TeamsTable() {
       ),
     },
     {
-      id: "number-column",
+      id: "#",
       header: "#",
       cell: ({ row, table }) => (
         <p className="text-gray-700 font-medium text-base">
           {(row.index % table.getState().pagination.pageSize) + 1}
         </p>
       ),
+      filterFn: "rowFiltering",
     },
     {
+      id: "name",
       header: "Name",
       accessorFn: (row) => `${row.firstName} ${row.lastName}`,
       cell: (row) => (
@@ -90,6 +101,7 @@ export default function TeamsTable() {
       ),
     },
     {
+      id: "team",
       header: "Team",
       accessorKey: "team",
       cell: (row) => (
@@ -102,6 +114,7 @@ export default function TeamsTable() {
       ),
     },
     {
+      id: "role",
       header: "Role",
       accessorKey: "role",
       cell: (row) => (
@@ -109,6 +122,7 @@ export default function TeamsTable() {
       ),
     },
     {
+      id: "phone",
       header: "Phone",
       accessorKey: "phone",
       cell: (row) => (
@@ -116,6 +130,7 @@ export default function TeamsTable() {
       ),
     },
     {
+      id: "buggy",
       header: "Buggy",
       accessorKey: "buggy",
       cell: (row) => (
@@ -123,6 +138,7 @@ export default function TeamsTable() {
       ),
     },
     {
+      id: "skidsteer",
       header: "Skidsteer",
       accessorKey: "skidsteer",
       cell: (row) => (
@@ -130,6 +146,7 @@ export default function TeamsTable() {
       ),
     },
     {
+      id: "status",
       header: "Status",
       accessorKey: "status",
       cell: ({ row }) => (
@@ -158,13 +175,23 @@ export default function TeamsTable() {
   const table = useReactTable({
     data,
     columns,
+    filterFns: {
+      rowFiltering: rowFilter,
+    },
     state: {
+      pagination: pagination,
       rowSelection: rowSelection,
+      sorting: sorting,
+      columnFilters: columnFilter,
       globalFilter: globalFilter,
     },
     enableRowSelection: true,
+    enableFilters: true,
+    onPaginationChange: setPagination,
     onRowSelectionChange: setRowSelection,
+    onColumnFiltersChange: setColumnFilter,
     onGlobalFilterChange: setGlobalFilter,
+    onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -181,13 +208,11 @@ export default function TeamsTable() {
             <HiOutlineTrash size={22} className="mr-1" />
             Delete
           </button>
-          {/* <button className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3">
-            <IoFilterOutline size={22} className="mr-1" />
-            Filter
-          </button> */}
           <TeamsDropdown
             globalFilter={globalFilter}
             setGlobalFilter={setGlobalFilter}
+            columnFilter={columnFilter}
+            setColumnFilter={setColumnFilter}
           ></TeamsDropdown>
           <button className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3">
             <BiSortAlt2 size={22} className="mr-1" />

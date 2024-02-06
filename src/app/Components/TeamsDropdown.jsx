@@ -7,6 +7,20 @@ export default function TeamsDropdown({
   setColumnFilter,
 }) {
   const [open, setOpen] = useState(false);
+  const [filter, setFilter] = useState("all");
+  const filterSearch = (e) => {
+    e.stopPropagation();
+    if (filter === "all") {
+      setGlobalFilter(e.target.value);
+    } else {
+      setColumnFilter([
+        {
+          id: filter,
+          value: e.target.value,
+        },
+      ]);
+    }
+  };
 
   return (
     <div className="flex flex-row">
@@ -14,10 +28,7 @@ export default function TeamsDropdown({
         className="border border-gray-500 rounded mr-1 focus:outline-none focus:border-black focus:border-2"
         type="text"
         placeholder="Search..."
-        onChange={(e) => {
-          e.stopPropagation();
-          setGlobalFilter(e.target.value);
-        }}
+        onChange={filterSearch}
       ></input>
       <div className="relative inline-block text-left">
         <button
@@ -46,10 +57,10 @@ export default function TeamsDropdown({
                 className="text-gray-700 block px-4 py-2 text-sm"
                 role="menuitem"
                 tabIndex="-1"
-                id="menu-item-0"
+                id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setFilter("All");
+                  setFilter("all");
                 }}
               >
                 All
@@ -64,7 +75,7 @@ export default function TeamsDropdown({
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setFilter("owner");
+                  setFilter("#");
                 }}
               >
                 #
@@ -79,7 +90,7 @@ export default function TeamsDropdown({
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setFilter("tags");
+                  setFilter("name");
                 }}
               >
                 Name
@@ -94,7 +105,7 @@ export default function TeamsDropdown({
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setFilter("extension");
+                  setFilter("team");
                 }}
               >
                 Team
@@ -109,7 +120,7 @@ export default function TeamsDropdown({
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setFilter("Size");
+                  setFilter("role");
                 }}
               >
                 Role
@@ -124,7 +135,7 @@ export default function TeamsDropdown({
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setFilter("Size");
+                  setFilter("phone");
                 }}
               >
                 Phone
@@ -139,7 +150,7 @@ export default function TeamsDropdown({
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setFilter("Size");
+                  setFilter("buggy");
                 }}
               >
                 Buggy
@@ -154,7 +165,7 @@ export default function TeamsDropdown({
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setFilter("Size");
+                  setFilter("skidsteer");
                 }}
               >
                 Skidsteer
@@ -169,7 +180,7 @@ export default function TeamsDropdown({
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setFilter("Size");
+                  setFilter("status");
                 }}
               >
                 Status
