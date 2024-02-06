@@ -28,3 +28,9 @@
 .st0:hover {
     fill: #2196f3;
 }
+
+/* styles for blocklist */
+.block {
+    fill:#ffffff;
+    stroke:#FFFFFF;
+}
