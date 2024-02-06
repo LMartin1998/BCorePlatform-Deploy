@@ -22,12 +22,7 @@ import { IoFilterOutline } from "react-icons/io5";
 import { BiSortAlt2 } from "react-icons/bi";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { IoMdEye } from "react-icons/io";
-import {
-  FcAlphabeticalSortingAz,
-  FcAlphabeticalSortingZa,
-} from "react-icons/fc";
 import DocsDropdown from "./DocsDropdown";
-import { DocContext } from "../contexts/DocsContext";
 
 export default function DocsTable() {
   const [globalFilter, setGlobalFilter] = useState("");

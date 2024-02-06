@@ -1,12 +1,5 @@
 "use client";
 import { useContext, useState, useEffect } from "react";
-import {
-  FaArrowTurnUp,
-  FaArrowTurnDown,
-  FaArrowRightLong,
-  FaArrowLeftLong,
-} from "react-icons/fa6";
-import { DocContext } from "../contexts/DocsContext";
 
 export default function DocsDropdown({
   globalFilter,
