@@ -8,8 +8,11 @@ export default function TeamsDropdown({
 }) {
   const [open, setOpen] = useState(false);
   const [filter, setFilter] = useState("all");
+  const [input, setInput] = useState("");
+
   const filterSearch = (e) => {
     e.stopPropagation();
+    setInput(e.target.value);
     if (filter === "all") {
       setGlobalFilter(e.target.value);
     } else {
@@ -29,6 +32,7 @@ export default function TeamsDropdown({
         type="text"
         placeholder="Search..."
         onChange={filterSearch}
+        value={input}
       ></input>
       <div className="relative inline-block text-left">
         <button
@@ -51,6 +55,24 @@ export default function TeamsDropdown({
             aria-labelledby="menu-button"
             tabIndex="-1"
           >
+            <div className="py-1" role="none">
+              <a
+                href="#"
+                className="text-gray-700 block px-4 py-2 text-sm"
+                role="menuitem"
+                tabIndex="-1"
+                id="menu-item-1"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setFilter("all");
+                  setGlobalFilter("");
+                  setColumnFilter([]);
+                  setInput("");
+                }}
+              >
+                Clear
+              </a>
+            </div>
             <div className="py-1" role="none">
               <a
                 href="#"
