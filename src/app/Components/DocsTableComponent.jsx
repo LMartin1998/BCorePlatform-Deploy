@@ -243,35 +243,35 @@ export default function DocsTable() {
 
       <div className="flex justify-end space-x-2 mt-2">
         <button
-          className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-600"
+          className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-900"
           onClick={() => table.setPageIndex(0)}
           disabled={!table.getCanPreviousPage()}
         >
           <MdFirstPage />
         </button>
         <button
-          className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-600"
+          className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-900"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
           <MdChevronLeft />
         </button>
         <button
-          className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-600"
+          className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-900"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
           <MdChevronRight />
         </button>
         <button
-          className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-600"
+          className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-900"
           onClick={() => table.setPageIndex(table.getPageCount() - 1)}
           disabled={!table.getCanNextPage()}
         >
           <MdLastPage />
         </button>
         <select
-          className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-600"
+          className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-900"
           value={table.getState().pagination.pageSize}
           onChange={(e) => {
             table.setPageSize(Number(e.target.value));
