@@ -6,7 +6,7 @@ import {
   getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import User from "../data/teamsdata";
+import users from "../data/teamsdata";
 import { GrUserManager } from "react-icons/gr";
 import { FaTruckPlane } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
@@ -21,6 +21,7 @@ import { useState } from "react";
 import { HiOutlineTrash } from "react-icons/hi2";
 import { IoFilterOutline } from "react-icons/io5";
 import { BiSortAlt2 } from "react-icons/bi";
+import TeamsDropdown from "./TeamsDropdown";
 
 export default function TeamsTable() {
   const teamLabel = {
@@ -29,14 +30,19 @@ export default function TeamsTable() {
     Operator: <IoCall size={20} />,
   };
 
-  const [data, setData] = useState(User);
+  const [data, setData] = useState(users);
 
+  const [globalFilter, setGlobalFilter] = useState("");
+  const [columnFilter, setColumnFilter] = useState([]);
   const [rowSelection, setRowSelection] = useState({});
+  const [sorting, setSorting] = useState([]);
 
-  const [rowStatus, setRowStatus] = useState(data.map((user) => ({
-    id: user.id,
-    status: user.status,
-  })));
+  const [rowStatus, setRowStatus] = useState(
+    data.map((user) => ({
+      id: user.id,
+      status: user.status,
+    }))
+  );
 
   const updateStatus = (rowId) => {
     setRowStatus((prevRowStatus) => ({
@@ -54,8 +60,7 @@ export default function TeamsTable() {
       header: ({ table }) => (
         <input
           type="checkbox"
-          checked={
-            table.getIsAllRowsSelected()}
+          checked={table.getIsAllRowsSelected()}
           onChange={table.getToggleAllRowsSelectedHandler()}
         ></input>
       ),
@@ -71,42 +76,58 @@ export default function TeamsTable() {
     {
       id: "number-column",
       header: "#",
-      cell: ({ row, table }) => <p className="text-gray-700 font-medium text-base">{row.index % table.getState().pagination.pageSize + 1}</p>,
+      cell: ({ row, table }) => (
+        <p className="text-gray-700 font-medium text-base">
+          {(row.index % table.getState().pagination.pageSize) + 1}
+        </p>
+      ),
     },
     {
-      header: "First Name",
-      accessorKey: "firstName",
-      cell: (row) => <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>,
+      header: "Name",
+      accessorFn: (row) => `${row.firstName} ${row.lastName}`,
+      cell: (row) => (
+        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
+      ),
     },
     {
       header: "Team",
       accessorKey: "team",
       cell: (row) => (
         <div className="flex justify-start items-center">
-          {teamLabel[row.getValue()]} 
-          <p className="text-gray-700 font-medium text-sm pl-1">{row.getValue()}</p>
+          {teamLabel[row.getValue()]}
+          <p className="text-gray-700 font-medium text-sm pl-1">
+            {row.getValue()}
+          </p>
         </div>
       ),
     },
     {
       header: "Role",
       accessorKey: "role",
-      cell: (row) => <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>,
+      cell: (row) => (
+        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
+      ),
     },
     {
       header: "Phone",
       accessorKey: "phone",
-      cell: (row) => <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>,
+      cell: (row) => (
+        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
+      ),
     },
     {
       header: "Buggy",
       accessorKey: "buggy",
-      cell: (row) => <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>,
+      cell: (row) => (
+        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
+      ),
     },
     {
       header: "Skidsteer",
       accessorKey: "skidsteer",
-      cell: (row) => <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>,
+      cell: (row) => (
+        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
+      ),
     },
     {
       header: "Status",
@@ -114,13 +135,19 @@ export default function TeamsTable() {
       cell: ({ row }) => (
         <div className="flex items-center">
           <div
-            className={`cursor-pointer relative ${rowStatus[row.id] && rowStatus[row.id].status ? "bg-green-500" : "bg-red-500"
-              } rounded-full w-8 h-4 transition`}
+            className={`cursor-pointer relative ${
+              rowStatus[row.id] && rowStatus[row.id].status
+                ? "bg-green-500"
+                : "bg-red-500"
+            } rounded-full w-8 h-4 transition`}
             onClick={() => updateStatus(row.id)}
           >
             <div
-              className={`absolute ${rowStatus[row.id] && rowStatus[row.id].status ? "translate-x-4" : "translate-x-0"
-                } left-0 bg-white w-4 h-4 rounded-full shadow-md transition transform duration-300 ease-in-out`}
+              className={`absolute ${
+                rowStatus[row.id] && rowStatus[row.id].status
+                  ? "translate-x-4"
+                  : "translate-x-0"
+              } left-0 bg-white w-4 h-4 rounded-full shadow-md transition transform duration-300 ease-in-out`}
             />
           </div>
         </div>
@@ -128,15 +155,16 @@ export default function TeamsTable() {
     },
   ];
 
-
   const table = useReactTable({
     data,
     columns,
     state: {
-      rowSelection,
+      rowSelection: rowSelection,
+      globalFilter: globalFilter,
     },
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
+    onGlobalFilterChange: setGlobalFilter,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -153,10 +181,14 @@ export default function TeamsTable() {
             <HiOutlineTrash size={22} className="mr-1" />
             Delete
           </button>
-          <button className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3">
+          {/* <button className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3">
             <IoFilterOutline size={22} className="mr-1" />
             Filter
-          </button>
+          </button> */}
+          <TeamsDropdown
+            globalFilter={globalFilter}
+            setGlobalFilter={setGlobalFilter}
+          ></TeamsDropdown>
           <button className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3">
             <BiSortAlt2 size={22} className="mr-1" />
             Sort
@@ -178,9 +210,9 @@ export default function TeamsTable() {
                   {header.isPlaceholder
                     ? null
                     : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
                 </th>
               ))}
             </tr>

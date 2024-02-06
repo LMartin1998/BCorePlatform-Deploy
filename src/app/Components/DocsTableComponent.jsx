@@ -8,7 +8,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import docs from "../data/docdata";
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import {
   MdFirstPage,
   MdChevronLeft,
@@ -16,9 +16,7 @@ import {
   MdLastPage,
 } from "react-icons/md";
 import { FaFileWord, FaFilePdf } from "react-icons/fa";
-import { GiMechanicalArm, GiElectricalResistance } from "react-icons/gi";
 import { HiOutlineTrash } from "react-icons/hi2";
-import { IoFilterOutline } from "react-icons/io5";
 import { BiSortAlt2 } from "react-icons/bi";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { IoMdEye } from "react-icons/io";
