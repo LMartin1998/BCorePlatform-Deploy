@@ -8,7 +8,11 @@ export default function DocsSort({ table }) {
       <div className="relative inline-block text-left">
         <button
           id="menu-button"
-          className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3"
+          className={`flex items-center text-gray-700 rounded-lg ${
+            open
+              ? "bg-slate-400 text-white"
+              : "hover:bg-slate-400 hover:text-white"
+          } py-1 px-3`}
           type="text"
           aria-haspopup="true"
           onClick={(e) => {
