@@ -4,6 +4,7 @@ import {
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
+  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import users from "../data/teamsdata";
@@ -22,6 +23,7 @@ import { HiOutlineTrash } from "react-icons/hi2";
 import { IoFilterOutline } from "react-icons/io5";
 import { BiSortAlt2 } from "react-icons/bi";
 import TeamsDropdown from "./TeamsDropdown";
+import TeamsSort from "./TeamsSort";
 
 export default function TeamsTable() {
   const teamLabel = {
@@ -174,9 +176,6 @@ export default function TeamsTable() {
   const table = useReactTable({
     data,
     columns,
-    // filterFns: {
-    //   rowFiltering: rowFilter,
-    // },
     state: {
       pagination: pagination,
       rowSelection: rowSelection,
@@ -194,6 +193,7 @@ export default function TeamsTable() {
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getSortedRowModel: getSortedRowModel(),
   });
 
   return (
@@ -213,10 +213,7 @@ export default function TeamsTable() {
             columnFilter={columnFilter}
             setColumnFilter={setColumnFilter}
           ></TeamsDropdown>
-          <button className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3">
-            <BiSortAlt2 size={22} className="mr-1" />
-            Sort
-          </button>
+          {table && <TeamsSort table={table}></TeamsSort>}
         </div>
       </div>
       <table className="w-full mt-3">
