@@ -6,6 +6,7 @@ import StepperControl from "@/app/components/StepperControl";
 import SelectBlock from "@/app/components/steps/SelectBlock";
 import TaskInfo from "@/app/components/steps/TaskInfo";
 import Resume from "@/app/components/steps/Resume";
+import CompleteForm from "@/app/components/steps/CompleteForm";
 import { useState } from "react";
 
 import { StepperContext } from "@/app/contexts/StepperContext"; 
@@ -18,7 +19,8 @@ export default function Reports() {
     const steps = [
         "Block",
         "Task",
-        "Resume"
+        "Resume",
+        "Complete"
     ];
 
     const displayStep = (step) => {
@@ -29,6 +31,8 @@ export default function Reports() {
                 return <TaskInfo></TaskInfo>
             case 3:
                 return <Resume></Resume>
+            case 4:
+                return <CompleteForm></CompleteForm>
             default:
         }
     }
@@ -63,11 +67,13 @@ export default function Reports() {
                             </StepperContext.Provider>
                         </div>
                     </div>
+                    {currentStep != steps.length && 
                     <StepperControl
                         handleClick={handleClick}
+                        currentStep={currentStep}
                         steps = {steps}
-                        currentStep = {currentStep}
                     ></StepperControl>
+                    }
                 </div>
             </div>
         </main>
