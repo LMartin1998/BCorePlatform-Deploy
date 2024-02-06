@@ -21,12 +21,17 @@ import { BiSortAlt2 } from "react-icons/bi";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { IoMdEye } from "react-icons/io";
 import DocsDropdown from "./DocsDropdown";
+import DocsSort from "./DocsSort";
 
 export default function DocsTable() {
   const [globalFilter, setGlobalFilter] = useState("");
   const [columnFilter, setColumnFilter] = useState([]);
   const [rowSelection, setRowSelection] = useState({});
   const [sorting, setSorting] = useState([]);
+  const [pagination, setPagination] = useState({
+    pageIndex: 0,
+    pageSize: 2,
+  });
 
   const extensionLabel = {
     docx: <FaFileWord size={25} />,
@@ -138,6 +143,7 @@ export default function DocsTable() {
       tagsFiltering: tagsFilter,
     },
     state: {
+      pagination: pagination,
       rowSelection: rowSelection,
       sorting: sorting,
       columnFilters: columnFilter,
@@ -145,6 +151,7 @@ export default function DocsTable() {
     },
     enableRowSelection: true,
     enableFilters: true,
+    onPaginationChange: setPagination,
     onRowSelectionChange: setRowSelection,
     onColumnFiltersChange: setColumnFilter,
     onGlobalFilterChange: setGlobalFilter,
@@ -172,17 +179,7 @@ export default function DocsTable() {
             columnFilter={columnFilter}
             setColumnFilter={setColumnFilter}
           ></DocsDropdown>
-          <button
-            className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3"
-            onClick={() => {
-              const nameColumn = table.getColumn("file");
-              console.log(nameColumn);
-              nameColumn.toggleSorting();
-            }}
-          >
-            <BiSortAlt2 size={22} className="mr-1" />
-            Sort
-          </button>
+          {table && <DocsSort table={table}></DocsSort>}
         </div>
       </div>
 
