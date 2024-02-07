@@ -38,11 +38,10 @@ export default function DocsDropdown({
       <div className="relative inline-block text-left">
         <button
           id="menu-button"
-          className={`flex items-center text-gray-700 rounded-lg ${
-            open
-              ? "bg-slate-400 text-white"
-              : "hover:bg-slate-400 hover:text-white"
-          } py-1 px-3`}
+          className={`flex items-center text-gray-700 rounded-lg ${open
+            ? "bg-slate-400 text-white"
+            : "hover:bg-slate-400 hover:text-white"
+            } py-1 px-3`}
           type="text"
           aria-haspopup="true"
           onClick={(e) => {
@@ -63,7 +62,7 @@ export default function DocsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
+                className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-0"
@@ -81,9 +80,8 @@ export default function DocsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className={`text-gray-700 block px-4 py-2 text-sm ${
-                  filter === "all" ? "bg-blue-100" : ""
-                }`}
+                className={`text-gray-700 block px-4 py-2 text-sm ${filter === "all" ? "bg-blue-100" : ""
+                  } hover:bg-gray-200`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-0"
@@ -98,9 +96,8 @@ export default function DocsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className={`text-gray-700 block px-4 py-2 text-sm ${
-                  filter === "file" ? "bg-blue-100" : ""
-                }`}
+                className={`text-gray-700 block px-4 py-2 text-sm ${filter === "file" ? "bg-blue-100" : ""
+                  } hover:bg-gray-200`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-0"
@@ -115,9 +112,8 @@ export default function DocsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className={`text-gray-700 block px-4 py-2 text-sm ${
-                  filter === "owner" ? "bg-blue-100" : ""
-                }`}
+                className={`text-gray-700 block px-4 py-2 text-sm ${filter === "owner" ? "bg-blue-100" : ""
+                  } hover:bg-gray-200`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
@@ -132,9 +128,8 @@ export default function DocsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className={`text-gray-700 block px-4 py-2 text-sm ${
-                  filter === "tags" ? "bg-blue-100" : ""
-                }`}
+                className={`text-gray-700 block px-4 py-2 text-sm ${filter === "tags" ? "bg-blue-100" : ""
+                  } hover:bg-gray-200`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
@@ -149,9 +144,8 @@ export default function DocsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className={`text-gray-700 block px-4 py-2 text-sm ${
-                  filter === "extension" ? "bg-blue-100" : ""
-                }`}
+                className={`text-gray-700 block px-4 py-2 text-sm ${filter === "extension" ? "bg-blue-100" : ""
+                  } hover:bg-gray-200`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
@@ -166,9 +160,8 @@ export default function DocsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className={`text-gray-700 block px-4 py-2 text-sm ${
-                  filter === "size" ? "bg-blue-100" : ""
-                }`}
+                className={`text-gray-700 block px-4 py-2 text-sm ${filter === "size" ? "bg-blue-100" : ""
+                  } hover:bg-gray-200`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"

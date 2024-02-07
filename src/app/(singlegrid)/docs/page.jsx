@@ -9,7 +9,7 @@ export default function Docs() {
         <main className="bg-gray-100 min-h-screen">
             <Header></Header>
             <TopCards></TopCards>
-            <div className="p-4 overflow-auto h-full w-full">
+            <div className="p-4 h-full w-full">
                 <DocsTable></DocsTable>
             </div>
         </main>
