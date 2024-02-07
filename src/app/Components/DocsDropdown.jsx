@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 
 export default function DocsDropdown({
   globalFilter,
@@ -10,6 +10,22 @@ export default function DocsDropdown({
   const [open, setOpen] = useState(false);
   const [filter, setFilter] = useState("all");
   const [input, setInput] = useState("");
+
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
 
   const filterSearch = (e) => {
     e.stopPropagation();
@@ -27,7 +43,7 @@ export default function DocsDropdown({
   };
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row" ref={dropdownRef}>
       <input
         className="border border-gray-500 rounded mr-1 focus:outline-none focus:ring-black focus:ring-1 pr-1 pl-1"
         type="text"
@@ -88,6 +104,7 @@ export default function DocsDropdown({
                 onClick={(e) => {
                   e.stopPropagation();
                   setFilter("all");
+                  setOpen(false);
                 }}
               >
                 All
@@ -104,6 +121,7 @@ export default function DocsDropdown({
                 onClick={(e) => {
                   e.stopPropagation();
                   setFilter("file");
+                  setOpen(false);
                 }}
               >
                 File
@@ -120,6 +138,7 @@ export default function DocsDropdown({
                 onClick={(e) => {
                   e.stopPropagation();
                   setFilter("owner");
+                  setOpen(false);
                 }}
               >
                 Owner
@@ -136,6 +155,7 @@ export default function DocsDropdown({
                 onClick={(e) => {
                   e.stopPropagation();
                   setFilter("tags");
+                  setOpen(false);
                 }}
               >
                 Tags
@@ -152,6 +172,7 @@ export default function DocsDropdown({
                 onClick={(e) => {
                   e.stopPropagation();
                   setFilter("extension");
+                  setOpen(false);
                 }}
               >
                 Extension
@@ -168,6 +189,7 @@ export default function DocsDropdown({
                 onClick={(e) => {
                   e.stopPropagation();
                   setFilter("size");
+                  setOpen(false);
                 }}
               >
                 Size
