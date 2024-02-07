@@ -197,7 +197,11 @@ export default function TeamsTable() {
           + Add teammate
         </button>
         <div className="flex space-x-2">
-          <button className="flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3">
+          <button className={`flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3 ${table.getIsSomePageRowsSelected() ||
+            table.getIsAllRowsSelected()
+            ? "opacity-100"
+            : "hover:cursor-not-allowed opacity-25"
+            }`}>
             <HiOutlineTrash size={22} className="mr-1" />
             Delete
           </button>
