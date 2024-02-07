@@ -61,7 +61,7 @@ export default function TablePages({ table }) {
                         table.setPageSize(Number(e.target.value));
                     }}
                 >
-                    {[1, 2, 3, 4, 5].map((pageSize) => (
+                    {[1, 2, 3, 5, 10].map((pageSize) => (
                         <option key={pageSize} value={pageSize}>
                             Show {pageSize}
                         </option>
