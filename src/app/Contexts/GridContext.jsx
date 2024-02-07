@@ -66,7 +66,7 @@ function GridProvider({ children }) {
             }
         });
         const getIdsWithViewBoxAndPoints2 = Object.values(idsWithViewboxAndPoints);
-        return  getIdsWithViewBoxAndPoints2;
+        return   searchedBlocks(getIdsWithViewBoxAndPoints2, searchValue);
     }
 
 
@@ -364,7 +364,9 @@ function GridProvider({ children }) {
                 torqueTubeShow,
                 initialStateTT,
                 initialStatePanel,
-                getIdsWithViewBoxAndPoints
+                getIdsWithViewBoxAndPoints,
+                searchValue,
+                setSearchValue
             }}
         >
             {children}
