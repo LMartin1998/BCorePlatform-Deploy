@@ -47,7 +47,7 @@ export default function TeamsSort({ table }) {
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
+                className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
@@ -62,7 +62,7 @@ export default function TeamsSort({ table }) {
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
+                className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
@@ -77,7 +77,7 @@ export default function TeamsSort({ table }) {
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
+                className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
@@ -92,7 +92,7 @@ export default function TeamsSort({ table }) {
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
+                className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
@@ -107,7 +107,7 @@ export default function TeamsSort({ table }) {
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
+                className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
@@ -122,7 +122,7 @@ export default function TeamsSort({ table }) {
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
+                className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
@@ -137,7 +137,7 @@ export default function TeamsSort({ table }) {
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
+                className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
