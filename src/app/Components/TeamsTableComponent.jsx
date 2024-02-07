@@ -24,6 +24,7 @@ import { IoFilterOutline } from "react-icons/io5";
 import { BiSortAlt2 } from "react-icons/bi";
 import TeamsDropdown from "./TeamsDropdown";
 import TeamsSort from "./TeamsSort";
+import TablePages from "./TablePages";
 
 export default function TeamsTable() {
   const teamLabel = {
@@ -82,9 +83,10 @@ export default function TeamsTable() {
     {
       id: "#",
       header: "#",
-      cell: ({ row, table }) => (
+      accessorKey: "id",
+      cell: (row) => (
         <p className="text-gray-700 font-medium text-base">
-          {(row.index % table.getState().pagination.pageSize) + 1}
+          {row.getValue()}
         </p>
       ),
     },
@@ -149,15 +151,15 @@ export default function TeamsTable() {
         <div className="flex items-center">
           <div
             className={`cursor-pointer relative ${rowStatus[row.id] && rowStatus[row.id].status
-                ? "bg-green-500"
-                : "bg-red-500"
+              ? "bg-green-500"
+              : "bg-red-500"
               } rounded-full w-8 h-4 transition`}
             onClick={() => updateStatus(row.id)}
           >
             <div
               className={`absolute ${rowStatus[row.id] && rowStatus[row.id].status
-                  ? "translate-x-4"
-                  : "translate-x-0"
+                ? "translate-x-4"
+                : "translate-x-0"
                 } left-0 bg-white w-4 h-4 rounded-full shadow-md transition transform duration-300 ease-in-out`}
             />
           </div>
@@ -254,49 +256,9 @@ export default function TeamsTable() {
           })}
         </tbody>
       </table>
-      <div className="flex justify-end space-x-2 mt-2">
-        <button
-          className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-600"
-          onClick={() => table.setPageIndex(0)}
-          disabled={!table.getCanPreviousPage()}
-        >
-          <MdFirstPage />
-        </button>
-        <button
-          className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-600"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          <MdChevronLeft />
-        </button>
-        <button
-          className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-600"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          <MdChevronRight />
-        </button>
-        <button
-          className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-600"
-          onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-          disabled={!table.getCanNextPage()}
-        >
-          <MdLastPage />
-        </button>
-        <select
-          className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-600"
-          value={table.getState().pagination.pageSize}
-          onChange={(e) => {
-            table.setPageSize(Number(e.target.value));
-          }}
-        >
-          {[1, 2, 3, 4, 5].map((pageSize) => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
-            </option>
-          ))}
-        </select>
-      </div>
+      {table && <TablePages
+        table={table}
+      ></TablePages>}
     </>
   );
 }

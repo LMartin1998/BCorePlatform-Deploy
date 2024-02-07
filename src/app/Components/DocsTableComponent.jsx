@@ -9,19 +9,13 @@ import {
 } from "@tanstack/react-table";
 import docs from "../data/docdata";
 import { useState } from "react";
-import {
-  MdFirstPage,
-  MdChevronLeft,
-  MdChevronRight,
-  MdLastPage,
-} from "react-icons/md";
 import { FaFileWord, FaFilePdf } from "react-icons/fa";
 import { HiOutlineTrash } from "react-icons/hi2";
-import { BiSortAlt2 } from "react-icons/bi";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { IoMdEye } from "react-icons/io";
 import DocsDropdown from "./DocsDropdown";
 import DocsSort from "./DocsSort";
+import TablePages from "./TablePages";
 
 export default function DocsTable() {
   const [globalFilter, setGlobalFilter] = useState("");
@@ -239,68 +233,9 @@ export default function DocsTable() {
           })}
         </tbody>
       </table>
-      <div className="flex w-full justify-between">
-        <div className="flex justify-start space-x-2 mt-2">
-          <div className="flex items-center">Page</div>
-          <strong>
-            {<input
-              type="number"
-              min={1}
-              value={table.getState().pagination.pageIndex + 1}
-              max={table.getPageCount()}
-              onChange={e => {
-                const page = e.target.value ? Number(e.target.value) - 1 : 0
-                table.setPageIndex(page)
-              }}
-              className="border p-1 rounded w-16"
-            />} of{" "}
-            {table.getPageCount()}
-          </strong>
-        </div>
-        <div className="flex justify-end space-x-2 mt-2">
-          <button
-            className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-900"
-            onClick={() => table.setPageIndex(0)}
-            disabled={!table.getCanPreviousPage()}
-          >
-            <MdFirstPage />
-          </button>
-          <button
-            className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-900"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            <MdChevronLeft />
-          </button>
-          <button
-            className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-900"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            <MdChevronRight />
-          </button>
-          <button
-            className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-900"
-            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-            disabled={!table.getCanNextPage()}
-          >
-            <MdLastPage />
-          </button>
-          <select
-            className="bg-gray-700 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-slate-900"
-            value={table.getState().pagination.pageSize}
-            onChange={(e) => {
-              table.setPageSize(Number(e.target.value));
-            }}
-          >
-            {[1, 2, 3, 4, 5].map((pageSize) => (
-              <option key={pageSize} value={pageSize}>
-                Show {pageSize}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
+      {table && <TablePages
+        table={table}
+      ></TablePages>}
     </>
   );
 }
