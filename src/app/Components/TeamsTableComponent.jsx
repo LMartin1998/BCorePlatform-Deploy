@@ -148,19 +148,17 @@ export default function TeamsTable() {
       cell: ({ row }) => (
         <div className="flex items-center">
           <div
-            className={`cursor-pointer relative ${
-              rowStatus[row.id] && rowStatus[row.id].status
+            className={`cursor-pointer relative ${rowStatus[row.id] && rowStatus[row.id].status
                 ? "bg-green-500"
                 : "bg-red-500"
-            } rounded-full w-8 h-4 transition`}
+              } rounded-full w-8 h-4 transition`}
             onClick={() => updateStatus(row.id)}
           >
             <div
-              className={`absolute ${
-                rowStatus[row.id] && rowStatus[row.id].status
+              className={`absolute ${rowStatus[row.id] && rowStatus[row.id].status
                   ? "translate-x-4"
                   : "translate-x-0"
-              } left-0 bg-white w-4 h-4 rounded-full shadow-md transition transform duration-300 ease-in-out`}
+                } left-0 bg-white w-4 h-4 rounded-full shadow-md transition transform duration-300 ease-in-out`}
             />
           </div>
         </div>
@@ -226,9 +224,9 @@ export default function TeamsTable() {
                   {header.isPlaceholder
                     ? null
                     : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
+                      header.column.columnDef.header,
+                      header.getContext()
+                    )}
                 </th>
               ))}
             </tr>

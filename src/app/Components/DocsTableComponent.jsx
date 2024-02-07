@@ -171,12 +171,11 @@ export default function DocsTable() {
         <div className="flex space-x-2">
           {table && (
             <button
-              className={`flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3 ${
-                table.getIsSomePageRowsSelected() ||
+              className={`flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3 ${table.getIsSomePageRowsSelected() ||
                 table.getIsAllRowsSelected()
-                  ? "opacity-100"
-                  : "hover:cursor-not-allowed opacity-25"
-              }`}
+                ? "opacity-100"
+                : "hover:cursor-not-allowed opacity-25"
+                }`}
             >
               <HiOutlineTrash size={22} className="mr-1" />
               Delete
@@ -209,9 +208,9 @@ export default function DocsTable() {
                     {header.isPlaceholder
                       ? null
                       : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
                   </div>
                 </th>
               ))}
@@ -242,9 +241,19 @@ export default function DocsTable() {
       </table>
       <div className="flex w-full justify-between">
         <div className="flex justify-start space-x-2 mt-2">
-          <div>Page</div>
+          <div className="flex items-center">Page</div>
           <strong>
-            {table.getState().pagination.pageIndex + 1} of{" "}
+            {<input
+              type="number"
+              min={1}
+              value={table.getState().pagination.pageIndex + 1}
+              max={table.getPageCount()}
+              onChange={e => {
+                const page = e.target.value ? Number(e.target.value) - 1 : 0
+                table.setPageIndex(page)
+              }}
+              className="border p-1 rounded w-16"
+            />} of{" "}
             {table.getPageCount()}
           </strong>
         </div>
