@@ -46,11 +46,41 @@ function GridProvider({ children }) {
         setPerspectiveMode((prevState) => !prevState);
     };
 
-    const [viewBox, setViewBox] = useState("");
     const [jid, setJid] = useState("");
     const updateJid = (id) => {
         setJid(id);
     }
+
+    const [searchValue, setSearchValue] = useState('');
+    const [viewBox, setViewBox] = useState([]);
+    const getIdsWithViewBoxAndPoints = () => {
+        const item = data;
+        const idsWithViewboxAndPoints = {};
+        item.forEach(item =>{
+            if(item.viewbox && item.points){
+                idsWithViewboxAndPoints[item.id] = {
+                    id: item.id,
+                    viewBox: item.viewbox,
+                    points : item.points
+                }
+            }
+        });
+        const getIdsWithViewBoxAndPoints2 = Object.values(idsWithViewboxAndPoints);
+        return  getIdsWithViewBoxAndPoints2;
+    }
+
+
+    const searchedBlocks = (getIdsWithViewBoxAndPoints, searchValue) => {
+        const searchedBlock = getIdsWithViewBoxAndPoints.filter(
+            (item) => {
+                const blockId  = item.id.toLowerCase();
+                const searchId = searchValue.toLowerCase();
+                return blockId.includes(searchId);
+            }
+        );
+        return searchedBlock; 
+    };
+
 
     const [points, setPoints] = useState("");
     const [background, setBackground] = useState("");
@@ -333,7 +363,8 @@ function GridProvider({ children }) {
                 torqueTubeState,
                 torqueTubeShow,
                 initialStateTT,
-                initialStatePanel
+                initialStatePanel,
+                getIdsWithViewBoxAndPoints
             }}
         >
             {children}
