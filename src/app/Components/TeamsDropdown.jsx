@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function TeamsDropdown({
   globalFilter,
@@ -9,6 +9,21 @@ export default function TeamsDropdown({
   const [open, setOpen] = useState(false);
   const [filter, setFilter] = useState("all");
   const [input, setInput] = useState("");
+
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const filterSearch = (e) => {
     e.stopPropagation();
@@ -26,7 +41,7 @@ export default function TeamsDropdown({
   };
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row" ref={dropdownRef}>
       <input
         className="border border-gray-500 rounded mr-1 focus:outline-none focus:border-black focus:border-2"
         type="text"
@@ -37,11 +52,10 @@ export default function TeamsDropdown({
       <div className="relative inline-block text-left">
         <button
           id="menu-button"
-          className={`flex items-center text-gray-700 rounded-lg ${
-            open
-              ? "bg-slate-400 text-white"
-              : "hover:bg-slate-400 hover:text-white"
-          } py-1 px-3`}
+          className={`flex items-center text-gray-700 rounded-lg ${open
+            ? "bg-slate-400 text-white"
+            : "hover:bg-slate-400 hover:text-white"
+            } py-1 px-3`}
           type="text"
           aria-haspopup="true"
           onClick={(e) => {
@@ -69,9 +83,10 @@ export default function TeamsDropdown({
                 onClick={(e) => {
                   e.stopPropagation();
                   setFilter("all");
-                  setGlobalFilter("");
                   setColumnFilter([]);
+                  setGlobalFilter("");
                   setInput("");
+                  setOpen(false);
                 }}
               >
                 Clear
@@ -80,15 +95,15 @@ export default function TeamsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className={`text-gray-700 block px-4 py-2 text-sm ${
-                  filter === "all" ? "bg-blue-100" : ""
-                }`}
+                className={`text-gray-700 block px-4 py-2 text-sm ${filter === "all" ? "bg-blue-100" : ""
+                  }`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
                   setFilter("all");
+                  setOpen(false);
                 }}
               >
                 All
@@ -97,15 +112,15 @@ export default function TeamsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className={`text-gray-700 block px-4 py-2 text-sm ${
-                  filter === "name" ? "bg-blue-100" : ""
-                }`}
+                className={`text-gray-700 block px-4 py-2 text-sm ${filter === "name" ? "bg-blue-100" : ""
+                  }`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
                   setFilter("name");
+                  setOpen(false);
                 }}
               >
                 Name
@@ -114,15 +129,15 @@ export default function TeamsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className={`text-gray-700 block px-4 py-2 text-sm ${
-                  filter === "team" ? "bg-blue-100" : ""
-                }`}
+                className={`text-gray-700 block px-4 py-2 text-sm ${filter === "team" ? "bg-blue-100" : ""
+                  }`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
                   setFilter("team");
+                  setOpen(false);
                 }}
               >
                 Team
@@ -131,15 +146,15 @@ export default function TeamsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className={`text-gray-700 block px-4 py-2 text-sm ${
-                  filter === "role" ? "bg-blue-100" : ""
-                }`}
+                className={`text-gray-700 block px-4 py-2 text-sm ${filter === "role" ? "bg-blue-100" : ""
+                  }`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
                   setFilter("role");
+                  setOpen(false);
                 }}
               >
                 Role
@@ -148,15 +163,15 @@ export default function TeamsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className={`text-gray-700 block px-4 py-2 text-sm ${
-                  filter === "phone" ? "bg-blue-100" : ""
-                }`}
+                className={`text-gray-700 block px-4 py-2 text-sm ${filter === "phone" ? "bg-blue-100" : ""
+                  }`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
                   setFilter("phone");
+                  setOpen(false);
                 }}
               >
                 Phone
@@ -165,15 +180,15 @@ export default function TeamsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className={`text-gray-700 block px-4 py-2 text-sm ${
-                  filter === "buggy" ? "bg-blue-100" : ""
-                }`}
+                className={`text-gray-700 block px-4 py-2 text-sm ${filter === "buggy" ? "bg-blue-100" : ""
+                  }`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
                   setFilter("buggy");
+                  setOpen(false);
                 }}
               >
                 Buggy
@@ -182,15 +197,15 @@ export default function TeamsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className={`text-gray-700 block px-4 py-2 text-sm ${
-                  filter === "skidsteer" ? "bg-blue-100" : ""
-                }`}
+                className={`text-gray-700 block px-4 py-2 text-sm ${filter === "skidsteer" ? "bg-blue-100" : ""
+                  }`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
                   setFilter("skidsteer");
+                  setOpen(false);
                 }}
               >
                 Skidsteer
@@ -199,15 +214,15 @@ export default function TeamsDropdown({
             <div className="py-1" role="none">
               <a
                 href="#"
-                className={`text-gray-700 block px-4 py-2 text-sm ${
-                  filter === "status" ? "bg-blue-100" : ""
-                }`}
+                className={`text-gray-700 block px-4 py-2 text-sm ${filter === "status" ? "bg-blue-100" : ""
+                  }`}
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-1"
                 onClick={(e) => {
                   e.stopPropagation();
                   setFilter("status");
+                  setOpen(false);
                 }}
               >
                 Status

@@ -88,6 +88,7 @@ export default function DocsDropdown({
                   setColumnFilter([]);
                   setGlobalFilter("");
                   setInput("");
+                  setOpen(false);
                 }}
               >
                 Clear

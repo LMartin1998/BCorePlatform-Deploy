@@ -11,17 +11,9 @@ import users from "../data/teamsdata";
 import { GrUserManager } from "react-icons/gr";
 import { FaTruckPlane } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
-import {
-  MdFirstPage,
-  MdChevronLeft,
-  MdChevronRight,
-  MdLastPage,
-} from "react-icons/md";
 import { useState } from "react";
 
 import { HiOutlineTrash } from "react-icons/hi2";
-import { IoFilterOutline } from "react-icons/io5";
-import { BiSortAlt2 } from "react-icons/bi";
 import TeamsDropdown from "./TeamsDropdown";
 import TeamsSort from "./TeamsSort";
 import TablePages from "./TablePages";
