@@ -53,6 +53,12 @@ export default function TeamsTable() {
     }));
   };
 
+  const statusFilter = (row, columnId, value) => {
+    const b = row.getValue(columnId);
+    const s = b.toString();
+    return s === value.toLowerCase() || b == value;
+  };
+
   const columns = [
     {
       id: "selector-column",
@@ -157,12 +163,16 @@ export default function TeamsTable() {
           </div>
         </div>
       ),
+      filterFn: "statusFiltering",
     },
   ];
 
   const table = useReactTable({
     data,
     columns,
+    filterFns: {
+      statusFiltering: statusFilter,
+    },
     state: {
       pagination: pagination,
       rowSelection: rowSelection,

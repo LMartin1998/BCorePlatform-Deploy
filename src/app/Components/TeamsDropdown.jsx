@@ -30,7 +30,8 @@ export default function TeamsDropdown({
     setInput(e.target.value);
     if (filter === "all") {
       setGlobalFilter(e.target.value);
-    } else {
+    }
+    else {
       setColumnFilter([
         {
           id: filter,
