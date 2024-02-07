@@ -11,6 +11,9 @@ import users from "../data/teamsdata";
 import { GrUserManager } from "react-icons/gr";
 import { FaTruckPlane } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
+import { GiAutoRepair, GiGearHammer, GiElectricalResistance } from "react-icons/gi";
+import { MdOutlineCleaningServices } from "react-icons/md";
+import { FaTools } from "react-icons/fa";
 import { useState } from "react";
 
 import { HiOutlineTrash } from "react-icons/hi2";
@@ -23,6 +26,11 @@ export default function TeamsTable() {
     Logistics: <FaTruckPlane size={20} />,
     Manager: <GrUserManager size={20} />,
     Operator: <IoCall size={20} />,
+    Remediation: <GiAutoRepair size={20} />,
+    "Mechanical Remediation": <GiGearHammer size={20} />,
+    "DC Transtions & Road Crossing": <GiElectricalResistance size={20} />,
+    Cleaning: <MdOutlineCleaningServices size={20} />,
+    "Tool Room": <FaTools size={20} />,
   };
 
   const [data, setData] = useState(users);
