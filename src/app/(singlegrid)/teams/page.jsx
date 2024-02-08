@@ -1,4 +1,4 @@
-import TeamsTable from "@/app/components/TeamsTableComponent";
+import TeamsTable from "@/app/components/teams/TeamsTableComponent";
 import Header from "../../components/Header";
 import TopCards from "../../components/TopCards";
 

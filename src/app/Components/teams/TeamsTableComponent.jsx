@@ -7,11 +7,15 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import users from "../data/teamsdata";
+import users from "../../data/teamsdata";
 import { GrUserManager } from "react-icons/gr";
 import { FaTruckPlane } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
-import { GiAutoRepair, GiGearHammer, GiElectricalResistance } from "react-icons/gi";
+import {
+  GiAutoRepair,
+  GiGearHammer,
+  GiElectricalResistance,
+} from "react-icons/gi";
 import { MdOutlineCleaningServices } from "react-icons/md";
 import { FaTools } from "react-icons/fa";
 import { useState } from "react";
@@ -19,7 +23,9 @@ import { useState } from "react";
 import { HiOutlineTrash } from "react-icons/hi2";
 import TeamsDropdown from "./TeamsDropdown";
 import TeamsSort from "./TeamsSort";
-import TablePages from "./TablePages";
+import TablePages from "../table/TablePages";
+import TableFilters from "../table/TableFilters";
+import TableSort from "../table/TableSort";
 
 export default function TeamsTable() {
   const teamLabel = {
@@ -91,9 +97,7 @@ export default function TeamsTable() {
       header: "#",
       accessorKey: "id",
       cell: (row) => (
-        <p className="text-gray-700 font-medium text-base">
-          {row.getValue()}
-        </p>
+        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
       ),
     },
     {
@@ -156,17 +160,19 @@ export default function TeamsTable() {
       cell: ({ row }) => (
         <div className="flex items-center">
           <div
-            className={`cursor-pointer relative ${rowStatus[row.id] && rowStatus[row.id].status
-              ? "bg-green-500"
-              : "bg-red-500"
-              } rounded-full w-8 h-4 transition`}
+            className={`cursor-pointer relative ${
+              rowStatus[row.id] && rowStatus[row.id].status
+                ? "bg-green-500"
+                : "bg-red-500"
+            } rounded-full w-8 h-4 transition`}
             onClick={() => updateStatus(row.id)}
           >
             <div
-              className={`absolute ${rowStatus[row.id] && rowStatus[row.id].status
-                ? "translate-x-4"
-                : "translate-x-0"
-                } left-0 bg-white w-4 h-4 rounded-full shadow-md transition transform duration-300 ease-in-out`}
+              className={`absolute ${
+                rowStatus[row.id] && rowStatus[row.id].status
+                  ? "translate-x-4"
+                  : "translate-x-0"
+              } left-0 bg-white w-4 h-4 rounded-full shadow-md transition transform duration-300 ease-in-out`}
             />
           </div>
         </div>
@@ -207,21 +213,45 @@ export default function TeamsTable() {
           + Add teammate
         </button>
         <div className="flex space-x-2">
-          <button className={`flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3 ${table.getIsSomePageRowsSelected() ||
-            table.getIsAllRowsSelected()
-            ? "opacity-100"
-            : "hover:cursor-not-allowed opacity-25"
-            }`}>
+          <button
+            className={`flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3 ${
+              table.getIsSomePageRowsSelected() || table.getIsAllRowsSelected()
+                ? "opacity-100"
+                : "hover:cursor-not-allowed opacity-25"
+            }`}
+          >
             <HiOutlineTrash size={22} className="mr-1" />
             Delete
           </button>
-          <TeamsDropdown
+          <TableFilters
+            options={[
+              { label: "name", value: "Name" },
+              { label: "team", value: "Team" },
+              { label: "role", value: "Role" },
+              { label: "phone", value: "Phone" },
+              { label: "buggy", value: "Buggy" },
+              { label: "skidsteer", value: "Skidsteer" },
+              { label: "status", value: "Status" },
+            ]}
             globalFilter={globalFilter}
             setGlobalFilter={setGlobalFilter}
             columnFilter={columnFilter}
             setColumnFilter={setColumnFilter}
-          ></TeamsDropdown>
-          {table && <TeamsSort table={table}></TeamsSort>}
+          ></TableFilters>
+          {table && (
+            <TableSort
+              options={[
+                { label: "name", value: "Name" },
+                { label: "team", value: "Team" },
+                { label: "role", value: "Role" },
+                { label: "phone", value: "Phone" },
+                { label: "buggy", value: "Buggy" },
+                { label: "skidsteer", value: "Skidsteer" },
+                { label: "status", value: "Status" },
+              ]}
+              table={table}
+            ></TableSort>
+          )}
         </div>
       </div>
       <table className="w-full mt-3">
@@ -240,9 +270,9 @@ export default function TeamsTable() {
                   {header.isPlaceholder
                     ? null
                     : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext()
-                    )}
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
                 </th>
               ))}
             </tr>
@@ -270,9 +300,7 @@ export default function TeamsTable() {
           })}
         </tbody>
       </table>
-      {table && <TablePages
-        table={table}
-      ></TablePages>}
+      {table && <TablePages table={table}></TablePages>}
     </>
   );
 }

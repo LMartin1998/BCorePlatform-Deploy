@@ -2,7 +2,7 @@
 
 import Header from "../../components/Header";
 import TopCards from "../../components/TopCards";
-import DocsTable from "@/app/components/DocsTableComponent";
+import DocsTable from "@/app/components/docs/DocsTableComponent";
 
 export default function Docs() {
     return (

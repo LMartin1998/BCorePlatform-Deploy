@@ -7,15 +7,15 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import docs from "../data/docdata";
+import docs from "../../data/docdata";
 import { useState } from "react";
 import { FaFileWord, FaFilePdf } from "react-icons/fa";
 import { HiOutlineTrash } from "react-icons/hi2";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { IoMdEye } from "react-icons/io";
-import DocsDropdown from "./DocsDropdown";
-import DocsSort from "./DocsSort";
-import TablePages from "./TablePages";
+import TablePages from "../table/TablePages";
+import TableFilters from "../table/TableFilters";
+import TableSort from "../table/TableSort";
 
 export default function DocsTable() {
   const [globalFilter, setGlobalFilter] = useState("");
@@ -114,7 +114,10 @@ export default function DocsTable() {
       id: "download-column",
       cell: (row) => (
         <div className="flex justify-left">
-          <MdOutlineFileDownload size={25} className="hover:cursor-pointer" />
+          <MdOutlineFileDownload
+            size={25}
+            className="hover:cursor-pointer hover:ring-2"
+          />
         </div>
       ),
     },
@@ -122,7 +125,7 @@ export default function DocsTable() {
       id: "open-column",
       cell: (row) => (
         <div className="flex justify-left">
-          <IoMdEye size={25} className="hover:cursor-pointer" />
+          <IoMdEye size={25} className="hover:cursor-pointer hover:ring-2" />
         </div>
       ),
     },
@@ -165,23 +168,42 @@ export default function DocsTable() {
         <div className="flex space-x-2">
           {table && (
             <button
-              className={`flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3 ${table.getIsSomePageRowsSelected() ||
+              className={`flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3 ${
+                table.getIsSomePageRowsSelected() ||
                 table.getIsAllRowsSelected()
-                ? "opacity-100"
-                : "hover:cursor-not-allowed opacity-25"
-                }`}
+                  ? "opacity-100"
+                  : "hover:cursor-not-allowed opacity-25"
+              }`}
             >
               <HiOutlineTrash size={22} className="mr-1" />
               Delete
             </button>
           )}
-          <DocsDropdown
+          <TableFilters
+            options={[
+              { label: "file", value: "File" },
+              { label: "owner", value: "Owner" },
+              { label: "tags", value: "Tags" },
+              { label: "extension", value: "Extension" },
+              { label: "size", value: "Size" },
+            ]}
             globalFilter={globalFilter}
             setGlobalFilter={setGlobalFilter}
             columnFilter={columnFilter}
             setColumnFilter={setColumnFilter}
-          ></DocsDropdown>
-          {table && <DocsSort table={table}></DocsSort>}
+          ></TableFilters>
+          {table && (
+            <TableSort
+              options={[
+                { label: "file", value: "File" },
+                { label: "owner", value: "Owner" },
+                { label: "tags", value: "Tags" },
+                { label: "extension", value: "Extension" },
+                { label: "size", value: "Size" },
+              ]}
+              table={table}
+            ></TableSort>
+          )}
         </div>
       </div>
 
@@ -202,9 +224,9 @@ export default function DocsTable() {
                     {header.isPlaceholder
                       ? null
                       : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                   </div>
                 </th>
               ))}
@@ -233,9 +255,7 @@ export default function DocsTable() {
           })}
         </tbody>
       </table>
-      {table && <TablePages
-        table={table}
-      ></TablePages>}
+      {table && <TablePages table={table}></TablePages>}
     </>
   );
 }
