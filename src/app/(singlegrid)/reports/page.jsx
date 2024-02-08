@@ -49,13 +49,12 @@ export default function Reports() {
             <Header></Header>
             <TopCards></TopCards>
             <div className="p-4">
-                <div className="md:w-1/2 mx-auto rounded-2xl pb-2 bg-white">
+                <div className="md:w-3/4 mx-auto rounded-2xl pb-2 bg-white">
                     <div className="container horizontal mt-5">
                         <Stepper
                             steps = {steps}
                             currentStep = {currentStep}
                         />
-                        {/* Display components */}
                         <div className="my-10 p-10 border-t border-gray-300">
                             <StepperContext.Provider value={{
                                 userData,
