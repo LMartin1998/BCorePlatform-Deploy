@@ -1,4 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import {
+  HiOutlineSortDescending,
+  HiOutlineSortAscending,
+} from "react-icons/hi";
 
 export default function TableSort({ options, table }) {
   const [open, setOpen] = useState(false);
@@ -55,6 +59,11 @@ export default function TableSort({ options, table }) {
             setOpen((prevOpen) => !prevOpen);
           }}
         >
+          {open ? (
+            <HiOutlineSortAscending size={16}></HiOutlineSortAscending>
+          ) : (
+            <HiOutlineSortDescending size={16}></HiOutlineSortDescending>
+          )}
           Sort
         </button>
         {open && (

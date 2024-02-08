@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { MdOutlineFilterAlt, MdOutlineFilterAltOff } from "react-icons/md";
 
 export default function TableFilters({
   options,
@@ -87,6 +88,11 @@ export default function TableFilters({
             setOpen((prevOpen) => !prevOpen);
           }}
         >
+          {open ? (
+            <MdOutlineFilterAlt size={16}></MdOutlineFilterAlt>
+          ) : (
+            <MdOutlineFilterAltOff size={16}></MdOutlineFilterAltOff>
+          )}
           Filter
         </button>
         {open && (
