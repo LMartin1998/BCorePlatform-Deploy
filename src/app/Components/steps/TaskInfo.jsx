@@ -1,13 +1,11 @@
 import { useState } from "react";
 import DropdownGeneral from "../widgets/DropdDownGeneral";
-import Dropdown from "../widgets/Dropdown";
 import ToggleButtonGroup from "../widgets/ToggleButtonGroup";
 import ButtonAddTask from "../widgets/buttonAddTask";
 import MyDatePicker from "../Datepicker";
 
 export default function TaskInfo(){
     const [optionsDrop, setoptionsDrop] = useState([]);
-    const [inputLabel, setInputLabel] = useState('');
 
     const data = [
         { label: 'Mechanical', value: 'Mechanical' },
@@ -18,17 +16,17 @@ export default function TaskInfo(){
     ];
 
     const mechanicalTasks = [
-        { label: 'Pile Pounding', value: 'Pile Pounding'},
-        { label: 'Pile Remediation', value: 'Pile Remediation'},
-        { label: 'Pile Caps Installation', value: 'Pile Caps Installation'},
-        { label: 'Pre-Installing Bearings', value: 'Pre-Installing Bearings'} 
+        { label: 'Pile Pounding', value: 'Pile Pounding', parent: 'Mechanical'},
+        { label: 'Pile Remediation', value: 'Pile Remediation', parent: 'Mechanical'},
+        { label: 'Pile Caps Installation', value: 'Pile Caps Installation', parent: 'Mechanical'},
+        { label: 'Pre-Installing Bearings', value: 'Pre-Installing Bearings', parent: 'Mechanical'} 
     ];
 
     const electricalTasks = [
-        { label: '10KV Meg Testing Before Landing MV-DC', value: '10KV Meg Testing Before Landing MV-DC'},
-        { label: 'MEG TEST First lift', value: 'MEG TEST First lift'},
-        { label: 'Grounding', value: 'Grounding' },
-        { label: 'DC/MV Road Crossing', value: 'DC/MV Road Crossing'}
+        { label: '10KV Meg Testing Before Landing MV-DC', value: '10KV Meg Testing Before Landing MV-DC', parent: 'Electrical'},
+        { label: 'MEG TEST First lift', value: 'MEG TEST First lift', parent: 'Electrical'},
+        { label: 'Grounding', value: 'Grounding', parent: 'Electrical' },
+        { label: 'DC/MV Road Crossing', value: 'DC/MV Road Crossing', parent: 'Electrical'}
     ]; 
 
     const handleChange = (selectedOption) => {
@@ -66,7 +64,7 @@ export default function TaskInfo(){
                 >
                 </ToggleButtonGroup>
             </div>
-            <p className="text-gray-700 font-normal text-base mt-2">Task</p>
+            <p className="text-gray-700 font-normal text-base mt-2">Type of task</p>
             <DropdownGeneral options={optionsDrop} buttonText='Choose a task'></DropdownGeneral>
             <ButtonAddTask></ButtonAddTask>
         </div>

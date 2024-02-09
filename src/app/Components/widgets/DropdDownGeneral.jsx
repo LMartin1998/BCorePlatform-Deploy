@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import clsx from 'clsx';
-import Chip from './Chip';
+import React, { useState } from "react";
+import clsx from "clsx";
+import Chip from "./Chip";
 
 const DropdownGeneral = ({ options, buttonText }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,9 +11,15 @@ const DropdownGeneral = ({ options, buttonText }) => {
   };
 
   const handleSelectOption = (option) => {
-    const isSelected = selectedOptions.some((selectedOption) => selectedOption.value === option.value);
+    const isSelected = selectedOptions.some(
+      (selectedOption) => selectedOption.value === option.value
+    );
     if (isSelected) {
-      setSelectedOptions(selectedOptions.filter((selectedOption) => selectedOption.value !== option.value));
+      setSelectedOptions(
+        selectedOptions.filter(
+          (selectedOption) => selectedOption.value !== option.value
+        )
+      );
     } else {
       setSelectedOptions([...selectedOptions, option]);
     }
@@ -25,16 +31,14 @@ const DropdownGeneral = ({ options, buttonText }) => {
         <button
           type="button"
           className={clsx(
-            'inline-flex justify-between w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 focus:outline-none focus:border-blue-300 transition ease-in-out duration-150',
-            { 'rounded-t-md': !isOpen, 'rounded-b-md': isOpen }
+            "inline-flex justify-between w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 focus:outline-none focus:border-blue-300 transition ease-in-out duration-150",
+            { "rounded-t-md": !isOpen, "rounded-b-md": isOpen }
           )}
           onClick={handleToggleDropdown}
           aria-haspopup="true"
           aria-expanded="true"
         >
-          {selectedOptions.length > 0
-            ? selectedOptions.map((option) => option.label).join(', ')
-            : buttonText}
+          {buttonText}
           <svg
             className="-mr-1 ml-2 h-5 w-5"
             xmlns="http://www.w3.org/2000/svg"
@@ -59,21 +63,35 @@ const DropdownGeneral = ({ options, buttonText }) => {
                 key={option.value}
                 onClick={() => handleSelectOption(option)}
                 className={clsx(
-                  'flex items-center justify-between px-4 py-2 text-sm text-gray-700 w-full text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100',
-                  { 'rounded-b-md': option === options[options.length - 1] }
+                  "flex items-center justify-between px-4 py-2 text-sm text-gray-700 w-full text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100",
+                  { "rounded-b-md": option === options[options.length - 1] }
                 )}
               >
                 <span>{option.label}</span>
-                {/* <Chip label={option.label}></Chip> */}
                 <input
                   type="checkbox"
-                  checked={selectedOptions.some((selectedOption) => selectedOption.value === option.value)}
+                  checked={selectedOptions.some(
+                    (selectedOption) => selectedOption.value === option.value
+                  )}
                   className="form-checkbox h-4 w-4 text-blue-500 focus:ring-blue-400 focus:outline-none focus:ring-2"
                   readOnly
                 />
               </button>
             ))}
           </div>
+        </div>
+      )}
+
+      {/* Chips para las opciones seleccionadas */}
+      {selectedOptions.length > 0 && (
+        <div className="flex flex-wrap mt-2 gap-1">
+          {selectedOptions.map((option) => (
+            <Chip
+              key={option.value}
+              label={option.label}
+              background={option.parent}
+            ></Chip>
+          ))}
         </div>
       )}
     </div>
