@@ -5,31 +5,39 @@ import ToggleButtonGroup from "../widgets/ToggleButtonGroup";
 
 export default function TaskInfo(){
     const [optionsDrop, setoptionsDrop] = useState([]);
+    const [inputLabel, setInputLabel] = useState('');
 
-    const options = [
+    const data = [
         { label: 'Mechanical', value: 'Mechanical' },
         { label: 'Electrical', value: 'Electrical' },
         { label: 'Inspections', value: 'Inspections' },
-        { label: 'CleanUp', value: 'option4' },
-        { label: 'Observations', value: 'option5' },
+        { label: 'CleanUp', value: 'CleanUp' },
+        { label: 'Observations', value: 'Observations' },
     ];
+
+    const mechanicalTasks = [
+        { label: 'Pile Pounding', value: 'Pile Pounding'},
+        { label: 'Pile Remediation', value: 'Pile Remediation'},
+        { label: 'Pile Caps Installation', value: 'Pile Caps Installation'},
+        { label: 'Pre-Installing Bearings', value: 'Pre-Installing Bearings'} 
+    ];
+
+    const electricalTasks = [
+        { label: '10KV Meg Testing Before Landing MV-DC', value: '10KV Meg Testing Before Landing MV-DC'},
+        { label: 'MEG TEST First lift', value: 'MEG TEST First lift'},
+        { label: 'Grounding', value: 'Grounding' },
+        { label: 'DC/MV Road Crossing', value: 'DC/MV Road Crossing'}
+    ]; 
 
     const handleChange = (selectedOption) => {
         let dropDownOptions = [];
         
         switch (selectedOption){
             case 'Mechanical':
-                dropDownOptions = [
-                    { label: 'Option1', value: 'Option1' },
-                    { label: 'Option2', value: 'Option2' },
-                    { label: 'Option3', value: 'Option3' }
-                ];
+                dropDownOptions = mechanicalTasks;
             break;
             case 'Electrical':
-                dropDownOptions = [
-                    { label: 'OptionA', value: 'OptionA' },
-                    { label: 'OptionB', value: 'OptionB' }
-                ];
+                dropDownOptions = electricalTasks;
             break;
             case 'Inspections':
                 dropDownOptions = [
@@ -38,11 +46,7 @@ export default function TaskInfo(){
                 ];
             break;
             default:
-                dropDownOptions = [
-                    { label: 'Option1', value: 'Option1' },
-                    { label: 'Option2', value: 'Option2' },
-                    { label: 'Option3', value: 'Option3' }
-                ];
+                dropDownOptions = [];
             break;
         }
         setoptionsDrop(dropDownOptions);
@@ -52,13 +56,22 @@ export default function TaskInfo(){
             <p className="text-gray-700 font-normal text-lg">Block PCS102</p>
             <div className="container mx-auto my-2">
                 <ToggleButtonGroup
-                    options={options} 
+                    options={data} 
                     onChange={handleChange}
                 >
                 </ToggleButtonGroup>
             </div>
-            <p className="text-gray-700 font-normal text-base">Task</p>
+            <p className="text-gray-700 font-normal text-base mt-2">Task</p>
             <DropdownGeneral options={optionsDrop} buttonText='Choose a task'></DropdownGeneral>
+            <p className="text-gray-700 font-normal text-base mt-2">Quantity or Comment</p> {/*Quantity or Comment*/}
+            <div className="w-full max-w-xs">
+                <input
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+                    type="number"
+                    placeholder="type the quantity"
+                    >
+                </input>
+            </div>
         </div>
     );
 }

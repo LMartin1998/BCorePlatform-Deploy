@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import ToggleButton from '../widgets/ToggleButton';
 
 const ToggleButtonGroup = ({ options, onChange }) => {
-  const [selected, setSelected] = useState(options[0].value);
+  // const [selected, setSelected] = useState(options[0].value);
+  const [selected, setSelected] = useState(null);
+
+
 
   const handleClick = (value) => {
     setSelected(value);
