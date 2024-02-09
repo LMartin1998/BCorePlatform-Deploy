@@ -47,7 +47,7 @@ export default function Reports() {
     return (
         <main className="bg-gray-100 min-h-screen">
             <Header></Header>
-            <TopCards></TopCards>
+            {/* <TopCards></TopCards> */}
             <div className="p-4">
                 <div className="md:w-3/4 mx-auto rounded-2xl pb-2 bg-white">
                     <div className="container horizontal mt-5">

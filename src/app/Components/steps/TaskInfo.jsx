@@ -2,6 +2,8 @@ import { useState } from "react";
 import DropdownGeneral from "../widgets/DropdDownGeneral";
 import Dropdown from "../widgets/Dropdown";
 import ToggleButtonGroup from "../widgets/ToggleButtonGroup";
+import ButtonAddTask from "../widgets/buttonAddTask";
+import MyDatePicker from "../Datepicker";
 
 export default function TaskInfo(){
     const [optionsDrop, setoptionsDrop] = useState([]);
@@ -53,7 +55,10 @@ export default function TaskInfo(){
     };
     return(
         <div className="flex flex-col">
-            <p className="text-gray-700 font-normal text-lg">Block PCS102</p>
+            <div className="flex justify-center items-center">
+                <p className="text-gray-700 font-normal text-lg w-3/4">Block PCS102</p>
+                <MyDatePicker></MyDatePicker>
+            </div>
             <div className="container mx-auto my-2">
                 <ToggleButtonGroup
                     options={data} 
@@ -63,15 +68,7 @@ export default function TaskInfo(){
             </div>
             <p className="text-gray-700 font-normal text-base mt-2">Task</p>
             <DropdownGeneral options={optionsDrop} buttonText='Choose a task'></DropdownGeneral>
-            <p className="text-gray-700 font-normal text-base mt-2">Quantity or Comment</p> {/*Quantity or Comment*/}
-            <div className="w-full max-w-xs">
-                <input
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-                    type="number"
-                    placeholder="type the quantity"
-                    >
-                </input>
-            </div>
+            <ButtonAddTask></ButtonAddTask>
         </div>
     );
 }

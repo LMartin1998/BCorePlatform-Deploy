@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
+import Chip from './Chip';
 
 const DropdownGeneral = ({ options, buttonText }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOptions, setSelectedOptions] = useState([]);
 
   const handleToggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
   const handleSelectOption = (option) => {
-    setSelectedOption(option);
-    setIsOpen(false);
+    const isSelected = selectedOptions.some((selectedOption) => selectedOption.value === option.value);
+    if (isSelected) {
+      setSelectedOptions(selectedOptions.filter((selectedOption) => selectedOption.value !== option.value));
+    } else {
+      setSelectedOptions([...selectedOptions, option]);
+    }
   };
 
   return (
@@ -27,7 +32,9 @@ const DropdownGeneral = ({ options, buttonText }) => {
           aria-haspopup="true"
           aria-expanded="true"
         >
-          {selectedOption ? selectedOption.label : buttonText}
+          {selectedOptions.length > 0
+            ? selectedOptions.map((option) => option.label).join(', ')
+            : buttonText}
           <svg
             className="-mr-1 ml-2 h-5 w-5"
             xmlns="http://www.w3.org/2000/svg"
@@ -52,11 +59,18 @@ const DropdownGeneral = ({ options, buttonText }) => {
                 key={option.value}
                 onClick={() => handleSelectOption(option)}
                 className={clsx(
-                  'block px-4 py-2 text-sm text-gray-700 w-full text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100',
+                  'flex items-center justify-between px-4 py-2 text-sm text-gray-700 w-full text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100',
                   { 'rounded-b-md': option === options[options.length - 1] }
                 )}
               >
-                {option.label}
+                <span>{option.label}</span>
+                {/* <Chip label={option.label}></Chip> */}
+                <input
+                  type="checkbox"
+                  checked={selectedOptions.some((selectedOption) => selectedOption.value === option.value)}
+                  className="form-checkbox h-4 w-4 text-blue-500 focus:ring-blue-400 focus:outline-none focus:ring-2"
+                  readOnly
+                />
               </button>
             ))}
           </div>
