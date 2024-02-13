@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { IoFolderOutline } from "react-icons/io5";
+import { HiOutlineDotsVertical } from "react-icons/hi";
 
 export default function ShowFiles({ parentId, filesList }) {
   const [id, setId] = useState(parentId);
@@ -27,7 +28,12 @@ export default function ShowFiles({ parentId, filesList }) {
           onDoubleClick={doubleClickItem}
         >
           <IoFolderOutline size={40}></IoFolderOutline>
-          <p>{file.fileName}</p>
+          <div className="m-1 flex">
+            <p>{file.fileName}</p>
+            <button className="m-1 rounded-lg hover:ring-2">
+              <HiOutlineDotsVertical size={16}></HiOutlineDotsVertical>
+            </button>
+          </div>
         </div>
       ) : (
         <div
@@ -37,7 +43,12 @@ export default function ShowFiles({ parentId, filesList }) {
           onDoubleClick={doubleClickItem}
         >
           <img className="size-10" src={file.imageLink}></img>
-          <p>{file.fileName}</p>
+          <div className="m-1 flex">
+            <p>{file.fileName}</p>
+            <button className="m-1 rounded-lg hover:ring-2">
+              <HiOutlineDotsVertical size={16}></HiOutlineDotsVertical>
+            </button>
+          </div>
         </div>
       )
     );
