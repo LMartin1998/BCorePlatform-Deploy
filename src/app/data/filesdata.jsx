@@ -37,6 +37,13 @@ export const filesList = [
           },
         ],
       },
+      {
+        id: 3,
+        imageLink: "https://cdn-icons-png.flaticon.com/512/6676/6676023.png",
+        isFolder: false,
+        fileName: "image2.png",
+        parentId: 0,
+      },
     ],
   },
   {
