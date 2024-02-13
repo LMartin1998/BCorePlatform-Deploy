@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { IoFolderOutline } from "react-icons/io5";
 import { HiOutlineDotsVertical } from "react-icons/hi";
+import FilesDropdown from "./FilesDropdown";
 
 export default function ShowFiles({ parentId, filesList }) {
   const [id, setId] = useState(parentId);
@@ -22,7 +23,7 @@ export default function ShowFiles({ parentId, filesList }) {
     return filesList.map((file) =>
       file.isFolder ? (
         <div
-          className="flex justity-center items-center"
+          className="flex justity-center items-center select-none"
           key={file.id}
           id={file.id}
           onDoubleClick={doubleClickItem}
@@ -30,14 +31,12 @@ export default function ShowFiles({ parentId, filesList }) {
           <IoFolderOutline size={40}></IoFolderOutline>
           <div className="m-1 flex">
             <p>{file.fileName}</p>
-            <button className="m-1 rounded-lg hover:ring-2">
-              <HiOutlineDotsVertical size={16}></HiOutlineDotsVertical>
-            </button>
+            <FilesDropdown></FilesDropdown>
           </div>
         </div>
       ) : (
         <div
-          className="flex justity-center items-center"
+          className="flex justity-center items-center select-none"
           key={file.id}
           id={file.id}
           onDoubleClick={doubleClickItem}
@@ -45,9 +44,7 @@ export default function ShowFiles({ parentId, filesList }) {
           <img className="size-10" src={file.imageLink}></img>
           <div className="m-1 flex">
             <p>{file.fileName}</p>
-            <button className="m-1 rounded-lg hover:ring-2">
-              <HiOutlineDotsVertical size={16}></HiOutlineDotsVertical>
-            </button>
+            <FilesDropdown></FilesDropdown>
           </div>
         </div>
       )

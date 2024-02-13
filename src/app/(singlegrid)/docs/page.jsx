@@ -3,7 +3,7 @@ import { useState } from "react";
 import { filesList } from "@/app/data/filesdata";
 import Header from "../../components/Header";
 import TopCards from "../../components/TopCards";
-import ShowFiles from "@/app/Components/Files/showFiles";
+import ShowFiles from "@/app/Components/files/ShowFiles";
 
 export default function Docs() {
   const [files, setFiles] = useState(
