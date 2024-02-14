@@ -1,21 +1,25 @@
 const Chip = ({label, background}) => {
 
-    var color = '';
+    let color = '';
     switch (background) {
         case 'Mechanical':
-            color = 'red';        
+            color = 'rgb(254, 202, 202, 1)';        
             break;
         case 'Electrical':
-            color = 'blue';
+            color = 'rgb(191, 219, 254, 1)';
+            break;
+        case 'Inspections':
+            color = 'rgb(254, 240, 138, 1)';
             break;
         default:
             color = 'white';
             break;
     }
-    
+    const chipStyle = {
+        background: color
+    }
     return (  
-        // <div className="inline-flex items-center px-3 py-1 bg-white border border-gray-300 rounded-full text-sm leading-5 font-medium text-gray-700">
-        <div className={`inline-flex items-center px-3 py-1 bg-${color}-200 border border-gray-300 rounded-full text-sm leading-5 font-medium text-gray-700`}>
+        <div style={chipStyle} className={`inline-flex items-center bg-ye px-3 py-1 border border-gray-300 rounded-full text-sm leading-5 font-medium text-gray-700`}>
              <span>{label}</span>
         </div>
         

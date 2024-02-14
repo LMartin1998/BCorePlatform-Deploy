@@ -41,8 +41,8 @@ export default function TaskInfo(){
             break;
             case 'Inspections':
                 dropDownOptions = [
-                    { label: 'OptionC', value: 'OptionC' },
-                    { label: 'OptionD', value: 'OptionD' }
+                    { label: 'OptionC', value: 'OptionC', parent: 'Inspections'},
+                    { label: 'OptionD', value: 'OptionD', parent: 'Inspections'}
                 ];
             break;
             default:
@@ -54,7 +54,7 @@ export default function TaskInfo(){
     return(
         <div className="flex flex-col">
             <div className="flex justify-center items-center">
-                <p className="text-gray-700 font-normal text-lg w-3/4">Block PCS102</p>
+                <p className="text-gray-700 font-normal text-lg w-3/4">Block PCS401</p>
                 <MyDatePicker></MyDatePicker>
             </div>
             <div className="container mx-auto my-2">
@@ -66,7 +66,20 @@ export default function TaskInfo(){
             </div>
             <p className="text-gray-700 font-normal text-base mt-2">Type of task</p>
             <DropdownGeneral options={optionsDrop} buttonText='Choose a task'></DropdownGeneral>
-            <ButtonAddTask></ButtonAddTask>
+            
+            <div className="flex justify-center items-center">
+                <p className="text-gray-700 font-normal text-lg w-3/4">Block PCS108</p>
+                <MyDatePicker></MyDatePicker>
+            </div>
+            <div className="container mx-auto my-2">
+                <ToggleButtonGroup
+                    options={data} 
+                    onChange={handleChange}
+                >
+                </ToggleButtonGroup>
+            </div>
+            <p className="text-gray-700 font-normal text-base mt-2">Type of task</p>
+            <DropdownGeneral options={optionsDrop} buttonText='Choose a task'></DropdownGeneral>
         </div>
     );
 }
