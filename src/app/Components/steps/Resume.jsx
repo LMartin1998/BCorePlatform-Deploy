@@ -1,4 +1,7 @@
+import WebView from "../PDF/WebView";
 
 export default function Resume(){
-    return <>Resume</>;
+    return (
+        <WebView></WebView>
+    );
 }

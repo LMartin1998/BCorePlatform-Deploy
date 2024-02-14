@@ -28,7 +28,7 @@ const Sidebar = ({ children, show, setter }) => {
                     </Link>
                     <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
                     <Link href="/">
-                        <div className="bg-gray-100 hover:bg-gray-200 flex justify-center  cursor-pointer my-4 p-3 rounded-lg inline-block flex">
+                        <div className="bg-gray-100 hover:bg-gray-200 justify-center  cursor-pointer my-4 p-3 rounded-lg flex">
                             <div className="flex justify-center items-center">
                                 <p className="bg-blue-800 flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]">
                                     <IoHomeOutline

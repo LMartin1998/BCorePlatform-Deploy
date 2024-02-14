@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^3.3.8",
     "@tanstack/react-table": "^8.11.7",
     "chart.js": "^4.4.1",
     "clsx": "^2.1.0",
