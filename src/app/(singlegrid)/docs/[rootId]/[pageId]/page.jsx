@@ -1,39 +1,42 @@
 "use client";
 import { useEffect, useState } from "react";
 import { filesList } from "@/app/data/filesdata";
-import Header from "../../components/Header";
-import TopCards from "../../components/TopCards";
+import Header from "@/app/components/Header";
+import TopCards from "@/app/components/TopCards";
 import SidebarFiles from "@/app/components/Files/SidebarFiles";
 import ContainerFiles from "@/app/components/Files/ContainerFiles";
 import Link from "next/link";
+import { useParams, useRouter } from "next/navigation";
 
 export default function Docs() {
-  const [path, setPath] = useState("/");
+  const params = useParams();
+  const router = useRouter();
+
+  const [path, setPath] = useState(`/${params.rootId}/${params.pageId}`);
 
   const [rootFiles, setRootFiles] = useState(
     filesList.filter((file) => file.parentId === null)
   );
 
-  const [rootId, setRootId] = useState(0);
+  const [rootId, setRootId] = useState(params.rootId);
 
   const [childrenFiles, setChildrenFiles] = useState(
     rootFiles[rootId].children || []
   );
 
-  const [childrenId, setChildrenId] = useState(0);
+  const [childrenId, setChildrenId] = useState(params.pageId);
 
   const updateRootFiles = (e) => {
     e.stopPropagation();
-    setRootId(Number(e.currentTarget.id));
-    setChildrenFiles(rootFiles[Number(e.currentTarget.id)].children);
-    setPath(`/docs/${Number(e.currentTarget.id)}`);
+    router.push(`/docs/${Number(e.currentTarget.id)}/0`);
+    setPath(`/${Number(e.currentTarget.id)}/${childrenId}`);
   };
 
   const updateChildrenFiles = (e) => {
     e.stopPropagation();
     setChildrenId(Number(e.currentTarget.id));
     setChildrenFiles(childrenFiles[Number(e.currentTarget.id)].children);
-    setPath(`${path}/${Number(e.currentTarget.id)}`);
+    setPath(`/${params.rootId}/${Number(e.currentTarget.id)}`);
   };
 
   return (
@@ -53,7 +56,7 @@ export default function Docs() {
         {childrenFiles && (
           <div className="m-1 w-full h-full grid">
             <p>
-              <Link href={path}>{path}</Link>
+              <Link href={`/docs${path}`}>{path}</Link>
             </p>
             <p>Files</p>
             <ContainerFiles

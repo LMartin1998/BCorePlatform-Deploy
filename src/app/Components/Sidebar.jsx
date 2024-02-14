@@ -92,7 +92,7 @@ const Sidebar = ({ children, show, setter }) => {
                         </div>
                     </Link>
                     <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
-                    <Link href="/docs">
+                    <Link href="/docs/0/0">
                         <div className="bg-gray-100 hover:bg-gray-200 flex justify-center cursor-pointer my-4 p-3 rounded-lg inline-block flex">
                             <div className="flex justify-center items-center">
                                 <p className="bg-white flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]">
