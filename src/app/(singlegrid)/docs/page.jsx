@@ -1,21 +1,57 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { filesList } from "@/app/data/filesdata";
 import Header from "../../components/Header";
 import TopCards from "../../components/TopCards";
-import ShowFiles from "@/app/Components/files/ShowFiles";
+import SidebarFiles from "@/app/components/Files/SidebarFiles";
+import ContainerFiles from "@/app/components/Files/ContainerFiles";
 
 export default function Docs() {
-  const [files, setFiles] = useState(
+  const [rootFiles, setRootFiles] = useState(
     filesList.filter((file) => file.parentId === null)
   );
+
+  const [rootId, setRootId] = useState(0);
+
+  const [childrenFiles, setChildrenFiles] = useState(
+    rootFiles[rootId].children || []
+  );
+
+  const [childrenId, setChildrenId] = useState(0);
+
+  const updateRootFiles = (e) => {
+    e.stopPropagation();
+    setRootId(Number(e.currentTarget.id));
+    setChildrenFiles(rootFiles[Number(e.currentTarget.id)].children);
+  };
+
+  const updateChildrenFiles = (e) => {
+    e.stopPropagation();
+    setChildrenId(Number(e.currentTarget.id));
+    setChildrenFiles(childrenFiles[Number(e.currentTarget.id)].children);
+  };
 
   return (
     <main className="bg-gray-100 min-h-screen">
       <Header></Header>
       <TopCards></TopCards>
-      <div className="m-1 grid justify-center items-center grid-cols-6">
-        <ShowFiles parentId={null} filesList={files}></ShowFiles>
+      <div className="flex m-1">
+        {rootFiles && (
+          <div className="m-1 w-1/5 h-full grid">
+            <SidebarFiles
+              filesList={rootFiles}
+              updateRootFiles={updateRootFiles}
+            ></SidebarFiles>
+          </div>
+        )}
+        {childrenFiles && (
+          <div className="w-full h-full grid">
+            <ContainerFiles
+              filesList={childrenFiles}
+              updateChildrenFiles={updateChildrenFiles}
+            ></ContainerFiles>
+          </div>
+        )}
       </div>
     </main>
   );
