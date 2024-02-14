@@ -48,6 +48,7 @@ export default function Docs() {
           <div className="m-1 w-1/5 h-full grid">
             <p>Name</p>
             <SidebarFiles
+            rootId={rootId}
               filesList={rootFiles}
               updateRootFiles={updateRootFiles}
             ></SidebarFiles>

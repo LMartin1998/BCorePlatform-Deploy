@@ -2,8 +2,8 @@ import { useState } from "react";
 import { IoFolderOpenOutline } from "react-icons/io5";
 import { IoArrowForwardOutline, IoArrowDownOutline } from "react-icons/io5";
 
-export default function SidebarFiles({ filesList, updateRootFiles }) {
-  const [open, setOpen] = useState(0);
+export default function SidebarFiles({ rootId, filesList, updateRootFiles }) {
+  const [open, setOpen] = useState(Number(rootId));
   const updateOpen = (e) => {
     e.stopPropagation();
     setOpen(Number(e.currentTarget.id));
