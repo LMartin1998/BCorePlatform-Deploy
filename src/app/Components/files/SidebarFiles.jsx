@@ -43,7 +43,7 @@ export default function SidebarFiles({ filesList, updateRootFiles }) {
           <p>{file.fileName}</p>
         </div>
         <div className="flex justify-center w-1/6">
-          <HiOutlineDotsVertical className="w-full h-full rounded-xl hover:bg-gray-300"></HiOutlineDotsVertical>
+          <HiOutlineDotsVertical className="w-1/2 h-6 rounded-xl hover:bg-gray-300"></HiOutlineDotsVertical>
         </div>
       </div>
     ));
