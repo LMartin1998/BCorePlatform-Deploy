@@ -12,14 +12,11 @@ export default function ContainerFiles({ filesList, updateChildrenFiles }) {
         <input type="checkbox"></input>
         {file.isFolder ? (
           <>
-            <IoFolderOpenOutline
-              size={40}
-              className="m-1"
-            ></IoFolderOpenOutline>
+            <IoFolderOpenOutline className="size-10 m-1"></IoFolderOpenOutline>
           </>
         ) : (
           <img
-            className="size-10 m-1 "
+            className="size-10 m-1"
             src={file.imageLink}
             alt={file.fileName}
           />
@@ -30,7 +27,7 @@ export default function ContainerFiles({ filesList, updateChildrenFiles }) {
   };
 
   return (
-    <div className="w-full h-full grid items-center ml-2 mt-1">
+    <div className="w-full h-full grid items-center ml-2 mt-1 mr-2 border rounded-lg border-gray-500 bg-white">
       {filesList && renderChildrenFiles()}{" "}
     </div>
   );

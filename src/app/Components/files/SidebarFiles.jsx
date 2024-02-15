@@ -25,8 +25,7 @@ export default function SidebarFiles({ filesList, updateRootFiles }) {
         {file.isFolder ? (
           <>
             <IoFolderOpenOutline
-              size={40}
-              className="m-1"
+              className="size-10 m-1"
             ></IoFolderOpenOutline>
           </>
         ) : (
