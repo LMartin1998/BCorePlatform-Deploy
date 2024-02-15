@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { IoFolderOpenOutline } from "react-icons/io5";
 import { HiOutlineDotsVertical } from "react-icons/hi";
+import DropdrownFiles from "./DropdownFiles";
 
 export default function SidebarFiles({ filesList, updateRootFiles }) {
   const [open, setOpen] = useState(0);
@@ -42,9 +43,7 @@ export default function SidebarFiles({ filesList, updateRootFiles }) {
         <div className="flex justify-center w-5/6">
           <p>{file.fileName}</p>
         </div>
-        <div className="flex justify-center w-1/6">
-          <HiOutlineDotsVertical className="w-1/2 h-6 rounded-xl hover:bg-gray-300"></HiOutlineDotsVertical>
-        </div>
+        <DropdrownFiles id={file.id}></DropdrownFiles>
       </div>
     ));
   };
