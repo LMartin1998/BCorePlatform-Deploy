@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IoFolderOpenOutline } from "react-icons/io5";
-import { IoArrowForwardOutline, IoArrowDownOutline } from "react-icons/io5";
+import { HiOutlineDotsVertical } from "react-icons/hi";
 
 export default function SidebarFiles({ filesList, updateRootFiles }) {
   const [open, setOpen] = useState(0);
@@ -16,7 +16,7 @@ export default function SidebarFiles({ filesList, updateRootFiles }) {
         ${
           open === file.id
             ? "bg-blue-200 hover:none"
-            : "bg-white hover:bg-gray-200"
+            : "bg-white hover:bg-gray-100"
         }
         `}
         key={file.id}
@@ -27,13 +27,24 @@ export default function SidebarFiles({ filesList, updateRootFiles }) {
         }}
       >
         {file.isFolder ? (
-          <>
-            <IoFolderOpenOutline className="size-10"></IoFolderOpenOutline>
-          </>
+          <div className="flex justify-center w-1/6">
+            <IoFolderOpenOutline className="w-full h-full"></IoFolderOpenOutline>
+          </div>
         ) : (
-          <img className="size-10" src={file.imageLink} alt={file.fileName} />
+          <div className="flex justify-center w-1/6">
+            <img
+              className="w-full h-full"
+              src={file.imageLink}
+              alt={file.fileName}
+            />
+          </div>
         )}
-        <p>{file.fileName}</p>
+        <div className="flex justify-center w-5/6">
+          <p>{file.fileName}</p>
+        </div>
+        <div className="flex justify-center w-1/6">
+          <HiOutlineDotsVertical className="w-full h-full rounded-xl hover:bg-gray-300"></HiOutlineDotsVertical>
+        </div>
       </div>
     ));
   };
