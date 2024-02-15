@@ -50,7 +50,7 @@ export default function SidebarFiles({ filesList, updateRootFiles }) {
   };
 
   return (
-    <div className="w-1/3 h-full m-1 p-1 grid items-center border border-black rounded-lg bg-slate-200">
+    <div className="w-1/3 h-full m-1 p-1 grid items-center border border-black rounded-lg bg-amber-50">
       {filesList && renderSidebarFiles()}
     </div>
   );
