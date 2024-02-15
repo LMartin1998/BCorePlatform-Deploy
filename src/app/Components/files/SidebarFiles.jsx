@@ -13,7 +13,7 @@ export default function SidebarFiles({ filesList, updateRootFiles }) {
   const renderSidebarFiles = () => {
     return filesList.map((file) => (
       <div
-        className={`flex m-1 items-center select-none border rounded-lg border-gray-400
+        className={`flex items-center select-none border rounded-lg border-gray-400
         ${
           open === file.id
             ? "bg-blue-200 hover:none"

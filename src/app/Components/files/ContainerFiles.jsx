@@ -4,7 +4,7 @@ export default function ContainerFiles({ filesList, updateChildrenFiles }) {
   const renderChildrenFiles = () => {
     return filesList.map((file) => (
       <div
-        className="flex m-1 items-center select-none border rounded-lg border-gray-400 bg-white hover:bg-gray-100"
+        className="flex items-center select-none border rounded-lg border-gray-400 bg-white hover:bg-gray-100"
         key={file.id}
         id={file.id}
         onDoubleClick={updateChildrenFiles}
