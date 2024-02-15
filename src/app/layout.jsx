@@ -2,7 +2,6 @@
 import "./globals.css";
 import { GridProvider } from "./contexts/GridContext";
 import { UserProvider } from "./contexts/UserContext";
-import { FilesProvider } from "./contexts/FilesContext";
 
 // export const metadata = {
 //   title: 'Project Manager',
@@ -14,9 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <UserProvider>
-          <GridProvider>
-            <FilesProvider>{children}</FilesProvider>
-          </GridProvider>
+          <GridProvider>{children}</GridProvider>
         </UserProvider>
       </body>
     </html>
