@@ -1,24 +1,25 @@
+"use client";
+import { FilesContext } from "@/app/contexts/FilesContext";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useEffect } from "react";
 import { IoFolderOpenOutline } from "react-icons/io5";
 
-export default function ShowFiles({ parentId, filesList }) {
+export default function ShowFiles({ filesList }) {
   const router = useRouter();
-
-  const [id, setId] = useState(parentId);
-  const [files, setFiles] = useState(filesList);
-  const changePage = (e) => {
-    e.stopPropagation();
-    router.push(`/docs/folder/${Number(e.currentTarget.id)}`, { data: files });
-  };
+  const { id, files, updateFiles } = useContext(FilesContext);
 
   const renderFiles = () => {
-    return files.map((file) => (
+    return filesList.map((file) => (
       <div
-        className="flex items-center p-2"
         key={file.id}
         id={file.id}
-        onClick={changePage}
+        onClick={(e) => {
+          e.stopPropagation();
+          updateFiles(e);
+          if (files) {
+            router.push(`/docs/folder/${id}`);
+          }
+        }}
       >
         {file.isFolder ? (
           <>
@@ -32,5 +33,5 @@ export default function ShowFiles({ parentId, filesList }) {
     ));
   };
 
-  return files && renderFiles();
+  return renderFiles();
 }

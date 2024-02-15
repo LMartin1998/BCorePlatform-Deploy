@@ -71,7 +71,7 @@ export const filesList = [
         id: 2,
         imageLink: null,
         isFolder: true,
-        fileName: "folder2",
+        fileName: "folder3",
         parentId: 1,
         children: [
           {
