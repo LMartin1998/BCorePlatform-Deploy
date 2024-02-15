@@ -14,7 +14,7 @@ export default function SidebarFiles({ filesList, updateRootFiles }) {
       <div
         className={`flex items-center select-none ${
           open === file.id ? "bg-gray-200" : ""
-        }`}
+        } border-b border-gray-400`}
         key={file.id}
         id={file.id}
         onDoubleClick={(e) => {
@@ -24,9 +24,7 @@ export default function SidebarFiles({ filesList, updateRootFiles }) {
       >
         {file.isFolder ? (
           <>
-            <IoFolderOpenOutline
-              className="size-10 m-1"
-            ></IoFolderOpenOutline>
+            <IoFolderOpenOutline className="size-10 m-1"></IoFolderOpenOutline>
           </>
         ) : (
           <img
@@ -41,7 +39,7 @@ export default function SidebarFiles({ filesList, updateRootFiles }) {
   };
 
   return (
-    <div className="w-1/5 h-full grid items-center ml-2 mt-1 border rounded-lg border-gray-500 bg-white">
+    <div className="w-1/3 h-full grid items-center ml-2 mt-1 border rounded-lg border-gray-500 bg-white">
       {filesList && renderSidebarFiles()}
     </div>
   );
