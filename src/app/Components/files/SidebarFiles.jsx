@@ -12,9 +12,9 @@ export default function SidebarFiles({ filesList, updateRootFiles }) {
   const renderSidebarFiles = () => {
     return filesList.map((file) => (
       <div
-        className={`flex items-center select-none ${
-          open === file.id ? "bg-gray-200" : ""
-        } border-b border-gray-400`}
+        className={`flex p-1 items-center select-none border rounded-lg border-gray-400 ${
+          open === file.id ? "bg-gray-200" : "bg-white"
+        }`}
         key={file.id}
         id={file.id}
         onDoubleClick={(e) => {
@@ -24,14 +24,10 @@ export default function SidebarFiles({ filesList, updateRootFiles }) {
       >
         {file.isFolder ? (
           <>
-            <IoFolderOpenOutline className="size-10 m-1"></IoFolderOpenOutline>
+            <IoFolderOpenOutline className="size-10"></IoFolderOpenOutline>
           </>
         ) : (
-          <img
-            className="size-10 m-1 "
-            src={file.imageLink}
-            alt={file.fileName}
-          />
+          <img className="size-10" src={file.imageLink} alt={file.fileName} />
         )}
         <p>{file.fileName}</p>
       </div>
@@ -39,7 +35,7 @@ export default function SidebarFiles({ filesList, updateRootFiles }) {
   };
 
   return (
-    <div className="w-1/3 h-full grid items-center ml-2 mt-1 border rounded-lg border-gray-500 bg-white">
+    <div className="w-1/3 h-full m-1 grid items-center">
       {filesList && renderSidebarFiles()}
     </div>
   );
