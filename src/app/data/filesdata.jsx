@@ -30,7 +30,7 @@ export const filesList = [
           {
             id: 0,
             imageLink:
-              "https://cdn-icons-png.flaticon.com/512/6676/6676023.png",
+              "https://image-processor-storage.s3.us-west-2.amazonaws.com/images/3cf61c1011912a2173ea4dfa260f1108/halo-of-neon-ring-illuminated-in-the-stunning-landscape-of-yosemite.jpg",
             isFolder: false,
             fileName: "image.png",
             parentId: 2,
@@ -77,10 +77,34 @@ export const filesList = [
           {
             id: 0,
             imageLink:
-              "https://cdn-icons-png.flaticon.com/512/6676/6676023.png",
+              "https://image-processor-storage.s3.us-west-2.amazonaws.com/images/3cf61c1011912a2173ea4dfa260f1108/halo-of-neon-ring-illuminated-in-the-stunning-landscape-of-yosemite.jpg",
             isFolder: false,
             fileName: "image.png",
             parentId: 2,
+          },
+          {
+            id: 1,
+            imageLink: null,
+            isFolder: true,
+            fileName: "folder4",
+            parentId: 2,
+            children: [
+              {
+                id: 0,
+                imageLink:
+                  "https://image-processor-storage.s3.us-west-2.amazonaws.com/images/3cf61c1011912a2173ea4dfa260f1108/halo-of-neon-ring-illuminated-in-the-stunning-landscape-of-yosemite.jpg",
+                isFolder: false,
+                fileName: "image.png",
+                parentId: 1,
+              },
+              {
+                id: 1,
+                imageLink: null,
+                isFolder: true,
+                fileName: "folder5",
+                parentId: 1,
+              },
+            ],
           },
         ],
       },
@@ -88,7 +112,8 @@ export const filesList = [
   },
   {
     id: 2,
-    imageLink: "https://cdn-icons-png.flaticon.com/512/6676/6676023.png",
+    imageLink:
+      "https://image-processor-storage.s3.us-west-2.amazonaws.com/images/3cf61c1011912a2173ea4dfa260f1108/halo-of-neon-ring-illuminated-in-the-stunning-landscape-of-yosemite.jpg",
     isFolder: false,
     fileName: "image.png",
     parentId: null,
