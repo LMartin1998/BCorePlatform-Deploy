@@ -31,7 +31,7 @@ export default function ContainerFiles({ filesList, updateChildrenFiles }) {
   };
 
   return (
-    <div className="w-full h-full m-1 p-1 grid items-center border border-black rounded-lg bg-amber-50">
+    <div className="w-full h-full m-1 p-1 grid items-center border border-black rounded-lg bg-white">
       {filesList && renderChildrenFiles()}
     </div>
   );
