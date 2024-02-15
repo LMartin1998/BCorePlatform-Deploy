@@ -1,4 +1,5 @@
 import { IoFolderOpenOutline } from "react-icons/io5";
+import DropdrownFiles from "./DropdownFiles";
 
 export default function ContainerFiles({ filesList, updateChildrenFiles }) {
   const renderChildrenFiles = () => {
@@ -9,15 +10,22 @@ export default function ContainerFiles({ filesList, updateChildrenFiles }) {
         id={file.id}
         onDoubleClick={updateChildrenFiles}
       >
-        <input type="checkbox"></input>
+        <div className="flex ml-2 w-1/6">
+          <input type="checkbox"></input>
+        </div>
         {file.isFolder ? (
-          <>
+          <div className="flex justify-center w-1/6">
             <IoFolderOpenOutline className="size-10"></IoFolderOpenOutline>
-          </>
+          </div>
         ) : (
-          <img className="size-10" src={file.imageLink} alt={file.fileName} />
+          <div className="flex justify-center w-1/6">
+            <img className="size-10" src={file.imageLink} alt={file.fileName} />
+          </div>
         )}
-        <p>{file.fileName}</p>
+        <div className="flex justify-center w-5/6">
+          <p>{file.fileName}</p>
+        </div>
+        <DropdrownFiles id={file.id}></DropdrownFiles>
       </div>
     ));
   };

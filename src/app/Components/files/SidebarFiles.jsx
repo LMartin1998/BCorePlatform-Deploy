@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { IoFolderOpenOutline } from "react-icons/io5";
-import { HiOutlineDotsVertical } from "react-icons/hi";
 import DropdrownFiles from "./DropdownFiles";
 
 export default function SidebarFiles({ filesList, updateRootFiles }) {
