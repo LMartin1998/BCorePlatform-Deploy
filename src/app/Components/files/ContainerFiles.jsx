@@ -4,7 +4,7 @@ export default function ContainerFiles({ filesList, updateChildrenFiles }) {
   const renderChildrenFiles = () => {
     return filesList.map((file) => (
       <div
-        className="flex p-1 items-center select-none border rounded-lg border-gray-400 bg-white"
+        className="flex m-1 items-center select-none border rounded-lg border-gray-400 bg-white hover:bg-gray-100"
         key={file.id}
         id={file.id}
         onDoubleClick={updateChildrenFiles}
@@ -23,7 +23,7 @@ export default function ContainerFiles({ filesList, updateChildrenFiles }) {
   };
 
   return (
-    <div className="w-full h-full m-1 grid items-center">
+    <div className="w-full h-full m-1 p-1 grid items-center border border-black rounded-lg bg-slate-200">
       {filesList && renderChildrenFiles()}
     </div>
   );
