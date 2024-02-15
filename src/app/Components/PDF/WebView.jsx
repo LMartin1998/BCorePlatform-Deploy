@@ -16,7 +16,7 @@ const WebView = () => {
                     justifyContent: "center",
                 }
             }> 
-                <img src="/Assets/BCORE-LOGO-White.png" alt="" />
+                <img style={{objectFit: "contain"}} src="/Assets/BCORE-LOGO-White.png" alt="" />
                 <p style={
                     {
                         color: "white",
