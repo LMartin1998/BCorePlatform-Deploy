@@ -12,9 +12,13 @@ export default function SidebarFiles({ filesList, updateRootFiles }) {
   const renderSidebarFiles = () => {
     return filesList.map((file) => (
       <div
-        className={`flex p-1 items-center select-none border rounded-lg border-gray-400 ${
-          open === file.id ? "bg-gray-200" : "bg-white"
-        }`}
+        className={`flex p-1 items-center select-none border rounded-lg border-gray-400
+        ${
+          open === file.id
+            ? "bg-blue-200 hover:none"
+            : "bg-white hover:bg-gray-200"
+        }
+        `}
         key={file.id}
         id={file.id}
         onDoubleClick={(e) => {
