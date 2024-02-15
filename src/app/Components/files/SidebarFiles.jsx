@@ -49,6 +49,9 @@ export default function SidebarFiles({ filesList, updateRootFiles }) {
 
   return (
     <div className="w-1/3 h-full m-1 p-1 grid items-center border border-black rounded-lg bg-white">
+      <div className="flex w-1/6 hover:cursor-pointer">
+        <p>Main</p>
+      </div>
       {filesList && renderSidebarFiles()}
     </div>
   );

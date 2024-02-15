@@ -32,6 +32,10 @@ export default function ContainerFiles({ filesList, updateChildrenFiles }) {
 
   return (
     <div className="w-full h-full m-1 p-1 grid items-center border border-black rounded-lg bg-white">
+      <div className="flex w-1/6 justify-evenly hover:cursor-pointer">
+        <input type="checkbox"></input>
+        <p>Files</p>
+      </div>
       {filesList && renderChildrenFiles()}
     </div>
   );
