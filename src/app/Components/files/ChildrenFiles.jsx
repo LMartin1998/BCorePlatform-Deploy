@@ -1,7 +1,7 @@
 import { IoFolderOpenOutline } from "react-icons/io5";
 import DropdrownFiles from "./DropdownFiles";
 
-export default function ContainerFiles({ filesList, updateChildrenFiles }) {
+export default function ChildrenFiles({ filesList, updateChildrenFiles }) {
   const renderChildrenFiles = () => {
     return filesList.map((file) => (
       <div

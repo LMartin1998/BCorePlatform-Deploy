@@ -2,14 +2,14 @@ import { useState } from "react";
 import { IoFolderOpenOutline } from "react-icons/io5";
 import DropdrownFiles from "./DropdownFiles";
 
-export default function SidebarFiles({ filesList, updateRootFiles }) {
+export default function MainFiles({ filesList, updateRootFiles }) {
   const [open, setOpen] = useState(0);
   const updateOpen = (e) => {
     e.stopPropagation();
     setOpen(Number(e.currentTarget.id));
   };
 
-  const renderSidebarFiles = () => {
+  const renderMainFiles = () => {
     return filesList.map((file) => (
       <div
         className={`flex items-center select-none border rounded-lg border-gray-400
@@ -48,11 +48,11 @@ export default function SidebarFiles({ filesList, updateRootFiles }) {
   };
 
   return (
-    <div className="w-1/3 h-full m-1 p-1 grid items-center border border-black rounded-lg bg-white">
+    <div className="w-full h-full m-1 p-1 grid items-center border border-black rounded-lg bg-white">
       <div className="flex w-1/6 hover:cursor-pointer">
         <p>Main</p>
       </div>
-      {filesList && renderSidebarFiles()}
+      {filesList && renderMainFiles()}
     </div>
   );
 }

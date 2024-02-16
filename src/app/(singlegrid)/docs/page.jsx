@@ -2,13 +2,13 @@
 import { useContext, useEffect, useState } from "react";
 import Header from "@/app/components/Header";
 import TopCards from "@/app/components/TopCards";
-import SidebarFiles from "@/app/components/files/SidebarFiles";
-import ContainerFiles from "@/app/components/files/ContainerFiles";
+import MainFiles from "@/app/components/files/MainFiles";
 import { FilesContext } from "@/app/contexts/FilesContext";
 
 export default function Docs() {
   const {
     setParentId,
+    setChildrenId,
     mainFiles,
     childrenFiles,
     updateMainFiles,
@@ -41,6 +41,7 @@ export default function Docs() {
 
   useEffect(() => {
     setParentId(0);
+    setChildrenId(0);
   });
 
   return (
@@ -48,14 +49,10 @@ export default function Docs() {
       <Header></Header>
       <TopCards></TopCards>
       <div className="h-full w-full flex">
-        <SidebarFiles
+        <MainFiles
           filesList={mainFiles}
           updateRootFiles={updateMainFiles}
-        ></SidebarFiles>
-        <ContainerFiles
-          filesList={childrenFiles}
-          updateChildrenFiles={updateChildrenFiles}
-        ></ContainerFiles>
+        ></MainFiles>
       </div>
     </main>
   );

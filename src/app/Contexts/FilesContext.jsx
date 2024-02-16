@@ -1,9 +1,12 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { filesList } from "../data/filesdata";
+import { useRouter } from "next/navigation";
 
 const FilesContext = createContext();
 
 function FilesProvider({ children }) {
+  const router = useRouter();
+
   const [parentId, setParentId] = useState(0);
   const updateParentId = (e) => {
     e.stopPropagation();
@@ -30,6 +33,7 @@ function FilesProvider({ children }) {
     const newId = Number(e.currentTarget.id);
     setParentId(newId);
     setChildrenFiles(mainFiles[newId].children || []);
+    router.push(`/docs/folder/${childrenId}`);
   };
 
   const updateChildrenFiles = (e) => {
@@ -37,6 +41,7 @@ function FilesProvider({ children }) {
     const newId = Number(e.currentTarget.id);
     setChildrenId(newId);
     setChildrenFiles(childrenFiles[newId].children || []);
+    router.push(`/docs/folder/${childrenId}`);
   };
 
   return (
@@ -47,6 +52,7 @@ function FilesProvider({ children }) {
         updateParentId,
         mainFiles,
         childrenId,
+        setChildrenId,
         childrenFiles,
         setChildrenFiles,
         updateMainFiles,
