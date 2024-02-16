@@ -47,7 +47,7 @@ export default function MainFiles({ filesList, updateRootFiles }) {
             <img className="size-6" src={file.imageLink} alt={file.fileName} />
           </div>
         )}
-        <div className="flex justify-center w-5/6">
+        <div className="flex justify-center w-2/3">
           <p>{file.fileName}</p>
         </div>
         <DropdrownFiles id={file.id}></DropdrownFiles>
