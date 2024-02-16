@@ -4,7 +4,7 @@ import { Document, Page, Text, View, Image, StyleSheet } from '@react-pdf/render
 const DocPDF = () => {
     const styles = StyleSheet.create({
         page: {
-            padding: "1rem 1.5rem",
+            padding: 10,
         },
         section: {
             marginTop: 10,
@@ -12,7 +12,7 @@ const DocPDF = () => {
         },
         logoContainer: {
             width: "100%",
-            height: "150px",
+            height: "100px",
             backgroundColor: "#1e40af",
             flexDirection: "column",
             alignItems: "center",
@@ -25,7 +25,9 @@ const DocPDF = () => {
             color: "white",
             fontSize: 10,
             textAlign: "center",
-            marginTop: 2,
+            marginRight: 4,
+            marginLeft: 4,
+            marginBottom: 4
         },
         projectInfoContainer: {
             flexDirection: "row",
@@ -42,9 +44,9 @@ const DocPDF = () => {
         },
         companyDataItem: {
             flex: 1,
-            border: 1,
-            borderColor: "#3e5bb7",
-            padding: 4,
+            borderTop: "1px solid #3e5bb7",
+            marginLeft: 3,
+            marginRight: 3,
         },
         reportContainer: {
             marginTop: 12,
@@ -56,21 +58,31 @@ const DocPDF = () => {
             textAlign: "center",
         },
         table: {
-            borderCollapse: 'collapse',
+            display: 'table',
             width: '100%',
             marginTop: 8,
+            borderStyle: 'solid',
+            borderWidth: 1,
+            borderRightWidth: 0, 
+            borderBottomWidth:0
         },
         header: {
             backgroundColor: '#6179C8',
             color: 'white',
             padding: 8,
             textAlign: 'center',
-            border: '1px solid black',
+            fontSize: 12,
+            width: '25%'
         },
         cell: {
-            border: '1px solid black',
+            width: '25%',
+            borderStyle: 'solid',
+            borderWidth: 1,
+            borderLeftWidth: 0,
+            borderTopWidth: 0,
             padding: 8,
             textAlign: 'center',
+            fontSize: 10
         },
     });
 
@@ -93,16 +105,16 @@ const DocPDF = () => {
                 </View>
                 <View style={styles.companyDataContainer}>
                     <View style={styles.companyDataItem}>
-                        <Text style={{ fontWeight: "bold" }}>Company Address</Text>
-                        <Text>123 Anywhere St, Any City, ST 12345</Text>
+                        <Text style={{ fontWeight: "bold", fontSize: 12 }}>Company Address</Text>
+                        <Text style={{fontSize: 10}}>123 Anywhere St, Any City, ST 12345</Text>
                     </View>
                     <View style={styles.companyDataItem}>
-                        <Text style={{ fontWeight: "bold" }}>Contact Number</Text>
-                        <Text>123-456-789</Text>
+                        <Text style={{ fontWeight: "bold", fontSize: 12 }}>Contact Number</Text>
+                        <Text style={{fontSize: 10}}>123-456-789</Text>
                     </View>
                     <View style={styles.companyDataItem}>
-                        <Text style={{ fontWeight: "bold" }}>Tax ID</Text>
-                        <Text>123-456-789</Text>
+                        <Text style={{ fontWeight: "bold", fontSize: 12 }}>Tax ID</Text>
+                        <Text style={{fontSize: 10}}>123-456-789</Text>
                     </View>
                 </View>
                 <View style={styles.reportContainer}>
@@ -110,7 +122,7 @@ const DocPDF = () => {
                 </View>
                 <View>
                     <View style={styles.table}>
-                        <View style={{ flexDirection: 'row' }}>
+                        <View style={{ flexDirection: 'row', margin: 'auto' }}>
                             <Text style={styles.header}>Header 1</Text>
                             <Text style={styles.header}>Header 2</Text>
                             <Text style={styles.header}>Header 3</Text>
