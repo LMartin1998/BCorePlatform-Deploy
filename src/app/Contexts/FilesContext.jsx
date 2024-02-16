@@ -7,7 +7,7 @@ function FilesProvider({ children }) {
   const [parentId, setParentId] = useState(0);
   const updateParentId = (e) => {
     e.stopPropagation();
-    const newId = Number(e.target.id);
+    const newId = Number(e.currentTarget.id);
     setParentId(newId);
   };
   const [mainFiles, setMainFiles] = useState(
@@ -17,7 +17,7 @@ function FilesProvider({ children }) {
   const [childrenId, setChildrenId] = useState(0);
   const updateChildrenId = (e) => {
     e.stopPropagation();
-    const newId = Number(e.target.id);
+    const newId = Number(e.currentTarget.id);
     setChildrenId(newId);
   };
 
@@ -27,14 +27,16 @@ function FilesProvider({ children }) {
 
   const updateMainFiles = (e) => {
     e.stopPropagation();
-    const newId = Number(e.target.id);
+    const newId = Number(e.currentTarget.id);
     setParentId(newId);
     setChildrenFiles(mainFiles[newId].children || []);
   };
 
   const updateChildrenFiles = (e) => {
     e.stopPropagation();
-    setChildrenFiles;
+    const newId = Number(e.currentTarget.id);
+    setChildrenId(newId);
+    setChildrenFiles(childrenFiles[newId].children || []);
   };
 
   return (
@@ -48,6 +50,7 @@ function FilesProvider({ children }) {
         childrenFiles,
         setChildrenFiles,
         updateMainFiles,
+        updateChildrenFiles,
       }}
     >
       {children}

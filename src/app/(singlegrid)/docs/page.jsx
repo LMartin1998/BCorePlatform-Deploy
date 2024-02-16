@@ -7,7 +7,13 @@ import ContainerFiles from "@/app/components/files/ContainerFiles";
 import { FilesContext } from "@/app/contexts/FilesContext";
 
 export default function Docs() {
-  const { mainFiles, updateMainFiles } = useContext(FilesContext);
+  const {
+    setParentId,
+    mainFiles,
+    childrenFiles,
+    updateMainFiles,
+    updateChildrenFiles,
+  } = useContext(FilesContext);
 
   // const [rootFiles, setRootFiles] = useState(
   //   filesList.filter((file) => file.parentId === null)
@@ -33,6 +39,10 @@ export default function Docs() {
   //   setChildrenFiles(childrenFiles[Number(e.currentTarget.id)].children);
   // };
 
+  useEffect(() => {
+    setParentId(0);
+  });
+
   return (
     <main className="bg-gray-100 min-h-screen">
       <Header></Header>
@@ -42,10 +52,10 @@ export default function Docs() {
           filesList={mainFiles}
           updateRootFiles={updateMainFiles}
         ></SidebarFiles>
-        {/* <ContainerFiles
+        <ContainerFiles
           filesList={childrenFiles}
           updateChildrenFiles={updateChildrenFiles}
-        ></ContainerFiles> */}
+        ></ContainerFiles>
       </div>
     </main>
   );
