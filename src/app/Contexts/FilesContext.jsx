@@ -70,6 +70,7 @@ function FilesProvider({ children }) {
     } else {
       setChildrenFiles(mainFiles[parentId].children || []);
     }
+    folderPath.splice(id + 1);
   };
 
   return (
