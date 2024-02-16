@@ -14,8 +14,8 @@ export default function SelectBlock() {
     setUserData({ ...userData, [name]: value });
   };
 
-  const { getIdsWithViewBoxAndPoints } = useContext(GridContext);
-
+  const { getIdsWithViewBoxAndPoints, handleCheckboxChange } = useContext(GridContext);
+  
   useEffect(() => {
     getIdsWithViewBoxAndPoints();
   }, []);
@@ -30,6 +30,8 @@ export default function SelectBlock() {
                 block={item.id}
                 viewBox={item.viewBox}
                 points={item.points}
+                toUse={item.toUse}
+                onCheck={() => {handleCheckboxChange(item.id); console.log(item.id)}}
             />
         ))}
       </BlockList>

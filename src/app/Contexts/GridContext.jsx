@@ -53,6 +53,7 @@ function GridProvider({ children }) {
 
     const [searchValue, setSearchValue] = useState('');
     const [viewBox, setViewBox] = useState([]);
+    const [isChecked, setIsChecked] = useState({});    
     const getIdsWithViewBoxAndPoints = () => {
         const item = data;
         const idsWithViewboxAndPoints = {};
@@ -61,14 +62,15 @@ function GridProvider({ children }) {
                 idsWithViewboxAndPoints[item.id] = {
                     id: item.id,
                     viewBox: item.viewbox,
-                    points : item.points
+                    points : item.points,
+                    toUse  : isChecked[item.id] || false 
                 }
             }
         });
         const getIdsWithViewBoxAndPoints2 = Object.values(idsWithViewboxAndPoints);
+        console.log(getIdsWithViewBoxAndPoints2);
         return   searchedBlocks(getIdsWithViewBoxAndPoints2, searchValue);
     }
-
 
     const searchedBlocks = (getIdsWithViewBoxAndPoints, searchValue) => {
         const searchedBlock = getIdsWithViewBoxAndPoints.filter(
@@ -81,6 +83,13 @@ function GridProvider({ children }) {
         return searchedBlock; 
     };
 
+    const handleCheckboxChange = (id) => {
+        setIsChecked(prevState => {
+            const newState = { ...prevState };
+            newState[id] = !prevState[id];
+            return newState;
+        });            
+    } 
 
     const [points, setPoints] = useState("");
     const [background, setBackground] = useState("");
@@ -366,7 +375,8 @@ function GridProvider({ children }) {
                 initialStatePanel,
                 getIdsWithViewBoxAndPoints,
                 searchValue,
-                setSearchValue
+                setSearchValue,
+                handleCheckboxChange
             }}
         >
             {children}

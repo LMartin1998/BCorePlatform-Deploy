@@ -13,9 +13,11 @@ import { StepperContext } from "@/app/contexts/StepperContext";
 
 export default function Reports() {
     const [currentStep, setCurrentStep] = useState(1);
+
     const [userData, setUserData] = useState('');
     const [finalData, setFinalData] = useState([]);
     
+    // TODO Cambiar segun sea el reporte
     const steps = [
         "Block",
         "Task",

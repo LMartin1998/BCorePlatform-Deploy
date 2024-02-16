@@ -1,3 +1,4 @@
+
 const BlockItem = (props) => {
   return (
     <li className=" bg-slate-50 w-full mx-auto rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors duration-300 mb-2">
@@ -25,11 +26,15 @@ const BlockItem = (props) => {
         </div>
         {/* Block name */}
         <p className="ml-2 text-gray-700 font-semibold text-base group-hover:text-blue-600">
-          {props.block}
+          {props.block} {props.toUse.toString()}
         </p>
       </div>
       <div>
-        <input type="checkbox" className="mr-2" />
+        <input 
+          type="checkbox" 
+          className="mr-2" 
+          onChange={props.onCheck}
+          />
       </div>
     </li>
   );
