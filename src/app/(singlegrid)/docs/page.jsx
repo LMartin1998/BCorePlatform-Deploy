@@ -11,7 +11,8 @@ export default function Docs() {
     setChildrenId,
     mainFiles,
     updateMainFiles,
-    resetFolderPath,
+    folderPath,
+    setFolderPath,
   } = useContext(FilesContext);
 
   // const [rootFiles, setRootFiles] = useState(
@@ -39,10 +40,15 @@ export default function Docs() {
   // };
 
   useEffect(() => {
+    setFolderPath([
+      { id: null, path: "/docs", filesList: mainFiles, name: "Docs" },
+    ]);
+  }, []);
+
+  useEffect(() => {
     setParentId(0);
     setChildrenId(0);
-    resetFolderPath();
-  });
+  }, []);
 
   return (
     <main className="bg-gray-100 min-h-screen">

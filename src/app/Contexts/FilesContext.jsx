@@ -28,6 +28,18 @@ function FilesProvider({ children }) {
     mainFiles[parentId].children || []
   );
 
+  const [folderPath, setFolderPath] = useState([
+    { id: null, path: "/docs", filesList: mainFiles, name: "Docs" },
+  ]);
+
+  // const folderPath = [
+  //   { id: null, path: "/docs", filesList: mainFiles, name: "Docs" },
+  // ];
+
+  // const resetFolderPath = () => {
+  //   folderPath.splice(1);
+  // };
+
   const updateMainFiles = (e) => {
     e.stopPropagation();
     const newId = Number(e.currentTarget.id);
@@ -51,14 +63,6 @@ function FilesProvider({ children }) {
     router.push(`/docs/folder/${childrenId}`);
   };
 
-  const folderPath = [
-    { id: null, path: "/docs", filesList: mainFiles, name: "Docs" },
-  ];
-
-  const resetFolderPath = () => {
-    folderPath.splice(1);
-  };
-
   return (
     <FilesContext.Provider
       value={{
@@ -73,7 +77,7 @@ function FilesProvider({ children }) {
         updateMainFiles,
         updateChildrenFiles,
         folderPath,
-        resetFolderPath,
+        setFolderPath,
       }}
     >
       {children}
