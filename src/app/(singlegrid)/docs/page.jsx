@@ -15,30 +15,6 @@ export default function Docs() {
     setFolderPath,
   } = useContext(FilesContext);
 
-  // const [rootFiles, setRootFiles] = useState(
-  //   filesList.filter((file) => file.parentId === null)
-  // );
-
-  // const [rootId, setRootId] = useState(0);
-
-  // const [childrenFiles, setChildrenFiles] = useState(
-  //   rootFiles[rootId].children || []
-  // );
-
-  // const [childrenId, setChildrenId] = useState(0);
-
-  // const updateRootFiles = (e) => {
-  //   e.stopPropagation();
-  //   setRootId(Number(e.currentTarget.id));
-  //   setChildrenFiles(rootFiles[Number(e.currentTarget.id)].children);
-  // };
-
-  // const updateChildrenFiles = (e) => {
-  //   e.stopPropagation();
-  //   setChildrenId(Number(e.currentTarget.id));
-  //   setChildrenFiles(childrenFiles[Number(e.currentTarget.id)].children);
-  // };
-
   useEffect(() => {
     setFolderPath([
       { id: null, path: "/docs", filesList: mainFiles, name: "Docs" },
