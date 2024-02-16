@@ -4,6 +4,7 @@ import Header from "@/app/components/Header";
 import TopCards from "@/app/components/TopCards";
 import MainFiles from "@/app/components/files/MainFiles";
 import { FilesContext } from "@/app/contexts/FilesContext";
+import BreadcrumFiles from "@/app/components/files/BreadcrumFiles";
 
 export default function Docs() {
   const {
@@ -31,6 +32,7 @@ export default function Docs() {
       <Header></Header>
       <TopCards></TopCards>
       <div className="h-full w-full flex">
+        <BreadcrumFiles></BreadcrumFiles>
         <MainFiles
           filesList={mainFiles}
           updateRootFiles={updateMainFiles}
