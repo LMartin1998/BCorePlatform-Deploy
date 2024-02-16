@@ -61,6 +61,17 @@ function FilesProvider({ children }) {
     router.push(`/docs/folder/${childrenId}`);
   };
 
+  const updateChildrenFilesFromBreadcrum = (e) => {
+    e.stopPropagation();
+    const id = Number(e.currentTarget.id);
+    if (id > 0) {
+      const list = folderPath[id].filesList || [];
+      setChildrenFiles(list);
+    } else {
+      setChildrenFiles(mainFiles[parentId].children || []);
+    }
+  };
+
   return (
     <FilesContext.Provider
       value={{
@@ -76,6 +87,7 @@ function FilesProvider({ children }) {
         updateChildrenFiles,
         folderPath,
         setFolderPath,
+        updateChildrenFilesFromBreadcrum,
       }}
     >
       {children}
