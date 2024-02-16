@@ -3,10 +3,13 @@ import Header from "@/app/components/Header";
 import TopCards from "@/app/components/TopCards";
 import ChildrenFiles from "@/app/components/files/ChildrenFiles";
 import { FilesContext } from "@/app/contexts/FilesContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 export default function Folder() {
-  const { childrenFiles, updateChildrenFiles } = useContext(FilesContext);
+  const { childrenFiles, updateChildrenFiles, folderPath } =
+    useContext(FilesContext);
+
+  console.log(folderPath);
 
   return (
     <main className="bg-gray-100 min-h-screen">

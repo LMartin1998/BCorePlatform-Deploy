@@ -33,6 +33,13 @@ function FilesProvider({ children }) {
     const newId = Number(e.currentTarget.id);
     setParentId(newId);
     setChildrenFiles(mainFiles[newId].children || []);
+    folderPath.push({
+      id: newId,
+      path: `/docs/folder/${newId}`,
+      filesList: mainFiles[newId].children || [],
+      name: `${mainFiles[newId].fileName}`,
+    });
+    console.log(folderPath);
     router.push(`/docs/folder/${childrenId}`);
   };
 
@@ -42,6 +49,14 @@ function FilesProvider({ children }) {
     setChildrenId(newId);
     setChildrenFiles(childrenFiles[newId].children || []);
     router.push(`/docs/folder/${childrenId}`);
+  };
+
+  const folderPath = [
+    { id: null, path: "/docs", filesList: mainFiles, name: "Docs" },
+  ];
+
+  const resetFolderPath = () => {
+    folderPath.splice(1);
   };
 
   return (
@@ -57,6 +72,8 @@ function FilesProvider({ children }) {
         setChildrenFiles,
         updateMainFiles,
         updateChildrenFiles,
+        folderPath,
+        resetFolderPath,
       }}
     >
       {children}

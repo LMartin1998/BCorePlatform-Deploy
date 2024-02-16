@@ -10,9 +10,8 @@ export default function Docs() {
     setParentId,
     setChildrenId,
     mainFiles,
-    childrenFiles,
     updateMainFiles,
-    updateChildrenFiles,
+    resetFolderPath,
   } = useContext(FilesContext);
 
   // const [rootFiles, setRootFiles] = useState(
@@ -42,6 +41,7 @@ export default function Docs() {
   useEffect(() => {
     setParentId(0);
     setChildrenId(0);
+    resetFolderPath();
   });
 
   return (
