@@ -14,9 +14,15 @@ function FilesProvider({ children }) {
     filesList.filter((file) => file.parentId === null)
   );
 
-  const [files, setFiles] = useState(mainFiles);
+  const [childrenId, setChildrenId] = useState(0);
+  const updateChildrenId = (e) => {
+    e.stopPropagation();
+    const newId = Number(e.target.id);
+    setChildrenId(newId);
+  };
+
   const [childrenFiles, setChildrenFiles] = useState(
-    files[parentId].children || []
+    mainFiles[parentId].children || []
   );
 
   const updateMainFiles = (e) => {
@@ -38,8 +44,7 @@ function FilesProvider({ children }) {
         setParentId,
         updateParentId,
         mainFiles,
-        files,
-        setFiles,
+        childrenId,
         childrenFiles,
         setChildrenFiles,
         updateMainFiles,

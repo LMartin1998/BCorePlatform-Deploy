@@ -3,10 +3,12 @@ import { useContext, useEffect, useState } from "react";
 import Header from "@/app/components/Header";
 import TopCards from "@/app/components/TopCards";
 import SidebarFiles from "@/app/components/files/SidebarFiles";
-import { filesList } from "@/app/data/filesdata";
 import ContainerFiles from "@/app/components/files/ContainerFiles";
+import { FilesContext } from "@/app/contexts/FilesContext";
 
 export default function Docs() {
+  const { mainFiles, updateMainFiles } = useContext(FilesContext);
+
   // const [rootFiles, setRootFiles] = useState(
   //   filesList.filter((file) => file.parentId === null)
   // );
@@ -36,11 +38,11 @@ export default function Docs() {
       <Header></Header>
       <TopCards></TopCards>
       <div className="h-full w-full flex">
-        {/* <SidebarFiles
-          filesList={rootFiles}
-          updateRootFiles={updateRootFiles}
+        <SidebarFiles
+          filesList={mainFiles}
+          updateRootFiles={updateMainFiles}
         ></SidebarFiles>
-        <ContainerFiles
+        {/* <ContainerFiles
           filesList={childrenFiles}
           updateChildrenFiles={updateChildrenFiles}
         ></ContainerFiles> */}
