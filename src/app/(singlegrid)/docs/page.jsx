@@ -31,7 +31,7 @@ export default function Docs() {
     <main className="bg-gray-100 min-h-screen">
       <Header></Header>
       <TopCards></TopCards>
-      <div className="h-full w-full flex">
+      <div className="h-full w-full flex flex-col">
         <BreadcrumFiles></BreadcrumFiles>
         <MainFiles
           filesList={mainFiles}
