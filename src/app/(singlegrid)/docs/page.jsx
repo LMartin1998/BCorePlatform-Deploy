@@ -8,26 +8,7 @@ import ShowFiles from "@/app/components/files/ShowFiles";
 import SearchFiles from "@/app/components/files/SearchFiles";
 
 export default function Docs() {
-  const {
-    setParentId,
-    setChildrenId,
-    mainFiles,
-    updateMainFiles,
-    folderPath,
-    setFolderPath,
-    searchMain,
-  } = useContext(FilesContext);
-
-  useEffect(() => {
-    setFolderPath([
-      { id: null, path: "/docs", filesList: mainFiles, name: "Docs" },
-    ]);
-  }, []);
-
-  useEffect(() => {
-    setParentId(0);
-    setChildrenId(0);
-  }, []);
+  const { updateMainFiles, filterMain, searchMain } = useContext(FilesContext);
 
   return (
     <main className="bg-gray-100 min-h-screen">
@@ -39,7 +20,7 @@ export default function Docs() {
           <SearchFiles searchPage={searchMain}></SearchFiles>
         </div>
         <ShowFiles
-          filesList={mainFiles}
+          filesList={filterMain}
           updateFiles={updateMainFiles}
         ></ShowFiles>
       </div>

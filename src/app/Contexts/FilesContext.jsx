@@ -7,7 +7,7 @@ const FilesContext = createContext();
 function FilesProvider({ children }) {
   const router = useRouter();
 
-  const [parentId, setParentId] = useState(0);
+  const [parentId, setParentId] = useState();
   const updateParentId = (e) => {
     e.stopPropagation();
     const newId = Number(e.currentTarget.id);
@@ -16,17 +16,33 @@ function FilesProvider({ children }) {
   const [mainFiles, setMainFiles] = useState(
     filesList.filter((file) => file.parentId === null)
   );
+  const [filterMain, setFilterMain] = useState(mainFiles);
+  const searchMain = (e) => {
+    e.stopPropagation();
+    const filterValue = e.target.value;
+    const filteredList = mainFiles.filter((file) =>
+      file.fileName.toLowerCase().includes(filterValue.toLowerCase())
+    );
+    setFilterMain(filteredList);
+  };
 
-  const [childrenId, setChildrenId] = useState(0);
+  const [childrenId, setChildrenId] = useState();
   const updateChildrenId = (e) => {
     e.stopPropagation();
     const newId = Number(e.currentTarget.id);
     setChildrenId(newId);
   };
 
-  const [childrenFiles, setChildrenFiles] = useState(
-    mainFiles[parentId].children || []
-  );
+  const [childrenFiles, setChildrenFiles] = useState([]);
+  const [filterChildren, setFilterChildren] = useState(childrenFiles);
+  const searchChildren = (e) => {
+    e.stopPropagation();
+    const filterValue = e.target.value;
+    const filteredList = childrenFiles.filter((file) =>
+      file.fileName.toLowerCase().includes(filterValue.toLowerCase())
+    );
+    setFilterChildren(filteredList);
+  };
 
   const [folderPath, setFolderPath] = useState([
     { id: null, path: "/docs", filesList: mainFiles, name: "Docs" },
@@ -37,6 +53,7 @@ function FilesProvider({ children }) {
     const newId = Number(e.currentTarget.id);
     setParentId(newId);
     setChildrenFiles(mainFiles[newId].children || []);
+    setFilterChildren(mainFiles[newId].children || []);
     folderPath.push({
       id: newId,
       path: `/docs/folder/${newId}`,
@@ -68,25 +85,9 @@ function FilesProvider({ children }) {
       const list = folderPath[id].filesList || [];
       setChildrenFiles(list);
     } else {
-      setChildrenFiles(mainFiles[parentId].children || []);
+      setChildrenFiles([]);
     }
     folderPath.splice(id + 1);
-  };
-
-  const [searchMainFiles, setSearchMainFiles] = useState("");
-  const searchMain = (e) => {
-    e.stopPropagation();
-    const filterValue = e.target.value;
-    const filteredList = mainFiles.filter((file) =>
-      file.fileName.toLowerCase().includes(filterValue.toLowerCase())
-    );
-    console.log(filteredList);
-    setMainFiles(filteredList);
-  };
-  const [searchChildrenFiles, setChildrenMainFiles] = useState("");
-  const searchChildren = (e) => {
-    e.stopPropagation();
-    console.log(e.target.value);
   };
 
   return (
@@ -105,7 +106,10 @@ function FilesProvider({ children }) {
         folderPath,
         setFolderPath,
         updateChildrenFilesFromBreadcrum,
+        filterMain,
         searchMain,
+        filterChildren,
+        searchChildren,
       }}
     >
       {children}
