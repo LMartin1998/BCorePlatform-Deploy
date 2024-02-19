@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { filesList } from "../data/filesdata";
 import { useRouter } from "next/navigation";
 
@@ -94,6 +94,14 @@ function FilesProvider({ children }) {
     folderPath.splice(id + 1);
   };
 
+  const [design, setDesign] = useState(0);
+  const updateDesign = (e) => {
+    e.stopPropagation();
+    // console.log(e.currentTarget);
+    // console.log(e.target.id);
+    setDesign(e.currentTarget.id);
+  };
+
   return (
     <FilesContext.Provider
       value={{
@@ -114,6 +122,8 @@ function FilesProvider({ children }) {
         searchMain,
         filterChildren,
         searchChildren,
+        design,
+        updateDesign,
       }}
     >
       {children}

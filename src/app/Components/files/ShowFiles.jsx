@@ -3,6 +3,7 @@ import { IoFolderOpenOutline } from "react-icons/io5";
 import DropdrownFiles from "./DropdownFiles";
 import BreadcrumFiles from "./BreadcrumFiles";
 import SearchFiles from "./SearchFiles";
+import DesignFiles from "./DesignFiles";
 
 export default function ShowFiles({ filesList, updateFiles, searchPage }) {
   const [open, setOpen] = useState(-1);
@@ -59,8 +60,9 @@ export default function ShowFiles({ filesList, updateFiles, searchPage }) {
 
   return (
     <div className="h-full w-full flex flex-col">
-      <div className="flex">
+      <div className="flex w-full m-1 p-1">
         <BreadcrumFiles></BreadcrumFiles>
+        <DesignFiles></DesignFiles>
         <SearchFiles searchPage={searchPage}></SearchFiles>
       </div>
       <div className="w-full h-full m-1 p-1 grid items-center" ref={divRef}>
