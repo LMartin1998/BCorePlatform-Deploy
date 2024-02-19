@@ -2,9 +2,10 @@
 import { useContext, useEffect, useState } from "react";
 import Header from "@/app/components/Header";
 import TopCards from "@/app/components/TopCards";
-import MainFiles from "@/app/components/files/MainFiles";
 import { FilesContext } from "@/app/contexts/FilesContext";
 import BreadcrumFiles from "@/app/components/files/BreadcrumFiles";
+import ShowFiles from "@/app/components/files/ShowFiles";
+import SearchFiles from "@/app/components/files/SearchFiles";
 
 export default function Docs() {
   const {
@@ -32,11 +33,14 @@ export default function Docs() {
       <Header></Header>
       <TopCards></TopCards>
       <div className="h-full w-full flex flex-col">
-        <BreadcrumFiles></BreadcrumFiles>
-        <MainFiles
+        <div className="flex">
+          <BreadcrumFiles></BreadcrumFiles>
+          <SearchFiles></SearchFiles>
+        </div>
+        <ShowFiles
           filesList={mainFiles}
-          updateRootFiles={updateMainFiles}
-        ></MainFiles>
+          updateFiles={updateMainFiles}
+        ></ShowFiles>
       </div>
     </main>
   );

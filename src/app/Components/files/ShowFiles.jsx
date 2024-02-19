@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { IoFolderOpenOutline } from "react-icons/io5";
 import DropdrownFiles from "./DropdownFiles";
 
-export default function MainFiles({ filesList, updateRootFiles }) {
+export default function ShowFiles({ filesList, updateFiles }) {
   const [open, setOpen] = useState(-1);
   const updateOpen = (e) => {
     e.stopPropagation();
@@ -23,7 +23,7 @@ export default function MainFiles({ filesList, updateRootFiles }) {
     };
   }, []);
 
-  const renderMainFiles = () => {
+  const renderFiles = () => {
     return filesList.map((file) => (
       <div
         className={`h-12 w-full flex items-center select-none b0rder border-t border-b border-gray-400
@@ -36,7 +36,7 @@ export default function MainFiles({ filesList, updateRootFiles }) {
         key={file.id}
         id={file.id}
         onClick={updateOpen}
-        onDoubleClick={updateRootFiles}
+        onDoubleClick={updateFiles}
       >
         {file.isFolder ? (
           <div className="flex justify-center items-center m-1 w-1/6 h-6">
@@ -57,7 +57,7 @@ export default function MainFiles({ filesList, updateRootFiles }) {
 
   return (
     <div className="w-full h-full m-1 p-1 grid items-center" ref={divRef}>
-      {filesList && renderMainFiles()}
+      {filesList && renderFiles()}
     </div>
   );
 }

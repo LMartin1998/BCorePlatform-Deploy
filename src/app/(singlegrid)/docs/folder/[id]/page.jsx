@@ -2,7 +2,7 @@
 import Header from "@/app/components/Header";
 import TopCards from "@/app/components/TopCards";
 import BreadcrumFiles from "@/app/components/files/BreadcrumFiles";
-import ChildrenFiles from "@/app/components/files/ChildrenFiles";
+import ShowFiles from "@/app/components/files/ShowFiles";
 import { FilesContext } from "@/app/contexts/FilesContext";
 import { useContext, useEffect } from "react";
 
@@ -18,10 +18,10 @@ export default function Folder() {
       <TopCards></TopCards>
       <BreadcrumFiles></BreadcrumFiles>
       <div className="h-full w-full flex">
-        <ChildrenFiles
+        <ShowFiles
           filesList={childrenFiles}
-          updateChildrenFiles={updateChildrenFiles}
-        ></ChildrenFiles>
+          updateFiles={updateChildrenFiles}
+        ></ShowFiles>
       </div>
     </main>
   );
