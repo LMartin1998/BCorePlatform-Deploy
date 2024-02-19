@@ -85,7 +85,9 @@ function FilesProvider({ children }) {
     if (id > 0) {
       const list = folderPath[id].filesList || [];
       setChildrenFiles(list);
+      setFilterChildren(list);
     } else {
+      setChildrenFiles([]);
       setChildrenFiles([]);
     }
     folderPath.splice(id + 1);
