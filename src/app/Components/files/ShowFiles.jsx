@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { IoFolderOpenOutline } from "react-icons/io5";
 import DropdrownFiles from "./DropdownFiles";
+import BreadcrumFiles from "./BreadcrumFiles";
+import SearchFiles from "./SearchFiles";
 
-export default function ShowFiles({ filesList, updateFiles }) {
+export default function ShowFiles({ filesList, updateFiles, searchPage }) {
   const [open, setOpen] = useState(-1);
   const updateOpen = (e) => {
     e.stopPropagation();
@@ -56,8 +58,14 @@ export default function ShowFiles({ filesList, updateFiles }) {
   };
 
   return (
-    <div className="w-full h-full m-1 p-1 grid items-center" ref={divRef}>
-      {filesList && renderFiles()}
+    <div className="h-full w-full flex flex-col">
+      <div className="flex">
+        <BreadcrumFiles></BreadcrumFiles>
+        <SearchFiles searchPage={searchPage}></SearchFiles>
+      </div>
+      <div className="w-full h-full m-1 p-1 grid items-center" ref={divRef}>
+        {filesList && renderFiles()}
+      </div>
     </div>
   );
 }
