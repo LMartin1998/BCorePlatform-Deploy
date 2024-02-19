@@ -34,7 +34,7 @@ export default function ShowFiles({ filesList, updateFiles, searchPage }) {
       <div
         className={`${
           design == 1
-            ? "w-52 h-52 flex flex-col border justify-center"
+            ? "w-52 h-52 flex flex-col border rounded-lg justify-center"
             : "h-12 w-full flex border-t border-b"
         } items-center select-none border-gray-400
         ${
