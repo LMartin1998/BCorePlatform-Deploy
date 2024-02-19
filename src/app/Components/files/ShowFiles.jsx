@@ -32,7 +32,11 @@ export default function ShowFiles({ filesList, updateFiles, searchPage }) {
   const renderFiles = () => {
     return filesList.map((file) => (
       <div
-        className={`h-12 w-full flex items-center select-none b0rder border-t border-b border-gray-400
+        className={`${
+          design
+            ? "w-52 h-52 flex flex-col border"
+            : "h-12 w-full flex border-t border-b"
+        } items-center select-none border-gray-400
         ${
           open === file.id
             ? "bg-blue-200 hover:none"
@@ -70,7 +74,7 @@ export default function ShowFiles({ filesList, updateFiles, searchPage }) {
       </div>
       <div
         className={`w-full h-full m-1 p-1 ${
-          design == 0 ? "flex flex-col" : "grid grid-cols-4 gap-1"
+          design ? "grid grid-cols-4 gap-x-1 gap-y-7" : "flex flex-col"
         } items-center`}
         ref={divRef}
       >
