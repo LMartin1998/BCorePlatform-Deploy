@@ -49,12 +49,20 @@ export default function ShowFiles({ filesList, updateFiles, searchPage }) {
         onDoubleClick={updateFiles}
       >
         {file.isFolder ? (
-          <div className="flex justify-center items-center m-1 w-1/6 h-6">
+          <div
+            className={`flex justify-center items-center m-1 ${
+              design == 1 ? "h-32 w-2/5" : "h-6 w-1/6"
+            }`}
+          >
             <IoFolderOpenOutline className="w-full h-full"></IoFolderOpenOutline>
           </div>
         ) : (
-          <div className="flex justify-center items-center m-1 w-1/6 h-6">
-            <img className="size-6" src={file.imageLink} alt={file.fileName} />
+          <div
+            className={`flex justify-center items-center m-1 ${
+              design == 1 ? "h-32 w-2/5" : "h-6 w-1/6"
+            }`}
+          >
+            <img className={`${design == 1 ? "size-24" : "size-6"}`} src={file.imageLink} alt={file.fileName} />
           </div>
         )}
         <div className="flex justify-center w-2/3">
