@@ -32,7 +32,8 @@ const BlockItem = (props) => {
       <div>
         <input 
           type="checkbox" 
-          className="mr-2" 
+          className="mr-2"
+          checked={props.toUse} 
           onChange={props.onCheck}
           />
       </div>

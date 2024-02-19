@@ -31,7 +31,7 @@ export default function SelectBlock() {
                 viewBox={item.viewBox}
                 points={item.points}
                 toUse={item.toUse}
-                onCheck={() => {handleCheckboxChange(item.id); console.log(item.id)}}
+                onCheck={() => {handleCheckboxChange(item.id);}}
             />
         ))}
       </BlockList>

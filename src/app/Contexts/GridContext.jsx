@@ -53,7 +53,16 @@ function GridProvider({ children }) {
 
     const [searchValue, setSearchValue] = useState('');
     const [viewBox, setViewBox] = useState([]);
-    const [isChecked, setIsChecked] = useState({});    
+    const [isChecked, setIsChecked] = useState({});
+    
+    const handleCheckboxChange = (id) => {
+        setIsChecked(prevState => {
+            const newState = { ...prevState };
+            newState[id] = !prevState[id];
+            return newState;
+        });            
+    } 
+
     const getIdsWithViewBoxAndPoints = () => {
         const item = data;
         const idsWithViewboxAndPoints = {};
@@ -68,10 +77,10 @@ function GridProvider({ children }) {
             }
         });
         const getIdsWithViewBoxAndPoints2 = Object.values(idsWithViewboxAndPoints);
-        console.log(getIdsWithViewBoxAndPoints2);
-        return   searchedBlocks(getIdsWithViewBoxAndPoints2, searchValue);
+        // console.log(getIdsWithViewBoxAndPoints2);
+        return searchedBlocks(getIdsWithViewBoxAndPoints2, searchValue);
     }
-
+    //Function for search blocks in the list of reports
     const searchedBlocks = (getIdsWithViewBoxAndPoints, searchValue) => {
         const searchedBlock = getIdsWithViewBoxAndPoints.filter(
             (item) => {
@@ -83,13 +92,7 @@ function GridProvider({ children }) {
         return searchedBlock; 
     };
 
-    const handleCheckboxChange = (id) => {
-        setIsChecked(prevState => {
-            const newState = { ...prevState };
-            newState[id] = !prevState[id];
-            return newState;
-        });            
-    } 
+    
 
     const [points, setPoints] = useState("");
     const [background, setBackground] = useState("");
