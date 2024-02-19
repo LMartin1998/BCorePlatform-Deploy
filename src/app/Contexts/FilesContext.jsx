@@ -69,6 +69,7 @@ function FilesProvider({ children }) {
     const newId = Number(e.currentTarget.id);
     setChildrenId(newId);
     setChildrenFiles(childrenFiles[newId].children || []);
+    setFilterChildren(childrenFiles[newId].children || []);
     folderPath.push({
       id: newId,
       path: `/docs/folder/${newId}`,
