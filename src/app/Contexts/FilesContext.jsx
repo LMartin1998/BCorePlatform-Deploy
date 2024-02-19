@@ -97,8 +97,6 @@ function FilesProvider({ children }) {
   const [design, setDesign] = useState(0);
   const updateDesign = (e) => {
     e.stopPropagation();
-    // console.log(e.currentTarget);
-    // console.log(e.target.id);
     setDesign(e.currentTarget.id);
   };
 

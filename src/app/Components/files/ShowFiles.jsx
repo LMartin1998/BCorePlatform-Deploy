@@ -33,8 +33,8 @@ export default function ShowFiles({ filesList, updateFiles, searchPage }) {
     return filesList.map((file) => (
       <div
         className={`${
-          design
-            ? "w-52 h-52 flex flex-col border"
+          design == 1
+            ? "w-52 h-52 flex flex-col border justify-center"
             : "h-12 w-full flex border-t border-b"
         } items-center select-none border-gray-400
         ${
@@ -74,7 +74,7 @@ export default function ShowFiles({ filesList, updateFiles, searchPage }) {
       </div>
       <div
         className={`w-full h-full m-1 p-1 ${
-          design ? "grid grid-cols-4 gap-x-1 gap-y-7" : "flex flex-col"
+          design == 1 ? "grid grid-cols-4 gap-x-1 gap-y-7" : "flex flex-col"
         } items-center`}
         ref={divRef}
       >
