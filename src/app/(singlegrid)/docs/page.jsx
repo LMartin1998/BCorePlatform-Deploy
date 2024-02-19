@@ -15,6 +15,7 @@ export default function Docs() {
     updateMainFiles,
     folderPath,
     setFolderPath,
+    searchMain,
   } = useContext(FilesContext);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ export default function Docs() {
       <div className="h-full w-full flex flex-col">
         <div className="flex">
           <BreadcrumFiles></BreadcrumFiles>
-          <SearchFiles></SearchFiles>
+          <SearchFiles searchPage={searchMain}></SearchFiles>
         </div>
         <ShowFiles
           filesList={mainFiles}

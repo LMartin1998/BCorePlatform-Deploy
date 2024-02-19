@@ -10,8 +10,6 @@ export default function Folder() {
   const { childrenFiles, updateChildrenFiles, folderPath } =
     useContext(FilesContext);
 
-  console.log(folderPath);
-
   return (
     <main className="bg-gray-100 min-h-screen">
       <Header></Header>

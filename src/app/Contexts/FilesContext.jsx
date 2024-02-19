@@ -73,6 +73,22 @@ function FilesProvider({ children }) {
     folderPath.splice(id + 1);
   };
 
+  const [searchMainFiles, setSearchMainFiles] = useState("");
+  const searchMain = (e) => {
+    e.stopPropagation();
+    const filterValue = e.target.value;
+    const filteredList = mainFiles.filter((file) =>
+      file.fileName.toLowerCase().includes(filterValue.toLowerCase())
+    );
+    console.log(filteredList);
+    setMainFiles(filteredList);
+  };
+  const [searchChildrenFiles, setChildrenMainFiles] = useState("");
+  const searchChildren = (e) => {
+    e.stopPropagation();
+    console.log(e.target.value);
+  };
+
   return (
     <FilesContext.Provider
       value={{
@@ -89,6 +105,7 @@ function FilesProvider({ children }) {
         folderPath,
         setFolderPath,
         updateChildrenFilesFromBreadcrum,
+        searchMain,
       }}
     >
       {children}
