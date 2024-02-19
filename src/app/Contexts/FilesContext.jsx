@@ -45,7 +45,7 @@ function FilesProvider({ children }) {
   };
 
   const [folderPath, setFolderPath] = useState([
-    { id: null, path: "/docs", filesList: mainFiles, name: "Docs" },
+    { id: null, path: "/docs", filesList: filterMain, name: "Docs" },
   ]);
 
   const updateMainFiles = (e) => {
@@ -89,6 +89,7 @@ function FilesProvider({ children }) {
     } else {
       setChildrenFiles([]);
       setChildrenFiles([]);
+      setFilterMain(mainFiles);
     }
     folderPath.splice(id + 1);
   };

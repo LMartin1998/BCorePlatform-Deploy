@@ -4,7 +4,7 @@ import { useContext, Fragment } from "react";
 import { IoArrowForwardOutline } from "react-icons/io5";
 
 export default function BreadcrumFiles() {
-  const { folderPath, setChildrenFiles, updateChildrenFilesFromBreadcrum } =
+  const { folderPath, updateChildrenFilesFromBreadcrum } =
     useContext(FilesContext);
 
   return (
