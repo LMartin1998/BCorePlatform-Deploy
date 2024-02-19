@@ -1,11 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { IoFolderOpenOutline } from "react-icons/io5";
 import DropdrownFiles from "./DropdownFiles";
 import BreadcrumFiles from "./BreadcrumFiles";
 import SearchFiles from "./SearchFiles";
 import DesignFiles from "./DesignFiles";
+import { FilesContext } from "@/app/contexts/FilesContext";
 
 export default function ShowFiles({ filesList, updateFiles, searchPage }) {
+  const { design } = useContext(FilesContext);
+
   const [open, setOpen] = useState(-1);
   const updateOpen = (e) => {
     e.stopPropagation();
@@ -65,7 +68,12 @@ export default function ShowFiles({ filesList, updateFiles, searchPage }) {
         <DesignFiles></DesignFiles>
         <SearchFiles searchPage={searchPage}></SearchFiles>
       </div>
-      <div className="w-full h-full m-1 p-1 grid items-center" ref={divRef}>
+      <div
+        className={`w-full h-full m-1 p-1 ${
+          design == 0 ? "flex flex-col" : "grid grid-cols-4 gap-1"
+        } items-center`}
+        ref={divRef}
+      >
         {filesList && renderFiles()}
       </div>
     </div>
