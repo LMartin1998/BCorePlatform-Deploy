@@ -105,7 +105,11 @@ export default function ShowFiles({ filesList, updateFiles }) {
 
   return (
     <div className="flex flex-col w-full h-80 items-center overflow-auto">
-      <div className="flex flex-col w-11/12 border border-black rounded-lg bg-white">
+      <div
+        className={`${
+          design == 0 ? "flex flex-col" : "grid grid-cols-4 gap-2.5"
+        } w-11/12 border border-black rounded-lg bg-white`}
+      >
         {filesList && renderFiles()}
       </div>
     </div>
