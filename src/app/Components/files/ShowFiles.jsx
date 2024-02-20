@@ -79,6 +79,15 @@ export default function ShowFiles({ filesList, updateFiles }) {
         className="h-12 w-full flex items-center justify-center bg-white"
         key={file.id}
       >
+        {file.isFolder ? (
+          <div className="flex size-6">
+            <IoFolderOpenOutline className="w-full h-full"></IoFolderOpenOutline>
+          </div>
+        ) : (
+          <div className="flex size-6">
+            <img src={file.imageLink} alt={file.fileName} />
+          </div>
+        )}
         <div className="flex justify-center w-2/3">
           <p>{file.fileName}</p>
         </div>
@@ -89,7 +98,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
 
   return (
     <div className="flex w-full h-80 justify-center overflow-auto">
-      <div className="grid w-5/6">{filesList && renderFiles()}</div>
+      <div className="grid w-11/12">{filesList && renderFiles()}</div>
     </div>
   );
 }
