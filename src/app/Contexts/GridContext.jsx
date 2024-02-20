@@ -64,45 +64,52 @@ function GridProvider({ children }) {
     } 
 
     const [viewboxAndPoints] = useState(data);
-    const getIdsWithViewBoxAndPoints = () => {
-        const item = [...data];
-        const idsWithViewboxAndPoints = {};
-        item.forEach(item =>{
-            if(item.viewbox && item.points){
-                idsWithViewboxAndPoints[item.id] = {
-                    id: item.id,
-                    viewBox: item.viewbox,
-                    points : item.points,
-                    toUse  : isChecked[item.id] || false 
-                }
-            }
-        });
-        const getIdsWithViewBoxAndPoints2 = Object.values(idsWithViewboxAndPoints);
-        // console.log(getIdsWithViewBoxAndPoints2);
-        return searchedBlocks(getIdsWithViewBoxAndPoints2, searchValue);
-    }
-    //Function for search blocks in the list of reports
-    const searchedBlocks = (getIdsWithViewBoxAndPoints, searchValue) => {
-        const searchedBlock = getIdsWithViewBoxAndPoints.filter(
-            (item) => {
-                const blockId  = item.id.toLowerCase();
-                const searchId = searchValue.toLowerCase();
-                return blockId.includes(searchId);
-            }
-        );
-        return searchedBlock; 
-    };
-
     const [selectedBlocks, setSelectedBlocks] = useState([]);
-    const addSelectedBlocks = () => {
-        const elements = getIdsWithViewBoxAndPoints();
-        const elementsSelected = elements.filter(element => element.toUse === true);
-        setSelectedBlocks([
-            ...getIdsWithViewBoxAndPoints(),
-
-        ])
-        console.log(elementsSelected);
+    const handleCheck = (id) =>{
+        if(selectedBlocks.includes(id)) {
+            setSelectedBlocks(prevSelectedBlocks => prevSelectedBlocks.filter(item => item !== id)); 
+        } else {
+            setSelectedBlocks([...selectedBlocks, id]);
+        }
     }
+    useEffect(()=> {console.log(selectedBlocks)},[selectedBlocks]);
+
+    // const getIdsWithViewBoxAndPoints = () => {
+    //     const item = [...data];
+    //     const idsWithViewboxAndPoints = {};
+    //     item.forEach(item =>{
+    //         if(item.viewbox && item.points){
+    //             idsWithViewboxAndPoints[item.id] = {
+    //                 id: item.id,
+    //                 viewBox: item.viewbox,
+    //                 points : item.points,
+    //                 toUse  : isChecked[item.id] || false 
+    //             }
+    //         }
+    //     });
+    //     const getIdsWithViewBoxAndPoints2 = Object.values(idsWithViewboxAndPoints);
+    //     // console.log(getIdsWithViewBoxAndPoints2);
+    //     return searchedBlocks(getIdsWithViewBoxAndPoints2, searchValue);
+    // }
+    //Function for search blocks in the list of reports
+
+    const searchedBlocks = viewboxAndPoints.filter(
+        (item) => {
+            const blockId  = item.id.toLowerCase();
+            const searchId = searchValue.toLowerCase();
+            return blockId.includes(searchId);
+        }
+    )
+
+    // const addSelectedBlocks = () => {
+    //     const elements = getIdsWithViewBoxAndPoints();
+    //     const elementsSelected = elements.filter(element => element.toUse === true);
+    //     setSelectedBlocks([
+    //         ...getIdsWithViewBoxAndPoints(),
+
+    //     ])
+    //     console.log(elementsSelected);
+    // }
     
 
     const [points, setPoints] = useState("");
@@ -387,11 +394,15 @@ function GridProvider({ children }) {
                 torqueTubeShow,
                 initialStateTT,
                 initialStatePanel,
-                getIdsWithViewBoxAndPoints,
+                // Variables para stepper
                 searchValue,
                 setSearchValue,
                 handleCheckboxChange,
-                viewboxAndPoints
+                viewboxAndPoints,
+                searchedBlocks,
+                selectedBlocks,
+                handleCheck
+                // Variables para stepper
             }}
         >
             {children}

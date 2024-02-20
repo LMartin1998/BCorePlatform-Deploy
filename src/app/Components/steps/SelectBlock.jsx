@@ -14,22 +14,20 @@ export default function SelectBlock() {
     setUserData({ ...userData, [name]: value });
   };
 
-  const { getIdsWithViewBoxAndPoints, handleCheckboxChange, viewboxAndPoints } = useContext(GridContext);
-  
-  useEffect(() => {
-    getIdsWithViewBoxAndPoints();
-  }, []);
+  const {  searchedBlocks, handleCheck, selectedBlocks } = useContext(GridContext);
 
   return (
     <div className="flex flex-col">
       <SearchBlock></SearchBlock>
       <BlockList>
-        {viewboxAndPoints.map(item =>(
+        {searchedBlocks.map(item =>(
             <BlockItem
                 key={item.id}
                 block={item.id}
                 viewBox={item.viewBox}
                 points={item.points}
+                checked={selectedBlocks.includes(item.id)}
+                onChange={() => handleCheck(item.id)}
                 // toUse={item.toUse}
                 // onCheck={() => {handleCheckboxChange(item.id);}}
             />

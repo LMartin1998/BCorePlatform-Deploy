@@ -4,13 +4,9 @@ import TaskBlock from "./taskBlock/TaskBlock";
 
 export default function TaskInfo(){
 
-    const { selectedBlocks, getIdsWithViewBoxAndPoints } = useContext(GridContext);
+    const { selectedBlocks } = useContext(GridContext);
 
-    useEffect(() => {
-        const elements = getIdsWithViewBoxAndPoints();
-
-      }, []);
-
+    // useEffect(()=> {console.log(selectedBlocks)},[selectedBlocks]);
     const [optionsDrop, setoptionsDrop] = useState([]);
 
     const data = [
