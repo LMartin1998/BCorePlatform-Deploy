@@ -23,10 +23,10 @@ export default function Docs() {
         <DesignFiles></DesignFiles>
       </div>
       <FilterFiles type={mainType} updateType={updateMainType}></FilterFiles>
-      {/* <ShowFiles
+      <ShowFiles
         filesList={filterMain}
         updateFiles={updateMainFiles}
-      ></ShowFiles> */}
+      ></ShowFiles>
     </main>
   );
 }
