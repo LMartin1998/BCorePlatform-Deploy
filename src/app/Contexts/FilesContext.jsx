@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { filesList } from "../data/filesdata";
 import { useRouter } from "next/navigation";
 
@@ -107,7 +107,6 @@ function FilesProvider({ children }) {
       filesList: mainFiles[newId].children || [],
       name: `${mainFiles[newId].fileName}`,
     });
-    console.log(folderPath);
     router.push(`/docs/folder/${childrenId}`);
   };
 
@@ -118,12 +117,15 @@ function FilesProvider({ children }) {
     setChildrenFiles(childrenFiles[newId].children || []);
     setFilterChildren(childrenFiles[newId].children || []);
     setChildrenType(0);
-    folderPath.push({
-      id: newId,
-      path: `/docs/folder/${newId}`,
-      filesList: childrenFiles[newId].children || [],
-      name: `${childrenFiles[newId].fileName}`,
-    });
+    setFolderPath([
+      ...folderPath,
+      {
+        id: newId,
+        path: `/docs/folder/${newId}`,
+        filesList: childrenFiles[newId].children || [],
+        name: `${childrenFiles[newId].fileName}`,
+      },
+    ]);
     router.push(`/docs/folder/${childrenId}`);
   };
 
@@ -140,8 +142,13 @@ function FilesProvider({ children }) {
       setChildrenFiles([]);
       setFilterMain(mainFiles);
     }
-    folderPath.splice(id + 1);
+    const newPath = folderPath.slice(0, id + 1);
+    setFolderPath(newPath);
   };
+
+  useEffect(() => {
+    console.log(folderPath);
+  }, [folderPath]);
 
   const [design, setDesign] = useState(0);
   const updateDesign = (e) => {
