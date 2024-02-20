@@ -55,7 +55,7 @@ function GridProvider({ children }) {
     
     // hooks for steppers
     const [viewboxAndPoints] = useState(data);
-    const [selectedBlocks, setSelectedBlocks] = useState([]);
+
     const [searchValue, setSearchValue] = useState('');
     const searchedBlocks = viewboxAndPoints.filter(
         (item) => {
@@ -64,6 +64,8 @@ function GridProvider({ children }) {
             return blockId.includes(searchId);
         }
     );
+    
+    const [selectedBlocks, setSelectedBlocks] = useState([]);
     const handleCheck = (id) =>{
         if(selectedBlocks.includes(id)) {
             setSelectedBlocks(prevSelectedBlocks => prevSelectedBlocks.filter(item => item !== id)); 
