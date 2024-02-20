@@ -76,8 +76,15 @@ export default function ShowFiles({ filesList, updateFiles }) {
   const renderFiles = () => {
     return filesList.map((file) => (
       <div
-        className="h-12 w-full flex items-center justify-center border rounded-lg bg-white"
+        className={`h-12 w-full flex items-center justify-center border rounded-lg ${
+          open === file.id
+            ? "bg-blue-200 hover:none"
+            : "bg-white hover:bg-gray-100"
+        } `}
         key={file.id}
+        id={file.id}
+        onClick={updateOpen}
+        onDoubleClick={updateFiles}
       >
         {file.isFolder ? (
           <div className="flex size-6">
