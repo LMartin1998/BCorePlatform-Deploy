@@ -117,6 +117,7 @@ function FilesProvider({ children }) {
     setChildrenId(newId);
     setChildrenFiles(childrenFiles[newId].children || []);
     setFilterChildren(childrenFiles[newId].children || []);
+    setChildrenType(0);
     folderPath.push({
       id: newId,
       path: `/docs/folder/${newId}`,
@@ -133,6 +134,7 @@ function FilesProvider({ children }) {
       const list = folderPath[id].filesList || [];
       setChildrenFiles(list);
       setFilterChildren(list);
+      setChildrenType(0);
     } else {
       setChildrenFiles([]);
       setChildrenFiles([]);

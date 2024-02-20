@@ -26,9 +26,6 @@ export default function Docs() {
       <ShowFiles
         filesList={filterMain}
         updateFiles={updateMainFiles}
-        searchPage={searchMain}
-        type={mainType}
-        updateType={updateMainType}
       ></ShowFiles>
     </main>
   );

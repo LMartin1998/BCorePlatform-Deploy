@@ -34,9 +34,6 @@ export default function Folder() {
       <ShowFiles
         filesList={filterChildren}
         updateFiles={updateChildrenFiles}
-        searchPage={searchChildren}
-        type={childrenType}
-        updateType={updateChildrenType}
       ></ShowFiles>
     </main>
   );
