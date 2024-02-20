@@ -76,7 +76,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
   const renderFiles = () => {
     return filesList.map((file) => (
       <div
-        className="h-24 w-full flex items-center justify-center bg-white"
+        className="h-12 w-full flex items-center justify-center bg-white"
         key={file.id}
       >
         <div className="flex justify-center w-2/3">
@@ -88,8 +88,8 @@ export default function ShowFiles({ filesList, updateFiles }) {
   };
 
   return (
-    <div className="w-full h-80 overflow-auto">
-      <div className="flex flex-col w-full">{filesList && renderFiles()}</div>
+    <div className="flex w-full h-80 items-center justify-center overflow-auto">
+      <div className="grid w-5/6">{filesList && renderFiles()}</div>
     </div>
   );
 }
