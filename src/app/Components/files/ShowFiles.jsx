@@ -76,7 +76,9 @@ export default function ShowFiles({ filesList, updateFiles }) {
   const renderFiles = () => {
     return filesList.map((file) => (
       <div
-        className={`h-12 w-full flex items-center justify-center border rounded-lg ${
+        className={`${
+          design == 0 ? "h-12 w-full flex flex-row" : "h-36 w-36 flex flex-col"
+        } items-center justify-center border rounded-lg ${
           open === file.id
             ? "bg-blue-200 hover:none"
             : "bg-white hover:bg-gray-100"
@@ -107,7 +109,9 @@ export default function ShowFiles({ filesList, updateFiles }) {
     <div className="flex flex-col w-full h-80 items-center overflow-auto">
       <div
         className={`${
-          design == 0 ? "flex flex-col" : "grid grid-cols-4 gap-2.5"
+          design == 0
+            ? "flex flex-col"
+            : "grid grid-cols-4 gap-2.5 justify-items-center"
         } w-11/12 border border-black rounded-lg bg-white`}
       >
         {filesList && renderFiles()}
