@@ -74,35 +74,68 @@ export default function ShowFiles({ filesList, updateFiles }) {
   //   ));
   // };
   const renderFiles = () => {
-    return filesList.map((file) => (
-      <div
-        className={`${
-          design == 0 ? "h-12 w-full flex flex-row" : "h-36 w-36 flex flex-col"
-        } items-center justify-center border rounded-lg ${
-          open === file.id
-            ? "bg-blue-200 hover:none"
-            : "bg-white hover:bg-gray-100"
-        } `}
-        key={file.id}
-        id={file.id}
-        onClick={updateOpen}
-        onDoubleClick={updateFiles}
-      >
-        {file.isFolder ? (
-          <div className="flex size-6">
-            <IoFolderOpenOutline className="w-full h-full" />
+    return filesList.map((file) => {
+      const observerRef = useRef(null);
+      const [visible, setVisible] = useState(false);
+
+      useEffect(() => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach(({ target, isIntersecting }) => {
+              if (target === observerRef.current) {
+                setVisible(isIntersecting);
+              }
+            });
+          },
+          {
+            threshold: 0.5, // Puedes ajustar el umbral según tus necesidades
+          }
+        );
+
+        if (observerRef.current) {
+          observer.observe(observerRef.current);
+        }
+
+        return () => {
+          if (observerRef.current) {
+            observer.unobserve(observerRef.current);
+          }
+        };
+      }, []);
+
+      return (
+        <div
+          className={`${
+            design == 0
+              ? "h-12 w-full flex flex-row"
+              : "h-36 w-36 flex flex-col"
+          } items-center justify-center border rounded-lg ${
+            open === file.id
+              ? "bg-blue-200 hover:none"
+              : "bg-white hover:bg-gray-100"
+          } ${visible ? "opacity-100" : "opacity-0"}`}
+          key={file.id}
+          id={file.id}
+          onClick={updateOpen}
+          onDoubleClick={updateFiles}
+          ref={observerRef}
+        >
+          {file.isFolder ? (
+            <div className="flex size-6">
+              <IoFolderOpenOutline className="w-full h-full" />
+            </div>
+          ) : (
+            <div className="flex size-6">
+              <img src={file.imageLink} alt={file.fileName} />
+            </div>
+          )}
+          <div className="flex justify-center w-2/3">
+            <p>{file.fileName}</p>
           </div>
-        ) : (
-          <div className="flex size-6">
-            <img src={file.imageLink} alt={file.fileName} />
-          </div>
-        )}
-        <div className="flex justify-center w-2/3">
-          <p>{file.fileName}</p>
+          <DropdrownFiles id={file.id} />
         </div>
-        <DropdrownFiles id={file.id} />
-      </div>
-    ));
+      );
+    });
   };
 
   return (
@@ -113,6 +146,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
             ? "flex flex-col"
             : "grid grid-cols-4 gap-2.5 justify-items-center"
         } w-11/12 border border-black rounded-lg bg-white`}
+        ref={divRef}
       >
         {filesList && renderFiles()}
       </div>
