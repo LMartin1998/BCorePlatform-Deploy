@@ -7,7 +7,13 @@ import DesignFiles from "./DesignFiles";
 import { FilesContext } from "@/app/contexts/FilesContext";
 import FilterFiles from "./FilterFiles";
 
-export default function ShowFiles({ filesList, updateFiles, searchPage }) {
+export default function ShowFiles({
+  filesList,
+  updateFiles,
+  searchPage,
+  type,
+  updateType,
+}) {
   const { design } = useContext(FilesContext);
 
   const [open, setOpen] = useState(-1);
@@ -85,7 +91,7 @@ export default function ShowFiles({ filesList, updateFiles, searchPage }) {
         <BreadcrumFiles></BreadcrumFiles>
         <DesignFiles></DesignFiles>
       </div>
-      <FilterFiles></FilterFiles>
+      <FilterFiles type={type} updateType={updateType}></FilterFiles>
       <div
         className={`w-full h-full m-1 p-1 ${
           design == 1 ? "grid grid-cols-4 gap-x-1 gap-y-7" : "flex flex-col"

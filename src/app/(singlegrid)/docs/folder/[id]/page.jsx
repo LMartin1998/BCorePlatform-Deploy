@@ -6,8 +6,13 @@ import { FilesContext } from "@/app/contexts/FilesContext";
 import { useContext } from "react";
 
 export default function Folder() {
-  const { updateChildrenFiles, filterChildren, searchChildren } =
-    useContext(FilesContext);
+  const {
+    updateChildrenFiles,
+    filterChildren,
+    searchChildren,
+    childrenType,
+    updateChildrenType,
+  } = useContext(FilesContext);
 
   return (
     <main className="bg-gray-100 min-h-screen">
@@ -17,6 +22,8 @@ export default function Folder() {
         filesList={filterChildren}
         updateFiles={updateChildrenFiles}
         searchPage={searchChildren}
+        type={childrenType}
+        updateType={updateChildrenType}
       ></ShowFiles>
     </main>
   );

@@ -6,7 +6,8 @@ import { FilesContext } from "@/app/contexts/FilesContext";
 import ShowFiles from "@/app/components/files/ShowFiles";
 
 export default function Docs() {
-  const { updateMainFiles, filterMain, searchMain } = useContext(FilesContext);
+  const { updateMainFiles, filterMain, searchMain, mainType, updateMainType } =
+    useContext(FilesContext);
 
   return (
     <main className="bg-gray-100 min-h-screen">
@@ -17,6 +18,8 @@ export default function Docs() {
         filesList={filterMain}
         updateFiles={updateMainFiles}
         searchPage={searchMain}
+        type={mainType}
+        updateType={updateMainType}
       ></ShowFiles>
     </main>
   );

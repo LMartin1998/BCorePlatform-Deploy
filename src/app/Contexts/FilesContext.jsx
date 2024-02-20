@@ -56,7 +56,6 @@ function FilesProvider({ children }) {
     const newId = Number(e.currentTarget.id);
     setChildrenId(newId);
   };
-
   const [childrenFiles, setChildrenFiles] = useState([]);
   const [filterChildren, setFilterChildren] = useState(childrenFiles);
   const searchChildren = (e) => {
@@ -66,6 +65,30 @@ function FilesProvider({ children }) {
       file.fileName.toLowerCase().includes(filterValue.toLowerCase())
     );
     setFilterChildren(filteredList);
+  };
+  const [childrenType, setChildrenType] = useState(0);
+  const updateChildrenType = (e) => {
+    e.stopPropagation();
+    const extensions = ["pdf", "png", "jpeg", "jpg"];
+    setChildrenType(e.currentTarget.id);
+    if (e.currentTarget.id == 0) {
+      setFilterChildren(childrenFiles);
+    } else if (e.currentTarget.id == 1) {
+      const filteredList = childrenFiles.filter((file) =>
+        extensions.some((ex) =>
+          file.fileName.toLowerCase().endsWith(ex.toLowerCase())
+        )
+      );
+      setFilterChildren(filteredList);
+    } else if (e.currentTarget.id == 2) {
+      const filteredList = childrenFiles.filter(
+        (file) =>
+          !extensions.some((ex) =>
+            file.fileName.toLowerCase().endsWith(ex.toLowerCase())
+          )
+      );
+      setFilterChildren(filteredList);
+    }
   };
 
   const [folderPath, setFolderPath] = useState([
@@ -146,7 +169,10 @@ function FilesProvider({ children }) {
         searchChildren,
         design,
         updateDesign,
+        mainType,
         updateMainType,
+        childrenType,
+        updateChildrenType,
       }}
     >
       {children}
