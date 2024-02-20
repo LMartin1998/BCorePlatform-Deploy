@@ -88,7 +88,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
   };
 
   return (
-    <div className="flex w-full h-80 items-center justify-center overflow-auto">
+    <div className="flex w-full h-80 justify-center overflow-auto">
       <div className="grid w-5/6">{filesList && renderFiles()}</div>
     </div>
   );
