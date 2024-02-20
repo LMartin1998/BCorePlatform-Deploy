@@ -11,7 +11,7 @@ export default function DesignFiles() {
 
   return (
     <div
-      className="flex w-1/5 justify-center border border-black rounded-lg divide-x divide-black m-1 bg-white"
+      className="flex w-1/6 justify-end border border-black rounded-lg divide-x divide-black m-1 bg-white"
       onClick={(e) => e.stopPropagation()}
     >
       <div

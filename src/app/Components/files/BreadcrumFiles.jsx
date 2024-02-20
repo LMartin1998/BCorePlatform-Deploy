@@ -9,7 +9,7 @@ export default function BreadcrumFiles() {
 
   return (
     folderPath && (
-      <div className="flex items-center w-3/5 m-1">
+      <div className="flex jusify-start items-center w-5/6 m-1">
         {folderPath.map((item, index) => (
           <Fragment key={index ? index : 0}>
             {index > 0 && (

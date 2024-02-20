@@ -62,7 +62,11 @@ export default function ShowFiles({ filesList, updateFiles, searchPage }) {
               design == 1 ? "h-32 w-2/5" : "h-6 w-1/6"
             }`}
           >
-            <img className={`${design == 1 ? "size-24" : "size-6"}`} src={file.imageLink} alt={file.fileName} />
+            <img
+              className={`${design == 1 ? "size-24" : "size-6"}`}
+              src={file.imageLink}
+              alt={file.fileName}
+            />
           </div>
         )}
         <div className="flex justify-center w-2/3">
@@ -75,10 +79,10 @@ export default function ShowFiles({ filesList, updateFiles, searchPage }) {
 
   return (
     <div className="h-full w-full flex flex-col">
+      <SearchFiles searchPage={searchPage}></SearchFiles>
       <div className="flex w-full m-1 p-1">
         <BreadcrumFiles></BreadcrumFiles>
         <DesignFiles></DesignFiles>
-        <SearchFiles searchPage={searchPage}></SearchFiles>
       </div>
       <div
         className={`w-full h-full m-1 p-1 ${
