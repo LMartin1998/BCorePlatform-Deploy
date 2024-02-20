@@ -76,12 +76,12 @@ export default function ShowFiles({ filesList, updateFiles }) {
   const renderFiles = () => {
     return filesList.map((file) => (
       <div
-        className="h-12 w-full flex items-center justify-center bg-white"
+        className="w-full flex items-center justify-center bg-white h-12"
         key={file.id}
       >
         {file.isFolder ? (
           <div className="flex size-6">
-            <IoFolderOpenOutline className="w-full h-full"></IoFolderOpenOutline>
+            <IoFolderOpenOutline className="w-full h-full" />
           </div>
         ) : (
           <div className="flex size-6">
@@ -91,14 +91,14 @@ export default function ShowFiles({ filesList, updateFiles }) {
         <div className="flex justify-center w-2/3">
           <p>{file.fileName}</p>
         </div>
-        <DropdrownFiles id={file.id}></DropdrownFiles>
+        <DropdrownFiles id={file.id} />
       </div>
     ));
   };
 
   return (
-    <div className="flex w-full h-80 justify-center overflow-auto">
-      <div className="grid w-11/12">{filesList && renderFiles()}</div>
+    <div className="flex flex-col w-full h-80 items-center overflow-auto">
+      <div className="flex flex-col w-11/12">{filesList && renderFiles()}</div>
     </div>
   );
 }
