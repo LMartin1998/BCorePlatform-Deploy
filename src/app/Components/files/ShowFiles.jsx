@@ -75,7 +75,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
   };
 
   return (
-    <div className="h-full w-full flex flex-col">
+    <div className="h-80 w-full flex flex-col overflow-auto">
       <div
         className={`w-full h-full m-1 p-1 ${
           design == 1 ? "grid grid-cols-4 gap-x-1 gap-y-7" : "flex flex-col"
