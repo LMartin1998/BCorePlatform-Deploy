@@ -56,16 +56,16 @@ export default function TaskInfo(){
 
     return(
         <div className="flex flex-col">
-            {/* { getIdsWithViewBoxAndPoints() && getIdsWithViewBoxAndPoints().map(item => (
+            { selectedBlocks.map(id => (
                 <TaskBlock
-                    key={item.id}
+                    key={id}
                     data={data}
                     handleChange={handleChange}
                     optionsDrop={optionsDrop}
-                    id={item.id}
+                    id={id}
                 >
                 </TaskBlock>
-            ))} */}
+            ))}
         </div>
     );
 }
