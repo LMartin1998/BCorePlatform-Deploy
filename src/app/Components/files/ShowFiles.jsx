@@ -26,46 +26,59 @@ export default function ShowFiles({ filesList, updateFiles }) {
     };
   }, []);
 
+  // const renderFiles = () => {
+  //   return filesList.map((file) => (
+  //     <div
+  //       className={`${
+  //         design == 1
+  //           ? "w-52 h-52 flex flex-col border rounded-lg justify-center"
+  //           : "h-12 w-full flex border-t border-b"
+  //       } items-center select-none border-gray-400
+  //       ${
+  //         open === file.id
+  //           ? "bg-blue-200 hover:none"
+  //           : "bg-white hover:bg-gray-100"
+  //       }
+  //       `}
+  //       key={file.id}
+  //       id={file.id}
+  //       onClick={updateOpen}
+  //       onDoubleClick={updateFiles}
+  //     >
+  //       {file.isFolder ? (
+  //         <div
+  //           className={`flex justify-center items-center m-1 ${
+  //             design == 1 ? "h-32 w-2/5" : "h-6 w-1/6"
+  //           }`}
+  //         >
+  //           <IoFolderOpenOutline className="w-full h-full"></IoFolderOpenOutline>
+  //         </div>
+  //       ) : (
+  //         <div
+  //           className={`flex justify-center items-center m-1 ${
+  //             design == 1 ? "h-32 w-2/5" : "h-6 w-1/6"
+  //           }`}
+  //         >
+  //           <img
+  //             className={`${design == 1 ? "size-24" : "size-6"}`}
+  //             src={file.imageLink}
+  //             alt={file.fileName}
+  //           />
+  //         </div>
+  //       )}
+  //       <div className="flex justify-center w-2/3">
+  //         <p>{file.fileName}</p>
+  //       </div>
+  //       <DropdrownFiles id={file.id}></DropdrownFiles>
+  //     </div>
+  //   ));
+  // };
   const renderFiles = () => {
     return filesList.map((file) => (
       <div
-        className={`${
-          design == 1
-            ? "w-52 h-52 flex flex-col border rounded-lg justify-center"
-            : "h-12 w-full flex border-t border-b"
-        } items-center select-none border-gray-400
-        ${
-          open === file.id
-            ? "bg-blue-200 hover:none"
-            : "bg-white hover:bg-gray-100"
-        }
-        `}
+        className="h-24 w-full flex items-center justify-center bg-white"
         key={file.id}
-        id={file.id}
-        onClick={updateOpen}
-        onDoubleClick={updateFiles}
       >
-        {file.isFolder ? (
-          <div
-            className={`flex justify-center items-center m-1 ${
-              design == 1 ? "h-32 w-2/5" : "h-6 w-1/6"
-            }`}
-          >
-            <IoFolderOpenOutline className="w-full h-full"></IoFolderOpenOutline>
-          </div>
-        ) : (
-          <div
-            className={`flex justify-center items-center m-1 ${
-              design == 1 ? "h-32 w-2/5" : "h-6 w-1/6"
-            }`}
-          >
-            <img
-              className={`${design == 1 ? "size-24" : "size-6"}`}
-              src={file.imageLink}
-              alt={file.fileName}
-            />
-          </div>
-        )}
         <div className="flex justify-center w-2/3">
           <p>{file.fileName}</p>
         </div>
@@ -75,15 +88,8 @@ export default function ShowFiles({ filesList, updateFiles }) {
   };
 
   return (
-    <div className="h-80 w-full flex flex-col overflow-auto">
-      <div
-        className={`w-full h-full m-1 p-1 ${
-          design == 1 ? "grid grid-cols-4 gap-x-1 gap-y-7" : "flex flex-col"
-        } items-center`}
-        ref={divRef}
-      >
-        {filesList && renderFiles()}
-      </div>
+    <div className="w-full h-80 overflow-auto">
+      <div className="flex flex-col w-full">{filesList && renderFiles()}</div>
     </div>
   );
 }
