@@ -9,14 +9,14 @@ export default function BreadcrumFiles() {
 
   return (
     folderPath && (
-      <div className="flex jusify-start items-center w-5/6 m-1">
+      <div className="flex jusify-start items-center w-5/6 m-2">
         {folderPath.map((item, index) => (
           <Fragment key={index ? index : 0}>
             {index > 0 && (
               <IoArrowForwardOutline className="size-5 m-1"></IoArrowForwardOutline>
             )}
             <Link
-              className="flex p-1 rounded-full hover:bg-gray-300"
+              className="flex rounded-full hover:bg-gray-300"
               href={item.path}
               id={index ? index : 0}
               onClick={updateChildrenFilesFromBreadcrum}

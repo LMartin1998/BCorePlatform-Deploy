@@ -18,15 +18,15 @@ export default function Docs() {
       <Header></Header>
       <TopCards></TopCards>
       <SearchFiles searchPage={searchMain}></SearchFiles>
-      <div className="flex w-full m-1 p-1">
+      <div className="flex w-full">
         <BreadcrumFiles></BreadcrumFiles>
         <DesignFiles></DesignFiles>
       </div>
       <FilterFiles type={mainType} updateType={updateMainType}></FilterFiles>
-      <ShowFiles
+      {/* <ShowFiles
         filesList={filterMain}
         updateFiles={updateMainFiles}
-      ></ShowFiles>
+      ></ShowFiles> */}
     </main>
   );
 }
