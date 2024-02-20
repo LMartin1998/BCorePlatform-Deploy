@@ -25,6 +25,30 @@ function FilesProvider({ children }) {
     );
     setFilterMain(filteredList);
   };
+  const [mainType, setMainType] = useState(0);
+  const updateMainType = (e) => {
+    e.stopPropagation();
+    const extensions = ["pdf", "png", "jpeg", "jpg"];
+    setMainType(e.currentTarget.id);
+    if (e.currentTarget.id == 0) {
+      setFilterMain(mainFiles);
+    } else if (e.currentTarget.id == 1) {
+      const filteredList = mainFiles.filter((file) =>
+        extensions.some((ex) =>
+          file.fileName.toLowerCase().endsWith(ex.toLowerCase())
+        )
+      );
+      setFilterMain(filteredList);
+    } else if (e.currentTarget.id == 2) {
+      const filteredList = mainFiles.filter(
+        (file) =>
+          !extensions.some((ex) =>
+            file.fileName.toLowerCase().endsWith(ex.toLowerCase())
+          )
+      );
+      setFilterMain(filteredList);
+    }
+  };
 
   const [childrenId, setChildrenId] = useState();
   const updateChildrenId = (e) => {
@@ -122,6 +146,7 @@ function FilesProvider({ children }) {
         searchChildren,
         design,
         updateDesign,
+        updateMainType,
       }}
     >
       {children}

@@ -5,6 +5,7 @@ import BreadcrumFiles from "./BreadcrumFiles";
 import SearchFiles from "./SearchFiles";
 import DesignFiles from "./DesignFiles";
 import { FilesContext } from "@/app/contexts/FilesContext";
+import FilterFiles from "./FilterFiles";
 
 export default function ShowFiles({ filesList, updateFiles, searchPage }) {
   const { design } = useContext(FilesContext);
@@ -84,6 +85,7 @@ export default function ShowFiles({ filesList, updateFiles, searchPage }) {
         <BreadcrumFiles></BreadcrumFiles>
         <DesignFiles></DesignFiles>
       </div>
+      <FilterFiles></FilterFiles>
       <div
         className={`w-full h-full m-1 p-1 ${
           design == 1 ? "grid grid-cols-4 gap-x-1 gap-y-7" : "flex flex-col"
