@@ -1,10 +1,16 @@
-import { useState } from "react";
-import DropdownGeneral from "../widgets/DropdDownGeneral";
-import ToggleButtonGroup from "../widgets/ToggleButtonGroup";
-import ButtonAddTask from "../widgets/buttonAddTask";
-import MyDatePicker from "../Datepicker";
+import { useState, useContext, useEffect } from "react";
+import { GridContext } from "@/app/contexts/GridContext";
+import TaskBlock from "./taskBlock/TaskBlock";
 
 export default function TaskInfo(){
+
+    const { selectedBlocks, getIdsWithViewBoxAndPoints } = useContext(GridContext);
+
+    useEffect(() => {
+        const elements = getIdsWithViewBoxAndPoints();
+
+      }, []);
+
     const [optionsDrop, setoptionsDrop] = useState([]);
 
     const data = [
@@ -51,35 +57,19 @@ export default function TaskInfo(){
         }
         setoptionsDrop(dropDownOptions);
     };
+
     return(
         <div className="flex flex-col">
-            <div className="flex justify-center items-center">
-                <p className="text-gray-700 font-normal text-lg w-3/4">Block PCS401</p>
-                <MyDatePicker></MyDatePicker>
-            </div>
-            <div className="container mx-auto my-2">
-                <ToggleButtonGroup
-                    options={data} 
-                    onChange={handleChange}
+            {/* { getIdsWithViewBoxAndPoints() && getIdsWithViewBoxAndPoints().map(item => (
+                <TaskBlock
+                    key={item.id}
+                    data={data}
+                    handleChange={handleChange}
+                    optionsDrop={optionsDrop}
+                    id={item.id}
                 >
-                </ToggleButtonGroup>
-            </div>
-            <p className="text-gray-700 font-normal text-base mt-2">Type of task</p>
-            <DropdownGeneral options={optionsDrop} buttonText='Choose a task'></DropdownGeneral>
-            
-            <div className="flex justify-center items-center">
-                <p className="text-gray-700 font-normal text-lg w-3/4">Block PCS108</p>
-                <MyDatePicker></MyDatePicker>
-            </div>
-            <div className="container mx-auto my-2">
-                <ToggleButtonGroup
-                    options={data} 
-                    onChange={handleChange}
-                >
-                </ToggleButtonGroup>
-            </div>
-            <p className="text-gray-700 font-normal text-base mt-2">Type of task</p>
-            <DropdownGeneral options={optionsDrop} buttonText='Choose a task'></DropdownGeneral>
+                </TaskBlock>
+            ))} */}
         </div>
     );
 }

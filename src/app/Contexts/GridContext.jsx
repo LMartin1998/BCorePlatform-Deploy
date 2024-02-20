@@ -63,8 +63,9 @@ function GridProvider({ children }) {
         });            
     } 
 
+    const [viewboxAndPoints] = useState(data);
     const getIdsWithViewBoxAndPoints = () => {
-        const item = data;
+        const item = [...data];
         const idsWithViewboxAndPoints = {};
         item.forEach(item =>{
             if(item.viewbox && item.points){
@@ -92,6 +93,16 @@ function GridProvider({ children }) {
         return searchedBlock; 
     };
 
+    const [selectedBlocks, setSelectedBlocks] = useState([]);
+    const addSelectedBlocks = () => {
+        const elements = getIdsWithViewBoxAndPoints();
+        const elementsSelected = elements.filter(element => element.toUse === true);
+        setSelectedBlocks([
+            ...getIdsWithViewBoxAndPoints(),
+
+        ])
+        console.log(elementsSelected);
+    }
     
 
     const [points, setPoints] = useState("");
@@ -379,7 +390,8 @@ function GridProvider({ children }) {
                 getIdsWithViewBoxAndPoints,
                 searchValue,
                 setSearchValue,
-                handleCheckboxChange
+                handleCheckboxChange,
+                viewboxAndPoints
             }}
         >
             {children}

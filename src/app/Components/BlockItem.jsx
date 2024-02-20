@@ -26,15 +26,15 @@ const BlockItem = (props) => {
         </div>
         {/* Block name */}
         <p className="ml-2 text-gray-700 font-semibold text-base group-hover:text-blue-600">
-          {props.block} {props.toUse.toString()}
+          {props.block} 
         </p>
       </div>
       <div>
         <input 
           type="checkbox" 
           className="mr-2"
-          checked={props.toUse} 
-          onChange={props.onCheck}
+          // checked={props.toUse} 
+          // onChange={props.onCheck}
           />
       </div>
     </li>
