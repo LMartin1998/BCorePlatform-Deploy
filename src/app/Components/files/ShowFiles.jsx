@@ -41,7 +41,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
         },
         {
           threshold: 0.2,
-        }
+        },
       );
 
       if (observerRef.current) {
@@ -100,16 +100,18 @@ export default function ShowFiles({ filesList, updateFiles }) {
   };
 
   return (
-    <div className="flex flex-col w-full h-80 items-center overflow-auto">
-      <div
-        className={`${
-          design == 0
-            ? "flex flex-col"
-            : "grid grid-cols-4 gap-2.5 justify-items-center"
-        } w-11/12 border border-black rounded-lg bg-white`}
-        ref={divRef}
-      >
-        {filesList && renderFiles()}
+    <div className="flex flex-col w-full h-96 items-center">
+      <div className="flex flex-col w-11/12 h-fit items-center border border-black rounded-lg overflow-auto">
+        <div
+          className={`${
+            design == 0
+              ? "flex flex-col"
+              : "grid grid-cols-4 gap-2.5 justify-items-center"
+          } w-full`}
+          ref={divRef}
+        >
+          {filesList && renderFiles()}
+        </div>
       </div>
     </div>
   );
