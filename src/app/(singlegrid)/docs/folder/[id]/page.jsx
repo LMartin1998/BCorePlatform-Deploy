@@ -8,6 +8,7 @@ import DesignFiles from "@/app/components/files/DesignFiles";
 import FilterFiles from "@/app/components/files/FilterFiles";
 import { FilesContext } from "@/app/contexts/FilesContext";
 import { useContext } from "react";
+import { IoAddCircleOutline } from "react-icons/io5";
 
 export default function Folder() {
   const {
@@ -27,10 +28,16 @@ export default function Folder() {
         <BreadcrumFiles></BreadcrumFiles>
         <DesignFiles></DesignFiles>
       </div>
-      <FilterFiles
-        type={childrenType}
-        updateType={updateChildrenType}
-      ></FilterFiles>
+      <div className="flex w-1/3 m-2 justify-center items-center">
+        <button className="flex justify-center items-center w-1/4 m-1 border border-black rounded-lg">
+          <IoAddCircleOutline size={20}></IoAddCircleOutline>
+          Add
+        </button>
+        <FilterFiles
+          type={childrenType}
+          updateType={updateChildrenType}
+        ></FilterFiles>
+      </div>
       <ShowFiles
         filesList={filterChildren}
         updateFiles={updateChildrenFiles}

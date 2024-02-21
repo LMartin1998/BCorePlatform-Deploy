@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Header from "@/app/components/Header";
 import TopCards from "@/app/components/TopCards";
 import { FilesContext } from "@/app/contexts/FilesContext";
@@ -8,6 +8,7 @@ import SearchFiles from "@/app/components/files/SearchFiles";
 import BreadcrumFiles from "@/app/components/files/BreadcrumFiles";
 import DesignFiles from "@/app/components/files/DesignFiles";
 import FilterFiles from "@/app/components/files/FilterFiles";
+import { IoAddCircleOutline } from "react-icons/io5";
 
 export default function Docs() {
   const { updateMainFiles, filterMain, searchMain, mainType, updateMainType } =
@@ -22,7 +23,13 @@ export default function Docs() {
         <BreadcrumFiles></BreadcrumFiles>
         <DesignFiles></DesignFiles>
       </div>
-      <FilterFiles type={mainType} updateType={updateMainType}></FilterFiles>
+      <div className="flex w-1/3 m-2 justify-center items-center">
+        <button className="flex justify-center items-center w-1/4 m-1 border border-black rounded-lg">
+          <IoAddCircleOutline size={20}></IoAddCircleOutline>
+          Add
+        </button>
+        <FilterFiles type={mainType} updateType={updateMainType}></FilterFiles>
+      </div>
       <ShowFiles
         filesList={filterMain}
         updateFiles={updateMainFiles}
