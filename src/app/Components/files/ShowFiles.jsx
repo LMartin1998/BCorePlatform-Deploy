@@ -84,7 +84,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
       </div>
     ) : (
       <div
-        className={`h-36 w-36 flex flex-col items-center justify-center border rounded-lg ${
+        className={`h-36 w-36 flex flex-col items-center border rounded-lg ${
           open === file.id
             ? "bg-blue-200 hover:none"
             : "bg-white hover:bg-gray-100"
@@ -95,19 +95,23 @@ export default function ShowFiles({ filesList, updateFiles }) {
         onDoubleClick={updateFiles}
         ref={observerRef}
       >
+        <div className="w-full flex justify-center items-center">
+          <div className="w-1/2 text-ellipsis relative left-2 flex justify-start items-center">
+            <p>{file.fileName}</p>
+          </div>
+          <div className="w-1/2 relative right-5 flex justify-end items-center">
+            <DropdrownFiles id={file.id} />
+          </div>
+        </div>
         {file.isFolder ? (
-          <div className="flex size-6">
+          <div className="flex w-4/5 h-full items-center justify-center">
             <IoFolderOpenOutline className="w-full h-full" />
           </div>
         ) : (
-          <div className="flex size-6">
+          <div className="flex w-4/5 h-full items-center justify-center">
             <img src={file.imageLink} alt={file.fileName} loading="lazy" />
           </div>
         )}
-        <div className="flex justify-center w-2/3">
-          <p>{file.fileName}</p>
-        </div>
-        <DropdrownFiles id={file.id} />
       </div>
     );
   };
