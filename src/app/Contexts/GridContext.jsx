@@ -53,7 +53,7 @@ function GridProvider({ children }) {
 
     const [viewBox, setViewBox] = useState([]);
     
-    // hooks for steppers
+    // hooks for steppers start
     const [viewboxAndPoints] = useState(data);
 
     const [searchValue, setSearchValue] = useState('');
@@ -73,7 +73,30 @@ function GridProvider({ children }) {
             setSelectedBlocks([...selectedBlocks, id]);
         }
     };
-    // hooks for steppers
+
+    // Dropdown options chip
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedOptions, setSelectedOptions] = useState([]);
+
+    const handleToggleDropdown = () => {
+        setIsOpen(!isOpen);
+    };
+
+    const handleSelectOption = (option, blockId) => {
+        const isSelected = selectedOptions.some(
+            (selectedOption) => selectedOption.value === option.value
+        );
+        if(isSelected){
+            setSelectedOptions(
+                selectedOptions.filter(
+                    (selectedOption) => selectedOption.value !== option.value
+                )
+            );
+        } else {
+            setSelectedOptions([...selectedOptions], {blockId: blockId, ...option});
+        }
+    };  
+    // hooks for steppers end
 
     const [points, setPoints] = useState("");
     const [background, setBackground] = useState("");
@@ -363,7 +386,14 @@ function GridProvider({ children }) {
                 viewboxAndPoints,
                 searchedBlocks,
                 selectedBlocks,
-                handleCheck
+                handleCheck,
+                 
+                isOpen,
+                setIsOpen,
+                selectedOptions,
+                setSelectedOptions,
+                handleToggleDropdown,
+                handleSelectOption
                 // Variables for stepper
             }}
         >

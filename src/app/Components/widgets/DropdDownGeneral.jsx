@@ -1,29 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import clsx from "clsx";
 import Chip from "./Chip";
 
+import { GridContext } from "@/app/contexts/GridContext";
+
 const DropdownGeneral = ({ options, buttonText, blockId }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState([]);
 
-  const handleToggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
+  const { isOpen,setIsOpen,selectedOptions,setSelectedOptions,handleToggleDropdown, handleSelectOption  } = useContext(GridContext);
 
-  const handleSelectOption = (option) => {
-    const isSelected = selectedOptions.some(
-      (selectedOption) => selectedOption.value === option.value
-    );
-    if (isSelected) {
-      setSelectedOptions(
-        selectedOptions.filter(
-          (selectedOption) => selectedOption.value !== option.value
-        )
-      );
-    } else {
-      setSelectedOptions([...selectedOptions, {...option, blockId: blockId}]);
-    }
-  };
+  //  const [isOpen, setIsOpen] = useState(false);
+  //  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  //  const handleToggleDropdown = () => {
+  //    setIsOpen(!isOpen);
+  //  };
+
+  //  const handleSelectOption = (option) => {
+  //    const isSelected = selectedOptions.some(
+  //      (selectedOption) => selectedOption.value === option.value
+  //    );
+  //    if (isSelected) {
+  //      setSelectedOptions(
+  //        selectedOptions.filter(
+  //          (selectedOption) => selectedOption.value !== option.value
+  //        )
+  //      );
+  //    } else {
+  //      setSelectedOptions([...selectedOptions, {...option, blockId: blockId}]);
+  //    }
+  //  };
 
   useEffect(()=>{
     console.log(selectedOptions)
@@ -65,7 +70,7 @@ const DropdownGeneral = ({ options, buttonText, blockId }) => {
             {options.map((option) => (
               <button
                 key={option.value}
-                onClick={() => handleSelectOption(option)}
+                onClick={() => handleSelectOption(option, blockId)}
                 className={clsx(
                   "flex items-center justify-between px-4 py-2 text-sm text-gray-700 w-full text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100",
                   { "rounded-b-md": option === options[options.length - 1] }
