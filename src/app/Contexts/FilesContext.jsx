@@ -94,6 +94,11 @@ function FilesProvider({ children }) {
   const [folderPath, setFolderPath] = useState([
     { id: null, path: "/docs", filesList: filterMain, name: "Docs" },
   ]);
+  const resetFolderPath = () => {
+    setFolderPath([
+      { id: null, path: "/docs", filesList: filterMain, name: "Docs" },
+    ]);
+  };
 
   const updateMainFiles = (e) => {
     e.stopPropagation();
@@ -171,6 +176,7 @@ function FilesProvider({ children }) {
         updateChildrenFiles,
         folderPath,
         setFolderPath,
+        resetFolderPath,
         updateChildrenFilesFromBreadcrum,
         filterMain,
         searchMain,

@@ -1,5 +1,5 @@
 "use client";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import Header from "@/app/components/Header";
 import TopCards from "@/app/components/TopCards";
 import { FilesContext } from "@/app/contexts/FilesContext";
@@ -12,8 +12,18 @@ import { IoAddCircleOutline } from "react-icons/io5";
 import AddFiles from "@/app/components/files/AddFiles";
 
 export default function Docs() {
-  const { updateMainFiles, filterMain, searchMain, mainType, updateMainType } =
-    useContext(FilesContext);
+  const {
+    resetFolderPath,
+    updateMainFiles,
+    filterMain,
+    searchMain,
+    mainType,
+    updateMainType,
+  } = useContext(FilesContext);
+
+  useEffect(() => {
+    resetFolderPath();
+  }, []);
 
   return (
     <main className="bg-gray-100 min-h-screen">
