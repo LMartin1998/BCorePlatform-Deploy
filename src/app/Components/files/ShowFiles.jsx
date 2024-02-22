@@ -55,11 +55,36 @@ export default function ShowFiles({ filesList, updateFiles }) {
       };
     }, []);
 
-    return (
+    return design == 0 ? (
       <div
-        className={`${
-          design == 0 ? "h-12 w-full flex flex-row" : "h-36 w-36 flex flex-col"
-        } items-center justify-center border rounded-lg ${
+        className={`h-12 w-full flex flex-row items-center justify-center border rounded-lg ${
+          open === file.id
+            ? "bg-blue-200 hover:none"
+            : "bg-white hover:bg-gray-100"
+        } ${visible ? "opacity-100" : "opacity-0"}`}
+        key={file.id}
+        id={file.id}
+        onClick={updateOpen}
+        onDoubleClick={updateFiles}
+        ref={observerRef}
+      >
+        {file.isFolder ? (
+          <div className="flex size-6">
+            <IoFolderOpenOutline className="w-full h-full" />
+          </div>
+        ) : (
+          <div className="flex size-6">
+            <img src={file.imageLink} alt={file.fileName} loading="lazy" />
+          </div>
+        )}
+        <div className="flex justify-center w-2/3">
+          <p>{file.fileName}</p>
+        </div>
+        <DropdrownFiles id={file.id} />
+      </div>
+    ) : (
+      <div
+        className={`h-36 w-36 flex flex-col items-center justify-center border rounded-lg ${
           open === file.id
             ? "bg-blue-200 hover:none"
             : "bg-white hover:bg-gray-100"
@@ -107,7 +132,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
             design == 0
               ? "flex flex-col"
               : "grid grid-cols-4 gap-2.5 justify-items-center"
-          } w-full m-1`}
+          } w-full my-1`}
           ref={divRef}
         >
           {filesList && renderFiles()}
