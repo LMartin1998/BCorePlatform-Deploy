@@ -86,7 +86,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
       </div>
     ) : (
       <div
-        className={`h-36 w-36 flex flex-col items-center border rounded-lg ${
+        className={`h-36 w-36 flex flex-col items-center border-2 rounded-lg ${
           open === file.id
             ? "bg-blue-200 hover:none"
             : "bg-white hover:bg-gray-100"
@@ -134,7 +134,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
 
   return (
     <div className="flex flex-col w-full h-96 items-center">
-      <div className="flex flex-col w-11/12 h-fit items-center border border-black rounded-lg overflow-auto">
+      <div className="flex flex-col w-11/12 h-fit items-center border border-black rounded-lg overflow-auto bg-white">
         <div
           className={`${
             design == 0
