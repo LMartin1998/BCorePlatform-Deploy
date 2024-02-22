@@ -33,6 +33,8 @@ const TaskBlock = ({data, handleChange, optionsDrop, id}) => {
       </div>
       <p className="text-gray-700 font-normal text-base mt-2">Type of task</p>
       <DropdownGeneral
+        // key={`dropdown-${id}`}
+        blockId={id}
         options={optionsDrop}
         buttonText="Choose a task"
       ></DropdownGeneral>

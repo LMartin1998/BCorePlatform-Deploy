@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import clsx from "clsx";
 import Chip from "./Chip";
 
-const DropdownGeneral = ({ options, buttonText }) => {
+const DropdownGeneral = ({ options, buttonText, blockId }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
@@ -21,9 +21,13 @@ const DropdownGeneral = ({ options, buttonText }) => {
         )
       );
     } else {
-      setSelectedOptions([...selectedOptions, option]);
+      setSelectedOptions([...selectedOptions, {...option, blockId: blockId}]);
     }
   };
+
+  useEffect(()=>{
+    console.log(selectedOptions)
+  },[selectedOptions]);
 
   return (
     <div className="relative inline-block text-left">
@@ -87,7 +91,7 @@ const DropdownGeneral = ({ options, buttonText }) => {
         <div className="flex flex-wrap mt-2 gap-1">
           {selectedOptions.map((option) => (
             <Chip
-              key={option.value}
+              key={`${option.value}-${option.blockId}`}
               label={option.label}
               background={option.parent}
             ></Chip>

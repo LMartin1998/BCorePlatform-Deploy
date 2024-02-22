@@ -8,6 +8,10 @@ import { GridContext } from "@/app/contexts/GridContext";
 
 export default function SelectBlock() {
   const {  searchedBlocks, handleCheck, selectedBlocks } = useContext(GridContext);
+  
+  useEffect(()=>{
+    console.log(selectedBlocks)
+  },[selectedBlocks]);
 
   return (
     <div className="flex flex-col">
