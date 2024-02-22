@@ -41,7 +41,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
         },
         {
           threshold: 0.2,
-        },
+        }
       );
 
       if (observerRef.current) {
@@ -107,7 +107,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
             design == 0
               ? "flex flex-col"
               : "grid grid-cols-4 gap-2.5 justify-items-center"
-          } w-full`}
+          } w-full m-1`}
           ref={divRef}
         >
           {filesList && renderFiles()}
