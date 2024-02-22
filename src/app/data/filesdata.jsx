@@ -113,7 +113,7 @@ export const filesList = [
   {
     id: 2,
     imageLink:
-      "https://image-processor-storage.s3.us-west-2.amazonaws.com/images/3cf61c1011912a2173ea4dfa260f1108/halo-of-neon-ring-illuminated-in-the-stunning-landscape-of-yosemite.jpg",
+      "https://img.freepik.com/fotos-premium/guitarra-ukelele-muneca-oso-debajo-arbol-campo-hierba-verde-luz-solar_53945-891.jpg?w=1380",
     isFolder: false,
     fileName: "image.png",
     parentId: null,

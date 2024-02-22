@@ -139,8 +139,8 @@ export default function ShowFiles({ filesList, updateFiles }) {
           className={`${
             design == 0
               ? "flex flex-col"
-              : "grid grid-cols-4 gap-2.5 justify-items-center"
-          } w-full my-1`}
+              : "grid grid-cols-4 gap-y-5 justify-items-center"
+          } w-full ${design == 0 ? "" : "my-5"}`}
           ref={divRef}
         >
           {filesList && renderFiles()}
