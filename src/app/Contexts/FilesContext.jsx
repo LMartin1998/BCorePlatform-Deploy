@@ -91,6 +91,11 @@ function FilesProvider({ children }) {
     }
   };
 
+  const [search, setSearch] = useState("");
+  const updateSearch = (e) => {
+    e.stopPropagation();
+    setSearch(e.target.value);
+  };
   const [folderPath, setFolderPath] = useState([
     { id: null, path: "/docs", filesList: filterMain, name: "Docs" },
   ]);
@@ -106,6 +111,7 @@ function FilesProvider({ children }) {
     setParentId(newId);
     setChildrenFiles(mainFiles[newId].children || []);
     setFilterChildren(mainFiles[newId].children || []);
+    setSearch("");
     folderPath.push({
       id: newId,
       path: `/docs/folder/${newId}`,
@@ -131,12 +137,14 @@ function FilesProvider({ children }) {
         name: `${childrenFiles[newId].fileName}`,
       },
     ]);
+    setSearch("");
     router.push(`/docs/folder/${childrenId}`);
   };
 
   const updateChildrenFilesFromBreadcrum = (e) => {
     e.stopPropagation();
     const id = Number(e.currentTarget.id);
+    setSearch("");
     if (id > 0) {
       const list = folderPath[id].filesList || [];
       setChildrenFiles(list);
@@ -174,6 +182,9 @@ function FilesProvider({ children }) {
         setChildrenFiles,
         updateMainFiles,
         updateChildrenFiles,
+        search,
+        setSearch,
+        updateSearch,
         folderPath,
         setFolderPath,
         resetFolderPath,
