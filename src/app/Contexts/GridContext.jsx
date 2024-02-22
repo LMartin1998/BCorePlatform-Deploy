@@ -82,20 +82,21 @@ function GridProvider({ children }) {
         setIsOpen(!isOpen);
     };
 
+
     const handleSelectOption = (option, blockId) => {
-        const isSelected = selectedOptions.some(
-            (selectedOption) => selectedOption.value === option.value
+      const isSelected = selectedOptions.some(
+        (selectedOption) => selectedOption.value === option.value
+      );
+      if (isSelected) {
+        setSelectedOptions(
+          selectedOptions.filter(
+            (selectedOption) => selectedOption.value !== option.value
+          )
         );
-        if(isSelected){
-            setSelectedOptions(
-                selectedOptions.filter(
-                    (selectedOption) => selectedOption.value !== option.value
-                )
-            );
-        } else {
-            setSelectedOptions([...selectedOptions], {blockId: blockId, ...option});
-        }
-    };  
+      } else {
+        setSelectedOptions([...selectedOptions, { blockId: blockId,...option }]);
+      }
+    };
     // hooks for steppers end
 
     const [points, setPoints] = useState("");
