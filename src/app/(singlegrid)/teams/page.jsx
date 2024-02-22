@@ -34,6 +34,8 @@ export default function Teams() {
     1111: <MdOutlineDirectionsBike size={20}></MdOutlineDirectionsBike>,
   };
 
+  const [showInfo, setShowInfo] = useState(false);
+
   const [data, setData] = useState(users);
 
   const [rowStatus, setRowStatus] = useState(
@@ -138,9 +140,20 @@ export default function Teams() {
             <div className="flex flex-wrap justify-center items-baseline mt-2">
               <div className="relative bg-white py-2 px-4 border border-black rounded-full">
                 {vehicleLabel[firstFourDigits]}
-                <span className="absolute bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded-full -top-3 -right-3">
+                <span
+                  className="absolute bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded-full -top-3 -right-3"
+                  onMouseEnter={() => setShowInfo(true)}
+                  onMouseLeave={() => setShowInfo(false)}
+                >
                   {length - 1}
                 </span>
+                {showInfo && (
+                  <div className="absolute bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded border border-gray-700 -top-8 -right-16">
+                    {row.getValue().map((r, index) => (
+                      <p key={index}>{r}</p>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           );
