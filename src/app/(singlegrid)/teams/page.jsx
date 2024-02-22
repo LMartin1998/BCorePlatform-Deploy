@@ -11,6 +11,8 @@ import {
   GiGearHammer,
   GiElectricalResistance,
 } from "react-icons/gi";
+import { HiOutlineTruck } from "react-icons/hi";
+import { MdOutlineDirectionsBike } from "react-icons/md";
 import { MdOutlineCleaningServices } from "react-icons/md";
 import { FaTools } from "react-icons/fa";
 import Table from "@/app/components/table/Table";
@@ -25,6 +27,11 @@ export default function Teams() {
     "DC Transtions & Road Crossing": <GiElectricalResistance size={20} />,
     Cleaning: <MdOutlineCleaningServices size={20} />,
     "Tool Room": <FaTools size={20} />,
+  };
+
+  const vehicleLabel = {
+    "0000": <HiOutlineTruck size={20}></HiOutlineTruck>,
+    1111: <MdOutlineDirectionsBike size={20}></MdOutlineDirectionsBike>,
   };
 
   const [data, setData] = useState(users);
@@ -117,20 +124,25 @@ export default function Teams() {
       ),
     },
     {
-      id: "buggy",
-      header: "Buggy",
-      accessorKey: "buggy",
-      cell: (row) => (
-        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
-      ),
-    },
-    {
-      id: "skidsteer",
-      header: "Skidsteer",
-      accessorKey: "skidsteer",
-      cell: (row) => (
-        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
-      ),
+      id: "machinery",
+      header: "Machinery",
+      accessorKey: "machinery",
+      cell: (row) => {
+        const length = row.getValue().length;
+        console.log(length);
+        const serial = row.getValue().filter((r) => !isNaN(r))[0];
+        const firstFourDigits = serial.substring(0, 4);
+        if (length <= 1) {
+          return vehicleLabel[firstFourDigits];
+        } else {
+          return (
+            <div className="flex">
+              {vehicleLabel[firstFourDigits]}
+              <p>{length - 1}</p>
+            </div>
+          );
+        }
+      },
     },
     {
       id: "status",
