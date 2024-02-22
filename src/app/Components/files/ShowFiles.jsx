@@ -77,8 +77,10 @@ export default function ShowFiles({ filesList, updateFiles }) {
             <img src={file.imageLink} alt={file.fileName} loading="lazy" />
           </div>
         )}
-        <div className="flex justify-center w-2/3">
-          <p>{file.fileName}</p>
+        <div className="flex justify-center w-2/3 overflow-hidden">
+          <p className="truncate" title={file.fileName}>
+            {file.fileName}
+          </p>
         </div>
         <DropdrownFiles id={file.id} />
       </div>
@@ -96,8 +98,10 @@ export default function ShowFiles({ filesList, updateFiles }) {
         ref={observerRef}
       >
         <div className="w-full flex justify-center items-center">
-          <div className="w-1/2 text-ellipsis relative left-2 flex justify-start items-center">
-            <p>{file.fileName}</p>
+          <div className="w-1/2 relative left-2 flex justify-start items-center overflow-hidden">
+            <p className="truncate" title={file.fileName}>
+              {file.fileName}
+            </p>
           </div>
           <div className="w-1/2 relative right-5 flex justify-end items-center">
             <DropdrownFiles id={file.id} />
