@@ -76,7 +76,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
           </div>
         ) : (
           <div className="flex size-6">
-            <img src={file.imageLink} alt={file.fileName} />
+            <img src={file.imageLink} alt={file.fileName} loading="lazy" />
           </div>
         )}
         <div className="flex justify-center w-2/3">
