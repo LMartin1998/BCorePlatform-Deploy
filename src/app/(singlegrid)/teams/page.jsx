@@ -129,16 +129,19 @@ export default function Teams() {
       accessorKey: "machinery",
       cell: (row) => {
         const length = row.getValue().length;
-        console.log(length);
         const serial = row.getValue().filter((r) => !isNaN(r))[0];
         const firstFourDigits = serial.substring(0, 4);
         if (length <= 1) {
           return vehicleLabel[firstFourDigits];
         } else {
           return (
-            <div className="flex">
-              {vehicleLabel[firstFourDigits]}
-              <p>{length - 1}</p>
+            <div className="flex flex-wrap justify-center items-baseline mt-2">
+              <div className="relative bg-white py-2 px-4 border border-black rounded-full">
+                {vehicleLabel[firstFourDigits]}
+                <span className="absolute bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded-full -top-3 -right-3">
+                  {length - 1}
+                </span>
+              </div>
             </div>
           );
         }
