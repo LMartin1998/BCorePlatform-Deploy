@@ -30,26 +30,22 @@ export default function Teams() {
   };
 
   const vehicleLabel = {
-    "0000": <HiOutlineTruck size={14}></HiOutlineTruck>,
-    1111: <MdOutlineDirectionsBike size={14}></MdOutlineDirectionsBike>,
+    "0000": <HiOutlineTruck size={16}></HiOutlineTruck>,
+    1111: <MdOutlineDirectionsBike size={16}></MdOutlineDirectionsBike>,
   };
 
-  let timeOut;
+  let timeOutId;
   const [showInfo, setShowInfo] = useState("");
-  const updateShowInfo = (e) => {
-    e.stopPropagation();
-    setShowInfo(showInfo ? "" : e.target.id);
-  };
 
   const hoverEnter = (e) => {
     e.stopPropagation();
-    timeOut = setTimeout(() => {
+    timeOutId = setTimeout(() => {
       setShowInfo(e.target.id);
-    }, 1500);
+    }, 1000);
   };
   const hoverLeave = (e) => {
     e.stopPropagation();
-    clearTimeout(timeOut);
+    clearTimeout(timeOutId);
     setShowInfo("");
   };
 
@@ -157,7 +153,7 @@ export default function Teams() {
         return length <= 1 ? (
           vehicleLabel[firstFourDigits]
         ) : (
-          <div className="flex flex-wrap justify-center items-baseline mt-2">
+          <div className="flex flex-wrap justify-start items-baseline mt-2 size-8">
             <div className="relative bg-white py-2 px-4 border border-black rounded-full">
               {vehicleLabel[firstFourDigits]}
               <span
