@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'tailwindcss/tailwind.css'; // Asegúrate de importar los estilos de Tailwind
@@ -7,12 +7,16 @@ import { GridContext } from '../contexts/GridContext';
 const MyDatePicker = ({blockId}) => {
   const [selectedDate, setSelectedDate] = useState(null);
 
-  const {addDateToIdBlock} = useContext(GridContext);
+  const {addDateToIdBlock, dateBlock} = useContext(GridContext);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
     addDateToIdBlock(blockId, date);
   };
+
+  // useEffect(() =>{
+  //   console.log(dateBlock);
+  // },[dateBlock]);
 
   return (
     <div className="w-full rounded-md flex flex-col justify-center items-center">

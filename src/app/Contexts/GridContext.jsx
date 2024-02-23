@@ -81,15 +81,15 @@ function GridProvider({ children }) {
     // const handleToggleDropdown = () => {
     //     setIsOpen(!isOpen);
     // };
-
+    const [dateBlock, setDateBlock] = useState([]);
     const addDateToIdBlock = (idBlock, date) => {
-        const newDateForId = selectedBlocks.map(id=> {
-            return { 
-                id: idBlock[id],
-                date: date,
+        setDateBlock(prevDateBlock => {
+            if (prevDateBlock.some(item => item.id === idBlock)) {
+                return prevDateBlock.map(item => item.id === idBlock ? { ...item, date } : item);
+            } else {
+                return [...prevDateBlock, { id: idBlock, date }];
             }
         });
-        console.log(newDateForId) 
     }
 
 
@@ -406,7 +406,8 @@ function GridProvider({ children }) {
                 // handleToggleDropdown,
                 // handleSelectOption
                 // Variables for stepper
-                addDateToIdBlock
+                addDateToIdBlock,
+                dateBlock
             }}
         >
             {children}
