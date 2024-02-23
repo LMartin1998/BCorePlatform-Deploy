@@ -34,7 +34,11 @@ export default function Teams() {
     1111: <MdOutlineDirectionsBike size={20}></MdOutlineDirectionsBike>,
   };
 
-  const [showInfo, setShowInfo] = useState(false);
+  const [showInfo, setShowInfo] = useState("");
+  const updateShowInfo = (e) => {
+    e.stopPropagation();
+    setShowInfo(showInfo ? "" : e.target.id);
+  };
 
   const [data, setData] = useState(users);
 
@@ -128,36 +132,38 @@ export default function Teams() {
     {
       id: "machinery",
       header: "Machinery",
-      accessorKey: "machinery",
+      accessorFn: (row) => `${row.id} ${row.machinery}`,
       cell: (row) => {
-        const length = row.getValue().length;
-        const serial = row.getValue().filter((r) => !isNaN(r))[0];
+        const accesorArr = row.getValue().split(" ");
+        const id = accesorArr[0];
+        const machinery = accesorArr[1].split(",");
+        const length = machinery.length;
+        const serial = machinery.filter((r) => !isNaN(r))[0];
         const firstFourDigits = serial.substring(0, 4);
-        if (length <= 1) {
-          return vehicleLabel[firstFourDigits];
-        } else {
-          return (
-            <div className="flex flex-wrap justify-center items-baseline mt-2">
-              <div className="relative bg-white py-2 px-4 border border-black rounded-full">
-                {vehicleLabel[firstFourDigits]}
-                <span
-                  className="absolute bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded-full -top-3 -right-3"
-                  onMouseEnter={() => setShowInfo(true)}
-                  onMouseLeave={() => setShowInfo(false)}
-                >
-                  {length - 1}
-                </span>
-                {showInfo && (
-                  <div className="absolute bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded border border-gray-700 -top-8 -right-16">
-                    {row.getValue().map((r, index) => (
-                      <p key={index}>{r}</p>
-                    ))}
-                  </div>
-                )}
-              </div>
+
+        return length <= 1 ? (
+          vehicleLabel[firstFourDigits]
+        ) : (
+          <div className="flex flex-wrap justify-center items-baseline mt-2">
+            <div className="relative bg-white py-2 px-4 border border-black rounded-full">
+              {vehicleLabel[firstFourDigits]}
+              <span
+                className="absolute bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded-full -top-3 -right-3"
+                id={id}
+                onClick={updateShowInfo}
+              >
+                {length - 1}
+              </span>
+              {showInfo == id && (
+                <div className="absolute z-10 bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded border border-gray-700 -top-8 -right-16">
+                  {machinery.map((r, index) => (
+                    <p key={index}>{r}</p>
+                  ))}
+                </div>
+              )}
             </div>
-          );
-        }
+          </div>
+        );
       },
     },
     {
