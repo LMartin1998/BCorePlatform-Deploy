@@ -4,7 +4,7 @@ import MyDatePicker from "../../Datepicker";
 import ButtonAddTask from "../../widgets/ButtonAddTask";
 import { useState } from "react";
 
-const TaskBlock = ({data, handleChange, optionsDrop, id}) => {
+const TaskBlock = ({data, handleChange, optionsDrop, id, selectedBlocks, addDate}) => {
   const [comments, setComments] = useState(0);
   const handleAddTaskClick = () =>{
       setComments(prevCount => prevCount + 1);
@@ -23,7 +23,10 @@ const TaskBlock = ({data, handleChange, optionsDrop, id}) => {
     <>
       <div className="flex justify-center items-center">
         <p className="text-gray-700 font-normal text-lg w-3/4">Block {id}</p>
-        <MyDatePicker></MyDatePicker>
+        <MyDatePicker
+          // addDate={addDate}
+          blockId={id}
+        ></MyDatePicker>
       </div>
       <div className="container mx-auto my-2">
         <ToggleButtonGroup
@@ -32,12 +35,12 @@ const TaskBlock = ({data, handleChange, optionsDrop, id}) => {
         ></ToggleButtonGroup>
       </div>
       <p className="text-gray-700 font-normal text-base mt-2">Type of task</p>
-      <DropdownGeneral
-        // key={`dropdown-${id}`}
-        blockId={id}
-        options={optionsDrop}
-        buttonText="Choose a task"
-      ></DropdownGeneral>
+        <DropdownGeneral
+          key={id}
+          blockId={id}
+          options={optionsDrop}
+          buttonText="Choose a task"
+        ></DropdownGeneral> 
       {renderTextAreas()}
       <ButtonAddTask onClick={handleAddTaskClick}></ButtonAddTask>
     </>

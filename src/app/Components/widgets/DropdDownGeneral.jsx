@@ -6,29 +6,29 @@ import { GridContext } from "@/app/contexts/GridContext";
 
 const DropdownGeneral = ({ options, buttonText, blockId }) => {
 
-  const { isOpen,setIsOpen,selectedOptions,setSelectedOptions,handleToggleDropdown, handleSelectOption  } = useContext(GridContext);
+  // const { selectedOptions,  handleSelectOption  } = useContext(GridContext);
 
-  //  const [isOpen, setIsOpen] = useState(false);
-  //  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOptions, setSelectedOptions] = useState([]);
 
-  //  const handleToggleDropdown = () => {
-  //    setIsOpen(!isOpen);
-  //  };
+  const handleToggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
-  //  const handleSelectOption = (option) => {
-  //    const isSelected = selectedOptions.some(
-  //      (selectedOption) => selectedOption.value === option.value
-  //    );
-  //    if (isSelected) {
-  //      setSelectedOptions(
-  //        selectedOptions.filter(
-  //          (selectedOption) => selectedOption.value !== option.value
-  //        )
-  //      );
-  //    } else {
-  //      setSelectedOptions([...selectedOptions, {...option, blockId: blockId}]);
-  //    }
-  //  };
+  const handleSelectOption = (option) => {
+    const isSelected = selectedOptions.some(
+      (selectedOption) => selectedOption.value === option.value
+    );
+    if (isSelected) {
+      setSelectedOptions(
+        selectedOptions.filter(
+          (selectedOption) => selectedOption.value !== option.value
+        )
+      );
+    } else {
+      setSelectedOptions([...selectedOptions, {...option, blockId: blockId}]);
+    }
+  };
 
   useEffect(()=>{
     console.log(selectedOptions)

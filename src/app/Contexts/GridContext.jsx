@@ -75,28 +75,38 @@ function GridProvider({ children }) {
     };
 
     // Dropdown options chip
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedOptions, setSelectedOptions] = useState([]);
+    // const [isOpen, setIsOpen] = useState(false);
+    // const [selectedOptions, setSelectedOptions] = useState([]);
 
-    const handleToggleDropdown = () => {
-        setIsOpen(!isOpen);
-    };
+    // const handleToggleDropdown = () => {
+    //     setIsOpen(!isOpen);
+    // };
+
+    const addDateToIdBlock = (idBlock, date) => {
+        const newDateForId = selectedBlocks.map(id=> {
+            return { 
+                id: idBlock[id],
+                date: date,
+            }
+        });
+        console.log(newDateForId) 
+    }
 
 
-    const handleSelectOption = (option, blockId) => {
-      const isSelected = selectedOptions.some(
-        (selectedOption) => selectedOption.value === option.value
-      );
-      if (isSelected) {
-        setSelectedOptions(
-          selectedOptions.filter(
-            (selectedOption) => selectedOption.value !== option.value
-          )
-        );
-      } else {
-        setSelectedOptions([...selectedOptions, { blockId: blockId,...option }]);
-      }
-    };
+    // const handleSelectOption = (option, blockId) => {
+    //   const isSelected = selectedOptions.some(
+    //     (selectedOption) => selectedOption.value === option.value
+    //   );
+    //   if (isSelected) {
+    //     setSelectedOptions(
+    //       selectedOptions.filter(
+    //         (selectedOption) => selectedOption.value !== option.value
+    //       )
+    //     );
+    //   } else {
+    //     setSelectedOptions([...selectedOptions, { blockId: blockId,...option }]);
+    //   }
+    // };
     // hooks for steppers end
 
     const [points, setPoints] = useState("");
@@ -389,13 +399,14 @@ function GridProvider({ children }) {
                 selectedBlocks,
                 handleCheck,
                  
-                isOpen,
-                setIsOpen,
-                selectedOptions,
-                setSelectedOptions,
-                handleToggleDropdown,
-                handleSelectOption
+                // isOpen,
+                // setIsOpen,
+                // selectedOptions,
+                // setSelectedOptions,
+                // handleToggleDropdown,
+                // handleSelectOption
                 // Variables for stepper
+                addDateToIdBlock
             }}
         >
             {children}

@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'tailwindcss/tailwind.css'; // Asegúrate de importar los estilos de Tailwind
+import { GridContext } from '../contexts/GridContext';
 
-const MyDatePicker = () => {
+const MyDatePicker = ({blockId}) => {
   const [selectedDate, setSelectedDate] = useState(null);
+
+  const {addDateToIdBlock} = useContext(GridContext);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
+    addDateToIdBlock(blockId, date);
   };
 
   return (
