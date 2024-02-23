@@ -40,6 +40,15 @@ export default function Teams() {
     setShowInfo(showInfo ? "" : e.target.id);
   };
 
+  const hoverEnter = (e) => {
+    e.stopPropagation();
+    setShowInfo(e.target.id);
+  };
+  const hoverLeave = (e) => {
+    e.stopPropagation();
+    setShowInfo("");
+  };
+
   const [data, setData] = useState(users);
 
   const [rowStatus, setRowStatus] = useState(
@@ -150,14 +159,21 @@ export default function Teams() {
               <span
                 className="absolute bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded-full -top-3 -right-3"
                 id={id}
-                onClick={updateShowInfo}
+                // onClick={updateShowInfo}
+                onMouseEnter={hoverEnter}
+                onMouseLeave={hoverLeave}
               >
                 {length - 1}
               </span>
               {showInfo == id && (
-                <div className="absolute z-10 bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded border border-gray-700 -top-8 -right-16">
+                <div
+                  className="absolute z-10 bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded border border-gray-700 -top-8 -right-16 overflow-hidden"
+                  onMouseLeave={hoverLeave}
+                >
                   {machinery.map((r, index) => (
-                    <p key={index}>{r}</p>
+                    <p className="truncate" key={index}>
+                      {r}
+                    </p>
                   ))}
                 </div>
               )}
