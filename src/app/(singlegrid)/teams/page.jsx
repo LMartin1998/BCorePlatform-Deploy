@@ -30,10 +30,11 @@ export default function Teams() {
   };
 
   const vehicleLabel = {
-    "0000": <HiOutlineTruck size={20}></HiOutlineTruck>,
-    1111: <MdOutlineDirectionsBike size={20}></MdOutlineDirectionsBike>,
+    "0000": <HiOutlineTruck size={14}></HiOutlineTruck>,
+    1111: <MdOutlineDirectionsBike size={14}></MdOutlineDirectionsBike>,
   };
 
+  let timeOut;
   const [showInfo, setShowInfo] = useState("");
   const updateShowInfo = (e) => {
     e.stopPropagation();
@@ -42,10 +43,13 @@ export default function Teams() {
 
   const hoverEnter = (e) => {
     e.stopPropagation();
-    setShowInfo(e.target.id);
+    timeOut = setTimeout(() => {
+      setShowInfo(e.target.id);
+    }, 1500);
   };
   const hoverLeave = (e) => {
     e.stopPropagation();
+    clearTimeout(timeOut);
     setShowInfo("");
   };
 
@@ -159,7 +163,6 @@ export default function Teams() {
               <span
                 className="absolute bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded-full -top-3 -right-3"
                 id={id}
-                // onClick={updateShowInfo}
                 onMouseEnter={hoverEnter}
                 onMouseLeave={hoverLeave}
               >
