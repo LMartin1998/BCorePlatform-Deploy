@@ -74,13 +74,15 @@ function GridProvider({ children }) {
         }
     };
 
-    // Dropdown options chip
-    // const [isOpen, setIsOpen] = useState(false);
-    // const [selectedOptions, setSelectedOptions] = useState([]);
+    const [dropDownSelection, setDropDownSelection] = useState({});
+    const handleDropdownChange = (blockId, selectedOptions) => {
+        setDropDownSelection((prevSelections) => ({
+          ...prevSelections,
+          [blockId]: selectedOptions,
+        }));
+    };
+    
 
-    // const handleToggleDropdown = () => {
-    //     setIsOpen(!isOpen);
-    // };
     const [dateBlock, setDateBlock] = useState([]);
     const addDateToIdBlock = (idBlock, date) => {
         setDateBlock(prevDateBlock => {
@@ -93,20 +95,6 @@ function GridProvider({ children }) {
     }
 
 
-    // const handleSelectOption = (option, blockId) => {
-    //   const isSelected = selectedOptions.some(
-    //     (selectedOption) => selectedOption.value === option.value
-    //   );
-    //   if (isSelected) {
-    //     setSelectedOptions(
-    //       selectedOptions.filter(
-    //         (selectedOption) => selectedOption.value !== option.value
-    //       )
-    //     );
-    //   } else {
-    //     setSelectedOptions([...selectedOptions, { blockId: blockId,...option }]);
-    //   }
-    // };
     // hooks for steppers end
 
     const [points, setPoints] = useState("");
@@ -397,17 +385,12 @@ function GridProvider({ children }) {
                 viewboxAndPoints,
                 searchedBlocks,
                 selectedBlocks,
-                handleCheck,
-                 
-                // isOpen,
-                // setIsOpen,
-                // selectedOptions,
-                // setSelectedOptions,
-                // handleToggleDropdown,
-                // handleSelectOption
-                // Variables for stepper
+                handleCheck,                 
                 addDateToIdBlock,
-                dateBlock
+                dateBlock,
+                handleDropdownChange,
+                dropDownSelection
+                // Variables for stepper
             }}
         >
             {children}

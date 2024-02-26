@@ -1,13 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import clsx from "clsx";
 import Chip from "./Chip";
 
-import { GridContext } from "@/app/contexts/GridContext";
-
-const DropdownGeneral = ({ options, buttonText, blockId }) => {
-
-  // const { selectedOptions,  handleSelectOption  } = useContext(GridContext);
-
+const DropdownGeneral = ({ options, buttonText, blockId, onSelectionChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
 
@@ -26,14 +21,11 @@ const DropdownGeneral = ({ options, buttonText, blockId }) => {
         )
       );
     } else {
-      setSelectedOptions([...selectedOptions, {...option, blockId: blockId}]);
+      setSelectedOptions([...selectedOptions, option]);
     }
+    onSelectionChange(blockId, selectedOptions)
   };
-
-  useEffect(()=>{
-    console.log(selectedOptions)
-  },[selectedOptions]);
-
+  
   return (
     <div className="relative inline-block text-left">
       <div>
