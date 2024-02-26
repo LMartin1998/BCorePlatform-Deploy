@@ -79,6 +79,7 @@ export default function Teams() {
       id: "selector-column",
       header: ({ table }) => (
         <input
+          className="w-6 h-6 rounded-full border-2 border-gray-400 appearance-none checked:bg-blue-400 disable:bg-red"
           type="checkbox"
           checked={table.getIsAllRowsSelected()}
           onChange={table.getToggleAllRowsSelectedHandler()}
@@ -86,19 +87,12 @@ export default function Teams() {
       ),
       cell: ({ row }) => (
         <input
+          className="w-4 h-4 rounded-full border-2 border-gray-400 appearance-none checked:bg-blue-400 disable:bg-red"
           type="checkbox"
           checked={row.getIsSelected()}
           disabled={!row.getCanSelect()}
           onChange={row.getToggleSelectedHandler()}
         ></input>
-      ),
-    },
-    {
-      id: "#",
-      header: "#",
-      accessorKey: "id",
-      cell: (row) => (
-        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
       ),
     },
     {
@@ -220,7 +214,7 @@ export default function Teams() {
           filterFns={{
             statusFiltering: statusFilter,
           }}
-          mainButton={"+ Add document"}
+          mainButton={"+ Add user"}
           filterOptions={[
             { label: "name", value: "Name" },
             { label: "team", value: "Team" },
