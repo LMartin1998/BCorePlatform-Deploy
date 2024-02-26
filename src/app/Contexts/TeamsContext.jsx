@@ -17,7 +17,7 @@ function TeamsProvider({ children }) {
     const info = filteredUser ? Number(filteredUser.id) : "";
     setUserInfoId(info);
     setUser(usersList.filter((u) => u.id == info));
-    router.push(`/teams/id/${userInfoId}`);
+    router.push(`/teams/user/${info}`);
   };
 
   const goToTable = (e) => {
@@ -27,9 +27,31 @@ function TeamsProvider({ children }) {
     router.push("/teams");
   };
 
+  const [fromDate, setFromDate] = useState(new Date());
+  const updateFromDate = (date) => {
+    setFromDate(date);
+  };
+  const [toDate, setToDate] = useState(new Date());
+  const updateToDate = (date) => {
+    setToDate(date);
+  };
+
   return (
     <TeamsContext.Provider
-      value={{ usersList, setUsersList, userInfoId, updateUserInfoId, user, goToTable }}
+      value={{
+        usersList,
+        setUsersList,
+        userInfoId,
+        updateUserInfoId,
+        user,
+        goToTable,
+        fromDate,
+        setFromDate,
+        updateFromDate,
+        toDate,
+        setToDate,
+        updateToDate,
+      }}
     >
       {children}
     </TeamsContext.Provider>
