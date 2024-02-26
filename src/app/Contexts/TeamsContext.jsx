@@ -36,6 +36,22 @@ function TeamsProvider({ children }) {
     setToDate(date);
   };
 
+  const [errorDate, setErrorDate] = useState(false);
+
+  const verifyDates = () => {
+    const startDate = fromDate.getTime();
+    const endDate = toDate.getTime();
+    const diff = endDate - startDate;
+    const days = diff / (1000 * 3600 * 24);
+    days >= 0 ? setErrorDate(false) : setErrorDate(true);
+  };
+
+  useEffect(() => {
+    if (fromDate && toDate) {
+      verifyDates();
+    }
+  }, [fromDate, toDate]);
+
   return (
     <TeamsContext.Provider
       value={{

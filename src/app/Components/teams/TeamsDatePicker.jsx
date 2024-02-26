@@ -2,13 +2,6 @@ import { useState } from "react";
 import ReactDatePicker from "react-datepicker";
 
 export default function TeamsDatePicker({ date, updateDate }) {
-  //   const [selectedDate, setSelectedDate] = useState(new Date());
-
-  //   const updateSelectedDate = (date) => {
-  //     console.log(date);
-  //     setSelectedDate(date);
-  //   };
-
   return (
     <div className="w-full rounded-md flex flex-col justify-center items-center">
       <ReactDatePicker
