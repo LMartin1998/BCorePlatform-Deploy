@@ -19,6 +19,7 @@ export default function Table({
   mainButton,
   filterOptions,
   sortOptions,
+  onDoubleClickEvent,
 }) {
   const [globalFilter, setGlobalFilter] = useState("");
   const [columnFilter, setColumnFilter] = useState([]);
@@ -144,6 +145,7 @@ export default function Table({
                   e.stopPropagation();
                   setSelect(e.currentTarget.id);
                 }}
+                onDoubleClick={onDoubleClickEvent}
               >
                 {row.getVisibleCells().map((cell) => {
                   return (

@@ -18,7 +18,7 @@ import Table from "@/app/components/table/Table";
 import { TeamsContext } from "@/app/contexts/TeamsContext";
 
 export default function Teams() {
-  const { usersList } = useContext(TeamsContext);
+  const { usersList, updateUserInfoId } = useContext(TeamsContext);
 
   const teamLabel = {
     Logistics: <FaTruckPlane size={20} />,
@@ -83,6 +83,9 @@ export default function Teams() {
           type="checkbox"
           checked={table.getIsAllRowsSelected()}
           onChange={table.getToggleAllRowsSelectedHandler()}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
         ></input>
       ),
       cell: ({ row }) => (
@@ -92,6 +95,9 @@ export default function Teams() {
           checked={row.getIsSelected()}
           disabled={!row.getCanSelect()}
           onChange={row.getToggleSelectedHandler()}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
         ></input>
       ),
     },
@@ -233,6 +239,7 @@ export default function Teams() {
             { label: "skidsteer", value: "Skidsteer" },
             { label: "status", value: "Status" },
           ]}
+          onDoubleClickEvent={updateUserInfoId}
         ></Table>
       </div>
     </main>
