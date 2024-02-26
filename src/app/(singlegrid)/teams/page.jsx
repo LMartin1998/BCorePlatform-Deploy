@@ -79,7 +79,7 @@ export default function Teams() {
       id: "selector-column",
       header: ({ table }) => (
         <input
-          className="w-6 h-6 rounded-full border-2 border-gray-400 appearance-none checked:bg-blue-400 disable:bg-red"
+          className="w-4 h-4 rounded-full border-2 border-gray-400 appearance-none checked:bg-blue-400 disable:bg-red"
           type="checkbox"
           checked={table.getIsAllRowsSelected()}
           onChange={table.getToggleAllRowsSelectedHandler()}
@@ -156,7 +156,7 @@ export default function Teams() {
                 onMouseEnter={hoverEnter}
                 onMouseLeave={hoverLeave}
               >
-                {length - 1}
+                +{length - 1}
               </span>
               {showInfo == id && (
                 <div
