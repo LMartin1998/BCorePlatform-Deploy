@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   flexRender,
   getCoreRowModel,
@@ -53,8 +53,29 @@ export default function Table({
     getSortedRowModel: getSortedRowModel(),
   });
 
+  const selectRef = useRef(null);
+
+  const [select, setSelect] = useState("");
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (selectRef.current && !selectRef.current.contains(e.target)) {
+        setSelect("");
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log(select);
+  }, [select]);
+
   return (
-    <>
+    <div>
       <div className="w-full flex justify-between">
         <button className="bg-orange-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-orange-600">
           {mainButton}
@@ -84,7 +105,7 @@ export default function Table({
         </div>
       </div>
 
-      <table className="w-full mt-3">
+      <table className="w-full mt-3" ref={selectRef}>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr
@@ -110,12 +131,19 @@ export default function Table({
             </tr>
           ))}
         </thead>
-        <tbody>
+        <tbody className="hover:cursor-pointer">
           {table.getRowModel().rows.map((row) => {
             return (
               <tr
-                className="bg-white border-b border-solid border-gray-400 hover:bg-gray-100"
+                className={`border-b border-solid border-gray-400 hover:bg-gray-100 ${
+                  select == row.id ? "bg-blue-200" : "bg-white"
+                }`}
                 key={row.id}
+                id={row.id}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setSelect(e.currentTarget.id);
+                }}
               >
                 {row.getVisibleCells().map((cell) => {
                   return (
@@ -133,6 +161,6 @@ export default function Table({
         </tbody>
       </table>
       {table && <TablePages table={table}></TablePages>}
-    </>
+    </div>
   );
 }
