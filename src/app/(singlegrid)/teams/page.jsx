@@ -1,8 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Header from "../../components/Header";
 import TopCards from "../../components/TopCards";
-import users from "../../data/teamsdata";
 import { GrUserManager } from "react-icons/gr";
 import { FaTruckPlane } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
@@ -16,8 +15,11 @@ import { MdOutlineDirectionsBike } from "react-icons/md";
 import { MdOutlineCleaningServices } from "react-icons/md";
 import { FaTools } from "react-icons/fa";
 import Table from "@/app/components/table/Table";
+import { TeamsContext } from "@/app/contexts/TeamsContext";
 
 export default function Teams() {
+  const { usersList } = useContext(TeamsContext);
+
   const teamLabel = {
     Logistics: <FaTruckPlane size={20} />,
     Manager: <GrUserManager size={20} />,
@@ -49,10 +51,8 @@ export default function Teams() {
     setShowInfo("");
   };
 
-  const [data, setData] = useState(users);
-
   const [rowStatus, setRowStatus] = useState(
-    data.map((user) => ({
+    usersList.map((user) => ({
       id: user.id,
       status: user.status,
     }))
@@ -209,7 +209,7 @@ export default function Teams() {
       <TopCards></TopCards>
       <div className="p-4 h-full w-full">
         <Table
-          data={data}
+          data={usersList}
           columns={columns}
           filterFns={{
             statusFiltering: statusFilter,
