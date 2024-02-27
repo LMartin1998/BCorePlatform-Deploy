@@ -2,12 +2,12 @@ import DropdownGeneral from "../../widgets/DropdDownGeneral";
 import ToggleButtonGroup from "../../widgets/ToggleButtonGroup";
 import MyDatePicker from "../../Datepicker";
 import ButtonAddTask from "../../widgets/ButtonAddTask";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { GridContext } from "@/app/contexts/GridContext";
 
 const TaskBlock = ({data, handleChange, optionsDrop, id}) => {
   
-  const { handleDropdownChange, handleTextareaChangeId, textareaValuesId } = useContext(GridContext);
+  const { handleDropdownChange, handleTextareaChangeId } = useContext(GridContext);
 
   const [comments, setComments] = useState([]);
 
@@ -22,12 +22,8 @@ const TaskBlock = ({data, handleChange, optionsDrop, id}) => {
       [id]: value,
       [index]: value
     }));
-    handleTextareaChangeId(id, textareaValues);
+    handleTextareaChangeId(id, textareaValues); 
   }
-
-  useEffect(() => {
-    console.log(textareaValuesId);
-  }, [textareaValuesId]);
   
   const renderTextAreas = () => {
     return comments.map((index) =>(
