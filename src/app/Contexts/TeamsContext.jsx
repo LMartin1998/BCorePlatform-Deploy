@@ -41,24 +41,25 @@ function TeamsProvider({ children }) {
   const [errorDate, setErrorDate] = useState(false);
 
   const verifyDates = () => {
+    setDates([]);
     const startDate = fromDate.getTime();
     const endDate = toDate.getTime();
     const diff = endDate - startDate;
     const days = diff / (1000 * 3600 * 24);
+
     if (days < 0) {
       setErrorDate(true);
       setTimeout(() => {
         setErrorDate(false);
       }, 2000);
     } else {
-      // const dates = [];
+      const newDates = [];
       const currentDate = new Date(startDate);
       while (currentDate <= endDate) {
-        // dates.push(new Date(currentDate));
-        dates.concat(new Date(currentDate));
+        newDates.push(new Date(currentDate));
         currentDate.setDate(currentDate.getDate() + 1);
       }
-      console.log(dates);
+      setDates(newDates);
     }
   };
 
@@ -82,6 +83,7 @@ function TeamsProvider({ children }) {
         setToDate,
         updateToDate,
         errorDate,
+        dates,
       }}
     >
       {children}
