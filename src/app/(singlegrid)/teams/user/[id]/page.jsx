@@ -84,7 +84,7 @@ export default function UserId() {
               </div>
               <div className="flex flex-col w-1/2 m-1">
                 <div className="w-full">Activity</div>
-                <div className="w-full border-2 rounded-lg"></div>
+                <div className="w-full border-2 rounded-lg overflow-auto"></div>
               </div>
             </div>
           </div>
