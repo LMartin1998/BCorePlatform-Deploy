@@ -24,6 +24,7 @@ function TeamsProvider({ children }) {
     e.stopPropagation();
     setUser([]);
     setUserInfoId("");
+    setDates([]);
     router.push("/teams");
   };
 
@@ -55,8 +56,10 @@ function TeamsProvider({ children }) {
     } else {
       const newDates = [];
       const currentDate = new Date(startDate);
+      const options = { day: "numeric", month: "long" };
       while (currentDate <= endDate) {
-        newDates.push(new Date(currentDate));
+        const formattedDate = currentDate.toLocaleDateString("en-US", options);
+        newDates.push(formattedDate);
         currentDate.setDate(currentDate.getDate() + 1);
       }
       setDates(newDates);
