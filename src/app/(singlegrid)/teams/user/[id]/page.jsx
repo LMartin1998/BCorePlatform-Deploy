@@ -2,7 +2,6 @@
 import Header from "@/app/components/Header";
 import TopCards from "@/app/components/TopCards";
 import { TeamsContext } from "@/app/contexts/TeamsContext";
-import { useParams } from "next/navigation";
 import { useContext, useState } from "react";
 import { HiOutlineInboxIn } from "react-icons/hi";
 import TeamsDatePicker from "@/app/components/teams/TeamsDatePicker";
@@ -22,10 +21,14 @@ export default function UserId() {
     errorDate,
   } = useContext(TeamsContext);
 
-  const [openEntries, setOpenEntries] = useState(true);
+  const [openEntries, setOpenEntries] = useState(false);
 
   return (
-    <main className="bg-gray-100 min-h-screen">
+    <main
+      className={`bg-gray-100 min-h-screen ${
+        openEntries ? "opacity-50" : "opacity-100"
+      }`}
+    >
       <Header></Header>
       <TopCards></TopCards>
       <div className="flex flex-col justify-center items-center">
@@ -49,7 +52,13 @@ export default function UserId() {
             <div className="w-full flex">
               <div className="flex w-1/2 border-2 border-gray-300 rounded-lg m-1 justify-center items-center bg-white">
                 Show entries for this user
-                <button className="w-1/4 flex justify-center items-center border-2 rounded-lg bg-blue-200 m-1">
+                <button
+                  className="w-1/4 flex justify-center items-center border-2 rounded-lg bg-blue-200 m-1"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setOpenEntries(true);
+                  }}
+                >
                   <HiOutlineInboxIn
                     className="m-1"
                     size={20}
@@ -101,7 +110,9 @@ export default function UserId() {
           </div>
         </div>
       </div>
-      {openEntries && <EntriesTeams></EntriesTeams>}
+      {openEntries && (
+        <EntriesTeams setOpenEntries={setOpenEntries}></EntriesTeams>
+      )}
     </main>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function EntriesTeams() {
+export default function EntriesTeams({ setOpenEntries }) {
   const [btnSelection, setBtnSelection] = useState("0");
   const updateBtnSelection = (e) => {
     e.stopPropagation();
@@ -8,7 +8,16 @@ export default function EntriesTeams() {
   };
 
   return (
-    <div className="absolute flex w-full h-4/5 left-0 right-0 top-1/2 transform -translate-y-1/2 z-50 justify-center items-center">
+    <div className="absolute flex flex-col w-full h-4/5 left-0 right-0 top-1/2 transform -translate-y-1/2 z-50 justify-center items-center opacity-100">
+      <div
+        className="flex justify-center items-center rounded-lg"
+        onClick={(e) => {
+          e.stopPropagation();
+          setOpenEntries(false);
+        }}
+      >
+        <button className="bg-transparent">Close</button>
+      </div>
       <div className="w-full h-full rounded-lg shadow-lg bg-white">
         <div className="flex w-full justify-center items-center border-b border-gray-300">
           <div
