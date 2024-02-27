@@ -8,6 +8,7 @@ import { HiOutlineInboxIn } from "react-icons/hi";
 import TeamsDatePicker from "@/app/components/teams/TeamsDatePicker";
 import DateRange from "@/app/components/teams/DateRange";
 import TeamsChart from "@/app/components/teams/TeamsChart";
+import UserActivity from "@/app/components/teams/UserActivity";
 
 export default function UserId() {
   const {
@@ -78,18 +79,20 @@ export default function UserId() {
                 )}
               </div>
             </div>
-            <div className="w-full h-full flex">
+            <div className="w-full h-96 flex">
               <div className="flex flex-col w-1/2 m-2 pb-1 justify-center items-center">
                 <div className="w-full justify-start ml-2">
                   Users activity throughout the period
                 </div>
-                <div className="w-11/12 border-2 rounded-lg">
+                <div className="w-11/12 h-full border-2 rounded-lg">
                   <TeamsChart></TeamsChart>
                 </div>
               </div>
               <div className="flex flex-col w-1/2 m-2 pb-1 justify-center items-center">
                 <div className="w-full justify-start ml-2">Activity</div>
-                <div className="w-full border-2 rounded-lg overflow-auto"></div>
+                <div className="w-full border-2 rounded-lg overflow-auto">
+                  <UserActivity></UserActivity>
+                </div>
               </div>
             </div>
           </div>

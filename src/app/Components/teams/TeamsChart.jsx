@@ -69,5 +69,9 @@ export default function TeamsChart() {
     ],
   };
 
-  return <Line options={options} data={data} />;
+  return (
+    <div className="h-full w-full">
+      <Line options={options} data={data} />
+    </div>
+  );
 }
