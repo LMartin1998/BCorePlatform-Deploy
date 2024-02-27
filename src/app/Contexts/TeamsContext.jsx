@@ -36,6 +36,8 @@ function TeamsProvider({ children }) {
     setToDate(date);
   };
 
+  const [dates, setDates] = useState([]);
+
   const [errorDate, setErrorDate] = useState(false);
 
   const verifyDates = () => {
@@ -48,6 +50,15 @@ function TeamsProvider({ children }) {
       setTimeout(() => {
         setErrorDate(false);
       }, 2000);
+    } else {
+      // const dates = [];
+      const currentDate = new Date(startDate);
+      while (currentDate <= endDate) {
+        // dates.push(new Date(currentDate));
+        dates.concat(new Date(currentDate));
+        currentDate.setDate(currentDate.getDate() + 1);
+      }
+      console.log(dates);
     }
   };
 

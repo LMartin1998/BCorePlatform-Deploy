@@ -112,12 +112,21 @@ function FilesProvider({ children }) {
     setChildrenFiles(mainFiles[newId].children || []);
     setFilterChildren(mainFiles[newId].children || []);
     setSearch("");
-    folderPath.push({
-      id: newId,
-      path: `/docs/folder/${newId}`,
-      filesList: mainFiles[newId].children || [],
-      name: `${mainFiles[newId].fileName}`,
-    });
+    // folderPath.push({
+    //   id: newId,
+    //   path: `/docs/folder/${newId}`,
+    //   filesList: mainFiles[newId].children || [],
+    //   name: `${mainFiles[newId].fileName}`,
+    // });
+    setFolderPath([
+      ...folderPath,
+      {
+        id: newId,
+        path: `/docs/folder/${newId}`,
+        filesList: mainFiles[newId].children || [],
+        name: `${mainFiles[newId].fileName}`,
+      },
+    ]);
     router.push(`/docs/folder/${childrenId}`);
   };
 
