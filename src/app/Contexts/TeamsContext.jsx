@@ -16,7 +16,7 @@ function TeamsProvider({ children }) {
     const filteredUser = usersList.filter((user) => user.id == id)[0];
     const info = filteredUser ? Number(filteredUser.id) : "";
     setUserInfoId(info);
-    setUser(usersList.filter((u) => u.id == info));
+    setUser(usersList.filter((u) => u.id == info)[0] || []);
     router.push(`/teams/user/${info}`);
   };
 
@@ -67,6 +67,7 @@ function TeamsProvider({ children }) {
         toDate,
         setToDate,
         updateToDate,
+        errorDate,
       }}
     >
       {children}

@@ -9,8 +9,15 @@ import TeamsDatePicker from "@/app/components/teams/TeamsDatePicker";
 import DateRange from "@/app/components/teams/DateRange";
 
 export default function UserId() {
-  const { user, goToTable, fromDate, updateFromDate, toDate, updateToDate } =
-    useContext(TeamsContext);
+  const {
+    user,
+    goToTable,
+    fromDate,
+    updateFromDate,
+    toDate,
+    updateToDate,
+    errorDate,
+  } = useContext(TeamsContext);
 
   return (
     <main className="bg-gray-100 min-h-screen">
@@ -25,6 +32,13 @@ export default function UserId() {
             Go back
           </button>
         </div>
+        <div className="w-full jusify-center items-center">
+          <div className="w-1/2 justify-start items-center m-1">
+            {user.firstName && user.lastName
+              ? `${user.firstName} ${user.lastName} - ${user.team}`
+              : ""}
+          </div>
+        </div>
         <div className="w-full h-full flex justify-center items-center">
           <div className="w-11/12 h-full">
             <div className="w-full flex">
@@ -38,7 +52,7 @@ export default function UserId() {
                   Show entries
                 </button>
               </div>
-              <div className="flex w-1/2 border-2 border-gray-300 rounded-lg m-1 justify-center items-center bg-white select-none">
+              <div className="relative flex w-1/2 border-2 border-gray-300 rounded-lg m-1 justify-center items-center bg-white select-none">
                 <div className="flex w-1/3 m-1 justify-center items-center">
                   <div className="flex mr-2">From:</div>
                   <TeamsDatePicker
@@ -56,6 +70,11 @@ export default function UserId() {
                 <div className="w-1/3 m-1">
                   <DateRange></DateRange>
                 </div>
+                {errorDate && (
+                  <div className="absolute left-0 right-0 bottom-16 z-50 mt-1 ml-1 p-2 border-2 border-red-300 rounded-lg bg-red-100">
+                    Verify your dates comparsion
+                  </div>
+                )}
               </div>
             </div>
           </div>
