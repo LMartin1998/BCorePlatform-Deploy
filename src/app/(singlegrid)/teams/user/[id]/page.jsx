@@ -40,11 +40,11 @@ export default function UserId() {
           </div>
         </div>
         <div className="w-full h-full flex justify-center items-center">
-          <div className="w-11/12 h-full">
+          <div className="w-11/12 h-full rounded-lg bg-white divide-y divide-y-gray-200">
             <div className="w-full flex">
               <div className="flex w-1/2 border-2 border-gray-300 rounded-lg m-1 justify-center items-center bg-white">
                 Show entries for this user
-                <button className="w-1/4 flex justify-center items-center border rounded-lg bg-blue-200 m-1">
+                <button className="w-1/4 flex justify-center items-center border-2 rounded-lg bg-blue-200 m-1">
                   <HiOutlineInboxIn
                     className="m-1"
                     size={20}
@@ -75,6 +75,16 @@ export default function UserId() {
                     <p>Verify your dates comparsion</p>
                   </div>
                 )}
+              </div>
+            </div>
+            <div className="w-full h-full flex">
+              <div className="flex flex-col w-1/2 m-1">
+                <div className="w-full">Recent throughout period activity</div>
+                <div className="w-full border-2 rounded-lg"></div>
+              </div>
+              <div className="flex flex-col w-1/2 m-1">
+                <div className="w-full">Activity</div>
+                <div className="w-full border-2 rounded-lg"></div>
               </div>
             </div>
           </div>
