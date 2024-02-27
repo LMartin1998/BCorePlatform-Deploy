@@ -82,15 +82,12 @@ function GridProvider({ children }) {
         }));
     };
     
-    const [dateBlock, setDateBlock] = useState([]);
+    const [dateBlock, setDateBlock] = useState({});
     const addDateToIdBlock = (idBlock, date) => {
-        setDateBlock(prevDateBlock => {
-            if (prevDateBlock.some(item => item.id === idBlock)) {
-                return prevDateBlock.map(item => item.id === idBlock ? { ...item, date } : item);
-            } else {
-                return [...prevDateBlock, { id: idBlock, date }];
-            }
-        });
+        setDateBlock((prevDateBlock) => ({
+            ...prevDateBlock,
+            [idBlock]: date,
+        }));
     }
 
     const [textareaValuesId, setTextareaValuesId] = useState({});
@@ -100,7 +97,6 @@ function GridProvider({ children }) {
           [blockId]: textareaValues,
         }));
     }
-
 
     // hooks for steppers end
 
@@ -392,7 +388,8 @@ function GridProvider({ children }) {
                 viewboxAndPoints,
                 searchedBlocks,
                 selectedBlocks,
-                handleCheck,                 
+                handleCheck,
+
                 addDateToIdBlock,
                 dateBlock,
 
@@ -400,7 +397,8 @@ function GridProvider({ children }) {
                 dropDownSelection,
                 
                 handleTextareaChangeId,
-                textareaValuesId
+                textareaValuesId,
+
                 // Variables for stepper
             }}
         >

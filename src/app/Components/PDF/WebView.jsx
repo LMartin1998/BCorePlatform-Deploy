@@ -1,5 +1,22 @@
+import { GridContext } from "@/app/contexts/GridContext";
+import React, { useContext, useEffect, useState } from "react";
 
 const WebView = () => {
+    const {dateBlock, textareaValuesId, dropDownSelection } = useContext(GridContext);
+    const [groupedData, setGroupedData] = useState([]);
+    useEffect(() => {
+        const groupDataById = () => {
+            return Object.keys(dateBlock).map(id => ({
+                id,
+                date: dateBlock[id],
+                textareaValue: textareaValuesId[id] || '',
+                dropDownValue: dropDownSelection[id] || [],
+            }));
+        };
+
+        setGroupedData(groupDataById());
+        console.log(groupedData);
+    }, [dateBlock, textareaValuesId, dropDownSelection]);
     return (
         <div style={
             {padding: ".5rem 1rem", backgroundColor: "#e3d8d873"}
