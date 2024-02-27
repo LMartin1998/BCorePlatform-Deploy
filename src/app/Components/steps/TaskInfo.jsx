@@ -4,9 +4,8 @@ import TaskBlock from "./taskBlock/TaskBlock";
 import TaskBlockList from "./taskBlock/TaskBlockList";
 
 export default function TaskInfo() {
-  const { selectedBlocks, addDateToIdBlock } = useContext(GridContext);
+  const { selectedBlocks } = useContext(GridContext);
 
-  // useEffect(()=> {console.log(selectedBlocks)},[selectedBlocks]);
   const [optionsDrop, setoptionsDrop] = useState([]);
 
   const data = [
@@ -79,19 +78,6 @@ export default function TaskInfo() {
   };
 
   return (
-    // <div className="flex flex-col">
-    //     { selectedBlocks.map(id => (
-    //         <TaskBlock
-    //             key={id}
-    //             data={data}
-    //             handleChange={handleChange}
-    //             optionsDrop={optionsDrop}
-    //             id={id}
-    //             selectedBlocks={selectedBlocks}
-    //         >
-    //         </TaskBlock>
-    //     ))}
-    // </div>
     <TaskBlockList>
       {selectedBlocks.map((id) => (
         <TaskBlock
@@ -101,8 +87,6 @@ export default function TaskInfo() {
           optionsDrop={optionsDrop}
           id={id}
           selectedBlocks={selectedBlocks}
-
-        // addDate={() => addDateToIdBlock(id)} 
         ></TaskBlock>
       ))}
     </TaskBlockList>

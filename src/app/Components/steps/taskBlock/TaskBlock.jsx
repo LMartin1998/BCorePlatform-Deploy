@@ -2,45 +2,44 @@ import DropdownGeneral from "../../widgets/DropdDownGeneral";
 import ToggleButtonGroup from "../../widgets/ToggleButtonGroup";
 import MyDatePicker from "../../Datepicker";
 import ButtonAddTask from "../../widgets/ButtonAddTask";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { GridContext } from "@/app/contexts/GridContext";
 
 const TaskBlock = ({data, handleChange, optionsDrop, id}) => {
   
-  const { handleDropdownChange, dropDownSelection } = useContext(GridContext);
+  const { handleDropdownChange, handleTextareaChangeId, textareaValuesId } = useContext(GridContext);
 
-  const [comments, setComments] = useState(0);
-  const [textareaValues, setTextareaValues] = useState({});
+  const [comments, setComments] = useState([]);
 
   const handleAddTaskClick = () =>{
-      setComments(prevCount => prevCount + 1);
+      setComments((prevComments) => [...prevComments, comments.length]);
   }
-  
-  const handleTextareaChange = (e, index) =>  {
+  const [textareaValues, setTextareaValues] = useState({}); 
+  const handleTextareaChange = (e, index, id) =>  {
     const {value} = e.target;
     setTextareaValues((prevValues) => ({
       ...prevValues,
-      [index]: value,
-      blockId: id
+      [id]: value,
+      [index]: value
     }));
+    handleTextareaChangeId(id, textareaValues);
   }
+
+  useEffect(() => {
+    console.log(textareaValuesId);
+  }, [textareaValuesId]);
   
   const renderTextAreas = () => {
-      return Array.from({length: comments}, (_, index) =>(
-        <textarea 
+    return comments.map((index) =>(
+      <textarea 
         key={index}
         value={textareaValues[index] || ''}
-        onChange={(e) => handleTextareaChange(e, index)} 
+        onChange={(e) => handleTextareaChange(e, index, id)} 
         placeholder="Type a comment"
         className="rounded-lg px-4 mt-2 border border-gray-300 focus:outline-none focus:border-blue-500 shadow focus:shadow-outline"
-        ></textarea>
-      ));
+      ></textarea>
+    ));
   }
-  
-  useEffect(() => {
-    console.log(textareaValues);
-  }, [textareaValues]);
-
 
   return (
     <>

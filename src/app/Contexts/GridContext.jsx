@@ -82,7 +82,6 @@ function GridProvider({ children }) {
         }));
     };
     
-
     const [dateBlock, setDateBlock] = useState([]);
     const addDateToIdBlock = (idBlock, date) => {
         setDateBlock(prevDateBlock => {
@@ -92,6 +91,14 @@ function GridProvider({ children }) {
                 return [...prevDateBlock, { id: idBlock, date }];
             }
         });
+    }
+
+    const [textareaValuesId, setTextareaValuesId] = useState({});
+    const handleTextareaChangeId = (blockId, textareaValues) =>  {
+        setTextareaValuesId((prevValues) => ({
+          ...prevValues,
+          [blockId]: textareaValues,
+        }));
     }
 
 
@@ -388,8 +395,12 @@ function GridProvider({ children }) {
                 handleCheck,                 
                 addDateToIdBlock,
                 dateBlock,
+
                 handleDropdownChange,
-                dropDownSelection
+                dropDownSelection,
+                
+                handleTextareaChangeId,
+                textareaValuesId
                 // Variables for stepper
             }}
         >
