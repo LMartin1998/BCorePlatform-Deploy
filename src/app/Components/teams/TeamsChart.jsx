@@ -44,10 +44,6 @@ export default function TeamsChart() {
     generateData();
   }, [dates]);
 
-  useEffect(() => {
-    console.log(randomData);
-  }, [randomData]);
-
   const options = {
     responsive: true,
     plugins: {
@@ -67,8 +63,8 @@ export default function TeamsChart() {
       {
         label: "Activity",
         data: randomData,
-        backgroundColor: "rgba(75,192,192,0.2)", // Color del relleno de las barras
-        borderColor: "rgba(75,192,192,1)", // Color del borde de las barras
+        backgroundColor: "rgb(53, 162, 235)",
+        borderColor: "rgba(53, 162, 235, 0.5)",
       },
     ],
   };
