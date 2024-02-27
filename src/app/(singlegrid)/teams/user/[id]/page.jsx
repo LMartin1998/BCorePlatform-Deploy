@@ -80,7 +80,9 @@ export default function UserId() {
             </div>
             <div className="w-full h-full flex">
               <div className="flex flex-col w-1/2 m-1">
-                <div className="w-full">Recent throughout period activity</div>
+                <div className="w-full">
+                  Users activity throughout the period
+                </div>
                 <div className="w-full border-2 rounded-lg">
                   <TeamsChart></TeamsChart>
                 </div>
