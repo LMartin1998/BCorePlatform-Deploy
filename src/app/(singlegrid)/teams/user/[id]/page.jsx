@@ -71,8 +71,8 @@ export default function UserId() {
                   <DateRange></DateRange>
                 </div>
                 {errorDate && (
-                  <div className="absolute left-0 right-0 bottom-16 z-50 mt-1 ml-1 p-2 border-2 border-red-300 rounded-lg bg-red-100">
-                    Verify your dates comparsion
+                  <div className="absolute flex w-1/2 left-0 right-0 bottom-16 z-50 p-1 border-2 border-red-300 rounded-lg bg-red-100 justify-center items-center">
+                    <p>Verify your dates comparsion</p>
                   </div>
                 )}
               </div>
