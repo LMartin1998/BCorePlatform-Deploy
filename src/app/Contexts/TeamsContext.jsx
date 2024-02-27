@@ -56,7 +56,7 @@ function TeamsProvider({ children }) {
     } else {
       const newDates = [];
       const currentDate = new Date(startDate);
-      const options = { day: "numeric", month: "long" };
+      const options = { day: "numeric", month: "long", year: "numeric" };
       while (currentDate <= endDate) {
         const formattedDate = currentDate.toLocaleDateString("en-US", options);
         newDates.push(formattedDate);

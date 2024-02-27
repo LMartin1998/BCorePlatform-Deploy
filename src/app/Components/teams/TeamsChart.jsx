@@ -1,7 +1,26 @@
 import { TeamsContext } from "@/app/contexts/TeamsContext";
 import { useContext, useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import "chart.js/auto";
+import {
+  Chart,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+Chart.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 export default function TeamsChart() {
   const { dates } = useContext(TeamsContext);
@@ -32,14 +51,12 @@ export default function TeamsChart() {
   const options = {
     responsive: true,
     plugins: {
+      legend: {
+        position: "top",
+      },
       title: {
         display: true,
         text: "Activity found",
-      },
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
       },
     },
   };
