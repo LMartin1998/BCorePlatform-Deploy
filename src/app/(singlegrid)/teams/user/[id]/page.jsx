@@ -3,12 +3,13 @@ import Header from "@/app/components/Header";
 import TopCards from "@/app/components/TopCards";
 import { TeamsContext } from "@/app/contexts/TeamsContext";
 import { useParams } from "next/navigation";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { HiOutlineInboxIn } from "react-icons/hi";
 import TeamsDatePicker from "@/app/components/teams/TeamsDatePicker";
 import DateRange from "@/app/components/teams/DateRange";
 import TeamsChart from "@/app/components/teams/TeamsChart";
 import UserActivity from "@/app/components/teams/UserActivity";
+import EntriesTeams from "@/app/components/teams/EntriesTeams";
 
 export default function UserId() {
   const {
@@ -20,6 +21,8 @@ export default function UserId() {
     updateToDate,
     errorDate,
   } = useContext(TeamsContext);
+
+  const [openEntries, setOpenEntries] = useState(true);
 
   return (
     <main className="bg-gray-100 min-h-screen">
@@ -98,6 +101,7 @@ export default function UserId() {
           </div>
         </div>
       </div>
+      {openEntries && <EntriesTeams></EntriesTeams>}
     </main>
   );
 }
