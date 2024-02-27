@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "@/app/styles/EntriesTeams.module.css";
 
 export default function EntriesTeams({ setOpenEntries }) {
   const [btnSelection, setBtnSelection] = useState("0");
@@ -8,7 +9,7 @@ export default function EntriesTeams({ setOpenEntries }) {
   };
 
   return (
-    <div className="absolute flex flex-col w-full h-4/5 left-0 right-0 top-1/2 transform -translate-y-1/2 z-50 justify-center items-center">
+    <div className={styles.slide_top}>
       <div
         className="flex justify-center items-center rounded-lg"
         onClick={(e) => {
