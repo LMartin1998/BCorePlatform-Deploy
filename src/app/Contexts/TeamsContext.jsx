@@ -70,6 +70,22 @@ function TeamsProvider({ children }) {
     verifyDates();
   }, [fromDate, toDate]);
 
+  const addUser = ({ firstName, lastName, phone }) => {
+    setUsersList([
+      ...users,
+      {
+        id: users.length,
+        firstName: { firstName },
+        lastName: { lastName },
+        team: "",
+        role: "",
+        phone: { phone },
+        machinery: [],
+        status: false,
+      },
+    ]);
+  };
+
   return (
     <TeamsContext.Provider
       value={{
@@ -87,6 +103,7 @@ function TeamsProvider({ children }) {
         updateToDate,
         errorDate,
         dates,
+        addUser,
       }}
     >
       {children}

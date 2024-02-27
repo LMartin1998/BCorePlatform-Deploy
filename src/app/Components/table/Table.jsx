@@ -20,6 +20,7 @@ export default function Table({
   filterOptions,
   sortOptions,
   onDoubleClickEvent,
+  setNewUser,
 }) {
   const [globalFilter, setGlobalFilter] = useState("");
   const [columnFilter, setColumnFilter] = useState([]);
@@ -71,14 +72,16 @@ export default function Table({
     };
   }, []);
 
-  useEffect(() => {
-    console.log(select);
-  }, [select]);
-
   return (
     <div>
       <div className="w-full flex justify-between">
-        <button className="bg-orange-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-orange-600">
+        <button
+          className="bg-orange-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-orange-600"
+          onClick={(e) => {
+            e.stopPropagation();
+            setNewUser(true);
+          }}
+        >
           {mainButton}
         </button>
         <div className="flex space-x-2">
