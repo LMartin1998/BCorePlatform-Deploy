@@ -7,7 +7,7 @@ import { GridContext } from "@/app/contexts/GridContext";
 
 const TaskBlock = ({data, handleChange, optionsDrop, id}) => {
   
-  const { handleDropdownChange, handleTextareaChangeId, dropDownSelection } = useContext(GridContext);
+  const { handleDropdownChange, dropDownSelection, handleTextareaChangeId, textareaValuesId  } = useContext(GridContext);
 
   const [comments, setComments] = useState([]);
 
@@ -19,10 +19,9 @@ const TaskBlock = ({data, handleChange, optionsDrop, id}) => {
     const {value} = e.target;
     setTextareaValues((prevValues) => ({
       ...prevValues,
-      [id]: value,
+      // [id]: value,
       [index]: value
     }));
-    handleTextareaChangeId(id, textareaValues); 
   }
   
   const renderTextAreas = () => {
@@ -41,6 +40,15 @@ const TaskBlock = ({data, handleChange, optionsDrop, id}) => {
   useEffect(()=>{
     console.log(dropDownSelection);
   },[handleDropdownChange])
+
+  useEffect(()=>{
+    handleTextareaChangeId(id, textareaValues); 
+  },[textareaValues])
+
+  // Effect for test textareaValues
+  useEffect(()=>{
+    console.log(textareaValuesId);
+  },[handleTextareaChangeId]);
 
   return (
     <>
