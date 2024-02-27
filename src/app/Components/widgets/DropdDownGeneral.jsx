@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import clsx from "clsx";
 import Chip from "./Chip";
 
@@ -22,9 +22,12 @@ const DropdownGeneral = ({ options, buttonText, blockId, onSelectionChange }) =>
       );
     } else {
       setSelectedOptions([...selectedOptions, option]);
-    }
-    onSelectionChange(blockId, selectedOptions)
+    } 
   };
+
+  useEffect(()=>{
+    onSelectionChange(blockId, selectedOptions);
+  },[selectedOptions])
   
   return (
     <div className="relative inline-block text-left">
