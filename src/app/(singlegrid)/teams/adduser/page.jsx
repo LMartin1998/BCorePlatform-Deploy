@@ -88,6 +88,47 @@ export default function AddUser() {
               </div>
             </div>
           </div>
+          <div className="flex flex-col w-1/2 h-full m-1 rounded-lg shadow-lg bg-white justify-center items-center">
+            <div className="w-full flex justify-start items-center">
+              <p className="m-2">Contact information</p>
+            </div>
+            <div className="w-full flex flex-col m-1 justify-center items-center">
+              <div className="w-full flex flex-col m-1 items-start justify-center">
+                <p className="m-2">Address Line 1</p>
+                <input
+                  className="m-2 p-1 w-1/2 flex border-2 border-gray-200 rounded-md outline-none focus:border-blue-500"
+                  type="text"
+                  placeholder="..."
+                ></input>
+              </div>
+              <div className="w-full flex flex-col m-1 items-start justify-center">
+                <p className="m-2">Address Line 2</p>
+                <input
+                  className="m-2 p-1 w-1/2 flex border-2 border-gray-200 rounded-md outline-none focus:border-blue-500"
+                  type="text"
+                  placeholder="..."
+                ></input>
+              </div>
+              <div className="w-full flex m-1 justify-center items-center">
+                <div className="w-full flex m-1 items-center justify-start">
+                  <p className="m-2">City</p>
+                  <input
+                    className="m-2 p-1 w-1/2 flex border-2 border-gray-200 rounded-md outline-none focus:border-blue-500"
+                    type="text"
+                    placeholder="..."
+                  ></input>
+                </div>
+                <div className="w-full flex m-1 items-center justify-start">
+                  <p className="m-2">State</p>
+                  <input
+                    className="m-2 p-1 w-1/2 flex border-2 border-gray-200 rounded-md outline-none focus:border-blue-500"
+                    type="text"
+                    placeholder="..."
+                  ></input>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
