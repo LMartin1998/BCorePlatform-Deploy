@@ -16,7 +16,8 @@ import { MdOutlineCleaningServices } from "react-icons/md";
 import { FaTools } from "react-icons/fa";
 import Table from "@/app/components/table/Table";
 import { TeamsContext } from "@/app/contexts/TeamsContext";
-import AddUser from "@/app/components/teams/AddUser";
+import AddUser from "./adduser/page";
+import { useRouter } from "next/navigation";
 
 export default function Teams() {
   const { usersList, updateUserInfoId } = useContext(TeamsContext);
@@ -212,46 +213,43 @@ export default function Teams() {
   ];
 
   return (
-    <div>
-      <main
-        className={`bg-gray-100 min-h-screen ${
-          newUser ? "opacity-5" : "opacity-100"
-        }`}
-      >
-        <Header></Header>
-        <TopCards></TopCards>
-        <div className="p-4 h-full w-full">
-          <Table
-            data={usersList}
-            columns={columns}
-            filterFns={{
-              statusFiltering: statusFilter,
-            }}
-            mainButton={"+ Add user"}
-            filterOptions={[
-              { label: "name", value: "Name" },
-              { label: "team", value: "Team" },
-              { label: "role", value: "Role" },
-              { label: "phone", value: "Phone" },
-              { label: "buggy", value: "Buggy" },
-              { label: "skidsteer", value: "Skidsteer" },
-              { label: "status", value: "Status" },
-            ]}
-            sortOptions={[
-              { label: "name", value: "Name" },
-              { label: "team", value: "Team" },
-              { label: "role", value: "Role" },
-              { label: "phone", value: "Phone" },
-              { label: "buggy", value: "Buggy" },
-              { label: "skidsteer", value: "Skidsteer" },
-              { label: "status", value: "Status" },
-            ]}
-            onDoubleClickEvent={updateUserInfoId}
-            setNewUser={setNewUser}
-          ></Table>
-        </div>
-      </main>
-      {newUser && <AddUser setNewUser={setNewUser}></AddUser>}
-    </div>
+    <main
+      className={`bg-gray-100 min-h-screen ${
+        newUser ? "opacity-5" : "opacity-100"
+      }`}
+    >
+      <Header></Header>
+      <TopCards></TopCards>
+      <div className="p-4 h-full w-full">
+        <Table
+          data={usersList}
+          columns={columns}
+          filterFns={{
+            statusFiltering: statusFilter,
+          }}
+          mainButton={"+ Add user"}
+          filterOptions={[
+            { label: "name", value: "Name" },
+            { label: "team", value: "Team" },
+            { label: "role", value: "Role" },
+            { label: "phone", value: "Phone" },
+            { label: "buggy", value: "Buggy" },
+            { label: "skidsteer", value: "Skidsteer" },
+            { label: "status", value: "Status" },
+          ]}
+          sortOptions={[
+            { label: "name", value: "Name" },
+            { label: "team", value: "Team" },
+            { label: "role", value: "Role" },
+            { label: "phone", value: "Phone" },
+            { label: "buggy", value: "Buggy" },
+            { label: "skidsteer", value: "Skidsteer" },
+            { label: "status", value: "Status" },
+          ]}
+          onDoubleClickEvent={updateUserInfoId}
+          setNewUser={setNewUser}
+        ></Table>
+      </div>
+    </main>
   );
 }

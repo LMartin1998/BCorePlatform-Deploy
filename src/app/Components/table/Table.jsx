@@ -11,6 +11,7 @@ import { HiOutlineTrash } from "react-icons/hi2";
 import TablePages from "../table/TablePages";
 import TableFilters from "../table/TableFilters";
 import TableSort from "../table/TableSort";
+import { useRouter } from "next/navigation";
 
 export default function Table({
   data,
@@ -22,6 +23,8 @@ export default function Table({
   onDoubleClickEvent,
   setNewUser,
 }) {
+  const router = useRouter();
+
   const [globalFilter, setGlobalFilter] = useState("");
   const [columnFilter, setColumnFilter] = useState([]);
   const [rowSelection, setRowSelection] = useState({});
@@ -79,7 +82,7 @@ export default function Table({
           className="bg-orange-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-orange-600"
           onClick={(e) => {
             e.stopPropagation();
-            setNewUser(true);
+            router.push("/teams/adduser");
           }}
         >
           {mainButton}
