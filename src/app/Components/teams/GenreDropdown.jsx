@@ -8,6 +8,7 @@ export default function GenreDropdown() {
   const updateGenre = (e) => {
     e.stopPropagation();
     setGenre(e.target.text);
+    setOpen(false);
   };
 
   useEffect(() => {
