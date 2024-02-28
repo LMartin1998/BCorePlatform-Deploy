@@ -24,7 +24,10 @@ export default function GenreDropdown() {
   }, []);
 
   return (
-    <div className="w-full flex m-1" ref={dropdownRef}>
+    <div
+      className="w-11/12 flex m-1 justify-center items-center"
+      ref={dropdownRef}
+    >
       <div className="w-full relative flex flex-col justify-center items-center rounded-md">
         <button
           id="menu-button"
