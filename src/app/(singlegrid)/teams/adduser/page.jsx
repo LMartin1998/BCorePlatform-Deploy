@@ -88,6 +88,30 @@ export default function AddUser() {
                 </div>
               </div>
             </div>
+            <div className="w-full flex items-center justify-start">
+              <div className="w-1/2 m-1 flex flex-col items-start justify-center">
+                <p className="m-1">Mobile</p>
+                <div className="flex m-1 w-full items-center justify-start">
+                  <MdOutlineLocalPhone size={20}></MdOutlineLocalPhone>
+                  <input
+                    className="m-2 p-1 w-full flex border-2 border-gray-200 rounded-md outline-none focus:border-blue-500"
+                    type="text"
+                    placeholder="..."
+                  ></input>
+                </div>
+              </div>
+              <div className="w-1/2 m-1 flex flex-col items-start justify-center">
+                <p className="m-1">Email</p>
+                <div className="flex m-1 w-full items-center justify-start">
+                  <MdOutlineEmail size={20}></MdOutlineEmail>
+                  <input
+                    className="m-2 p-1 w-full flex border-2 border-gray-200 rounded-md outline-none focus:border-blue-500"
+                    type="text"
+                    placeholder="..."
+                  ></input>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="flex flex-col w-1/2 h-full m-1 rounded-lg shadow-lg bg-white justify-center items-center">
             <div className="w-full flex justify-start items-center">
@@ -145,7 +169,7 @@ export default function AddUser() {
               </div>
               <div className="w-full flex items-center justify-start">
                 <div className="w-1/2 m-1 flex flex-col items-start justify-center">
-                  <p className="m-1">Mobile</p>
+                  <p className="m-1">Emergency Contact 1</p>
                   <div className="flex m-1 w-full items-center justify-start">
                     <MdOutlineLocalPhone size={20}></MdOutlineLocalPhone>
                     <input
@@ -156,9 +180,9 @@ export default function AddUser() {
                   </div>
                 </div>
                 <div className="w-1/2 m-1 flex flex-col items-start justify-center">
-                  <p className="m-1">Email</p>
+                  <p className="m-1">Emergency Contact 2</p>
                   <div className="flex m-1 w-full items-center justify-start">
-                    <MdOutlineEmail size={20}></MdOutlineEmail>
+                    <MdOutlineLocalPhone size={20}></MdOutlineLocalPhone>
                     <input
                       className="m-2 p-1 w-full flex border-2 border-gray-200 rounded-md outline-none focus:border-blue-500"
                       type="text"
