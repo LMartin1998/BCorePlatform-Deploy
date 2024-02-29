@@ -19,51 +19,14 @@ export default function AddFiles() {
     };
   }, []);
 
-  // return (
-  //   <div className="flex flex-row w-1/4 m-1" ref={dropdownRef}>
-  //     <button
-  //       className="flex justify-center items-center w-full border border-black rounded-lg bg-orange-500 text-white"
-  //       id="menu-button"
-  //       aria-haspopup="true"
-  //       onClick={(e) => {
-  //         e.stopPropagation();
-  //         setOpen((prevOpen) => !prevOpen);
-  //       }}
-  //     >
-  //       <IoAddCircleOutline size={20}></IoAddCircleOutline>
-  //       Add
-  //     </button>
-  //     {open && (
-  //       <div
-  //         className="absolute left-0 z-10 mt-1 w-28 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-  //         role="menu"
-  //         aria-orientation="vertical"
-  //         aria-labelledby="menu-button"
-  //         tabIndex="-1"
-  //       >
-  //         <div className="py-1" role="none">
-  //           <a
-  //             href="#"
-  //             className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
-  //             role="menuitem"
-  //             tabIndex="-1"
-  //             id="menu-item-0"
-  //           >
-  //             Clear
-  //           </a>
-  //         </div>
-  //       </div>
-  //     )}
-  //   </div>
-  // );
   return (
-    <div className="flex flex-row w-1/4 m-1" ref={dropdownRef}>
+    <div className="flex flex-row w-1/4" ref={dropdownRef}>
       <div className="relative inline-block text-left">
         <button
           id="menu-button"
           className={`flex items-center text-gray-700 rounded-lg text-white ${
             open ? "bg-orange-300" : "bg-orange-500"
-          } py-1 px-3`}
+          } py-1 px-3 m-2`}
           type="text"
           aria-haspopup="true"
           onClick={(e) => {
