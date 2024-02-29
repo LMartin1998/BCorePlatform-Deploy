@@ -31,6 +31,24 @@ export default function AddUser() {
     }
   }, [firstName, lastName]);
 
+  const [verifyNumber, setVerifyNumber] = useState(true);
+  const [number, setNumber] = useState("");
+  const [numberRegex, setNumberReget] = useState(
+    new RegExp("^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4,6}$")
+  );
+  const verifyPhoneNumber = (e) => {
+    e.stopPropagation();
+    setNumber(e.target.value);
+  };
+
+  useEffect(() => {
+    if (number) {
+      setVerifyNumber(!numberRegex.test(number));
+    } else {
+      setVerifyNumber(true);
+    }
+  }, [number]);
+
   const [date, setDate] = useState(new Date());
 
   return (
@@ -69,7 +87,6 @@ export default function AddUser() {
                   <div className="flex flex-col w-1/2 m-1">
                     <div className="w-full flex items-center justify-start">
                       <p className="m-2">Day of Birth</p>
-                      {verifyName && <span className="text-red-500">*</span>}
                     </div>
                     <div className="w-full flex m-1">
                       <TeamsDatePicker
@@ -81,7 +98,6 @@ export default function AddUser() {
                   <div className="flex flex-col w-1/2 m-1">
                     <div className="w-full flex items-center justify-start">
                       <p className="m-2">Genre</p>
-                      {verifyName && <span className="text-red-500">*</span>}
                     </div>
                     <GenreDropdown></GenreDropdown>
                   </div>
@@ -90,13 +106,18 @@ export default function AddUser() {
             </div>
             <div className="w-full flex items-center justify-start">
               <div className="w-1/2 m-1 flex flex-col items-start justify-center">
-                <p className="m-1">Mobile</p>
+                <div className="w-full flex items-center justify-start">
+                  <p className="m-1">Phone</p>
+                  {verifyNumber && <span className="text-red-500">*</span>}
+                </div>
                 <div className="flex m-1 w-full items-center justify-start">
                   <MdOutlineLocalPhone size={20}></MdOutlineLocalPhone>
                   <input
                     className="m-2 p-1 w-full flex border-2 border-gray-200 rounded-md outline-none focus:border-blue-500"
                     type="text"
                     placeholder="..."
+                    value={number}
+                    onChange={verifyPhoneNumber}
                   ></input>
                 </div>
               </div>
