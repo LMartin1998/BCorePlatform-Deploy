@@ -3,16 +3,11 @@ import SearchBlock from "../SearchBlock/SearchBlock";
 import BlockList from "../BlockList";
 import BlockItem from "../BlockItem";
 
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { GridContext } from "@/app/contexts/GridContext";
 
 export default function SelectBlock() {
   const {  searchedBlocks, handleCheck, selectedBlocks } = useContext(GridContext);
-  
-  useEffect(()=>{
-    console.log(selectedBlocks)
-  },[selectedBlocks]);
-
   return (
     <div className="flex flex-col">
       <SearchBlock></SearchBlock>

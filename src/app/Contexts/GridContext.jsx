@@ -98,6 +98,20 @@ function GridProvider({ children }) {
         }));
     }
 
+    const [groupedData, setGroupedData] =useState([]);
+    useEffect(() => {
+        const groupDataById = () => {
+            return Object.keys(dateBlock).map((id) => ({
+                id,
+                date: dateBlock[id],
+                textareaValue: textareaValuesId[id] || "",
+                dropDownValue: dropDownSelection[id] || [],
+            }));
+        };
+        const newData = groupDataById();
+        setGroupedData(newData);
+    },[dateBlock, textareaValuesId, dropDownSelection]);
+
     // hooks for steppers end
 
     const [points, setPoints] = useState("");
@@ -399,6 +413,7 @@ function GridProvider({ children }) {
                 handleTextareaChangeId,
                 textareaValuesId,
 
+                groupedData
                 // Variables for stepper
             }}
         >
