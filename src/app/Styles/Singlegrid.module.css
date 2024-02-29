@@ -470,3 +470,13 @@
 .minTT {
     border: 1px solid #00a896;
 }
+
+.st0 {
+    fill:#4F4F4F;
+    stroke:#FFFFFF;
+    stroke-width:0.25;
+    stroke-miterlimit:10;
+}
+.st0:hover {
+    fill: #2196f3;
+}
