@@ -69,6 +69,33 @@ export default function AddUser() {
 
   const [date, setDate] = useState(new Date());
 
+  const [verifyENumber1, setVerifyENumber1] = useState(true);
+  const [eNumber1, setENumber1] = useState("");
+  const verifyPhoneNumber1 = (e) => {
+    e.stopPropagation();
+    setENumber1(e.target.value);
+  };
+  useEffect(() => {
+    if (eNumber1) {
+      setVerifyENumber1(!numberRegex.test(eNumber1));
+    } else {
+      setVerifyENumber1(true);
+    }
+  }, [eNumber1]);
+  const [verifyENumber2, setVerifyENumber2] = useState(true);
+  const [eNumber2, setENumber2] = useState("");
+  const verifyPhoneNumber2 = (e) => {
+    e.stopPropagation();
+    setENumber2(e.target.value);
+  };
+  useEffect(() => {
+    if (eNumber2) {
+      setVerifyENumber2(!numberRegex.test(eNumber2));
+    } else {
+      setVerifyENumber2(true);
+    }
+  }, [eNumber2]);
+
   return (
     <main className="bg-gray-100 min-h-screen">
       <Header></Header>
@@ -213,24 +240,42 @@ export default function AddUser() {
               </div>
               <div className="w-full flex items-center justify-start">
                 <div className="w-1/2 m-1 flex flex-col items-start justify-center">
-                  <p className="m-1">Emergency Contact 1</p>
+                  <div className="w-full flex items-center justify-start">
+                    <p className="m-1">Emergency Contact 1</p>
+                    {verifyENumber1 ? (
+                      <span className="text-blue-500">*</span>
+                    ) : (
+                      <span className="text-green-500">*</span>
+                    )}
+                  </div>
                   <div className="flex m-1 w-full items-center justify-start">
                     <MdOutlineLocalPhone size={20}></MdOutlineLocalPhone>
                     <input
                       className="m-2 p-1 w-full flex border-2 border-gray-200 rounded-md outline-none focus:border-blue-500"
                       type="text"
                       placeholder="..."
+                      value={eNumber1}
+                      onChange={verifyPhoneNumber1}
                     ></input>
                   </div>
                 </div>
                 <div className="w-1/2 m-1 flex flex-col items-start justify-center">
-                  <p className="m-1">Emergency Contact 2</p>
+                  <div className="w-full flex items-center justify-start">
+                    <p className="m-1">Emergency Contact 2</p>
+                    {verifyENumber2 ? (
+                      <span className="text-blue-500">*</span>
+                    ) : (
+                      <span className="text-green-500">*</span>
+                    )}
+                  </div>
                   <div className="flex m-1 w-full items-center justify-start">
                     <MdOutlineLocalPhone size={20}></MdOutlineLocalPhone>
                     <input
                       className="m-2 p-1 w-full flex border-2 border-gray-200 rounded-md outline-none focus:border-blue-500"
                       type="text"
                       placeholder="..."
+                      value={eNumber2}
+                      onChange={verifyPhoneNumber2}
                     ></input>
                   </div>
                 </div>
