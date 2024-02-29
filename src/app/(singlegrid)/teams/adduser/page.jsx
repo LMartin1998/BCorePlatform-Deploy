@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { MdOutlineLocalPhone, MdOutlineEmail } from "react-icons/md";
 
 export default function AddUser() {
-  //   const [nameRegex, setNameRegex] = useState(/^[^\d]+(?: [^\d]+)*$/);
   const [verifyName, setVerifyName] = useState(true);
   const [firstName, setFirstName] = useState("");
   const verifyFirstName = (e) => {
@@ -48,6 +47,25 @@ export default function AddUser() {
       setVerifyNumber(true);
     }
   }, [number]);
+
+  const [verifyEmail, setVerifyEmail] = useState(true);
+  const [email, setEmail] = useState("");
+  const [emailRegex, setEmailRegex] = useState(
+    new RegExp("^[\\w.-]+@([\\w-]+\\.)+[\\w-]{2,}$")
+  );
+
+  const verifyEmailInput = (e) => {
+    e.stopPropagation();
+    setEmail(e.target.value);
+  };
+
+  useEffect(() => {
+    if (email) {
+      setVerifyEmail(!emailRegex.test(email));
+    } else {
+      setVerifyEmail(true);
+    }
+  }, [email]);
 
   const [date, setDate] = useState(new Date());
 
@@ -122,13 +140,18 @@ export default function AddUser() {
                 </div>
               </div>
               <div className="w-1/2 m-1 flex flex-col items-start justify-center">
-                <p className="m-1">Email</p>
+                <div className="w-full flex items-center justify-start">
+                  <p className="m-1">Email</p>
+                  {verifyEmail && <span className="text-red-500">*</span>}
+                </div>
                 <div className="flex m-1 w-full items-center justify-start">
                   <MdOutlineEmail size={20}></MdOutlineEmail>
                   <input
                     className="m-2 p-1 w-full flex border-2 border-gray-200 rounded-md outline-none focus:border-blue-500"
                     type="text"
                     placeholder="..."
+                    value={email}
+                    onChange={verifyEmailInput}
                   ></input>
                 </div>
               </div>
