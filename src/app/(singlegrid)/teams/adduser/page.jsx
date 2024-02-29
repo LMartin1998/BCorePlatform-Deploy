@@ -4,6 +4,7 @@ import TopCards from "@/app/components/TopCards";
 import GenreDropdown from "@/app/components/teams/GenreDropdown";
 import TeamsDatePicker from "@/app/components/teams/TeamsDatePicker";
 import { useEffect, useState } from "react";
+import { MdOutlineLocalPhone, MdOutlineEmail } from "react-icons/md";
 
 export default function AddUser() {
   //   const [nameRegex, setNameRegex] = useState(/^[^\d]+(?: [^\d]+)*$/);
@@ -94,7 +95,7 @@ export default function AddUser() {
             </div>
             <div className="w-full flex flex-col m-1 justify-center items-center">
               <div className="w-full flex flex-col m-1 items-start justify-center">
-                <p className="m-2">Address Line 1</p>
+                <p className="m-1">Address Line 1</p>
                 <input
                   className="m-2 p-1 w-1/2 flex border-2 border-gray-200 rounded-md outline-none focus:border-blue-500"
                   type="text"
@@ -102,7 +103,7 @@ export default function AddUser() {
                 ></input>
               </div>
               <div className="w-full flex flex-col m-1 items-start justify-center">
-                <p className="m-2">Address Line 2</p>
+                <p className="m-1">Address Line 2</p>
                 <input
                   className="m-2 p-1 w-1/2 flex border-2 border-gray-200 rounded-md outline-none focus:border-blue-500"
                   type="text"
@@ -125,6 +126,45 @@ export default function AddUser() {
                     type="text"
                     placeholder="..."
                   ></input>
+                </div>
+              </div>
+              <div className="w-full flex items-center justify-center">
+                <div className="w-full flex flex-col m-1 items-start justify-center">
+                  <p className="m-1">ZIP</p>
+                  <div className="w-1/2 flex items-center justify-start">
+                    <input
+                      className="m-2 p-1 w-1/2 flex border-2 border-gray-200 rounded-md outline-none focus:border-blue-500"
+                      type="text"
+                      placeholder="..."
+                    ></input>
+                    <button className="flex w-fit items-center justify-center p-1 border-2 border-blue-300 rounded-md bg-blue-100 hover:border-blue-500">
+                      Verify
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full flex items-center justify-start">
+                <div className="w-1/2 m-1 flex flex-col items-start justify-center">
+                  <p className="m-1">Mobile</p>
+                  <div className="flex m-1 w-full items-center justify-start">
+                    <MdOutlineLocalPhone size={20}></MdOutlineLocalPhone>
+                    <input
+                      className="m-2 p-1 w-full flex border-2 border-gray-200 rounded-md outline-none focus:border-blue-500"
+                      type="text"
+                      placeholder="..."
+                    ></input>
+                  </div>
+                </div>
+                <div className="w-1/2 m-1 flex flex-col items-start justify-center">
+                  <p className="m-1">Email</p>
+                  <div className="flex m-1 w-full items-center justify-start">
+                    <MdOutlineEmail size={20}></MdOutlineEmail>
+                    <input
+                      className="m-2 p-1 w-full flex border-2 border-gray-200 rounded-md outline-none focus:border-blue-500"
+                      type="text"
+                      placeholder="..."
+                    ></input>
+                  </div>
                 </div>
               </div>
             </div>
