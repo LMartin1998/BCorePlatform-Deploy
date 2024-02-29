@@ -1,8 +1,9 @@
-import { FixedSizeGrid } from "react-window";
+import { FixedSizeGrid, VariableSizeGrid } from "react-window";
 import { useContext, createRef, useState, useEffect } from "react";
 import { GridContext } from "../contexts/GridContext";
 import styles from "@/app/styles/Singlegrid.module.css";
 import { TorqueTubes } from "./TorqueTubesComponent";
+import Zoom from "./ZoomComponent";
 
 export function ContainerRacks() {
     const {
@@ -11,57 +12,99 @@ export function ContainerRacks() {
         panelsInput,
         handleMouseDownContainer,
         handleMouseUpContainer,
+        perspectiveMode,
+        jid,
+        json,
+        readtt,
+        maxtt,
+        countMaxtt,
+        sections,
+        sectionsById,
+        torqueTubeBySections,
+        maxPanels,
+        zoom,
     } = useContext(GridContext);
 
-    const containerRacksRef = createRef();
+    useEffect(() => {
+        countMaxtt();
+        sectionsById();
+        torqueTubeBySections();
+    }, [jid, json]);
 
-    const [dimension, setDimensions] = useState({ width: 0, height: 0 });
+    let containerStyle = { width: "100%", height: "100%" };
 
     useEffect(() => {
-        const newDimension = () => {
-            if (containerRacksRef.current) {
-                const width = containerRacksRef.current.clientWidth;
-                const height = containerRacksRef.current.clientHeight;
-                setDimensions({ width, height });
-            }
+        const updateStyle = () => {
+            containerStyle = { width: "100%", height: "100%" };
         };
-        newDimension();
+        window.addEventListener("resize", updateStyle);
+        window.removeEventListener("resize", updateStyle);
+    }, [containerStyle]);
 
-        window.addEventListener("resize", newDimension);
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min);
+    }
 
-        return () => {
-            window.removeEventListener("resize", newDimension);
-        };
-    }, []);
+    const constWidth = () => {
+        return 120;
+    }
+
+    const getColumnWidth = () => {
+        return constWidth();
+    };
+
+    const getRowHeight = (index) => {
+        if (readtt && readtt[index]) {
+            const sectionId = readtt[index][0].split(", ")[0];
+            return maxPanels(sectionId);
+        }
+        return getRandomInt(10, 120);
+    };
+
+    const torqueTubeContaier = ({ columnIndex, rowIndex, style }) => (
+        <div className="flex mt-2 justify-center" style={{ ...style }}>
+            {readtt && readtt[rowIndex][columnIndex] ? (<TorqueTubes
+                style={style}
+                columnIndex={columnIndex}
+                rowIndex={rowIndex}
+            ></TorqueTubes>)
+                : (
+                    <></>
+                )}
+        </div>
+    );
 
     return (
         <>
             <div
                 className={styles.container_racks}
-                ref={containerRacksRef}
                 onMouseDown={handleMouseDownContainer}
                 onMouseUp={handleMouseUpContainer}
             >
-                <FixedSizeGrid
+                <VariableSizeGrid
                     className="TorqueGrid"
-                    columnCount={racksInput}
-                    columnWidth={120}
-                    height={dimension.height}
-                    rowCount={rowsInput}
-                    rowHeight={45 * panelsInput + 50} //Agregar espacio entre filas
-                    width={dimension.width}
-                    style={{ userSelect: "none", width: "100%", height : "100%" }}
+                    columnCount={maxtt}
+                    columnWidth={perspectiveMode ? getRowHeight : getColumnWidth}
+                    height={900}
+                    rowCount={sections}
+                    rowHeight={perspectiveMode ? getColumnWidth : getRowHeight}
+                    width={900}
+                    style={{
+                        userSelect: "none",
+                        width: containerStyle.width,
+                        height: containerStyle.width,
+                        zoom: zoom, transformOrigin: "center",
+                    }}
                     overscanColumnCount={2}
                     overscanRowCount={2}
                 >
-                    {({ columnIndex, rowIndex, style }) => (
-                        <TorqueTubes
-                            style={style}
-                            columnIndex={columnIndex}
-                            rowIndex={rowIndex}
-                        ></TorqueTubes>
-                    )}
-                </FixedSizeGrid>
+                    {torqueTubeContaier}
+                </VariableSizeGrid>
+                <div className="relative right-0 bottom-0 p-2">
+                    <Zoom></Zoom>
+                </div>
             </div>
         </>
     );

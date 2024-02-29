@@ -1,43 +1,61 @@
 "use client";
 
-import { useContext, useState, useRef } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import { GridContext } from "@/app/contexts/GridContext";
-import { BootstrapLoader } from "@/app/document/page";
 import styles from "@/app/styles/Singlegrid.module.css";
-import { ContainerRacks } from "../../components/ContainerRacksComponent";
+import { ContainerRacks } from "../../../components/ContainerRacksComponent";
+import Header from "../../../components/Header";
 import { useParams } from "next/navigation";
-import data from "@/app/data/data";
-import ToggleButton from "@/app/Components/ToggleButton";
+import TopCards from "@/app/components/TopCards";
+import Dropdown from "@/app/components/widgets/Dropdown";
+import ToggleSwitch from "@/app/components/ToggleSwitch";
 
 export default function SingleGrid() {
   const params = useParams();
   const id = params.id;
 
-  const item = data.find((info) => info.id === id);
-
   const {
     rowsInput,
     rowsInputChange,
+    updateRowInput,
     racksInput,
     racksInputChange,
+    updateRacksInput,
     panelsInput,
     panelsInputChange,
-    changeToolMode,
+    updatePanelsInput,
     filterMode,
     changeFilterMode,
+    json,
+    updateJson,
+    viewBox,
+    jid,
+    updateJid,
+    points,
+    background,
+    perspectiveMode,
   } = useContext(GridContext);
 
+  useEffect(() => {
+    updateJid(id);
+    updateJson();
+    updateRowInput();
+    updateRacksInput();
+    updatePanelsInput();
+  }, [id, json]);
+
   return (
-    <div className="w-full">
+    <div className="w-full h-[120vh] bg-gray-100">
+      <Header></Header>
+      <TopCards></TopCards>
       <div className="container pt-1 pb-1">
         <div className="flex justify-center">
           <div className="w-4/6 pt-1 ttPanelsContainer">
             <div className={`${styles.filter_and_tools} pb-2 pt-2`}>
               <div className={styles.show_buttons}>
                 <button
-                  className={`show-torque-tube ${
-                    filterMode === 0 ? styles.active : ""
-                  }`}
+                  className={`show-torque-tube ${filterMode === 0 ? styles.active : ""
+                    }`}
                   id="show-torque-tube"
                   onClick={changeFilterMode}
                 >
@@ -45,36 +63,34 @@ export default function SingleGrid() {
                 </button>
 
                 <button
-                  className={`show-MODS ${
-                    filterMode === 1 ? styles.active : ""
-                  }`}
+                  className={`show-MODS ${filterMode === 1 ? styles.active : ""
+                    }`}
                   id="show-MODS"
                   onClick={changeFilterMode}
                 >
                   MODS
                 </button>
                 <button
-                  className={`show-panels ${
-                    filterMode === 2 ? styles.active : ""
-                  }`}
+                  className={`show-panels ${filterMode === 2 ? styles.active : ""
+                    }`}
                   id="show-panels"
                   onClick={changeFilterMode}
                 >
                   Panels
                 </button>
                 <button
-                  className={`show-both ${
-                    filterMode === 3 ? styles.active : ""
-                  }`}
+                  className={`show-both ${filterMode === 3 ? styles.active : ""
+                    }`}
                   id="show-both"
                   onClick={changeFilterMode}
                 >
                   Racks
                 </button>
               </div>
+              <Dropdown></Dropdown>
             </div>
             <div className={styles.grid_notes}>
-              <ContainerRacks></ContainerRacks>
+              {jid && <ContainerRacks></ContainerRacks>}
             </div>
             <div
               id={styles.delete_container}
@@ -101,22 +117,11 @@ export default function SingleGrid() {
             <div className="flex">
               <div className="w-full">
                 <div className={styles.notes}>
-                  <div className="">
-                    <ToggleButton></ToggleButton>
-                    <label>Portrait Mode</label>
+                  <div className="mb-4 flex items-center flex-wrap">
+                    <ToggleSwitch></ToggleSwitch>
+                    <label className="text-sm font-medium text-gray-700 pl-2">{`${!perspectiveMode ? "Portrait" : "Landscape"
+                      } `}</label>
                   </div>
-                  {/* <div className="form-floating mb-3">
-                    <input
-                      id="inputRows"
-                      type="number"
-                      className="form-control"
-                      placeholder="Rows"
-                      min="1"
-                      defaultValue={!item.rows ? rowsInput : item.rows}
-                      onChange={rowsInputChange}
-                    />
-                    <label htmlFor="inputRows">Rows</label>
-                  </div> */}
                   <div className="mb-4">
                     <label
                       htmlFor="example-input"
@@ -129,65 +134,41 @@ export default function SingleGrid() {
                       type="number"
                       placeholder="Rows"
                       min="1"
-                      defaultValue={!item.rows ? rowsInput : item.rows}
+                      value={rowsInput}
                       onChange={rowsInputChange}
                       className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500"
                     />
                   </div>
-                  {/* <div className="form-floating mb-3">
+                  <div className="mb-4">
+                    <label
+                      htmlFor="example-input"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Racks:
+                    </label>
                     <input
-                      id="inputRacks"
+                      id="example-input"
                       type="number"
-                      className="form-control"
                       placeholder="Racks"
                       min="1"
-                      defaultValue={!item.racks ? racksInput : item.racks}
-                      onChange={racksInputChange}
-                    />
-                    <label htmlFor="inputRacks">Racks</label>
-                  </div> */}
-                  <div className="mb-4">
-                    <label
-                      htmlFor="example-input"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Rows:
-                    </label>
-                    <input
-                      id="example-input"
-                      type="number"
-                      placeholder="Rows"
-                      min="1"
-                      defaultValue={!item.racks ? racksInput : item.racks}
+                      value={racksInput}
                       onChange={racksInputChange}
                       className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500"
                     />
                   </div>
-                  {/* <div className="form-floating mb-3">
-                    <input
-                      id="inputPanels"
-                      type="number"
-                      className="form-control"
-                      placeholder="Panels"
-                      min="1"
-                      defaultValue={!item.panels ? panelsInput : item.panels}
-                      onChange={panelsInputChange}
-                    />
-                    <label htmlFor="inputPanels">Panels</label>
-                  </div> */}
                   <div className="mb-4">
                     <label
                       htmlFor="example-input"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Rows:
+                      Panels:
                     </label>
                     <input
                       id="example-input"
                       type="number"
-                      placeholder="Rows"
+                      placeholder="Panels"
                       min="1"
-                      defaultValue={!item.panels ? panelsInput : item.panels}
+                      value={panelsInput}
                       onChange={panelsInputChange}
                       className="mt-1 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500"
                     />
@@ -198,34 +179,6 @@ export default function SingleGrid() {
                   >
                     Enviar
                   </button>
-                </div>
-              </div>
-            </div>
-            <div className="flex pt-1">
-              <div className="w-full">
-                <div className={styles.notes}>
-                  <div className={styles.map_div}>
-                    <svg
-                      version="1.1"
-                      id="BLACKBEAR"
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlnsXlink="http://www.w3.org/1999/xlink"
-                      x="0px"
-                      y="0px"
-                      viewBox={item.viewBox}
-                      style={{
-                        enableBackground: item.background,
-                      }}
-                      xmlSpace="preserve"
-                    >
-                      <polygon
-                        id={item.id}
-                        className={styles.st0}
-                        points={item.points}
-                      />
-                    </svg>
-                    <p>{item.id}</p>
-                  </div>
                 </div>
               </div>
             </div>

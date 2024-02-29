@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
-export function TorqueTubesLocalStorage(columnIndex, rowIndex, toolMode) {
-    const initialState = {
-        state: 0,
-        show: true,
-    };
+export function TorqueTubesLocalStorage(columnIndex, rowIndex, toolMode, initialState) {
+    // const initialState = {
+    //     state: 0,
+    //     show: true,
+    // };
 
     const key = `tt_${columnIndex}_${rowIndex}`;
 

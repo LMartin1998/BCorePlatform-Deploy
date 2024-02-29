@@ -22,27 +22,19 @@ export function Panels(props) {
     return (
         <>
             <div
-                className={styles.panel_container}
-                style={{ ...props.style, pointerEvents: "none" }}
-            >
-                <div
-                    id={`panel_${props.columnIndex}_${props.rowIndex}_${props.index}`}
-                    className={styles.panel}
-                    style={{
-                        ...props.style,
-                        height: perspectiveMode ? "100%" : "35px",
-                        width: perspectiveMode ? "35px" : "100%",
-                        top: "0",
-                        left: "0",
-                        position: "relative",
-                        pointerEvents: "auto",
-                        backgroundColor: changeState(state),
-                        opacity: !show ? "0.05" : "1",
-                        visibility: filterMode === 0 ? "hidde" : "visible",
-                    }}
-                    onMouseOver={mouseDownPanel ? updatePanel : undefined}
-                ></div>
-            </div>
+                id={`panel_${props.columnIndex}_${props.rowIndex}_${props.index}`}
+                className={styles.panel}
+                style={{
+                    ...props.style,
+                    height: perspectiveMode ? "100%" : "35px",
+                    width: perspectiveMode ? "35px" : "100%",
+                    pointerEvents: "auto",
+                    backgroundColor: changeState(state),
+                    opacity: !show ? "0.05" : "1",
+                    visibility: filterMode === 0 ? "hidde" : "visible",
+                }}
+                onMouseOver={mouseDownPanel ? updatePanel : undefined}
+            ></div>
         </>
     );
 }

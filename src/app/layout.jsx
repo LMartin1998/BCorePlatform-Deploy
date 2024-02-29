@@ -1,8 +1,7 @@
 "use client";
 import "./globals.css";
-import React, { useState } from "react";
-import Sidebar from "./components/Sidebar";
 import { GridProvider } from "./contexts/GridContext";
+import { UserProvider } from "./contexts/UserContext";
 
 // export const metadata = {
 //   title: 'Project Manager',
@@ -10,18 +9,15 @@ import { GridProvider } from "./contexts/GridContext";
 // }
 
 export default function RootLayout({ children }) {
-    const [showSidebar, setShowSidebar] = useState(false);
 
     return (
         <html lang="en">
             <body>
-                <GridProvider>
-                    <Sidebar
-                        children={children}
-                        show={showSidebar}
-                        setter={setShowSidebar}
-                    />
-                </GridProvider>
+                <UserProvider>
+                    <GridProvider>
+                        {children}
+                    </GridProvider>
+                </UserProvider>
             </body>
         </html>
     );
