@@ -1,8 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Header from "../../components/Header";
 import TopCards from "../../components/TopCards";
-import users from "../../data/teamsdata";
 import { GrUserManager } from "react-icons/gr";
 import { FaTruckPlane } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
@@ -11,11 +10,19 @@ import {
   GiGearHammer,
   GiElectricalResistance,
 } from "react-icons/gi";
+import { HiOutlineTruck } from "react-icons/hi";
+import { MdOutlineDirectionsBike } from "react-icons/md";
 import { MdOutlineCleaningServices } from "react-icons/md";
 import { FaTools } from "react-icons/fa";
 import Table from "@/app/components/table/Table";
+import { TeamsContext } from "@/app/contexts/TeamsContext";
+import AddUser from "./adduser/page";
+import { useRouter } from "next/navigation";
 
 export default function Teams() {
+  const { usersList, updateUserInfoId } = useContext(TeamsContext);
+  const [newUser, setNewUser] = useState(false);
+
   const teamLabel = {
     Logistics: <FaTruckPlane size={20} />,
     Manager: <GrUserManager size={20} />,
@@ -27,10 +34,28 @@ export default function Teams() {
     "Tool Room": <FaTools size={20} />,
   };
 
-  const [data, setData] = useState(users);
+  const vehicleLabel = {
+    "0000": <HiOutlineTruck size={16}></HiOutlineTruck>,
+    1111: <MdOutlineDirectionsBike size={16}></MdOutlineDirectionsBike>,
+  };
+
+  let timeOutId;
+  const [showInfo, setShowInfo] = useState("");
+
+  const hoverEnter = (e) => {
+    e.stopPropagation();
+    timeOutId = setTimeout(() => {
+      setShowInfo(e.target.id);
+    }, 1000);
+  };
+  const hoverLeave = (e) => {
+    e.stopPropagation();
+    clearTimeout(timeOutId);
+    setShowInfo("");
+  };
 
   const [rowStatus, setRowStatus] = useState(
-    data.map((user) => ({
+    usersList.map((user) => ({
       id: user.id,
       status: user.status,
     }))
@@ -57,26 +82,26 @@ export default function Teams() {
       id: "selector-column",
       header: ({ table }) => (
         <input
+          className="w-4 h-4 rounded-full border-2 border-gray-400 appearance-none checked:bg-blue-400 disable:bg-red"
           type="checkbox"
           checked={table.getIsAllRowsSelected()}
           onChange={table.getToggleAllRowsSelectedHandler()}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
         ></input>
       ),
       cell: ({ row }) => (
         <input
+          className="w-4 h-4 rounded-full border-2 border-gray-400 appearance-none checked:bg-blue-400 disable:bg-red"
           type="checkbox"
           checked={row.getIsSelected()}
           disabled={!row.getCanSelect()}
           onChange={row.getToggleSelectedHandler()}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
         ></input>
-      ),
-    },
-    {
-      id: "#",
-      header: "#",
-      accessorKey: "id",
-      cell: (row) => (
-        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
       ),
     },
     {
@@ -117,20 +142,47 @@ export default function Teams() {
       ),
     },
     {
-      id: "buggy",
-      header: "Buggy",
-      accessorKey: "buggy",
-      cell: (row) => (
-        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
-      ),
-    },
-    {
-      id: "skidsteer",
-      header: "Skidsteer",
-      accessorKey: "skidsteer",
-      cell: (row) => (
-        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
-      ),
+      id: "machinery",
+      header: "Machinery",
+      accessorFn: (row) => `${row.id} ${row.machinery}`,
+      cell: (row) => {
+        const accesorArr = row.getValue().split(" ");
+        const id = accesorArr[0];
+        const machinery = accesorArr[1].split(",");
+        const length = machinery.length;
+        const serial = machinery.filter((r) => !isNaN(r))[0];
+        const firstFourDigits = serial.substring(0, 4);
+
+        return length <= 1 ? (
+          vehicleLabel[firstFourDigits]
+        ) : (
+          <div className="flex flex-wrap justify-start items-baseline mt-2 size-8">
+            <div className="relative bg-white py-2 px-4 border border-black rounded-full">
+              {vehicleLabel[firstFourDigits]}
+              <span
+                className="absolute bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded-full -top-3 -right-3"
+                id={id}
+                onMouseEnter={hoverEnter}
+                onMouseLeave={hoverLeave}
+              >
+                +{length - 1}
+              </span>
+              {showInfo == id && (
+                <div
+                  className="absolute z-10 bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded border border-gray-700 -top-8 -right-16 overflow-hidden"
+                  onMouseLeave={hoverLeave}
+                >
+                  {machinery.map((r, index) => (
+                    <p className="truncate" key={index}>
+                      {r}
+                    </p>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      },
     },
     {
       id: "status",
@@ -161,17 +213,21 @@ export default function Teams() {
   ];
 
   return (
-    <main className="bg-gray-100 min-h-screen">
+    <main
+      className={`bg-gray-100 min-h-screen ${
+        newUser ? "opacity-5" : "opacity-100"
+      }`}
+    >
       <Header></Header>
       <TopCards></TopCards>
       <div className="p-4 h-full w-full">
         <Table
-          data={data}
+          data={usersList}
           columns={columns}
           filterFns={{
             statusFiltering: statusFilter,
           }}
-          mainButton={"+ Add document"}
+          mainButton={"+ Add user"}
           filterOptions={[
             { label: "name", value: "Name" },
             { label: "team", value: "Team" },
@@ -190,6 +246,8 @@ export default function Teams() {
             { label: "skidsteer", value: "Skidsteer" },
             { label: "status", value: "Status" },
           ]}
+          onDoubleClickEvent={updateUserInfoId}
+          setNewUser={setNewUser}
         ></Table>
       </div>
     </main>
