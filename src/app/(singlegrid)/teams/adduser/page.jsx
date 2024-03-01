@@ -166,7 +166,10 @@ export default function AddUser() {
                         name="zip"
                         id="zip"
                       ></input>
-                      <button className="flex w-fit items-center justify-center p-1 border-2 border-blue-300 rounded-md bg-blue-100 hover:border-blue-500">
+                      <button
+                        className="flex w-fit items-center justify-center p-1 border-2 border-blue-300 rounded-md bg-blue-100 hover:border-blue-500"
+                        type="button"
+                      >
                         Verify
                       </button>
                     </div>
