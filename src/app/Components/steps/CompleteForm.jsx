@@ -1,8 +1,9 @@
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import React, { useContext } from "react";
 import { GridContext } from "@/app/contexts/GridContext";
-
+import Link from "next/link";
 import DocPDF from "../PDF/DocPDF";
+
 export default function CompleteForm() {
   const { groupedData } = useContext(GridContext);
   return (
@@ -28,9 +29,11 @@ export default function CompleteForm() {
               Download report
             </button>
           </PDFDownloadLink>
-          <button className="bg-orange-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-orange-600">
-            Close
-          </button>
+          <Link href="/">
+            <button className="bg-orange-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-orange-600" >
+              Close
+            </button>
+          </Link>
         </div>
       </div>
     </div>
