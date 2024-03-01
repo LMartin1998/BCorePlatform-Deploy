@@ -212,7 +212,7 @@ export default function AddUser() {
               </div>
               <div className="w-full flex items-center justify-center">
                 <button
-                  className="w-fit flex items-center justify-center m-1 rounded-md shadow-md p-1 bg-blue-200 hover:bg-blue-300"
+                  className="flex w-fit items-center justify-center p-1 border-2 mb-1 border-blue-300 rounded-md bg-blue-100 hover:border-blue-500 hover:bg-blue-300"
                   type="submit"
                 >
                   Save
