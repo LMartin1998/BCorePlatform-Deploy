@@ -102,7 +102,7 @@ export default function AddUser() {
       <TopCards></TopCards>
       <div className="w-full h-full flex justify-center items-center">
         <div className="w-11/12 h-full flex justify-center items-center">
-          <div className="flex flex-col w-1/2 h-full m-1 rounded-lg shadow-lg bg-white justify-center items-center">
+          <div className="flex flex-col w-1/2 h-full m-1 rounded-lg shadow-lg bg-white justify-center items-center self-start">
             <div className="w-full flex justify-start items-center">
               <p className="m-2">General information</p>
             </div>
@@ -184,7 +184,7 @@ export default function AddUser() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col w-1/2 h-full m-1 rounded-lg shadow-lg bg-white justify-center items-center">
+          <div className="flex flex-col w-1/2 h-full m-1 rounded-lg shadow-lg bg-white justify-center items-center self-start">
             <div className="w-full flex justify-start items-center">
               <p className="m-2">Contact information</p>
             </div>
