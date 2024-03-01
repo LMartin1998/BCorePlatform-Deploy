@@ -210,7 +210,7 @@ export default function AddUser() {
                   </div>
                 </div>
               </div>
-              <div className="w-full flex items-center justify-center m-1">
+              <div className="w-full flex items-center justify-center">
                 <button
                   className="w-fit flex items-center justify-center m-1 rounded-md shadow-md p-1 bg-blue-200 hover:bg-blue-300"
                   type="submit"
