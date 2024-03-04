@@ -48,7 +48,17 @@ export default function Stadistics() {
         </div>
       </div>
       <BlocksDropdown></BlocksDropdown>
-      <div className="w-full h-full flex justify-center items-center rounded shadow-lg"></div>
+      <div className="w-full h-screen flex justify-center items-center mt-2 mb-2">
+        <div
+          className={`w-full h-full flex justify-center items-center m-2 rounded-lg shadow-lg ${
+            filter === 0
+              ? "bg-yellow-100"
+              : filter === 1
+              ? "bg-cyan-100"
+              : "bg-emerald-100"
+          }`}
+        ></div>
+      </div>
     </main>
   );
 }
