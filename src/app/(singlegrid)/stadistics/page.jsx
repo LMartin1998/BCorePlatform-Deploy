@@ -50,7 +50,7 @@ export default function Stadistics() {
       <BlocksDropdown></BlocksDropdown>
       <div className="w-full h-screen flex justify-center items-center mt-2 mb-2">
         <div
-          className={`w-full h-full flex justify-center items-center m-2 rounded-lg shadow-lg ${
+          className={`w-full h-full flex justify-center items-center m-2 border-2 border-black rounded-lg ${
             filter === 0
               ? "bg-yellow-100"
               : filter === 1
