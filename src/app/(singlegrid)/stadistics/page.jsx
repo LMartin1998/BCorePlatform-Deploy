@@ -3,9 +3,8 @@ Total de paneles, torques tubes,
 */
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "../../components/Header";
-import BlocksDropdown from "@/app/Components/stadistics/ModalBlocks";
 import ModalBlocks from "@/app/Components/stadistics/ModalBlocks";
 
 export default function Stadistics() {
