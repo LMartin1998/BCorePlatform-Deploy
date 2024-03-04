@@ -402,6 +402,7 @@ function GridProvider({ children }) {
                 viewboxAndPoints,
                 searchedBlocks,
                 selectedBlocks,
+                setSelectedBlocks,
                 handleCheck,
 
                 addDateToIdBlock,

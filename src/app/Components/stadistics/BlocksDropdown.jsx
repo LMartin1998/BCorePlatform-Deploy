@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import SelectBlock from "@/app/components/steps/SelectBlock";
+import { GridContext } from "@/app/contexts/GridContext";
 
 export default function BlocksDropdown() {
+  const { setSelectedBlocks } = useContext(GridContext);
   const [selection, setSelection] = useState("All");
   const [open, setOpen] = useState(false);
 
@@ -51,7 +53,8 @@ export default function BlocksDropdown() {
                 id="menu-item-0"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setOpen(false);
+                  setSelection("All");
+                  setSelectedBlocks([]);
                 }}
               >
                 Clear
