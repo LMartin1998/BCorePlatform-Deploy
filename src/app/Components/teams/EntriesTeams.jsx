@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "@/app/styles/EntriesTeams.module.css";
+import styles from "@/app/styles/SlideTop.module.css";
 
 export default function EntriesTeams({ setOpenEntries }) {
   const [btnSelection, setBtnSelection] = useState("0");
