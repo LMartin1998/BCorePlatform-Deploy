@@ -112,12 +112,6 @@ function FilesProvider({ children }) {
     setChildrenFiles(mainFiles[newId].children || []);
     setFilterChildren(mainFiles[newId].children || []);
     setSearch("");
-    // folderPath.push({
-    //   id: newId,
-    //   path: `/docs/folder/${newId}`,
-    //   filesList: mainFiles[newId].children || [],
-    //   name: `${mainFiles[newId].fileName}`,
-    // });
     setFolderPath([
       ...folderPath,
       {
@@ -167,10 +161,6 @@ function FilesProvider({ children }) {
     const newPath = folderPath.slice(0, id + 1);
     setFolderPath(newPath);
   };
-
-  useEffect(() => {
-    console.log(folderPath);
-  }, [folderPath]);
 
   const [design, setDesign] = useState(0);
   const updateDesign = (e) => {
