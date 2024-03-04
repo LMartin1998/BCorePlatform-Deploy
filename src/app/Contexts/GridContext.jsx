@@ -74,6 +74,12 @@ function GridProvider({ children }) {
         }
     };
 
+    //TODO: Validate that choose a block
+    const [hasSelectedBlocks, setHasSelectedBlocks] = useState(false);
+    useEffect(() => {
+        setHasSelectedBlocks(selectedBlocks.length > 0);
+    }, [selectedBlocks]);
+
     const [dropDownSelection, setDropDownSelection] = useState({});
     const handleDropdownChange = (blockId, selectedOptions) => {
         setDropDownSelection((prevSelections) => ({
@@ -413,7 +419,9 @@ function GridProvider({ children }) {
                 handleTextareaChangeId,
                 textareaValuesId,
 
-                groupedData
+                groupedData,
+
+                hasSelectedBlocks,
                 // Variables for stepper
             }}
         >

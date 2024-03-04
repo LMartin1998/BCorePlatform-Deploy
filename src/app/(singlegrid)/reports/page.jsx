@@ -7,11 +7,14 @@ import SelectBlock from "@/app/components/steps/SelectBlock";
 import TaskInfo from "@/app/components/steps/TaskInfo";
 import Resume from "@/app/components/steps/Resume";
 import CompleteForm from "@/app/components/steps/CompleteForm";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import { StepperContext } from "@/app/contexts/StepperContext"; 
+import { GridContext } from "@/app/contexts/GridContext";
 
 export default function Reports() {
+    const { hasSelectedBlocks } = useContext(GridContext);
+ 
     const [currentStep, setCurrentStep] = useState(1);
 
     const [userData, setUserData] = useState('');
@@ -41,7 +44,9 @@ export default function Reports() {
 
     const handleClick = (direction) => {
         let newStep = currentStep;
-
+        if (currentStep === 1 && !hasSelectedBlocks) {
+            return; // No avanzar
+        }
         direction === "next" ? newStep++ : newStep--;
         newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
     }
