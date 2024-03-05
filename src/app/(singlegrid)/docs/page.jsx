@@ -10,6 +10,7 @@ import DesignFiles from "@/app/components/files/DesignFiles";
 import FilterFiles from "@/app/components/files/FilterFiles";
 import AddFiles from "@/app/components/files/AddFiles";
 import ImageView from "@/app/Components/files/ImageView";
+import Modal from "@/app/Components/Modal";
 
 export default function Docs() {
   const {
@@ -19,7 +20,9 @@ export default function Docs() {
     searchMain,
     mainType,
     updateMainType,
+    image,
     showImage,
+    setShowImage,
   } = useContext(FilesContext);
 
   useEffect(() => {
@@ -27,28 +30,36 @@ export default function Docs() {
   }, []);
 
   return (
-    <>
-      <main className="bg-gray-100 min-h-screen">
-        <Header></Header>
-        <TopCards></TopCards>
-        <SearchFiles searchPage={searchMain}></SearchFiles>
-        <div className="flex w-full">
-          <BreadcrumFiles></BreadcrumFiles>
-          <DesignFiles></DesignFiles>
-        </div>
-        <div className="flex w-1/3 m-1 justify-center items-center">
-          <AddFiles></AddFiles>
-          <FilterFiles
-            type={mainType}
-            updateType={updateMainType}
-          ></FilterFiles>
-        </div>
-        <ShowFiles
-          filesList={filterMain}
-          updateFiles={updateMainFiles}
-        ></ShowFiles>
-        {showImage && <ImageView></ImageView>}
-      </main>
-    </>
+    <main className="bg-gray-100 min-h-screen">
+      <Header></Header>
+      <TopCards></TopCards>
+      <SearchFiles searchPage={searchMain}></SearchFiles>
+      <div className="flex w-full">
+        <BreadcrumFiles></BreadcrumFiles>
+        <DesignFiles></DesignFiles>
+      </div>
+      <div className="flex w-1/3 m-1 justify-center items-center">
+        <AddFiles></AddFiles>
+        <FilterFiles type={mainType} updateType={updateMainType}></FilterFiles>
+      </div>
+      <ShowFiles
+        filesList={filterMain}
+        updateFiles={updateMainFiles}
+      ></ShowFiles>
+      {showImage && (
+        <Modal
+          onClose={() => {
+            setShowImage(false);
+          }}
+          children={
+            <img
+              className="flex w-11/12 h-full mt-4 mb-4"
+              loading="lazy"
+              src={image}
+            ></img>
+          }
+        ></Modal>
+      )}
+    </main>
   );
 }
