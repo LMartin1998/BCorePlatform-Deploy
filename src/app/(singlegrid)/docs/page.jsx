@@ -8,7 +8,6 @@ import SearchFiles from "@/app/components/files/SearchFiles";
 import BreadcrumFiles from "@/app/components/files/BreadcrumFiles";
 import DesignFiles from "@/app/components/files/DesignFiles";
 import FilterFiles from "@/app/components/files/FilterFiles";
-import { IoAddCircleOutline } from "react-icons/io5";
 import AddFiles from "@/app/components/files/AddFiles";
 
 export default function Docs() {
