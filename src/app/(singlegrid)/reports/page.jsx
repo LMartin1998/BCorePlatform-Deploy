@@ -70,7 +70,6 @@ const columns = [
 ];
 
 export default function Reports() {
-    console.log(columns);
   return (
     <main className="bg-gray-100 min-h-screen">
       <Header></Header>
@@ -79,6 +78,8 @@ export default function Reports() {
         <Table 
             data={reportBlocks} 
             columns={columns}
+            mainButton={"+ Add report"}
+            link={"/reports/addReport"}
         ></Table>
       </div>
     </main>

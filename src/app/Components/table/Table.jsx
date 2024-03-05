@@ -12,6 +12,7 @@ import TablePages from "../table/TablePages";
 import TableFilters from "../table/TableFilters";
 import TableSort from "../table/TableSort";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Table({
   data,
@@ -22,6 +23,7 @@ export default function Table({
   sortOptions,
   onDoubleClickEvent,
   setNewUser,
+  link
 }) {
   const router = useRouter();
 
@@ -74,21 +76,21 @@ export default function Table({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
-  useEffect(()=>{console.log(table.getSelectedRowModel().rows)},[table.getSelectedRowModel()])
-
+  
   return (
     <div>
       <div className="w-full flex justify-between">
-        <button
-          className="bg-orange-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-orange-600"
-          onClick={(e) => {
-            e.stopPropagation();
-            router.push("/teams/adduser");
-          }}
-        >
-          {mainButton}
-        </button>
+        <Link href={link}>
+          <button
+            className="bg-orange-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-orange-600"
+            // onClick={(e) => {
+            //   e.stopPropagation();
+            //   router.push("/teams/adduser");
+            // }}
+          >
+            {mainButton}
+          </button>
+        </Link>
         <div className="flex space-x-2">
           {table && (
             <button
@@ -145,7 +147,7 @@ export default function Table({
             return (
               <tr
                 className={`border-b border-solid border-gray-200 ${
-                  select == row.id ? "bg-indigo-100 transition-colors duration-300 ease-in-out" : "bg-white hover:bg-gray-100"
+                  select == row.id ? "bg-indigo-50 transition-colors duration-300 ease-in-out" : "bg-white hover:bg-gray-50"
                 }`}
                 key={row.id}
                 id={row.id}

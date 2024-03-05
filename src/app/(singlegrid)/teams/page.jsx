@@ -248,6 +248,7 @@ export default function Teams() {
           ]}
           onDoubleClickEvent={updateUserInfoId}
           setNewUser={setNewUser}
+          link={"/teams/adduser"}
         ></Table>
       </div>
     </main>
