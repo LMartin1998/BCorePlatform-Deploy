@@ -105,23 +105,35 @@ function FilesProvider({ children }) {
     ]);
   };
 
+  const [image, setImage] = useState("");
+  const [showImage, setShowImage] = useState(false);
+
   const updateMainFiles = (e) => {
     e.stopPropagation();
     const newId = Number(e.currentTarget.id);
     setParentId(newId);
-    setChildrenFiles(mainFiles[newId].children || []);
-    setFilterChildren(mainFiles[newId].children || []);
-    setSearch("");
-    setFolderPath([
-      ...folderPath,
-      {
-        id: newId,
-        path: `/docs/folder/${newId}`,
-        filesList: mainFiles[newId].children || [],
-        name: `${mainFiles[newId].fileName}`,
-      },
-    ]);
-    router.push(`/docs/folder/${childrenId}`);
+    const mainFile = mainFiles[newId];
+    if (mainFile && mainFile.children) {
+      setChildrenFiles(mainFiles[newId].children || []);
+      setFilterChildren(mainFiles[newId].children || []);
+      setSearch("");
+      setImage("");
+      setShowImage(false);
+      setFolderPath([
+        ...folderPath,
+        {
+          id: newId,
+          path: `/docs/folder/${newId}`,
+          filesList: mainFiles[newId].children || [],
+          name: `${mainFiles[newId].fileName}`,
+        },
+      ]);
+      router.push(`/docs/folder/${childrenId}`);
+    } else {
+      setShowImage(true);
+      setImage(mainFile.imageLink);
+      // console.log(mainFile.imageLink);
+    }
   };
 
   const updateChildrenFiles = (e) => {
@@ -148,6 +160,8 @@ function FilesProvider({ children }) {
     e.stopPropagation();
     const id = Number(e.currentTarget.id);
     setSearch("");
+    setShowImage(false);
+    setImage("");
     if (id > 0) {
       const list = folderPath[id].filesList || [];
       setChildrenFiles(list);
@@ -198,6 +212,10 @@ function FilesProvider({ children }) {
         updateMainType,
         childrenType,
         updateChildrenType,
+        image,
+        setImage,
+        showImage,
+        setShowImage,
       }}
     >
       {children}
