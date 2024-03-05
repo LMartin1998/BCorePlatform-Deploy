@@ -68,7 +68,7 @@ export default function Stadistics() {
         </div>
         <div className="w-full flex justify-end items-center">
           <button
-            className="w-1/6 mr-5 p-1 flex justify-center items-center rounded-lg bg-sky-200 hover:bg-sky-300 hover:cursor-pointer"
+            className="w-1/6 mr-5 p-1 flex justify-center items-center border border-sky-500 rounded-lg bg-sky-200 hover:bg-sky-300 hover:cursor-pointer"
             type="button"
             onClick={(e) => {
               e.stopPropagation();
