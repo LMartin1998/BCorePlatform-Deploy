@@ -75,6 +75,8 @@ export default function Table({
     };
   }, []);
 
+  useEffect(()=>{console.log(table.getSelectedRowModel().rows)},[table.getSelectedRowModel()])
+
   return (
     <div>
       <div className="w-full flex justify-between">
@@ -116,16 +118,16 @@ export default function Table({
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr
-              className="text-left bg-gray-200 select-none"
+              className="text-center bg-gray-200 select-none"
               key={headerGroup.id}
             >
               {headerGroup.headers.map((header) => (
                 <th
-                  className="text-left p-1 text-gray-700 border-b border-solid border-gray-400"
+                  className="text-left p-1 text-gray-700 border-b border-solid border-gray-200"
                   key={header.id}
                   onClick={header.column.getToggleSortingHandler()}
                 >
-                  <div className="flex jusity-start">
+                  <div className="flex justify-center">
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -142,8 +144,8 @@ export default function Table({
           {table.getRowModel().rows.map((row) => {
             return (
               <tr
-                className={`border-b border-solid border-gray-400 hover:bg-gray-100 ${
-                  select == row.id ? "bg-blue-200" : "bg-white"
+                className={`border-b border-solid border-gray-200 ${
+                  select == row.id ? "bg-indigo-100 transition-colors duration-300 ease-in-out" : "bg-white hover:bg-gray-100"
                 }`}
                 key={row.id}
                 id={row.id}
