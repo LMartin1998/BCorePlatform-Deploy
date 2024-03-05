@@ -9,7 +9,6 @@ import BreadcrumFiles from "@/app/components/files/BreadcrumFiles";
 import DesignFiles from "@/app/components/files/DesignFiles";
 import FilterFiles from "@/app/components/files/FilterFiles";
 import AddFiles from "@/app/components/files/AddFiles";
-import ImageView from "@/app/Components/files/ImageView";
 import Modal from "@/app/Components/Modal";
 
 export default function Docs() {
