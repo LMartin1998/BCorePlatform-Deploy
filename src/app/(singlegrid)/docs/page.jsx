@@ -53,7 +53,7 @@ export default function Docs() {
           }}
           children={
             <img
-              className="flex w-11/12 h-full mt-4 mb-4"
+              className="flex w-11/12 h-full mt-6 mb-6 p-1"
               loading="lazy"
               src={image}
             ></img>
