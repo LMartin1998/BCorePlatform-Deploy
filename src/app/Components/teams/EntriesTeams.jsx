@@ -10,7 +10,7 @@ export default function EntriesTeams({ setOpenEntries }) {
   return (
     <div className="flex flex-col w-full h-full">
       <div
-        className="flex justify-center items-center rounded-lg"
+        className="flex justify-center items-center w-full h-[5%] rounded-lg"
         onClick={(e) => {
           e.stopPropagation();
           setOpenEntries(false);
@@ -19,7 +19,7 @@ export default function EntriesTeams({ setOpenEntries }) {
         <button className="bg-transparent">Close</button>
       </div>
       <div className="w-full h-full rounded-lg shadow-lg bg-white">
-        <div className="flex w-full justify-center items-center border-b border-gray-300">
+        <div className="flex w-full h-[5%] justify-center items-center border-b border-gray-300">
           <div
             className="flex w-1/6 m-1 p-1 justify-center items-center rounded-lg"
             id="0"
@@ -47,7 +47,7 @@ export default function EntriesTeams({ setOpenEntries }) {
             </button>
           </div>
         </div>
-        <div className="w-1/2 flex mt-1">
+        <div className="flex w-1/2 h-[5%] mt-1">
           <div className="w-1/3 flex border rounded-lg bg-blue-300">
             <button className="w-full">Filter</button>
           </div>
@@ -58,7 +58,7 @@ export default function EntriesTeams({ setOpenEntries }) {
             <button className="w-full">Filter</button>
           </div>
         </div>
-        <div className="w-full h-full flex justify-center items-center">
+        <div className="flex w-full h-[90%] justify-center items-center">
           <div className="w1/3 h-full flex m-1 justify-center items-center"></div>
           <div className="w1/3 h-full flex m-1 justify-center items-center"></div>
           <div className="w1/3 h-full flex m-1 justify-center items-center"></div>
