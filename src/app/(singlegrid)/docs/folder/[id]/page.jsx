@@ -10,6 +10,7 @@ import { FilesContext } from "@/app/contexts/FilesContext";
 import { useContext } from "react";
 import { IoAddCircleOutline } from "react-icons/io5";
 import AddFiles from "@/app/components/files/AddFiles";
+import Modal from "@/app/Components/Modal";
 
 export default function Folder() {
   const {
