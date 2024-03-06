@@ -120,7 +120,7 @@ export default function Table({
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr
-              className="text-center bg-gray-200 select-none"
+              className="text-center bg-slate-50 select-none"
               key={headerGroup.id}
             >
               {headerGroup.headers.map((header) => (
@@ -147,7 +147,7 @@ export default function Table({
             return (
               <tr
                 className={`border-b border-solid border-gray-200 ${
-                  select == row.id ? "bg-indigo-50 transition-colors duration-300 ease-in-out" : "bg-white hover:bg-gray-50"
+                  select == row.id ? "bg-indigo-50 transition-colors duration-300 ease-in-out" : "bg-white hover:bg-blue-50"
                 }`}
                 key={row.id}
                 id={row.id}
