@@ -133,7 +133,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
   };
 
   return (
-    <div className="flex flex-col w-full h-3/5 items-center">
+    <div className="flex flex-col w-full h-[55%] items-center">
       <div className="flex flex-col w-11/12 h-full items-center rounded-lg shadow-xl overflow-auto bg-white mb-2">
         <div
           className={`${
