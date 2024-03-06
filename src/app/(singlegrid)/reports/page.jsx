@@ -147,12 +147,20 @@ const columnsTeams = [
   },
 ];
 
+// const tabsData = [
+//   { label: "Blocks", data: reportBlocks, columns: columnsBlocks, mainButton:"+ Add block report"}, 
+//   { label: "Teams",  data: reportTeams,  columns: columnsTeams,  mainButton:"+ Add team report"}, 
+//   { label: "Daily",  data: reportBlocks, columns: columnsBlocks, mainButton:"+ Add report"},
+//   { label: "Weekly", data: reportBlocks, columns: columnsBlocks, mainButton:"+ Add report"},
+// ];
+
 const tabsData = [
-  { label: "Blocks", data: reportBlocks, columns: columnsBlocks, mainButton:"+ Add block report"}, 
-  { label: "Teams",  data: reportTeams,  columns: columnsTeams,  mainButton:"+ Add team report"}, 
-  { label: "Daily",  data: reportBlocks, columns: columnsBlocks, mainButton:"+ Add report"},
-  { label: "Weekly", data: reportBlocks, columns: columnsBlocks, mainButton:"+ Add report"},
-];
+  { label: 'Blocks', content: <Table data={reportBlocks} columns={columnsBlocks} mainButton={"+ Add block report"} link={"/reports/addReport"}/> },
+  { label: 'Teams',  content: <Table data={reportTeams}  columns={columnsTeams}  mainButton={"+ Add team  report"} link={"/reports/addReport"}/> },
+  { label: 'Daily',  content: <Header></Header>}
+]
+
+
 
 export default function Reports() {
   const [activeTab, setActiveTab] = useState(0);
@@ -176,14 +184,8 @@ export default function Reports() {
               key={index}
               className={`${activeTab === index ? "" : "hidden"}`}
             >
-              Content of {tab.label}
               <div className="h-full w-full">
-                <Table
-                  data={tab.data}
-                  columns={tab.columns}
-                  mainButton={tab.mainButton}
-                  link={"/reports/addReport"}
-                ></Table>
+                {tab.content}
               </div>
             </div>
           ))}
