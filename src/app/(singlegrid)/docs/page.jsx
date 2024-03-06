@@ -29,15 +29,21 @@ export default function Docs() {
   }, []);
 
   return (
-    <main className="bg-gray-100 min-h-screen">
-      <Header></Header>
-      <TopCards></TopCards>
-      <SearchFiles searchPage={searchMain}></SearchFiles>
-      <div className="flex w-full">
+    <main className="bg-gray-100 h-screen max-h-screen">
+      <div className="h-[3%]">
+        <Header></Header>
+      </div>
+      <div className="h-[20%]">
+        <TopCards></TopCards>
+      </div>
+      <div className="h-[6%]">
+        <SearchFiles searchPage={searchMain}></SearchFiles>
+      </div>
+      <div className="flex w-full h-[5%]">
         <BreadcrumFiles></BreadcrumFiles>
         <DesignFiles></DesignFiles>
       </div>
-      <div className="flex w-1/3 m-1 justify-center items-center">
+      <div className="flex w-1/3 m-1 justify-center items-center h-[5%]">
         <AddFiles></AddFiles>
         <FilterFiles type={mainType} updateType={updateMainType}></FilterFiles>
       </div>
