@@ -25,10 +25,14 @@ export default function UserId() {
   const [openEntries, setOpenEntries] = useState(false);
 
   return (
-    <main className="bg-gray-100 min-h-screen">
-      <Header></Header>
-      <TopCards></TopCards>
-      <div className="flex flex-col justify-center items-center">
+    <main className="bg-gray-100 w-full h-screen max-h-screen">
+      <div className="flex flex-col justify-center w-full h-[5%]">
+        <Header></Header>
+      </div>
+      <div className="flex w-full h-[20%] items-center">
+        <TopCards></TopCards>
+      </div>
+      <div className="flex flex-col justify-center items-center w-full h-[80%]">
         <div className="w-full justify-start items-center">
           <button
             className="w-1/6 h-10 bg-orange-500 text-white px-3 py-1 rounded-lg focus:outline-none hover:bg-orange-600 m-1"
@@ -44,7 +48,7 @@ export default function UserId() {
               : ""}
           </div>
         </div>
-        <div className="w-full h-full flex justify-center items-center">
+        <div className="w-full h-[70%] flex justify-center items-center">
           <div className="w-11/12 h-full rounded-lg bg-white divide-y divide-y-gray-200 shadow-2xl">
             <div className="w-full flex">
               <div className="flex w-1/2 border-2 border-gray-300 rounded-lg m-1 justify-center items-center bg-white">
