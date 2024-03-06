@@ -1,10 +1,13 @@
 "use client";
+import { useState, useContext } from "react";
+
+//Components imports
 import Header from "../../components/Header";
 import TopCards from "../../components/TopCards";
-import { useState, useContext } from "react";
 import Table from "@/app/components/table/Table";
+import Tabs from "@/app/components/tabs/Tabs";
 
-// Importaciones de datos
+//Data imports
 import reportBlocks from "@/app/data/reportBlocks";
 
 const columns = [
@@ -69,11 +72,33 @@ const columns = [
   }
 ];
 
+const tabsData = [
+  { label: 'Tab 1' },
+  { label: 'Tab 2' },
+  { label: 'Tab 3' },
+];
+
 export default function Reports() {
+  
+  const [activeTab, setActiveTab] = useState(0);
+  const handleTabChange  = (index) => {
+    setActiveTab(index);
+  };
+
   return (
     <main className="bg-gray-100 min-h-screen">
       <Header></Header>
       <TopCards></TopCards>
+      <div className="container mx-auto mt-10">
+        <Tabs tabs={tabsData} activeTab={activeTab} onTabChange={handleTabChange}></Tabs>
+        <div className="mt-4 p-4 bg-gray-100">
+          {tabsData.map((tab, index) => (
+            <div key={index} className={`${activeTab === index ? '' : 'hidden'}`}>
+              Content of {tab.label} 
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="p-4 h-full w-full">
         <Table 
             data={reportBlocks} 
