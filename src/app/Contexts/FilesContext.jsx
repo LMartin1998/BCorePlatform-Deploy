@@ -7,6 +7,17 @@ const FilesContext = createContext();
 function FilesProvider({ children }) {
   const router = useRouter();
 
+  const [extensions, setExtensions] = useState(["pdf", "png", "jpeg", "jpg"]);
+
+  const [imageExtensions, setImageExtensions] = useState([
+    "jpg",
+    "png",
+    "jpeg",
+    "tiff",
+  ]);
+
+  const [docExtensions, setDocExtensions] = useState(["pdf", "docx"]);
+
   const [parentId, setParentId] = useState();
   const updateParentId = (e) => {
     e.stopPropagation();
@@ -69,7 +80,6 @@ function FilesProvider({ children }) {
   const [childrenType, setChildrenType] = useState(0);
   const updateChildrenType = (e) => {
     e.stopPropagation();
-    const extensions = ["pdf", "png", "jpeg", "jpg"];
     setChildrenType(e.currentTarget.id);
     if (e.currentTarget.id == 0) {
       setFilterChildren(childrenFiles);
@@ -119,6 +129,7 @@ function FilesProvider({ children }) {
       setSearch("");
       setImage("");
       setShowImage(false);
+      setMainType(0);
       setFolderPath([
         ...folderPath,
         {
@@ -130,8 +141,14 @@ function FilesProvider({ children }) {
       ]);
       router.push(`/docs/folder/${childrenId}`);
     } else {
-      setShowImage(true);
-      setImage(mainFile.imageLink);
+      if (
+        imageExtensions.some((ex) =>
+          mainFile.fileName.toLowerCase().endsWith(ex.toLowerCase())
+        )
+      ) {
+        setShowImage(true);
+        setImage(mainFile.imageLink);
+      }
     }
   };
 
@@ -158,8 +175,14 @@ function FilesProvider({ children }) {
       ]);
       router.push(`/docs/folder/${childrenId}`);
     } else {
-      setShowImage(true);
-      setImage(childrenFile.imageLink);
+      if (
+        imageExtensions.some((ex) =>
+          childrenFile.fileName.toLowerCase().endsWith(ex.toLowerCase())
+        )
+      ) {
+        setShowImage(true);
+        setImage(childrenFile.imageLink);
+      }
     }
   };
 
