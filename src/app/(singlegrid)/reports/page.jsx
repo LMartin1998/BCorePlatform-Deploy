@@ -46,12 +46,17 @@ const columns = [
     header: "Blocks",
     accessorKey: "blocks",
     cell: (row) => {
-        const blocksInReport  = row.getValue();
-        {return blocksInReport.map((r, index) => (
-          <p className="text-gray-700 font-medium text-sm text-center" key={index}>
+      const blocksInReport = row.getValue();
+      {
+        return blocksInReport.map((r, index) => (
+          <p
+            className="text-gray-700 font-medium text-sm text-center"
+            key={index}
+          >
             {r}
           </p>
-        ))}
+        ));
+      }
     },
   },
   {
@@ -59,7 +64,9 @@ const columns = [
     header: "Date",
     accessorKey: "date",
     cell: (row) => (
-        <p className="text-gray-700 font-medium text-base text-center">{row.getValue()}</p>
+      <p className="text-gray-700 font-medium text-base text-center">
+        {row.getValue()}
+      </p>
     ),
   },
   {
@@ -67,21 +74,20 @@ const columns = [
     header: "Status",
     accesorKey: "status",
     cell: (row) => {
-      return <p className="text-gray-700 font-medium text-base text-center">{row.getValue() ? "True" : "False"}</p>;
+      return (
+        <p className="text-gray-700 font-medium text-base text-center">
+          {row.getValue() ? "True" : "False"}
+        </p>
+      );
     },
-  }
+  },
 ];
 
-const tabsData = [
-  { label: 'Tab 1' },
-  { label: 'Tab 2' },
-  { label: 'Tab 3' },
-];
+const tabsData = [{ label: "Tab 1" }, { label: "Tab 2" }, { label: "Tab 3" }];
 
 export default function Reports() {
-  
   const [activeTab, setActiveTab] = useState(0);
-  const handleTabChange  = (index) => {
+  const handleTabChange = (index) => {
     setActiveTab(index);
   };
 
@@ -90,22 +96,29 @@ export default function Reports() {
       <Header></Header>
       <TopCards></TopCards>
       <div className="w-full p-4">
-        <Tabs tabs={tabsData} activeTab={activeTab} onTabChange={handleTabChange}></Tabs>
-        <div className="mt-4 p-4 bg-gray-700">
+        <Tabs
+          tabs={tabsData}
+          activeTab={activeTab}
+          onTabChange={handleTabChange}
+        ></Tabs>
+        <div className="p-4 bg-white">
           {tabsData.map((tab, index) => (
-            <div key={index} className={`${activeTab === index ? '' : 'hidden'}`}>
-              Content of {tab.label} 
+            <div
+              key={index}
+              className={`${activeTab === index ? "" : "hidden"}`}
+            >
+              Content of {tab.label}
+              <div className="h-full w-full">
+                <Table
+                  data={reportBlocks}
+                  columns={columns}
+                  mainButton={"+ Add report"}
+                  link={"/reports/addReport"}
+                ></Table>
+              </div>
             </div>
           ))}
         </div>
-      </div>
-      <div className="p-4 h-full w-full">
-        <Table 
-            data={reportBlocks} 
-            columns={columns}
-            mainButton={"+ Add report"}
-            link={"/reports/addReport"}
-        ></Table>
       </div>
     </main>
   );
