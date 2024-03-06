@@ -197,10 +197,12 @@ function FilesProvider({ children }) {
       setChildrenFiles(list);
       setFilterChildren(list);
       setChildrenType(0);
+      setMainType(0);
     } else {
       setChildrenFiles([]);
-      setChildrenFiles([]);
       setFilterMain(mainFiles);
+      setChildrenType(0);
+      setMainType(0);
     }
     const newPath = folderPath.slice(0, id + 1);
     setFolderPath(newPath);
