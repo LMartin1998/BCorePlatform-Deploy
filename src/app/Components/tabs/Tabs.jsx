@@ -2,9 +2,9 @@ const Tab = ({label, isActive, onClick}) => {
     return (
         <button className={`${
             isActive
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-        } py-2 px-4 rounded `}
+                ? 'border-b-2 border-blue-500 focus:outline-none text-blue-500 font-semibold'
+                : 'border-b border-transparent focus:outline-none'
+        } py-2 px-4 `}
         onClick={onClick}
         >
             {label}
@@ -15,11 +15,11 @@ const Tab = ({label, isActive, onClick}) => {
 const Tabs =({ tabs, activeTab, onTabChange }) => {
 
     return (
-        <div className="flex">
+        <div className="w-full flex justify-center items-center border-b border-gray-200 bg-white">
             {tabs.map((tab, index) => (
                 <Tab
                     key={index}
-                    label={tab.label}
+                    label={tab.label} 
                     isActive={activeTab === index}
                     onClick={() => onTabChange(index)}
                 >

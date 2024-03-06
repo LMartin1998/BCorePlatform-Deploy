@@ -89,9 +89,9 @@ export default function Reports() {
     <main className="bg-gray-100 min-h-screen">
       <Header></Header>
       <TopCards></TopCards>
-      <div className="container mx-auto mt-10">
+      <div className="w-full p-4">
         <Tabs tabs={tabsData} activeTab={activeTab} onTabChange={handleTabChange}></Tabs>
-        <div className="mt-4 p-4 bg-gray-100">
+        <div className="mt-4 p-4 bg-gray-700">
           {tabsData.map((tab, index) => (
             <div key={index} className={`${activeTab === index ? '' : 'hidden'}`}>
               Content of {tab.label} 
