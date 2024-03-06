@@ -10,7 +10,7 @@ import Tabs from "@/app/components/tabs/Tabs";
 //Data imports
 import reportBlocks from "@/app/data/reportBlocks";
 
-const columns = [
+const columnsBlocks = [
   {
     id: "selector-column",
     header: ({ table }) => (
@@ -83,7 +83,12 @@ const columns = [
   },
 ];
 
-const tabsData = [{ label: "Tab 1" }, { label: "Tab 2" }, { label: "Tab 3" }];
+const tabsData = [
+  { label: "Blocks", data: reportBlocks, columns: columnsBlocks, mainButton:"+ Add report"}, 
+  { label: "Teams",  data: reportBlocks, columns: columnsBlocks, mainButton:"+ Add report"}, 
+  { label: "Daily",  data: reportBlocks, columns: columnsBlocks, mainButton:"+ Add report"},
+  { label: "Weekly", data: reportBlocks, columns: columnsBlocks, mainButton:"+ Add report"},
+];
 
 export default function Reports() {
   const [activeTab, setActiveTab] = useState(0);
@@ -110,9 +115,9 @@ export default function Reports() {
               Content of {tab.label}
               <div className="h-full w-full">
                 <Table
-                  data={reportBlocks}
-                  columns={columns}
-                  mainButton={"+ Add report"}
+                  data={tab.data}
+                  columns={tab.columns}
+                  mainButton={tab.mainButton}
                   link={"/reports/addReport"}
                 ></Table>
               </div>
