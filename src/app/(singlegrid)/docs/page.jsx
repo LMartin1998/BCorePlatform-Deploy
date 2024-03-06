@@ -36,7 +36,7 @@ export default function Docs() {
       <div className="h-[20%]">
         <TopCards></TopCards>
       </div>
-      <div className="h-[6%]">
+      <div className="h-[6%] pt-1">
         <SearchFiles searchPage={searchMain}></SearchFiles>
       </div>
       <div className="flex w-full h-[5%]">
