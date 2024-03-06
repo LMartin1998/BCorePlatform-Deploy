@@ -32,7 +32,7 @@ export default function UserId() {
       <div className="flex w-full h-[20%] items-center">
         <TopCards></TopCards>
       </div>
-      <div className="flex flex-col justify-center items-center w-full h-[80%]">
+      <div className="flex flex-col justify-center items-center w-full h-[75%]">
         <div className="w-full justify-start items-center">
           <button
             className="w-1/6 h-10 bg-orange-500 text-white px-3 py-1 rounded-lg focus:outline-none hover:bg-orange-600 m-1"
@@ -48,9 +48,9 @@ export default function UserId() {
               : ""}
           </div>
         </div>
-        <div className="w-full h-[70%] flex justify-center items-center">
+        <div className="w-full h-[82%] flex justify-center items-center">
           <div className="w-11/12 h-full rounded-lg bg-white divide-y divide-y-gray-200 shadow-2xl">
-            <div className="w-full flex">
+            <div className="flex w-full h-[16%]">
               <div className="flex w-1/2 border-2 border-gray-300 rounded-lg m-1 justify-center items-center bg-white">
                 Show entries for this user
                 <button
@@ -92,7 +92,7 @@ export default function UserId() {
                 )}
               </div>
             </div>
-            <div className="w-full h-96 flex">
+            <div className="w-full h-[84%] flex">
               <div className="flex flex-col w-1/2 m-2 pb-1 justify-center items-center">
                 <div className="w-full justify-start ml-2">
                   Users activity throughout the period
