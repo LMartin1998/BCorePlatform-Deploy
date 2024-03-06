@@ -133,7 +133,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
   };
 
   return (
-    <div className="flex flex-col w-full h-[56%] h-max-[56%] h-min-fit items-center">
+    <div className="flex flex-col w-full h-fit md:max-h-[56%] items-center">
       {" "}
       {/* just in case, h-[56%] */}
       <div className="flex flex-col w-11/12 h-full items-center rounded-lg shadow-xl overflow-auto bg-white mb-2">

@@ -25,20 +25,20 @@ export default function Folder() {
 
   return (
     <main className="bg-gray-100 h-screen max-h-screen">
-      <div className="h-[3%]">
+      <div className="flex flex-col justify-center w-full h-[5%]">
         <Header></Header>
       </div>
-      <div className="h-[20%]">
+      <div className="flex w-full h-[20%] items-center">
         <TopCards></TopCards>
       </div>
-      <div className="h-[6%] pt-1">
+      <div className="flex items-center h-[8%]">
         <SearchFiles searchPage={searchChildren}></SearchFiles>
       </div>
-      <div className="flex w-full h-[5%]">
+      <div className="flex w-full h-[4%]">
         <BreadcrumFiles></BreadcrumFiles>
         <DesignFiles></DesignFiles>
       </div>
-      <div className="flex w-1/3 m-1 justify-center items-center h-[5%]">
+      <div className="flex w-1/3 m-1 justify-center items-center h-[6%]">
         <AddFiles></AddFiles>
         <FilterFiles
           type={childrenType}
