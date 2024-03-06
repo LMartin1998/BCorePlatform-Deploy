@@ -9,11 +9,11 @@ export default function Modal({ onClose, children }) {
 
   const modalContent = (
     <dialog
-      className={`absolute min-w-screen max-w-screen min-h-screen max-h-screen z-50 ${styles.slide_top}`}
+      className={`absolute min-w-screen max-w-screen min-h-screen max-h-screen ${styles.slide_top} bg-gray-200`}
       open
     >
       <div
-        className="flex w-11/12 h-11/12 rounded-lg shadow-lg bg-white"
+        className="flex w-11/12 h-5/6 justify-center items-center rounded-lg shadow-lg bg-white z-50"
         onClick={handleClose}
       >
         {children}

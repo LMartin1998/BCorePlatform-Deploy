@@ -57,11 +57,13 @@ export default function Docs() {
             setShowImage(false);
           }}
           children={
-            <img
-              className="flex w-full h-full"
-              loading="lazy"
-              src={image}
-            ></img>
+            <div className="flex w-6/12 h-5/6 rounded-lg shadow-lg bg-white z-50">
+              <img
+                className="flex w-full h-full object-cover"
+                loading="lazy"
+                src={image}
+              ></img>
+            </div>
           }
         ></Modal>
       )}
