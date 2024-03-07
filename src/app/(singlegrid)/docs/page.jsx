@@ -35,7 +35,7 @@ export default function Docs() {
       <div className="flex items-center w-full">
         <SearchFiles searchPage={searchMain}></SearchFiles>
       </div>
-      <div className="flex w-full">
+      <div className="flex w-full justify-between items-center">
         <BreadcrumFiles></BreadcrumFiles>
         <DesignFiles></DesignFiles>
       </div>
