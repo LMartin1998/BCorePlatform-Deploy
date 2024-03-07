@@ -1,7 +1,7 @@
-import DropdownGeneral from "../../widgets/DropdDownGeneral";
-import ToggleButtonGroup from "../../widgets/ToggleButtonGroup";
-import MyDatePicker from "../../datePickers/Datepicker";
-import ButtonAddTask from "../../widgets/ButtonAddTask";
+import DropdownGeneral from "../../../widgets/DropdDownGeneral";
+import ToggleButtonGroup from "../../../widgets/ToggleButtonGroup";
+import MyDatePicker from "../../../datePickers/Datepicker";
+import ButtonAddTask from "../../../widgets/ButtonAddTask";
 import { useState, useContext, useEffect } from "react";
 import { GridContext } from "@/app/contexts/GridContext";
 

@@ -1,7 +1,7 @@
 import { StepperContext } from "@/app/contexts/StepperContext";
-import SearchBlock from "../SearchBlock/SearchBlock";
-import BlockList from "../BlockList";
-import BlockItem from "../BlockItem";
+import SearchBlock from "../../SearchBlock/SearchBlock";
+import BlockList from "../../BlockList";
+import BlockItem from "../../BlockItem";
 
 import { useContext } from "react";
 import { GridContext } from "@/app/contexts/GridContext";

@@ -3,10 +3,10 @@ import Stepper from "@/app/components/Stepper";
 import Header from "@/app/components/Header";
 import TopCards from "@/app/components/TopCards";
 import StepperControl from "@/app/components/StepperControl";
-import SelectBlock from "@/app/components/steps/SelectBlock";
-import TaskInfo from "@/app/components/steps/TaskInfo";
-import Resume from "@/app/components/steps/Resume";
-import CompleteForm from "@/app/components/steps/CompleteForm";
+import SelectBlock from "@/app/components/steps/blockReports/SelectBlock";
+import TaskInfo from "@/app/components/steps/blockReports/TaskInfo";
+import Resume from "@/app/components/steps/blockReports/Resume";
+import CompleteForm from "@/app/components/steps/blockReports/CompleteForm";
 import { useState, useContext } from "react";
 
 import { StepperContext } from "@/app/contexts/StepperContext"; 
