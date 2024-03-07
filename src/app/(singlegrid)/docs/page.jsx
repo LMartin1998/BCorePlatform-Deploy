@@ -29,28 +29,26 @@ export default function Docs() {
   }, []);
 
   return (
-    <main className="bg-gray-100 h-screen max-h-screen">
-      <div className="flex flex-col justify-center w-full h-[5%]">
-        <Header></Header>
-      </div>
-      <div className="flex w-full h-[20%] items-center">
-        <TopCards></TopCards>
-      </div>
-      <div className="flex items-center h-[8%]">
+    <main className="bg-gray-100 h-screen min-h-screen">
+      <Header></Header>
+      <TopCards></TopCards>
+      <div className="flex items-center w-full">
         <SearchFiles searchPage={searchMain}></SearchFiles>
       </div>
-      <div className="flex w-full h-[4%]">
+      <div className="flex w-full">
         <BreadcrumFiles></BreadcrumFiles>
         <DesignFiles></DesignFiles>
       </div>
-      <div className="flex w-1/3 m-1 justify-center items-center h-[6%]">
+      <div className="flex w-1/3 m-1 justify-center items-center">
         <AddFiles></AddFiles>
         <FilterFiles type={mainType} updateType={updateMainType}></FilterFiles>
       </div>
-      <ShowFiles
-        filesList={filterMain}
-        updateFiles={updateMainFiles}
-      ></ShowFiles>
+      <div className="flex w-full h-[50%]">
+        <ShowFiles
+          filesList={filterMain}
+          updateFiles={updateMainFiles}
+        ></ShowFiles>
+      </div>
       {showImage && (
         <Modal
           onClose={() => {
