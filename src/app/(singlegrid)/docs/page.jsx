@@ -39,7 +39,7 @@ export default function Docs() {
         <BreadcrumFiles></BreadcrumFiles>
         <DesignFiles></DesignFiles>
       </div>
-      <div className="flex w-1/3 m-1 justify-center items-center">
+      <div className="flex w-full lg:w-1/3 m-1 justify-center items-center">
         <AddFiles></AddFiles>
         <FilterFiles type={mainType} updateType={updateMainType}></FilterFiles>
       </div>
