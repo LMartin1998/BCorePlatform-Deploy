@@ -1,7 +1,7 @@
 "use client"
 import React from "react";
 import { GoGear } from "react-icons/go";
-import MyDatePicker from "./Datepicker";
+import MyDatePicker from "./datePickers/Datepicker";
 import { GiElectric } from "react-icons/gi";
 import { MdOutlinePeopleAlt } from "react-icons/md";
 

@@ -14,6 +14,10 @@ import TableSort from "../table/TableSort";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
+//Import DatePickers for the reports
+import WeekPicker  from "../datePickers/WeekPicker";
+import DiaryPicker from "../datePickers/DiaryPicker";
+
 export default function Table({
   data,
   columns,
@@ -23,7 +27,9 @@ export default function Table({
   sortOptions,
   onDoubleClickEvent,
   setNewUser,
-  link
+  link,
+  diary,
+  week
 }) {
   const router = useRouter();
 
@@ -75,6 +81,7 @@ export default function Table({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
+
   }, []);
   
   return (
@@ -88,6 +95,12 @@ export default function Table({
               {mainButton}
             </button>
           </Link>
+        )}
+        {week && (
+            <WeekPicker></WeekPicker>
+        )}
+        {diary && (
+            <DiaryPicker></DiaryPicker>
         )}
         <div className="flex space-x-2">
           {table && (
