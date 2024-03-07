@@ -312,8 +312,8 @@ const columnsWeeklyReports = [
 // ];
 
 const tabsData = [
-  { label: 'Blocks', content: <Table data={reportBlocks} columns={columnsBlocks} mainButton={"+ Add block report"} link={"/reports/addReport"}/> },
-  { label: 'Teams' , content: <Table data={reportTeams}  columns={columnsTeams}  mainButton={"+ Add team  report"} link={"/reports/addReport"}/> },
+  { label: 'Blocks', content: <Table data={reportBlocks} columns={columnsBlocks} mainButton={"+ Add block report"} link={"/reports/addBlockReport"}/> },
+  { label: 'Teams' , content: <Table data={reportTeams}  columns={columnsTeams}  mainButton={"+ Add team report"}  link={"/reports/addTeamsReport"}/> },
   { label: 'Daily' , content: <Table data={dailyReport}  columns={columnsDailyReports} diary={true}/> },
   { label: 'Weekly', content: <Table data={weeklyReport} columns={columnsWeeklyReports} week={true}/> },
 ];

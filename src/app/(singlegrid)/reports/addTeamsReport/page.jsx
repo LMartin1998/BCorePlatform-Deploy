@@ -1,28 +1,24 @@
 "use client";
-import Stepper from "@/app/components/Stepper";
+
+import { useState } from "react";
+//Imports of components
 import Header from "@/app/components/Header";
-import TopCards from "@/app/components/TopCards";
-import StepperControl from "@/app/components/StepperControl";
-import SelectBlock from "@/app/components/steps/blockReports/SelectBlock";
+import Stepper from "@/app/components/Stepper";
+//Imports of Steppers
+import SelectTeam from "@/app/components/steps/teamsReports/SelectTeam";
 import TaskInfo from "@/app/components/steps/blockReports/TaskInfo";
 import Resume from "@/app/components/steps/blockReports/Resume";
 import CompleteForm from "@/app/components/steps/blockReports/CompleteForm";
-import { useState, useContext } from "react";
 
-import { StepperContext } from "@/app/contexts/StepperContext"; 
-import { GridContext } from "@/app/contexts/GridContext";
+import { StepperContext } from "@/app/contexts/StepperContext";
+import StepperControl from "@/app/components/StepperControl";
 
-export default function Reports() {
-    const { hasSelectedBlocks } = useContext(GridContext);
- 
-    const [currentStep, setCurrentStep] = useState(1);
-
+const ReportsTeams = () => {
     const [userData, setUserData] = useState('');
     const [finalData, setFinalData] = useState([]);
-    
-    // TODO Cambiar segun sea el reporte
+    const [currentStep, setCurrentStep] = useState(1);
     const steps = [
-        "Block",
+        "Team",
         "Task",
         "Resume",
         "Complete"
@@ -31,7 +27,7 @@ export default function Reports() {
     const displayStep = (step) => {
         switch(step) {
             case 1:
-                return <SelectBlock></SelectBlock>
+                return <SelectTeam></SelectTeam>
             case 2: 
                 return <TaskInfo></TaskInfo>
             case 3:
@@ -45,23 +41,23 @@ export default function Reports() {
     const handleClick = (direction) => {
         let newStep = currentStep;
         if (currentStep === 1 && !hasSelectedBlocks) {
-            return; // No avanzar
+            return; 
         }
         direction === "next" ? newStep++ : newStep--;
         newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
     }
-      
-    return (
+
+    return ( 
         <main className="bg-gray-100 min-h-screen">
             <Header></Header>
-            {/* <TopCards></TopCards> */}
             <div className="p-4">
                 <div className="md:w-3/4 mx-auto rounded-2xl pb-2 bg-white">
                     <div className="container horizontal mt-5">
                         <Stepper
                             steps = {steps}
                             currentStep = {currentStep}
-                        />
+                        >
+                        </Stepper>
                         <div className="my-10 p-10 border-t border-gray-300">
                             <StepperContext.Provider value={{
                                 userData,
@@ -78,10 +74,13 @@ export default function Reports() {
                         handleClick={handleClick}
                         currentStep={currentStep}
                         steps = {steps}
-                    ></StepperControl>
+                    >
+                    </StepperControl>
                     }
                 </div>
             </div>
         </main>
     );
 }
+ 
+export default ReportsTeams;
