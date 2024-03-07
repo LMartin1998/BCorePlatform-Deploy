@@ -4,6 +4,7 @@ const weeklyReport = [
         site: "Black bear",
         startDate: "YYYY-MM-DD",
         endDate: "YYYY-MM-DD",
+        approved: "true"
     }
 ];
 

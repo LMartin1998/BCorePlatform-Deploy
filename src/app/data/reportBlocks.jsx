@@ -1,6 +1,7 @@
 const reportBlocks = [
     {
         id:0,
+        site: "Black bear",
         blocks: ["PCS130", "PCS104", "PCS245", "PCS125"],
         date: "YYYY-MM-DD",
         status: true

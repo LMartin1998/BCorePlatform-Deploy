@@ -80,17 +80,15 @@ export default function Table({
   return (
     <div>
       <div className="w-full flex justify-between">
-        <Link href={link}>
-          <button
-            className="bg-orange-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-orange-600"
-            // onClick={(e) => {
-            //   e.stopPropagation();
-            //   router.push("/teams/adduser");
-            // }}
-          >
-            {mainButton}
-          </button>
-        </Link>
+        {link && (
+          <Link href={link}>
+            <button
+              className="bg-orange-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-orange-600"
+            >
+              {mainButton}
+            </button>
+          </Link>
+        )}
         <div className="flex space-x-2">
           {table && (
             <button
