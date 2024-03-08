@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 //Imports of components
 import Header from "@/app/components/Header";
@@ -10,7 +9,7 @@ import TaskInfo from "@/app/components/steps/blockReports/TaskInfo";
 import Resume from "@/app/components/steps/blockReports/Resume";
 import CompleteForm from "@/app/components/steps/blockReports/CompleteForm";
 
-import { StepperContext } from "@/app/contexts/StepperContext";
+import { StepperProvider } from "@/app/contexts/StepperContext";
 import StepperControl from "@/app/components/StepperControl";
 
 const ReportsTeams = () => {
@@ -59,14 +58,14 @@ const ReportsTeams = () => {
                         >
                         </Stepper>
                         <div className="my-10 p-10 border-t border-gray-300">
-                            <StepperContext.Provider value={{
+                            <StepperProvider value={{
                                 userData,
                                 setUserData,
                                 finalData,
                                 setFinalData
                             }}>
                                 {displayStep(currentStep)}
-                            </StepperContext.Provider>
+                            </StepperProvider>
                         </div>
                     </div>
                     {currentStep != steps.length && 

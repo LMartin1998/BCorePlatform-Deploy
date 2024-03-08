@@ -1,13 +1,23 @@
+import { useContext } from "react";
 import SearchTeam from "../../Searchs/SearchTeam";
 import TeamItem from "./teams/TeamItem";
 import TeamList from "./teams/TeamList";
 
+import { StepperContext } from "@/app/contexts/StepperContext";
+
 const SelectTeam = () => {
+    const { searchedTeams } = useContext(StepperContext);
+
     return ( 
     <div className="flex flex-col">
         <SearchTeam></SearchTeam>
         <TeamList>
-            <TeamItem></TeamItem>
+            {searchedTeams.map(item =>(
+                <TeamItem
+                    key= {item.id}
+                    team={item.team}
+                ></TeamItem>
+            ))}
         </TeamList>
     </div> 
     );
