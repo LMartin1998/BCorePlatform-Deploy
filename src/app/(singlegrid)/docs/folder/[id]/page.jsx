@@ -25,7 +25,7 @@ export default function Folder() {
   } = useContext(FilesContext);
 
   return (
-    <main className="bg-gray-100 h-screen max-h-screen">
+    <main className="bg-gray-100 h-screen min-h-screen">
       <Header></Header>
       <TopCards></TopCards>
       <div className="flex items-center w-full">
@@ -42,7 +42,7 @@ export default function Folder() {
           updateType={updateChildrenType}
         ></FilterFiles>
       </div>
-      <div className="flex w-full h-96 sm:h-[45%] md:h-[50%] xl:h-[58%]">
+      <div className="flex w-full h-96 sm:h-[50%] 2xl:h-[50%]">
         <ShowFiles
           filesList={filterChildren}
           updateFiles={updateChildrenFiles}
