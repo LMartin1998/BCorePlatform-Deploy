@@ -3,6 +3,7 @@ import Header from "@/app/components/Header";
 import TopCards from "@/app/components/TopCards";
 import GenreDropdown from "@/app/components/teams/GenreDropdown";
 import TeamsDatePicker from "@/app/components/teams/TeamsDatePicker";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import { MdOutlineLocalPhone, MdOutlineEmail } from "react-icons/md";
 
@@ -15,17 +16,13 @@ export default function AddUser() {
   const [date, setDate] = useState(new Date());
 
   return (
-    <main className="bg-gray-100 min-w-screen h-screen max-h-screen">
-      <div className="flex flex-col justify-center w-full h-[5%]">
-        <Header></Header>
-      </div>
-      <div className="flex w-full h-[20%] items-center">
-        <TopCards></TopCards>
-      </div>
-      <div className="flex w-full h-[72%] justify-center items-start">
-        <form className="w-full h-full" action={save}>
-          <div className="flex flex-col items-center justify-center w-full h-full">
-            <div className="w-11/12 h-full flex items-start justify-center">
+    <main className="bg-gray-100 h-screen min-h-screen">
+      <Header></Header>
+      <TopCards></TopCards>
+      <div className="flex w-full h-full justify-center items-start">
+        <form action={save}>
+          <div className="flex items-center justify-center w-full h-full">
+            <div className="flex items-center justify-center w-full h-full">
               <div className="flex flex-col w-1/2 h-full m-1 rounded-lg shadow-lg bg-white justify-center items-center self-start">
                 <div className="w-full flex justify-start items-center">
                   <p className="m-2">General information</p>
