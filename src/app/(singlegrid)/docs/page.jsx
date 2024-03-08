@@ -29,7 +29,7 @@ export default function Docs() {
   }, []);
 
   return (
-    <main className="bg-gray-100 h-full md:h-screen min-h-screen">
+    <main className="bg-gray-100 h-screen min-h-screen">
       <Header></Header>
       <TopCards></TopCards>
       <div className="flex items-center w-full">
@@ -43,7 +43,7 @@ export default function Docs() {
         <AddFiles></AddFiles>
         <FilterFiles type={mainType} updateType={updateMainType}></FilterFiles>
       </div>
-      <div className="flex w-full h-96 sm:h-[45%] md:h-[50%] xl:h-[58%]">
+      <div className="flex w-full h-96 sm:h-[50%] 2xl:h-[50%]">
         <ShowFiles
           filesList={filterMain}
           updateFiles={updateMainFiles}
