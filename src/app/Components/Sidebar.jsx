@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { IoHomeOutline } from "react-icons/io5";
@@ -7,12 +6,17 @@ import { HiOutlineDocumentReport } from "react-icons/hi";
 import { IoDocumentOutline } from "react-icons/io5";
 import { AiOutlineTeam } from "react-icons/ai";
 import { SidebarContext } from "../contexts/SidebarContext";
+import { useContext, useEffect } from "react";
 
 const Sidebar = ({ children, show, setter }) => {
   const { active, setActive } = useContext(SidebarContext);
 
+  useEffect(() => {
+    console.log(active);
+  }, [active]);
+
   return (
-    <div className="">
+    <div>
       <div
         className={`${
           show ? "w-72" : "w-20"
@@ -30,13 +34,24 @@ const Sidebar = ({ children, show, setter }) => {
             </div>
           </Link>
           <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
-          <Link href="/">
+          <Link
+            href="/"
+            id="0"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActive(e.currentTarget.id);
+            }}
+          >
             <div className="bg-gray-100 hover:bg-gray-200 justify-center  cursor-pointer my-4 p-3 rounded-lg flex">
               <div className="flex justify-center items-center">
-                <p className="bg-blue-800 flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]">
+                <p
+                  className={`${
+                    active == 0 ? "bg-blue-800" : "bg-white"
+                  } flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]`}
+                >
                   <IoHomeOutline
                     className="flex justify-center"
-                    style={{ color: "white" }}
+                    style={{ color: active == 0 ? "white" : "#1E40AF" }}
                     size={25}
                   />
                 </p>
@@ -48,13 +63,24 @@ const Sidebar = ({ children, show, setter }) => {
             </div>
           </Link>
           <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
-          <Link href="/reports">
+          <Link
+            href="/reports"
+            id="1"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActive(e.currentTarget.id);
+            }}
+          >
             <div className="bg-gray-100 hover:bg-gray-200 flex justify-center cursor-pointer my-4 p-3 rounded-lg inline-block flex">
               <div className="flex justify-center items-center">
-                <p className="bg-white flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]">
+                <p
+                  className={`${
+                    active == 1 ? "bg-blue-800" : "bg-white"
+                  } flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]`}
+                >
                   <HiOutlineDocumentReport
                     className="flex justify-center"
-                    style={{ color: "#1E40AF" }}
+                    style={{ color: active == 1 ? "white" : "#1E40AF" }}
                     size={25}
                   />
                 </p>
@@ -65,13 +91,24 @@ const Sidebar = ({ children, show, setter }) => {
             </div>
           </Link>
           <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
-          <Link href="/teams">
+          <Link
+            href="/teams"
+            id="2"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActive(e.currentTarget.id);
+            }}
+          >
             <div className="bg-gray-100 hover:bg-gray-200 flex justify-center cursor-pointer my-4 p-3 rounded-lg inline-block flex">
               <div className="flex justify-center items-center">
-                <p className="bg-white flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]">
+                <p
+                  className={`${
+                    active == 2 ? "bg-blue-800" : "bg-white"
+                  } flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]`}
+                >
                   <AiOutlineTeam
-                    className="flex justify-center "
-                    style={{ color: "#1E40AF" }}
+                    className="flex justify-center"
+                    style={{ color: active == 2 ? "white" : "#1E40AF" }}
                     size={25}
                   />
                 </p>
@@ -83,13 +120,24 @@ const Sidebar = ({ children, show, setter }) => {
             </div>
           </Link>
           <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
-          <Link href="/docs">
+          <Link
+            href="/docs"
+            id="3"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActive(e.currentTarget.id);
+            }}
+          >
             <div className="bg-gray-100 hover:bg-gray-200 flex justify-center cursor-pointer my-4 p-3 rounded-lg inline-block flex">
               <div className="flex justify-center items-center">
-                <p className="bg-white flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]">
+                <p
+                  className={`${
+                    active == 3 ? "bg-blue-800" : "bg-white"
+                  } flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]`}
+                >
                   <IoDocumentOutline
                     className="flex justify-center "
-                    style={{ color: "#1E40AF" }}
+                    style={{ color: active == 3 ? "white" : "#1E40AF" }}
                     size={25}
                   />
                 </p>
