@@ -11,3 +11,5 @@ export default function SidebarProvider({ children }) {
     </SidebarContext.Provider>
   );
 }
+
+export { SidebarContext, SidebarProvider };

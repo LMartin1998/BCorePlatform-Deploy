@@ -1,12 +1,12 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { SidebarContext } from "@app/src/Context/SidebarContext";
 import { IoHomeOutline } from "react-icons/io5";
 import { CiSquareChevLeft } from "react-icons/ci";
 import { HiOutlineDocumentReport } from "react-icons/hi";
 import { IoDocumentOutline } from "react-icons/io5";
 import { AiOutlineTeam } from "react-icons/ai";
+import { SidebarContext } from "../contexts/SidebarContext";
 
 const Sidebar = ({ children, show, setter }) => {
   const { active, setActive } = useContext(SidebarContext);
