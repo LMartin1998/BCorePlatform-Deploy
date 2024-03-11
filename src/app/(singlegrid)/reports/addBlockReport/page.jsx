@@ -62,7 +62,7 @@ export default function Reports() {
                             steps = {steps}
                             currentStep = {currentStep}
                         />
-                        <div className="my-10 p-10 border-t border-gray-300">
+                        <div className="my-5 p-10 border-t border-gray-300">
                             <StepperContext.Provider value={{
                                 userData,
                                 setUserData,

@@ -27,12 +27,12 @@ const ReportsTeams = () => {
         switch(step) {
             case 1:
                 return <SelectTeam></SelectTeam>
-            case 2: 
-                return <TaskInfo></TaskInfo>
-            case 3:
-                return <Resume></Resume>
-            case 4:
-                return <CompleteForm></CompleteForm>
+            // case 2: 
+            //     return <TaskInfo></TaskInfo>
+            // case 3:
+            //     return <Resume></Resume>
+            // case 4:
+            //     return <CompleteForm></CompleteForm>
             default:
         }
     }
@@ -57,7 +57,7 @@ const ReportsTeams = () => {
                             currentStep = {currentStep}
                         >
                         </Stepper>
-                        <div className="my-10 p-10 border-t border-gray-300">
+                        <div className="my-5 p-10 border-t border-gray-300">
                             <StepperProvider value={{
                                 userData,
                                 setUserData,

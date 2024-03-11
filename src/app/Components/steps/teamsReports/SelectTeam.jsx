@@ -4,12 +4,16 @@ import TeamItem from "./teams/TeamItem";
 import TeamList from "./teams/TeamList";
 
 import { StepperContext } from "@/app/contexts/StepperContext";
+import DiaryPicker from "../../datePickers/DiaryPicker";
 
 const SelectTeam = () => {
     const { searchedTeams } = useContext(StepperContext);
 
     return ( 
     <div className="flex flex-col">
+        <div className="flex justify-center">
+            <DiaryPicker></DiaryPicker>
+        </div>
         <SearchTeam></SearchTeam>
         <TeamList>
             {searchedTeams.map(item =>(
