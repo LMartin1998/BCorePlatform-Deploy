@@ -18,9 +18,7 @@ export function Sidebar() {
   });
 
   useEffect(() => {
-    setTimeout(() => {
-      localStorage.setItem(key, JSON.stringify({ active: active }));
-    }, 2000);
+    localStorage.setItem(key, JSON.stringify({ active: active }));
   }, [key, active]);
 
   return {
