@@ -11,31 +11,28 @@ import { useContext, useEffect, useState } from "react";
 const Sidebar = ({ children, show, setter }) => {
   const { active, setActive } = useContext(SidebarContext);
 
+  const [colors, setColors] = useState(
+    Array(4).fill({
+      color: "#1E40AF",
+      bgColor: "bg-white",
+    }),
+  );
   const [color, setColor] = useState(Array(4).fill("#1E40AF"));
   const [bgColor, setBgColor] = useState(Array(4).fill("bg-white"));
-  const updateColor = (id) => {
-    const newColor = color.map((c, index) => {
-      if (index == id) {
-        return "white";
+  const updateColors = (id) => {
+    const newColors = colors.map((color, index) => {
+      if (id == index) {
+        return { color: "white", bgColor: "bg-blue-800" };
       } else {
-        return "#1E40AF";
+        return { color: "#1E40AF", bgColor: "bg-white" };
       }
     });
-    setColor(newColor);
-
-    const newBgColor = bgColor.map((bg, index) => {
-      if (index == id) {
-        return "bg-blue-800";
-      } else {
-        return "bg-white";
-      }
-    });
-    setBgColor(newBgColor);
+    setColors(newColors);
   };
 
   useEffect(() => {
     if (active !== null && active !== undefined) {
-      updateColor(active);
+      updateColors(active);
     }
   }, [active]);
 
@@ -64,17 +61,17 @@ const Sidebar = ({ children, show, setter }) => {
             onClick={(e) => {
               e.stopPropagation();
               setActive(e.currentTarget.id);
-              updateColor(e.currentTarget.id);
+              updateColors(e.currentTarget.id);
             }}
           >
             <div className="bg-gray-100 hover:bg-gray-200 justify-center  cursor-pointer my-4 p-3 rounded-lg flex">
               <div className="flex justify-center items-center">
                 <p
-                  className={`${bgColor[0]} flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]`}
+                  className={`${colors[0].bgColor} flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]`}
                 >
                   <IoHomeOutline
                     className="flex justify-center"
-                    style={{ color: color[0] }}
+                    style={{ color: colors[0].color }}
                     size={25}
                   />
                 </p>
@@ -92,17 +89,17 @@ const Sidebar = ({ children, show, setter }) => {
             onClick={(e) => {
               e.stopPropagation();
               setActive(e.currentTarget.id);
-              updateColor(e.currentTarget.id);
+              updateColors(e.currentTarget.id);
             }}
           >
             <div className="bg-gray-100 hover:bg-gray-200 flex justify-center cursor-pointer my-4 p-3 rounded-lg inline-block flex">
               <div className="flex justify-center items-center">
                 <p
-                  className={`${bgColor[1]} flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]`}
+                  className={`${colors[1].bgColor} flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]`}
                 >
                   <HiOutlineDocumentReport
                     className="flex justify-center"
-                    style={{ color: color[1] }}
+                    style={{ color: colors[1].color }}
                     size={25}
                   />
                 </p>
@@ -119,17 +116,17 @@ const Sidebar = ({ children, show, setter }) => {
             onClick={(e) => {
               e.stopPropagation();
               setActive(e.currentTarget.id);
-              updateColor(e.currentTarget.id);
+              updateColors(e.currentTarget.id);
             }}
           >
             <div className="bg-gray-100 hover:bg-gray-200 flex justify-center cursor-pointer my-4 p-3 rounded-lg inline-block flex">
               <div className="flex justify-center items-center">
                 <p
-                  className={`${bgColor[2]} flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]`}
+                  className={`${colors[2].bgColor} flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]`}
                 >
                   <AiOutlineTeam
                     className="flex justify-center"
-                    style={{ color: color[2] }}
+                    style={{ color: colors[2].color }}
                     size={25}
                   />
                 </p>
@@ -147,17 +144,17 @@ const Sidebar = ({ children, show, setter }) => {
             onClick={(e) => {
               e.stopPropagation();
               setActive(e.currentTarget.id);
-              updateColor(e.currentTarget.id);
+              updateColors(e.currentTarget.id);
             }}
           >
             <div className="bg-gray-100 hover:bg-gray-200 flex justify-center cursor-pointer my-4 p-3 rounded-lg inline-block flex">
               <div className="flex justify-center items-center">
                 <p
-                  className={`${bgColor[3]} flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]`}
+                  className={`${colors[3].bgColor} flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]`}
                 >
                   <IoDocumentOutline
                     className="flex justify-center "
-                    style={{ color: color[3] }}
+                    style={{ color: colors[3].color }}
                     size={25}
                   />
                 </p>
