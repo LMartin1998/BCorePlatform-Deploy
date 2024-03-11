@@ -1,9 +1,10 @@
 import { createContext, useState } from "react";
+import { Sidebar } from "../LocalStorage/Sidebar";
 
 const SidebarContext = createContext();
 
 function SidebarProvider({ children }) {
-  const [active, setActive] = useState("0");
+  const { active, setActive } = Sidebar();
 
   return (
     <SidebarContext.Provider value={{ active, setActive }}>

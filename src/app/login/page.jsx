@@ -1,8 +1,9 @@
 "use client";
 
 import styles from "@/app/styles/Login.module.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
+import { SidebarContext } from "../contexts/SidebarContext";
 
 {
   /* <button className="mt-20 bg-white" onClick={updateLogged}>Submit</button> */
@@ -10,6 +11,11 @@ import { UserContext } from "../contexts/UserContext";
 
 export default function Login() {
   const { updateLogged } = useContext(UserContext);
+  const { setActive } = useContext(SidebarContext);
+
+  useEffect(() => {
+    setActive("0");
+  }, []);
 
   return (
     <div className={styles.wrapper_main}>
@@ -20,10 +26,10 @@ export default function Login() {
             alt="Logo Empresa"
             className="w-28 h-28 object-contain"
           />
-          <h1 className="text-2xl font-semibold">
-            Welcome Back
-          </h1>
-          <h5 className="text-sm text-gray-400">Enter your email and password to access your account</h5>
+          <h1 className="text-2xl font-semibold">Welcome Back</h1>
+          <h5 className="text-sm text-gray-400">
+            Enter your email and password to access your account
+          </h5>
         </div>
 
         <form>
