@@ -12,24 +12,22 @@ const Sidebar = ({ children, show, setter }) => {
   const { active, setActive } = useContext(SidebarContext);
 
   const [color, setColor] = useState(Array(4).fill("#1E40AF"));
-
   const [bgColor, setBgColor] = useState(Array(4).fill("bg-white"));
-
   const updateColor = (id) => {
     const newColor = color.map((c, index) => {
       if (index == id) {
-        return c === "white" ? "#1E40AF" : "white";
+        return "white";
       } else {
-        return c;
+        return "#1E40AF";
       }
     });
     setColor(newColor);
 
     const newBgColor = bgColor.map((bg, index) => {
       if (index == id) {
-        return bg === "bg-white" ? "bg-blue-800" : "bg-white";
+        return "bg-blue-800";
       } else {
-        return bg;
+        return "bg-white";
       }
     });
     setBgColor(newBgColor);
@@ -40,10 +38,6 @@ const Sidebar = ({ children, show, setter }) => {
       updateColor(active);
     }
   }, [active]);
-
-  useEffect(() => {
-    console.log(color);
-  }, [color]);
 
   return (
     <div>
