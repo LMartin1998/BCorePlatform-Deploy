@@ -1,8 +1,8 @@
 "use client";
-import Stepper from "@/app/components/Stepper";
+import Stepper from "@/app/components/stepper/Stepper";
 import Header from "@/app/components/Header";
 import TopCards from "@/app/components/TopCards";
-import StepperControl from "@/app/components/StepperControl";
+import StepperControl from "@/app/components/stepper/stepperControls/StepperControl";
 import SelectBlock from "@/app/components/steps/blockReports/SelectBlock";
 import TaskInfo from "@/app/components/steps/blockReports/TaskInfo";
 import Resume from "@/app/components/steps/blockReports/Resume";

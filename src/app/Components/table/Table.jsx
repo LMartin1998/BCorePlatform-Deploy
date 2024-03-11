@@ -90,7 +90,7 @@ export default function Table({
         {link && (
           <Link href={link}>
             <button
-              className="bg-orange-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-orange-600"
+              className="bg-red-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-red-600"
             >
               {mainButton}
             </button>

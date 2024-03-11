@@ -2,7 +2,7 @@
 import { useState } from "react";
 //Imports of components
 import Header from "@/app/components/Header";
-import Stepper from "@/app/components/Stepper";
+import Stepper from "@/app/components/stepper/Stepper";
 //Imports of Steppers
 import SelectTeam from "@/app/components/steps/teamsReports/SelectTeam";
 import TaskInfo from "@/app/components/steps/blockReports/TaskInfo";
@@ -10,7 +10,7 @@ import Resume from "@/app/components/steps/blockReports/Resume";
 import CompleteForm from "@/app/components/steps/blockReports/CompleteForm";
 
 import { StepperProvider } from "@/app/contexts/StepperContext";
-import StepperControl from "@/app/components/StepperControl";
+import StepperControl from "@/app/components/stepper/stepperControls/StepperControl";
 
 const ReportsTeams = () => {
     const [userData, setUserData] = useState('');
@@ -39,9 +39,9 @@ const ReportsTeams = () => {
 
     const handleClick = (direction) => {
         let newStep = currentStep;
-        if (currentStep === 1 && !hasSelectedBlocks) {
-            return; 
-        }
+        // if (currentStep === 1 && !hasSelectedBlocks) {
+        //     return; 
+        // }
         direction === "next" ? newStep++ : newStep--;
         newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
     }

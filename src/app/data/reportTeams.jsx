@@ -8,12 +8,14 @@ const reportTeams = [
     },
     {
         id:1,
+        site: "Black bear",
         team: "DC Transtions & Road Crossing",
         manager: "Jeronimo  Hanson",
         date: "YYYY-MM-D2",
     },
     {
         id:2,
+        site: "Black bear",
         team: "DC Transtions & Road Crossing",
         manager: "Mario  Hanson",
         date: "YYYY-MM-D3",
