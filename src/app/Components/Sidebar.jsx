@@ -17,8 +17,7 @@ const Sidebar = ({ children, show, setter }) => {
       bgColor: "bg-white",
     }),
   );
-  const [color, setColor] = useState(Array(4).fill("#1E40AF"));
-  const [bgColor, setBgColor] = useState(Array(4).fill("bg-white"));
+
   const updateColors = (id) => {
     const newColors = colors.map((color, index) => {
       if (id == index) {
@@ -51,6 +50,7 @@ const Sidebar = ({ children, show, setter }) => {
                 width={50}
                 height={50}
                 alt="Logo B-Core"
+                loading="lazy"
               />
             </div>
           </Link>
