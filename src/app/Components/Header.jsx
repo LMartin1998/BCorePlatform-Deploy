@@ -11,14 +11,6 @@ const Header = () => {
     translate: theme === "light" ? "translate-x-0" : "translate-x-4",
   });
 
-  useEffect(() => {
-    if (theme === "dark") {
-      document.querySelector("html").classList.add("dark");
-    } else {
-      document.querySelector("html").classList.remove("dark");
-    }
-  }, [theme]);
-
   const updateStyles = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
     setStyles((prevStyles) => ({
@@ -35,12 +27,16 @@ const Header = () => {
   return (
     <div className="flex items-center justify-between px-4 pt-4">
       <div className="flex items-center">
-        <h2>B-Core platform</h2>
+        <h2 className="text-black dark:text-white dark:font-semibold">
+          B-Core platform
+        </h2>
       </div>
       <div className="flex items-center">
-        <h2>Welcome back, user</h2>
+        <h2 className="text-black dark:text-white dark:font-semibold">
+          Welcome back, user
+        </h2>
         <IoSettingsOutline
-          className="ml-2 hover:cursor-pointer"
+          className="ml-2 hover:cursor-pointer text-black dark:text-white dark:font-bold"
           size={20}
           onClick={(e) => {
             e.stopPropagation();
