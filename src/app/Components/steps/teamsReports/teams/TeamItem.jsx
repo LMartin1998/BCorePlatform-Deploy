@@ -1,7 +1,6 @@
-import { HiOutlineUsers } from "react-icons/hi";
 import { FaUsers } from "react-icons/fa";
 
-const TeamItem = ({team}) => { //TODO: Props 
+const TeamItem = ({team, onChange}) => { //TODO: Props 
   return (
     <li className=" bg-slate-50 w-full mx-auto rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors duration-300 mb-2">
       <div className="flex items-center">
@@ -14,8 +13,9 @@ const TeamItem = ({team}) => { //TODO: Props
       </div>
       <div>
         <input
-            type={"checkbox"}
-            className="mr-2"
+          type="checkbox"
+          className="mr-2"
+          onChange={onChange}
         >
         </input>
       </div>

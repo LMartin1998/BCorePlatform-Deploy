@@ -1,6 +1,4 @@
-import React from "react";
-
-const WebView = ({groupedData}) => {
+const WebViewTeams = ({ teamsSelected }) => {
   return (
     <div style={{ padding: ".5rem 1rem", backgroundColor: "#e3d8d873" }}>
       {/* Logo and information */}
@@ -78,38 +76,74 @@ const WebView = ({groupedData}) => {
         </div>
       </div>
       {/* Report */}
-      {groupedData.map((dataItem) => (
+      {teamsSelected.map((dataItem) => (
         <div key={dataItem.id} style={{ marginTop: "12px" }}>
-          <div style={{ backgroundColor: "#3e5bb7", color: "white" }}>
-            <p style={{ textAlign: "center" }}>{dataItem.id}</p>
+          <div
+            style={{
+              backgroundColor: "#3e5bb7",
+              color: "white",
+              display: "flex",
+              justifyContent: "space-evenly",
+            }}
+          >
+            <p style={{ textAlign: "center" }}>{dataItem.team}</p>
+            <p style={{ textAlign: "center" }}>
+              showed Up: {dataItem.showedUp}
+            </p>
           </div>
           <table style={{ borderCollapse: "collapse", width: "100%" }}>
             <thead>
               <tr>
-                <th style={styles.header}>Team</th>
-                <th style={styles.header}>Task</th>
-                <th style={styles.header}>Type Task</th>
-                <th style={styles.header}>Quantity</th>
+                <th style={styles.header}>Job Description</th>
+                <th style={styles.header}>Manager</th>
+                {/* <th style={styles.header}>Task</th>
+                  <th style={styles.header}>Type Task</th>
+                  <th style={styles.header}>Quantity</th> */}
               </tr>
             </thead>
             <tbody>
-                {dataItem.dropDownValue.map((option, index) =>(
+              {dataItem.jobDescription.map((option, index) => (
                 <tr key={index}>
-                    <td style={styles.cell}>Dato 1</td>
-                    <td style={styles.cell}>{option.parent}</td>
-                    <td style={styles.cell}>{option.value}</td>
-                    <td style={styles.cell}>Dato 4</td>
+                  <td style={styles.cell}>{option.description}</td>
+                  <td style={styles.cell}></td>
                 </tr>
-                ))}
+              ))}
+            </tbody>
+            <thead>
+              <tr>
+                <th style={styles.header}>Tools</th>
+                <th style={styles.header}>QTY</th>
+              </tr>
+            </thead>
+            <tbody>
+              {dataItem.tools.map((tool, index) => (
+                <tr key={index}>
+                  <td style={styles.cell}>{tool.name}</td>
+                  <td style={styles.cell}>{tool.quantity}</td>
+                </tr>
+              ))}
+            </tbody>
+            <thead>
+              <tr>
+                <th style={styles.header}>Buggy</th>
+                <th style={styles.header}>Skidsteer</th>
+              </tr>
+            </thead>
+            <tbody>
+              {dataItem.skidsteer.map((s, index) => (
+                <tr key={index}>
+                  <td style={styles.cell}>{s.serial}</td>
+                  {/* Comprueba si hay un elemento correspondiente en buggy */}
+                  {dataItem.buggy[index] ? (
+                    <td style={styles.cell}>{dataItem.buggy[index].serial}</td>
+                  ) : (
+                    <td style={styles.cell}></td>
+                  )}
+                </tr>
+              ))}
             </tbody>
           </table>
-          <div>
-            <ul style={{ listStyle: 'inside' }}>
-              {Object.values(dataItem.textareaValue).map((value, index) =>(
-                <li key={index}>{value}</li>
-              ))}
-            </ul>
-          </div>
+          <div></div>
         </div>
       ))}
     </div>
@@ -130,5 +164,4 @@ const styles = {
     textAlign: "center",
   },
 };
-
-export default WebView;
+export default WebViewTeams;

@@ -6,7 +6,7 @@ import Stepper from "@/app/components/stepper/Stepper";
 //Imports of Steppers
 import SelectTeam from "@/app/components/steps/teamsReports/SelectTeam";
 import TaskInfo from "@/app/components/steps/blockReports/TaskInfo";
-import Resume from "@/app/components/steps/blockReports/Resume";
+import ResumeTeams from "@/app/components/steps/teamsReports/ResumeTeams";
 import CompleteForm from "@/app/components/steps/blockReports/CompleteForm";
 
 import { StepperProvider } from "@/app/contexts/StepperContext";
@@ -18,7 +18,6 @@ const ReportsTeams = () => {
     const [currentStep, setCurrentStep] = useState(1);
     const steps = [
         "Team",
-        "Task",
         "Resume",
         "Complete"
     ];
@@ -27,12 +26,12 @@ const ReportsTeams = () => {
         switch(step) {
             case 1:
                 return <SelectTeam></SelectTeam>
+            case 2:
+                return <ResumeTeams></ResumeTeams>
+            case 3:
+                return <CompleteForm></CompleteForm>
             // case 2: 
             //     return <TaskInfo></TaskInfo>
-            // case 3:
-            //     return <Resume></Resume>
-            // case 4:
-            //     return <CompleteForm></CompleteForm>
             default:
         }
     }

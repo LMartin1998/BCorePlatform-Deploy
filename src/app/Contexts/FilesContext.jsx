@@ -167,11 +167,6 @@ function FilesProvider({ children }) {
     const newPath = folderPath.slice(0, id + 1);
     setFolderPath(newPath);
   };
-
-  useEffect(() => {
-    console.log(folderPath);
-  }, [folderPath]);
-
   const [design, setDesign] = useState(0);
   const updateDesign = (e) => {
     e.stopPropagation();

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import SearchTeam from "../../Searchs/SearchTeam";
 import TeamItem from "./teams/TeamItem";
 import TeamList from "./teams/TeamList";
@@ -7,8 +7,10 @@ import { StepperContext } from "@/app/contexts/StepperContext";
 import DiaryPicker from "../../datePickers/DiaryPicker";
 
 const SelectTeam = () => {
-    const { searchedTeams } = useContext(StepperContext);
-
+    const { searchedTeams, handleCheckTeams, selectTeams } = useContext(StepperContext);
+    useEffect(()=>{
+        console.log(selectTeams);
+    },[selectTeams])
     return ( 
     <div className="flex flex-col">
         <div className="flex justify-center">
@@ -20,6 +22,7 @@ const SelectTeam = () => {
                 <TeamItem
                     key= {item.id}
                     team={item.team}
+                    onChange={() => handleCheckTeams(item.id)}
                 ></TeamItem>
             ))}
         </TeamList>
