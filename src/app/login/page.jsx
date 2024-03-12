@@ -4,6 +4,7 @@ import styles from "@/app/styles/Login.module.css";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { SidebarContext } from "../contexts/SidebarContext";
+import { ThemeContext } from "../Contexts/ThemeContext";
 
 {
   /* <button className="mt-20 bg-white" onClick={updateLogged}>Submit</button> */
@@ -12,6 +13,15 @@ import { SidebarContext } from "../contexts/SidebarContext";
 export default function Login() {
   const { updateLogged } = useContext(UserContext);
   const { setActive } = useContext(SidebarContext);
+  const { theme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.querySelector("html").classList.add("dark");
+    } else {
+      document.querySelector("html").classList.remove("dark");
+    }
+  }, [theme]);
 
   useEffect(() => {
     setActive("0");
@@ -19,7 +29,7 @@ export default function Login() {
 
   return (
     <div className={styles.wrapper_main}>
-      <div className="bg-white  p-8 rounded shadow-md max-w-xl h-full w-full flex flex-col justify-center">
+      <div className="bg-white dark:bg-black p-8 rounded shadow-md max-w-xl h-full w-full flex flex-col justify-center">
         <div className="flex flex-col items-center justify-center mb-6 -mt-40">
           <img
             src="/Assets/bcore.png"
