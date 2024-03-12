@@ -4,7 +4,7 @@ import SettingsModal from "./SettingsModal";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const [theme, setTheme] = useState("white");
+  const [theme, setTheme] = useState("light");
 
   return (
     <div className="flex items-center justify-between px-4 pt-4">
@@ -28,16 +28,16 @@ const Header = () => {
             <div className="flex items-center justify-between mt-4 m-2">
               <p>Toggle theme</p>
               <div
-                className={`cursor-pointer relative ${theme === "white" ? "bg-blue-500" : "bg-gray-400"} rounded-full w-8 h-4 transition`}
+                className={`cursor-pointer relative ${theme === "light" ? "bg-blue-500" : "bg-gray-400"} rounded-full w-8 h-4 transition`}
                 onClick={(e) => {
                   e.stopPropagation();
                   setTheme((prevTheme) =>
-                    prevTheme === "white" ? "dark" : "white",
+                    prevTheme === "light" ? "dark" : "light",
                   );
                 }}
               >
                 <div
-                  className={`absolute ${theme === "white" ? "translate-x-4" : "translate-x-0"} left-0 bg-white w-4 h-4 rounded-full shadow-md transition transform duration-300 ease-in-out`}
+                  className={`absolute ${theme === "light" ? "translate-x-4" : "translate-x-0"} left-0 bg-white w-4 h-4 rounded-full shadow-md transition transform duration-300 ease-in-out`}
                 />
               </div>
             </div>
