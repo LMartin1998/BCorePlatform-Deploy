@@ -112,12 +112,9 @@ export default function UserId() {
         </div>
       </div>
       {openEntries && (
-        <Modal
-          onClose={() => {}}
-          children={
-            <EntriesTeams setOpenEntries={setOpenEntries}></EntriesTeams>
-          }
-        ></Modal>
+        <Modal onClose={() => {}}>
+          <EntriesTeams setOpenEntries={setOpenEntries}></EntriesTeams>
+        </Modal>
       )}
     </main>
   );
