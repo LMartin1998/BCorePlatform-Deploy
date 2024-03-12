@@ -1,5 +1,5 @@
 const { createContext } = require("react");
-const { Theme } = require("../LocalStorage/theme");
+const { Theme } = require("../LocalStorage/Theme");
 
 const ThemeContext = createContext();
 
