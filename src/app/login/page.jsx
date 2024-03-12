@@ -34,10 +34,12 @@ export default function Login() {
           <img
             src="/Assets/bcore.png"
             alt="Logo Empresa"
-            className="w-28 h-28 object-contain"
+            className="w-28 h-28 object-contain dark:rounded-lg dark:bg-white"
           />
-          <h1 className="text-2xl font-semibold">Welcome Back</h1>
-          <h5 className="text-sm text-gray-400">
+          <h1 className="text-2xl font-semibold dark:text-white dark:font-bold">
+            Welcome Back
+          </h1>
+          <h5 className="text-sm text-gray-400 dark:text-white dark:font-bold">
             Enter your email and password to access your account
           </h5>
         </div>
@@ -46,7 +48,7 @@ export default function Login() {
           <div className="mb-4">
             <label
               htmlFor="email"
-              className="block text-gray-600  text-sm  font-medium mb-2"
+              className="block text-gray-600  text-sm  font-medium mb-2 dark:text-white dark:font-semibold"
             >
               Email
             </label>
@@ -55,14 +57,14 @@ export default function Login() {
               id="email"
               name="email"
               placeholder="Enter your email"
-              className="w-full bg-gray-100 rounded-md py-2 px-3 focus:outline-none"
+              className="w-full bg-gray-100 rounded-md py-2 px-3 focus:outline-none dark:bg-slate-800 dark:text-white dark:placeholder:text-slate-400"
             />
           </div>
 
           <div className="mb-4">
             <label
               htmlFor="password"
-              className="block text-gray-600 text-sm font-medium mb-2"
+              className="block text-gray-600 text-sm font-medium mb-2 dark:text-white dark:font-semibold"
             >
               Password
             </label>
@@ -71,7 +73,7 @@ export default function Login() {
               id="password"
               name="password"
               placeholder="Enter your password"
-              className="w-full bg-gray-100 rounded-md py-2 px-3 focus:outline-none"
+              className="w-full bg-gray-100 rounded-md py-2 px-3 focus:outline-none dark:bg-slate-800 dark:text-white dark:placeholder:text-white dark:placeholder:text-slate-400"
             />
           </div>
 
@@ -82,13 +84,16 @@ export default function Login() {
               name="remember"
               className="mr-2"
             />
-            <label htmlFor="remember" className="text-gray-600 text-sm">
+            <label
+              htmlFor="remember"
+              className="text-gray-600 text-sm dark:text-white dark:font-medium"
+            >
               Remember me
             </label>
           </div>
 
           <button
-            className="bg-black w-full text-white py-2 px-4 rounded-md hover:bg-gray-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
+            className="bg-black w-full text-white py-2 px-4 rounded-md hover:bg-gray-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800 dark:hover:ring dark:hover:ring-blue-500 dark:bg-blue-900"
             onClick={updateLogged}
           >
             Sign in
