@@ -3,11 +3,13 @@ const { Theme } = require("../LocalStorage/theme");
 
 const ThemeContext = createContext();
 
-function ThemeProvider() {
+function ThemeProvider({ children }) {
   const { theme, setTheme } = Theme();
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}></ThemeContext.Provider>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
   );
 }
 

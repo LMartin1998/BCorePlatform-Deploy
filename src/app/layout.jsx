@@ -5,6 +5,7 @@ import { UserProvider } from "./contexts/UserContext";
 import { FilesProvider } from "./contexts/FilesContext";
 import { TeamsProvider } from "./contexts/TeamsContext";
 import { SidebarProvider } from "./contexts/SidebarContext";
+import { ThemeProvider } from "./Contexts/ThemeContext";
 
 // export const metadata = {
 //   title: 'Project Manager',
@@ -15,15 +16,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <SidebarProvider>
-          <UserProvider>
-            <GridProvider>
-              <FilesProvider>
-                <TeamsProvider>{children}</TeamsProvider>
-              </FilesProvider>
-            </GridProvider>
-          </UserProvider>
-        </SidebarProvider>
+        <ThemeProvider>
+          <SidebarProvider>
+            <UserProvider>
+              <GridProvider>
+                <FilesProvider>
+                  <TeamsProvider>{children}</TeamsProvider>
+                </FilesProvider>
+              </GridProvider>
+            </UserProvider>
+          </SidebarProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
