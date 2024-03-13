@@ -48,7 +48,7 @@ const Header = () => {
         <SettingsModal onClose={() => {}}>
           <div className="flex flex-col w-full h-5/6">
             <div className="flex items-center justify-between mt-4 m-2">
-              <p>Toggle theme</p>
+              <p className="text-black dark:text-white">Toggle theme</p>
               <div
                 className={`cursor-pointer relative ${styles.bgColor} rounded-full w-8 h-4 transition`}
                 onClick={(e) => {
@@ -62,7 +62,7 @@ const Header = () => {
               </div>
             </div>
             <button
-              className="flex w-1/3 py-1 items-center justify-center self-center rounded-lg bg-blue-500 text-white"
+              className="flex w-1/3 py-1 items-center justify-center self-center rounded-lg bg-blue-500 text-white dark:text-black"
               onClick={(e) => {
                 e.stopPropagation();
                 setOpen(false);
