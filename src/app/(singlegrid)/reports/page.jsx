@@ -1,5 +1,5 @@
 "use client";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 //Components imports
 import Header from "../../components/Header";
@@ -9,9 +9,10 @@ import Tabs from "@/app/components/tabs/Tabs";
 
 //Data imports
 import reportBlocks from "@/app/data/reportBlocks";
-import reportTeams  from "@/app/data/reportTeams";
-import dailyReport  from "@/app/data/dailyReport";
+import reportTeams from "@/app/data/reportTeams";
+import dailyReport from "@/app/data/dailyReport";
 import weeklyReport from "@/app/data/weeklyReport";
+import { ThemeContext } from "@/app/Contexts/ThemeContext";
 
 const columnsBlocks = [
   {
@@ -52,7 +53,7 @@ const columnsBlocks = [
       <p className="text-gray-700 font-medium text-base text-center">
         {row.getValue()}
       </p>
-    )
+    ),
   },
   {
     id: "blocks",
@@ -135,7 +136,7 @@ const columnsTeams = [
       <p className="text-gray-700 font-medium text-base text-center">
         {row.getValue()}
       </p>
-    )
+    ),
   },
   {
     id: "team",
@@ -145,7 +146,7 @@ const columnsTeams = [
       <p className="text-gray-700 font-medium text-base text-center">
         {row.getValue()}
       </p>
-    )
+    ),
   },
   {
     id: "manager",
@@ -155,7 +156,7 @@ const columnsTeams = [
       <p className="text-gray-700 font-medium text-base text-center">
         {row.getValue()}
       </p>
-    )
+    ),
   },
   {
     id: "date",
@@ -208,7 +209,7 @@ const columnsDailyReports = [
       <p className="text-gray-700 font-medium text-base text-center">
         {row.getValue()}
       </p>
-    )
+    ),
   },
   {
     id: "date",
@@ -218,7 +219,7 @@ const columnsDailyReports = [
       <p className="text-gray-700 font-medium text-base text-center">
         {row.getValue()}
       </p>
-    )
+    ),
   },
   {
     id: "approved",
@@ -228,7 +229,7 @@ const columnsDailyReports = [
       <p className="text-gray-700 font-medium text-base text-center">
         {row.getValue()}
       </p>
-    )
+    ),
   },
 ];
 const columnsWeeklyReports = [
@@ -270,7 +271,7 @@ const columnsWeeklyReports = [
       <p className="text-gray-700 font-medium text-base text-center">
         {row.getValue()}
       </p>
-    )
+    ),
   },
   {
     id: "startDate",
@@ -280,7 +281,7 @@ const columnsWeeklyReports = [
       <p className="text-gray-700 font-medium text-base text-center">
         {row.getValue()}
       </p>
-    )
+    ),
   },
   {
     id: "endDate",
@@ -290,7 +291,7 @@ const columnsWeeklyReports = [
       <p className="text-gray-700 font-medium text-base text-center">
         {row.getValue()}
       </p>
-    )
+    ),
   },
   {
     id: "approved",
@@ -300,34 +301,72 @@ const columnsWeeklyReports = [
       <p className="text-gray-700 font-medium text-base text-center">
         {row.getValue()}
       </p>
-    )
+    ),
   },
 ];
 
 // const tabsData = [
-//   { label: "Blocks", data: reportBlocks, columns: columnsBlocks, mainButton:"+ Add block report"}, 
-//   { label: "Teams",  data: reportTeams,  columns: columnsTeams,  mainButton:"+ Add team report"}, 
+//   { label: "Blocks", data: reportBlocks, columns: columnsBlocks, mainButton:"+ Add block report"},
+//   { label: "Teams",  data: reportTeams,  columns: columnsTeams,  mainButton:"+ Add team report"},
 //   { label: "Daily",  data: reportBlocks, columns: columnsBlocks, mainButton:"+ Add report"},
 //   { label: "Weekly", data: reportBlocks, columns: columnsBlocks, mainButton:"+ Add report"},
 // ];
 
 const tabsData = [
-  { label: 'Blocks', content: <Table data={reportBlocks} columns={columnsBlocks} mainButton={"+ Add block report"} link={"/reports/addBlockReport"}/> },
-  { label: 'Teams' , content: <Table data={reportTeams}  columns={columnsTeams}  mainButton={"+ Add team report"}  link={"/reports/addTeamsReport"}/> },
-  { label: 'Daily' , content: <Table data={dailyReport}  columns={columnsDailyReports} diary={true}/> },
-  { label: 'Weekly', content: <Table data={weeklyReport} columns={columnsWeeklyReports} week={true}/> },
+  {
+    label: "Blocks",
+    content: (
+      <Table
+        data={reportBlocks}
+        columns={columnsBlocks}
+        mainButton={"+ Add block report"}
+        link={"/reports/addBlockReport"}
+      />
+    ),
+  },
+  {
+    label: "Teams",
+    content: (
+      <Table
+        data={reportTeams}
+        columns={columnsTeams}
+        mainButton={"+ Add team report"}
+        link={"/reports/addTeamsReport"}
+      />
+    ),
+  },
+  {
+    label: "Daily",
+    content: (
+      <Table data={dailyReport} columns={columnsDailyReports} diary={true} />
+    ),
+  },
+  {
+    label: "Weekly",
+    content: (
+      <Table data={weeklyReport} columns={columnsWeeklyReports} week={true} />
+    ),
+  },
 ];
 
-
-
 export default function Reports() {
+  const { theme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.querySelector("html").classList.add("dark");
+    } else {
+      document.querySelector("html").classList.remove("dark");
+    }
+  }, [theme]);
+
   const [activeTab, setActiveTab] = useState(0);
   const handleTabChange = (index) => {
     setActiveTab(index);
   };
 
   return (
-    <main className="bg-gray-100 min-h-screen">
+    <main className="bg-gray-100 min-h-screen dark:bg-[#1A202C]">
       <Header></Header>
       <TopCards></TopCards>
       <div className="w-full p-4">
@@ -336,15 +375,13 @@ export default function Reports() {
           activeTab={activeTab}
           onTabChange={handleTabChange}
         ></Tabs>
-        <div className="p-4 bg-white">
+        <div className="p-4 bg-white dark:bg-[#1F2733]">
           {tabsData.map((tab, index) => (
             <div
               key={index}
               className={`${activeTab === index ? "" : "hidden"}`}
             >
-              <div className="h-full w-full">
-                {tab.content}
-              </div>
+              <div className="h-full w-full">{tab.content}</div>
             </div>
           ))}
         </div>
