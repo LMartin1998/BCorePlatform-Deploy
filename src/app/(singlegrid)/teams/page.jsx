@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Header from "../../components/Header";
 import TopCards from "../../components/TopCards";
 import { GrUserManager } from "react-icons/gr";
@@ -16,9 +16,15 @@ import { MdOutlineCleaningServices } from "react-icons/md";
 import { FaTools } from "react-icons/fa";
 import Table from "@/app/components/table/Table";
 import { TeamsContext } from "@/app/contexts/TeamsContext";
+import { ThemeContext } from "@/app/Contexts/ThemeContext";
 
 export default function Teams() {
   const { usersList, updateUserInfoId } = useContext(TeamsContext);
+  const { theme } = useContext(ThemeContext);
+  //Solo corre a la carga de la pagina
+  useEffect(() => {
+    console.log(theme);
+  }, []);
   const [newUser, setNewUser] = useState(false);
 
   const teamLabel = {
