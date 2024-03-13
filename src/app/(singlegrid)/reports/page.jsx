@@ -50,7 +50,7 @@ const columnsBlocks = [
     header: "Site",
     accessorKey: "site",
     cell: (row) => (
-      <p className="text-gray-700 font-medium text-base text-center">
+      <p className="text-gray-700 font-medium text-base text-center dark:text-white">
         {row.getValue()}
       </p>
     ),
@@ -64,7 +64,7 @@ const columnsBlocks = [
       {
         return blocksInReport.map((r, index) => (
           <p
-            className="text-gray-700 font-medium text-sm text-center"
+            className="text-gray-700 font-medium text-sm text-center dark:text-white"
             key={index}
           >
             {r}
@@ -78,7 +78,7 @@ const columnsBlocks = [
     header: "Date",
     accessorKey: "date",
     cell: (row) => (
-      <p className="text-gray-700 font-medium text-base text-center">
+      <p className="text-gray-700 font-medium text-base text-center dark:text-white">
         {row.getValue()}
       </p>
     ),
@@ -89,7 +89,7 @@ const columnsBlocks = [
     accesorKey: "status",
     cell: (row) => {
       return (
-        <p className="text-gray-700 font-medium text-base text-center">
+        <p className="text-gray-700 font-medium text-base text-center dark:text-white">
           {row.getValue() ? "True" : "False"}
         </p>
       );
