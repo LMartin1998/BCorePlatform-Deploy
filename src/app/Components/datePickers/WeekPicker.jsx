@@ -12,7 +12,7 @@ const WeekPicker = () => {
         showWeekNumbers
         showWeekPicker
         dateFormat="dd/MM/yyyy"
-        className="mt-1 mb-1 p-1 w-full border border-blue-300 rounded-md text-center dark:text-black dark:border-[#00000005] dark:placeholder:placeholder-[#A0AEC0]"
+        className="mt-1 mb-1 p-1 w-full border border-blue-300 rounded-md text-center dark:placeholder-[#A0AEC0] dark:text-black dark:border-[#00000005]"
         placeholderText="Choose a week"
       ></DatePicker>
     </div>
