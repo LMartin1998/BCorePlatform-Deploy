@@ -18,7 +18,7 @@ export default function Home() {
     }
   }, [theme]);
   return (
-    <main className="bg-gray-100 min-h-screen dark:bg-black">
+    <main className="bg-gray-100 min-h-screen dark:bg-[#1A202C]">
       <Header></Header>
       <TopCards></TopCards>
       <div className="p-4">
