@@ -67,7 +67,7 @@ export default function TableFilters({
   return (
     <div className="flex items-center" ref={dropdownRef}>
       <input
-        className="mt-1 mb-1 p-1 w-full border rounded-md text-center dark:focus:outline-none dark:focus:outline-blue-600"
+        className="mt-1 mb-1 p-1 w-full border rounded-md text-center dark:focus:outline-none dark:focus:outline-blue-600 dark:placeholder-[#A0AEC0]"
         type="text"
         placeholder="Search..."
         onChange={filterSearch}
