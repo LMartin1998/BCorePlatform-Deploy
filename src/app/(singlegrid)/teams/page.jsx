@@ -16,8 +16,6 @@ import { MdOutlineCleaningServices } from "react-icons/md";
 import { FaTools } from "react-icons/fa";
 import Table from "@/app/components/table/Table";
 import { TeamsContext } from "@/app/contexts/TeamsContext";
-import AddUser from "./adduser/page";
-import { useRouter } from "next/navigation";
 
 export default function Teams() {
   const { usersList, updateUserInfoId } = useContext(TeamsContext);

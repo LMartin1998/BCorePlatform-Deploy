@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { IoFolderOpenOutline } from "react-icons/io5";
+import { HiOutlineFolder } from "react-icons/hi";
 import DropdrownFiles from "./DropdownFiles";
 import { FilesContext } from "@/app/contexts/FilesContext";
 
@@ -57,10 +57,10 @@ export default function ShowFiles({ filesList, updateFiles }) {
 
     return design == 0 ? (
       <div
-        className={`h-12 w-full flex flex-row items-center justify-center border rounded-lg ${
+        className={`h-12 w-full flex flex-row items-center justify-center rounded-lg ${
           open === file.id
-            ? "bg-blue-200 hover:none"
-            : "bg-white hover:bg-gray-100"
+            ? "bg-blue-200 border border-blue-500 hover:none"
+            : "bg-white hover:bg-gray-200"
         } ${visible ? "opacity-100" : "opacity-0"}`}
         key={file.id}
         id={file.id}
@@ -70,7 +70,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
       >
         {file.isFolder ? (
           <div className="flex size-6">
-            <IoFolderOpenOutline className="w-full h-full" />
+            <HiOutlineFolder className="w-full h-full" />
           </div>
         ) : (
           <div className="flex size-6">
@@ -109,7 +109,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
         </div>
         {file.isFolder ? (
           <div className="flex w-4/5 h-full items-center justify-center">
-            <IoFolderOpenOutline className="w-full h-full" />
+            <HiOutlineFolder className="w-full h-full" />
           </div>
         ) : (
           <div className="flex w-4/5 h-full items-center justify-center">
@@ -133,8 +133,8 @@ export default function ShowFiles({ filesList, updateFiles }) {
   };
 
   return (
-    <div className="flex flex-col w-full h-96 items-center">
-      <div className="flex flex-col w-11/12 h-fit items-center border border-black rounded-lg overflow-auto bg-white">
+    <div className="flex flex-col w-full h-full items-center">
+      <div className="flex flex-col w-11/12 h-full items-center rounded-lg shadow-xl overflow-auto bg-white mb-2">
         <div
           className={`${
             design == 0

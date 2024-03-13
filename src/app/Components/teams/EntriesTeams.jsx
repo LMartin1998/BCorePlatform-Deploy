@@ -1,5 +1,4 @@
 import { useState } from "react";
-import styles from "@/app/styles/EntriesTeams.module.css";
 
 export default function EntriesTeams({ setOpenEntries }) {
   const [btnSelection, setBtnSelection] = useState("0");
@@ -9,18 +8,20 @@ export default function EntriesTeams({ setOpenEntries }) {
   };
 
   return (
-    <div className={styles.slide_top}>
+    <div className="flex flex-col w-full h-full">
       <div
-        className="flex justify-center items-center rounded-lg"
+        className="flex justify-center items-center w-full h-[6%] rounded-lg shadow-xl"
         onClick={(e) => {
           e.stopPropagation();
           setOpenEntries(false);
         }}
       >
-        <button className="bg-transparent">Close</button>
+        <button className="flex w-fit h-fit justify-center items-center rounded-lg p-1 bg-gray-100 hover:bg-gray-300">
+          Close
+        </button>
       </div>
-      <div className="w-full h-full rounded-lg shadow-lg bg-white">
-        <div className="flex w-full justify-center items-center border-b border-gray-300">
+      <div className="w-full h-full bg-white rounded-lg">
+        <div className="flex w-full h-[6%] justify-center items-center">
           <div
             className="flex w-1/6 m-1 p-1 justify-center items-center rounded-lg"
             id="0"
@@ -28,7 +29,9 @@ export default function EntriesTeams({ setOpenEntries }) {
           >
             <button
               className={`flex w-full justify-center items-center ${
-                btnSelection === "0" ? "border-b-2 border-blue-300" : ""
+                btnSelection === "0"
+                  ? "border-b-2 border-blue-300"
+                  : "rounded-lg hover:bg-blue-50"
               }`}
             >
               Entries
@@ -41,14 +44,16 @@ export default function EntriesTeams({ setOpenEntries }) {
           >
             <button
               className={`flex w-full justify-center items-center ${
-                btnSelection === "1" ? "border-b-2 border-blue-300" : ""
+                btnSelection === "1"
+                  ? "border-b-2 border-blue-300"
+                  : "rounded-lg hover:bg-blue-50"
               }`}
             >
               Summary
             </button>
           </div>
         </div>
-        <div className="w-1/2 flex mt-1">
+        <div className="flex w-1/2 h-[5%] mt-1">
           <div className="w-1/3 flex border rounded-lg bg-blue-300">
             <button className="w-full">Filter</button>
           </div>
@@ -59,7 +64,7 @@ export default function EntriesTeams({ setOpenEntries }) {
             <button className="w-full">Filter</button>
           </div>
         </div>
-        <div className="w-full h-full flex justify-center items-center">
+        <div className="flex w-full h-[85%] justify-center items-center">
           <div className="w1/3 h-full flex m-1 justify-center items-center"></div>
           <div className="w1/3 h-full flex m-1 justify-center items-center"></div>
           <div className="w1/3 h-full flex m-1 justify-center items-center"></div>

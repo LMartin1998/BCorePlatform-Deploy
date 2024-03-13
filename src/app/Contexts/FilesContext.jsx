@@ -7,6 +7,17 @@ const FilesContext = createContext();
 function FilesProvider({ children }) {
   const router = useRouter();
 
+  const [extensions, setExtensions] = useState(["pdf", "png", "jpeg", "jpg"]);
+
+  const [imageExtensions, setImageExtensions] = useState([
+    "jpg",
+    "png",
+    "jpeg",
+    "tiff",
+  ]);
+
+  const [docExtensions, setDocExtensions] = useState(["pdf", "docx"]);
+
   const [parentId, setParentId] = useState();
   const updateParentId = (e) => {
     e.stopPropagation();
@@ -69,7 +80,6 @@ function FilesProvider({ children }) {
   const [childrenType, setChildrenType] = useState(0);
   const updateChildrenType = (e) => {
     e.stopPropagation();
-    const extensions = ["pdf", "png", "jpeg", "jpg"];
     setChildrenType(e.currentTarget.id);
     if (e.currentTarget.id == 0) {
       setFilterChildren(childrenFiles);
@@ -105,68 +115,99 @@ function FilesProvider({ children }) {
     ]);
   };
 
+  const [image, setImage] = useState("");
+  const [showImage, setShowImage] = useState(false);
+
   const updateMainFiles = (e) => {
     e.stopPropagation();
     const newId = Number(e.currentTarget.id);
     setParentId(newId);
-    setChildrenFiles(mainFiles[newId].children || []);
-    setFilterChildren(mainFiles[newId].children || []);
-    setSearch("");
-    // folderPath.push({
-    //   id: newId,
-    //   path: `/docs/folder/${newId}`,
-    //   filesList: mainFiles[newId].children || [],
-    //   name: `${mainFiles[newId].fileName}`,
-    // });
-    setFolderPath([
-      ...folderPath,
-      {
-        id: newId,
-        path: `/docs/folder/${newId}`,
-        filesList: mainFiles[newId].children || [],
-        name: `${mainFiles[newId].fileName}`,
-      },
-    ]);
-    router.push(`/docs/folder/${childrenId}`);
+    const mainFile = mainFiles[newId];
+    if (mainFile && mainFile.children) {
+      setChildrenFiles(mainFiles[newId].children || []);
+      setFilterChildren(mainFiles[newId].children || []);
+      setSearch("");
+      setImage("");
+      setShowImage(false);
+      setMainType(0);
+      setFolderPath([
+        ...folderPath,
+        {
+          id: newId,
+          path: `/docs/folder/${newId}`,
+          filesList: mainFiles[newId].children || [],
+          name: `${mainFiles[newId].fileName}`,
+        },
+      ]);
+      router.push(`/docs/folder/${childrenId}`);
+    } else {
+      if (
+        imageExtensions.some((ex) =>
+          mainFile.fileName.toLowerCase().endsWith(ex.toLowerCase())
+        )
+      ) {
+        setShowImage(true);
+        setImage(mainFile.imageLink);
+      }
+    }
   };
 
   const updateChildrenFiles = (e) => {
     e.stopPropagation();
     const newId = Number(e.currentTarget.id);
     setChildrenId(newId);
-    setChildrenFiles(childrenFiles[newId].children || []);
-    setFilterChildren(childrenFiles[newId].children || []);
-    setChildrenType(0);
-    setFolderPath([
-      ...folderPath,
-      {
-        id: newId,
-        path: `/docs/folder/${newId}`,
-        filesList: childrenFiles[newId].children || [],
-        name: `${childrenFiles[newId].fileName}`,
-      },
-    ]);
-    setSearch("");
-    router.push(`/docs/folder/${childrenId}`);
+    const childrenFile = childrenFiles[newId];
+    if (childrenFile && childrenFile.children) {
+      setChildrenFiles(childrenFiles[newId].children || []);
+      setFilterChildren(childrenFiles[newId].children || []);
+      setChildrenType(0);
+      setSearch("");
+      setImage("");
+      setShowImage(false);
+      setFolderPath([
+        ...folderPath,
+        {
+          id: newId,
+          path: `/docs/folder/${newId}`,
+          filesList: childrenFiles[newId].children || [],
+          name: `${childrenFiles[newId].fileName}`,
+        },
+      ]);
+      router.push(`/docs/folder/${childrenId}`);
+    } else {
+      if (
+        imageExtensions.some((ex) =>
+          childrenFile.fileName.toLowerCase().endsWith(ex.toLowerCase())
+        )
+      ) {
+        setShowImage(true);
+        setImage(childrenFile.imageLink);
+      }
+    }
   };
 
   const updateChildrenFilesFromBreadcrum = (e) => {
     e.stopPropagation();
     const id = Number(e.currentTarget.id);
     setSearch("");
+    setShowImage(false);
+    setImage("");
     if (id > 0) {
       const list = folderPath[id].filesList || [];
       setChildrenFiles(list);
       setFilterChildren(list);
       setChildrenType(0);
+      setMainType(0);
     } else {
       setChildrenFiles([]);
-      setChildrenFiles([]);
       setFilterMain(mainFiles);
+      setChildrenType(0);
+      setMainType(0);
     }
     const newPath = folderPath.slice(0, id + 1);
     setFolderPath(newPath);
   };
+
   const [design, setDesign] = useState(0);
   const updateDesign = (e) => {
     e.stopPropagation();
@@ -203,6 +244,10 @@ function FilesProvider({ children }) {
         updateMainType,
         childrenType,
         updateChildrenType,
+        image,
+        setImage,
+        showImage,
+        setShowImage,
       }}
     >
       {children}
