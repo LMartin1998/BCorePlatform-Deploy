@@ -23,7 +23,7 @@ export default function Home() {
       <TopCards></TopCards>
       <div className="p-4">
         <div className="grid md:grid-cols-3 gap-4">
-          <div className="md-col-span-2 col-span-1 bg-white border rounded-lg h-auto dark:bg-[#1F2733]">
+          <div className="md-col-span-2 col-span-1 bg-white border rounded-lg h-auto dark:bg-[#1F2733] dark:border-[#00000005]">
             <div className="h-60 flex justify-center">
               <DonaChart></DonaChart>
             </div>
@@ -40,7 +40,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="md-col-span-2 col-span-1 bg-white border rounded-lg h-auto dark:bg-[#1F2733]">
+          <div className="md-col-span-2 col-span-1 bg-white border rounded-lg h-auto dark:bg-[#1F2733] dark:border-[#00000005]">
             <div className="h-60 flex justify-center">
               <DonaChart></DonaChart>
             </div>
@@ -57,7 +57,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="md-col-span-2 col-span-1 bg-white border rounded-lg h-auto dark:bg-[#1F2733]">
+          <div className="md-col-span-2 col-span-1 bg-white border rounded-lg h-auto dark:bg-[#1F2733] dark:border-[#00000005]">
             <div className="h-60 flex justify-center">
               <BarChart></BarChart>
             </div>

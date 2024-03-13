@@ -4,7 +4,7 @@ import Link from "next/link";
 export function MapSite() {
   return (
     <main className="flex my-5 mx-auto w-full h-[80vh] justify-center bg-[#FFF] border rounded-lg py-4 px-4 dark:bg-[#1F2733] dark:border dark:border-[#00000005]">
-      <div className={style.map_div}>
+      <div className="flex w-2/5 justify-center">
         <svg
           version="1.1"
           id="BLACKBEAR"
