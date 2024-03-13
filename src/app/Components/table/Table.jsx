@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import {
   flexRender,
   getCoreRowModel,
@@ -31,7 +31,6 @@ export default function Table({
   week,
 }) {
   const router = useRouter();
-
   const [globalFilter, setGlobalFilter] = useState("");
   const [columnFilter, setColumnFilter] = useState([]);
   const [rowSelection, setRowSelection] = useState({});
@@ -84,7 +83,7 @@ export default function Table({
 
   return (
     <div>
-      <div className="flex w-full items-center justify-between">
+      <div className="flex w-full items-center justify-between dark:bg-[#1a202c]">
         {link && (
           <Link href={link}>
             <button className="bg-red-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-red-600 dark:bg-[#BB86FC] dark:hover:bg-[#BB50FC]">
@@ -123,12 +122,12 @@ export default function Table({
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr
-              className="text-center bg-slate-50 select-none"
+              className="text-center bg-slate-50 dark:bg-[#1a202c] select-none"
               key={headerGroup.id}
             >
               {headerGroup.headers.map((header) => (
                 <th
-                  className="text-left p-1 text-gray-700 border-b border-solid border-gray-200"
+                  className="text-left p-1 text-gray-700 dark:text-white border-b border-solid border-gray-200"
                   key={header.id}
                   onClick={header.column.getToggleSortingHandler()}
                 >
@@ -149,7 +148,7 @@ export default function Table({
           {table.getRowModel().rows.map((row) => {
             return (
               <tr
-                className={`border-b border-solid border-gray-200 ${
+                className={`dark:bg-[#1a202c] border-b border-solid border-gray-200 ${
                   select == row.id
                     ? "bg-indigo-50 transition-colors duration-300 ease-in-out"
                     : "bg-white hover:bg-blue-50"

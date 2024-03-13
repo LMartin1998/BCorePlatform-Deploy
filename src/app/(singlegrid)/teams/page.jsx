@@ -23,8 +23,12 @@ export default function Teams() {
   const { theme } = useContext(ThemeContext);
   //Solo corre a la carga de la pagina
   useEffect(() => {
-    console.log(theme);
-  }, []);
+    if (theme === "dark") {
+      document.querySelector("html").classList.add("dark");
+    } else {
+      document.querySelector("html").classList.remove("dark");
+    }
+  }, [theme]);
   const [newUser, setNewUser] = useState(false);
 
   const teamLabel = {
@@ -113,7 +117,7 @@ export default function Teams() {
       header: "Name",
       accessorFn: (row) => `${row.firstName} ${row.lastName}`,
       cell: (row) => (
-        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
+        <p className="text-gray-700 font-medium text-base dark:text-slate-50">{row.getValue()}</p>
       ),
     },
     {
@@ -123,7 +127,7 @@ export default function Teams() {
       cell: (row) => (
         <div className="flex justify-start items-center">
           {teamLabel[row.getValue()]}
-          <p className="text-gray-700 font-medium text-sm pl-1">
+          <p className="text-gray-700 font-medium text-sm pl-1 dark:text-slate-50">
             {row.getValue()}
           </p>
         </div>
@@ -134,7 +138,7 @@ export default function Teams() {
       header: "Role",
       accessorKey: "role",
       cell: (row) => (
-        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
+        <p className="text-gray-700 font-medium text-base dark:text-slate-50">{row.getValue()}</p>
       ),
     },
     {
@@ -142,7 +146,7 @@ export default function Teams() {
       header: "Phone",
       accessorKey: "phone",
       cell: (row) => (
-        <p className="text-gray-700 font-medium text-base">{row.getValue()}</p>
+        <p className="text-gray-700 font-medium text-base dark:text-slate-50">{row.getValue()}</p>
       ),
     },
     {
@@ -164,7 +168,7 @@ export default function Teams() {
             <div className="relative bg-white py-2 px-4 border border-black rounded-full">
               {vehicleLabel[firstFourDigits]}
               <span
-                className="absolute bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded-full -top-3 -right-3"
+                className="absolute bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded-full -top-3 -right-3 dark:text-slate-50"
                 id={id}
                 onMouseEnter={hoverEnter}
                 onMouseLeave={hoverLeave}
@@ -173,7 +177,7 @@ export default function Teams() {
               </span>
               {showInfo == id && (
                 <div
-                  className="absolute z-10 bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded border border-gray-700 -top-8 -right-16 overflow-hidden"
+                  className="absolute z-10 bg-gray-900 text-gray-100 px-2 py-1 text-xs font-bold rounded border border-gray-700 -top-8 -right-16 overflow-hidden dark:text-slate-50"
                   onMouseLeave={hoverLeave}
                 >
                   {machinery.map((r, index) => (
@@ -197,8 +201,8 @@ export default function Teams() {
           <div
             className={`cursor-pointer relative ${
               rowStatus[row.id] && rowStatus[row.id].status
-                ? "bg-green-500"
-                : "bg-red-500"
+                ? "bg-green-500 dark:bg-purple-300"
+                : "bg-red-500 dark:bg-red-100"
             } rounded-full w-8 h-4 transition`}
             onClick={() => updateStatus(row.id)}
           >
@@ -218,7 +222,7 @@ export default function Teams() {
 
   return (
     <main
-      className={`bg-gray-100 min-h-screen ${
+      className={`bg-gray-100 dark:bg-[#1a202c] min-h-screen ${
         newUser ? "opacity-5" : "opacity-100"
       }`}
     >
