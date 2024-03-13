@@ -3,7 +3,7 @@ const Tab = ({ label, isActive, onClick }) => {
     <button
       className={`${
         isActive
-          ? "border-b-2 border-blue-500 focus:outline-none text-blue-500 font-semibold dark:text-[#BB86FC] dark:border-[#BB86FC]"
+          ? "border-b-2 border-blue-500 focus:outline-none text-blue-500 font-semibold dark:text-indigo-400 dark:border-indigo-400"
           : "border-b border-transparent focus:outline-none dark:text-white"
       } py-2 px-4 `}
       onClick={onClick}

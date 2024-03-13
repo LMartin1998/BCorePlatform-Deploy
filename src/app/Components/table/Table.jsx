@@ -87,7 +87,7 @@ export default function Table({
       <div className="flex w-full items-center justify-between">
         {link && (
           <Link href={link}>
-            <button className="bg-red-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-red-600 dark:bg-[#BB86FC] dark:hover:bg-[#BB50FC]">
+            <button className="bg-red-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-red-600 dark:bg-blue-600 dark:hover:bg-blue-800">
               {mainButton}
             </button>
           </Link>
@@ -97,7 +97,7 @@ export default function Table({
         <div className="flex items-center space-x-2">
           {table && (
             <button
-              className={`flex items-center rounded-lg text-gray-700 hover:bg-slate-400 hover:text-white py-1 px-3 dark:bg-[#BB86FC] dark:text-white ${
+              className={`flex items-center rounded-lg text-gray-700 hover:bg-slate-400 hover:text-white py-1 px-3 dark:bg-blue-600 dark:hover:bg-blue-800 dark:text-white ${
                 table.getIsSomePageRowsSelected() ||
                 table.getIsAllRowsSelected()
                   ? "opacity-100"
