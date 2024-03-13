@@ -15,7 +15,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 //Import DatePickers for the reports
-import WeekPicker  from "../datePickers/WeekPicker";
+import WeekPicker from "../datePickers/WeekPicker";
 import DiaryPicker from "../datePickers/DiaryPicker";
 
 export default function Table({
@@ -26,10 +26,9 @@ export default function Table({
   filterOptions,
   sortOptions,
   onDoubleClickEvent,
-  setNewUser,
   link,
   diary,
-  week
+  week,
 }) {
   const router = useRouter();
 
@@ -81,31 +80,24 @@ export default function Table({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-
   }, []);
-  
+
   return (
     <div>
-      <div className="w-full flex justify-between">
+      <div className="flex w-full items-center justify-between">
         {link && (
           <Link href={link}>
-            <button
-              className="bg-red-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-red-600"
-            >
+            <button className="bg-red-500 text-white px-3 py-1 rounded-md focus:outline-none hover:bg-red-600 dark:bg-[#BB86FC] dark:hover:bg-[#BB50FC]">
               {mainButton}
             </button>
           </Link>
         )}
-        {week && (
-            <WeekPicker></WeekPicker>
-        )}
-        {diary && (
-            <DiaryPicker></DiaryPicker>
-        )}
-        <div className="flex space-x-2">
+        {week && <WeekPicker></WeekPicker>}
+        {diary && <DiaryPicker></DiaryPicker>}
+        <div className="flex items-center space-x-2">
           {table && (
             <button
-              className={`flex items-center text-gray-700 hover:bg-slate-400 hover:rounded-lg hover:text-white py-1 px-3 ${
+              className={`flex items-center rounded-lg text-gray-700 hover:bg-slate-400 hover:text-white py-1 px-3 dark:bg-[#BB86FC] dark:text-white ${
                 table.getIsSomePageRowsSelected() ||
                 table.getIsAllRowsSelected()
                   ? "opacity-100"
@@ -145,7 +137,7 @@ export default function Table({
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                   </div>
                 </th>
@@ -158,7 +150,9 @@ export default function Table({
             return (
               <tr
                 className={`border-b border-solid border-gray-200 ${
-                  select == row.id ? "bg-indigo-50 transition-colors duration-300 ease-in-out" : "bg-white hover:bg-blue-50"
+                  select == row.id
+                    ? "bg-indigo-50 transition-colors duration-300 ease-in-out"
+                    : "bg-white hover:bg-blue-50"
                 }`}
                 key={row.id}
                 id={row.id}
@@ -173,7 +167,7 @@ export default function Table({
                     <td className="py-1 px-1" key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </td>
                   );

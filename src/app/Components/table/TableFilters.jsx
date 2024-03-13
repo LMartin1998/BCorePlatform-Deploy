@@ -65,9 +65,9 @@ export default function TableFilters({
   };
 
   return (
-    <div className="flex flex-row" ref={dropdownRef}>
+    <div className="flex items-center" ref={dropdownRef}>
       <input
-        className="mt-1 mb-1 p-1 w-full border rounded-md text-center"
+        className="mt-1 mb-1 p-1 w-full border rounded-md text-center dark:focus:outline-none dark:focus:outline-[#BB86FC]"
         type="text"
         placeholder="Search..."
         onChange={filterSearch}
@@ -76,7 +76,7 @@ export default function TableFilters({
       <div className="relative inline-block text-left">
         <button
           id="menu-button"
-          className={`flex items-center text-gray-700 rounded-lg ${
+          className={`flex items-center text-gray-700 rounded-lg ml-1 dark:bg-[#BB86FC] dark:text-white ${
             open
               ? "bg-slate-400 text-white"
               : "hover:bg-slate-400 hover:text-white"
