@@ -5,14 +5,14 @@ import { ThemeContext } from "../Contexts/ThemeContext";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const { theme, setTheme } = useContext(ThemeContext);
+  const [openDrop, setOpenDrop] = useState(false);
+  const { theme, updateTheme } = useContext(ThemeContext);
   const [styles, setStyles] = useState({
     bgColor: theme === "light" ? "bg-gray-400" : "bg-blue-500",
     translate: theme === "light" ? "translate-x-0" : "translate-x-4",
   });
 
   const updateStyles = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
     setStyles((prevStyles) => ({
       ...prevStyles,
       bgColor:
@@ -48,17 +48,81 @@ const Header = () => {
         <SettingsModal onClose={() => {}}>
           <div className="flex flex-col w-full h-5/6">
             <div className="flex items-center justify-between mt-4 m-2">
-              <p className="text-black dark:text-white">Toggle theme</p>
-              <div
-                className={`cursor-pointer relative ${styles.bgColor} rounded-full w-8 h-4 transition`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  updateStyles();
-                }}
-              >
-                <div
-                  className={`absolute ${styles.translate} left-0 bg-white w-4 h-4 rounded-full shadow-md transition transform duration-300 ease-in-out`}
-                />
+              <div className="flex items-center">
+                <div className="relative inline-block text-left">
+                  <button
+                    id="menu-button"
+                    className={`flex items-center text-gray-700 rounded-lg ml-1 ${
+                      open
+                        ? "bg-slate-400 text-white dark:bg-blue-800 dark:text-white"
+                        : "hover:bg-slate-400 hover:text-white dark:bg-blue-600 dark:hover:bg-blue-800 dark:text-white"
+                    } py-1 px-3`}
+                    type="text"
+                    aria-haspopup="true"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setOpenDrop((prevOpen) => !prevOpen);
+                    }}
+                  ></button>
+                  {openDrop && (
+                    <div
+                      className="absolute left-0 z-10 mt-1 w-28 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      role="menu"
+                      aria-orientation="vertical"
+                      aria-labelledby="menu-button"
+                      tabIndex="-1"
+                    >
+                      <div className="py-1" role="none">
+                        <a
+                          href="#"
+                          className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
+                          role="menuitem"
+                          tabIndex="-1"
+                          id="0"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            updateTheme(e.target.id);
+                            setOpenDrop(false);
+                          }}
+                        >
+                          Automatic
+                        </a>
+                      </div>
+                      <div className="py-1" role="none">
+                        <a
+                          href="#"
+                          className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
+                          role="menuitem"
+                          tabIndex="-1"
+                          id="1"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            updateTheme(e.target.id);
+                            setOpenDrop(false);
+                          }}
+                        >
+                          Dark mode
+                        </a>
+                      </div>
+                      <div className="py-1" role="none">
+                        <a
+                          href="#"
+                          className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
+                          role="menuitem"
+                          tabIndex="-1"
+                          id="2"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            updateTheme(e.target.id);
+                            setOpenDrop(false);
+                          }}
+                        >
+                          Light mode
+                        </a>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
             <button
