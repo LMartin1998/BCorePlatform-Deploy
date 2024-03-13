@@ -23,53 +23,53 @@ export default function Home() {
       <TopCards></TopCards>
       <div className="p-4">
         <div className="grid md:grid-cols-3 gap-4">
-          <div className="md-col-span-2 col-span-1 bg-white  border rounded-lg h-auto">
+          <div className="md-col-span-2 col-span-1 bg-white border rounded-lg h-auto dark:bg-[#1F2733]">
             <div className="h-60 flex justify-center">
               <DonaChart></DonaChart>
             </div>
             <div className="p-4">
-              <p className="font-semibold text-gray-600 text-center text-md">
+              <p className="font-semibold text-gray-600 text-center text-md dark:text-white">
                 Fullsite mechanical status
               </p>
               <hr className="my-4 border-t-2 border-gray-300"></hr>
-              <p className="font-semibold text-gray-600 text-center text-md">
+              <p className="font-semibold text-gray-600 text-center text-md dark:text-white">
                 (+15%)
               </p>
-              <p className="text-sm text-gray-600 text-center text-md">
+              <p className="text-sm text-gray-600 text-center text-md dark:text-white">
                 Increased respect to the previous day
               </p>
             </div>
           </div>
-          <div className="md-col-span-2 col-span-1 bg-white  border rounded-lg h-auto">
+          <div className="md-col-span-2 col-span-1 bg-white border rounded-lg h-auto dark:bg-[#1F2733]">
             <div className="h-60 flex justify-center">
               <DonaChart></DonaChart>
             </div>
             <div className="p-4">
-              <p className="font-semibold text-gray-600 text-center text-md">
+              <p className="font-semibold text-gray-600 text-center text-md dark:text-white">
                 Fullsite electrical status
               </p>
               <hr className="my-4 border-t-2 border-gray-300"></hr>
-              <p className="font-semibold text-gray-600 text-center text-md">
+              <p className="font-semibold text-gray-600 text-center text-md dark:text-white">
                 (+15%)
               </p>
-              <p className="text-sm text-gray-600 text-center text-md">
+              <p className="text-sm text-gray-600 text-center text-md dark:text-white">
                 Increased respect to the previous day
               </p>
             </div>
           </div>
-          <div className="md-col-span-2 col-span-1 bg-white  border rounded-lg h-auto">
+          <div className="md-col-span-2 col-span-1 bg-white border rounded-lg h-auto dark:bg-[#1F2733]">
             <div className="h-60 flex justify-center">
               <BarChart></BarChart>
             </div>
             <div className="p-4">
-              <p className="font-semibold text-gray-600 text-center text-md">
+              <p className="font-semibold text-gray-600 text-center text-md dark:text-white">
                 Teams
               </p>
               <hr className="my-4 border-t-2 border-gray-300"></hr>
-              <p className="font-semibold text-red-600 text-center text-md">
+              <p className="font-semibold text-red-600 text-center text-md dark:text-white">
                 (-2%)
               </p>
-              <p className="text-sm text-gray-600 text-center text-md">
+              <p className="text-sm text-gray-600 text-center text-md dark:text-white">
                 Decreased respect to the previous day
               </p>
             </div>
