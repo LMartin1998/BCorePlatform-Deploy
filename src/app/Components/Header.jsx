@@ -6,7 +6,7 @@ import { ThemeContext } from "../Contexts/ThemeContext";
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [openDrop, setOpenDrop] = useState(false);
-  const { theme, updateTheme } = useContext(ThemeContext);
+  const { theme, updateTheme, option } = useContext(ThemeContext);
   const [styles, setStyles] = useState({
     bgColor: theme === "light" ? "bg-gray-400" : "bg-blue-500",
     translate: theme === "light" ? "translate-x-0" : "translate-x-4",
@@ -48,7 +48,8 @@ const Header = () => {
         <SettingsModal onClose={() => {}}>
           <div className="flex flex-col w-full h-5/6">
             <div className="flex items-center justify-between mt-4 m-2">
-              <div className="flex items-center">
+              <div className="flex items-center justify-between w-full">
+                <p className="dark:text-white">Change theme</p>
                 <div className="relative inline-block text-left">
                   <button
                     id="menu-button"
@@ -63,10 +64,12 @@ const Header = () => {
                       e.stopPropagation();
                       setOpenDrop((prevOpen) => !prevOpen);
                     }}
-                  ></button>
+                  >
+                    {option == 0 ? "Automatic" : option == 1 ? "Dark" : "Light"}
+                  </button>
                   {openDrop && (
                     <div
-                      className="absolute left-0 z-10 mt-1 w-28 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      className="absolute right-0 z-10 mt-1 w-28 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="menu-button"
