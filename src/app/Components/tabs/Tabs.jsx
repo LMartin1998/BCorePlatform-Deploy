@@ -15,7 +15,7 @@ const Tab = ({ label, isActive, onClick }) => {
 
 const Tabs = ({ tabs, activeTab, onTabChange }) => {
   return (
-    <div className="w-full flex justify-center items-center border-b border-gray-200 bg-white dark:bg-[#1F2733] dark:border-[#00000005]">
+    <div className="w-full flex justify-center items-center border-b border-gray-200 bg-white dark:bg-[#1A202C] dark:border-[#00000005]">
       {tabs.map((tab, index) => (
         <Tab
           key={index}

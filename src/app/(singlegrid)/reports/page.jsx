@@ -20,7 +20,7 @@ const columnsBlocks = [
     header: ({ table }) => (
       <div className="flex items-center">
         <input
-          className="appearance-none h-4 w-4 border border-gray-300 rounded-sm checked:bg-blue-600 checked:border-transparent focus:outline-none transition-all duration-300 ease-in-out"
+          className="appearance-none h-4 w-4 border border-gray-300 rounded-sm checked:bg-blue-600 dark:checked:bg-purple-300 checked:border-transparent focus:outline-none transition-all duration-300 ease-in-out"
           type="checkbox"
           checked={table.getIsAllRowsSelected()}
           onChange={table.getToggleAllRowsSelectedHandler()}
@@ -33,7 +33,7 @@ const columnsBlocks = [
     cell: ({ row }) => (
       <div className="flex justify-center items-center ">
         <input
-          className="appearance-none h-4 w-4 border border-gray-300 rounded-sm checked:bg-blue-600 checked:border-transparent focus:outline-none transition-all duration-300 ease-in-out"
+          className="appearance-none h-4 w-4 border border-gray-300 rounded-sm checked:bg-blue-600 dark:checked:bg-purple-300 checked:border-transparent focus:outline-none transition-all duration-300 ease-in-out"
           type="checkbox"
           checked={row.getIsSelected()}
           disabled={!row.getCanSelect()}
@@ -375,7 +375,7 @@ export default function Reports() {
           activeTab={activeTab}
           onTabChange={handleTabChange}
         ></Tabs>
-        <div className="p-4 bg-white dark:bg-[#1F2733]">
+        <div className="p-4 bg-white dark:bg-[#1A202C]">
           {tabsData.map((tab, index) => (
             <div
               key={index}
