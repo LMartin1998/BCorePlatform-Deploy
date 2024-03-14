@@ -29,7 +29,7 @@ export default function Docs() {
   }, []);
 
   return (
-    <main className="bg-gray-100 h-screen min-h-screen">
+    <main className="bg-gray-100 h-screen min-h-screen dark:bg-[#1A202C]">
       <Header></Header>
       <TopCards></TopCards>
       <div className="flex items-center w-full">
@@ -43,7 +43,7 @@ export default function Docs() {
         <AddFiles></AddFiles>
         <FilterFiles type={mainType} updateType={updateMainType}></FilterFiles>
       </div>
-      <div className="flex w-full h-96 sm:h-[50%] 2xl:h-[50%]">
+      <div className="flex w-full h-96 sm:h-[44%] 2xl:h-[48%]">
         <ShowFiles
           filesList={filterMain}
           updateFiles={updateMainFiles}
@@ -54,16 +54,16 @@ export default function Docs() {
           onClose={() => {
             setShowImage(false);
           }}
-          children={
-            <div className="flex w-6/12 h-5/6 rounded-lg shadow-lg bg-white z-50">
-              <img
-                className="flex w-full h-full object-cover"
-                loading="lazy"
-                src={image}
-              ></img>
-            </div>
-          }
-        ></Modal>
+        >
+          <div className="flex w-6/12 h-5/6 rounded-lg shadow-lg bg-white z-50">
+            <img
+              className="flex w-full h-full object-cover"
+              loading="lazy"
+              alt="image"
+              src={image}
+            ></img>
+          </div>
+        </Modal>
       )}
     </main>
   );
