@@ -13,7 +13,7 @@ export default function BreadcrumFiles() {
         {folderPath.map((item, index) => (
           <Fragment key={index ? index : 0}>
             {index > 0 && (
-              <IoArrowForwardOutline className="size-5 m-1"></IoArrowForwardOutline>
+              <IoArrowForwardOutline className="size-5 m-1 dark:text-white"></IoArrowForwardOutline>
             )}
             <Link
               className="flex rounded-full hover:bg-gray-300 dark:hover:bg-[#BB86FC]"

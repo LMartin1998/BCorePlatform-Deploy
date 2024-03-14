@@ -59,7 +59,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
       <div
         className={`h-12 w-full flex flex-row items-center justify-center rounded-lg ${
           open === file.id
-            ? "bg-blue-200 border border-blue-500 hover:none"
+            ? "bg-blue-200 border border-blue-500 hover:none dark:bg-black dark:border-white dark:hover:none"
             : "bg-white hover:bg-gray-200 dark:bg-[#1F2733] dark:hover:bg-black"
         } ${visible ? "opacity-100" : "opacity-0"}`}
         key={file.id}
@@ -88,7 +88,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
       <div
         className={`h-36 w-36 flex flex-col items-center border-2 rounded-lg ${
           open === file.id
-            ? "bg-blue-200 hover:none"
+            ? "bg-blue-200 hover:none dark:bg-black dark:hover:none"
             : "bg-white hover:bg-gray-100 dark:bg-[#1F2733] dark:hover:bg-black"
         } ${visible ? "opacity-100" : "opacity-0"}`}
         key={file.id}

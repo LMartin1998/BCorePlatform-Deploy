@@ -54,7 +54,7 @@ export default function Docs() {
         <AddFiles></AddFiles>
         <FilterFiles type={mainType} updateType={updateMainType}></FilterFiles>
       </div>
-      <div className="flex w-full h-96 sm:h-[44%] 2xl:h-[48%]">
+      <div className="flex w-full h-96 sm:h-[42%] 2xl:h-[47%]">
         <ShowFiles
           filesList={filterMain}
           updateFiles={updateMainFiles}
