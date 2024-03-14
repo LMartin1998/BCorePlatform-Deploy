@@ -36,7 +36,7 @@ export function Theme() {
         window.matchMedia &&
         window.matchMedia("(prefers-color-scheme: dark)").matches
           ? "dark"
-          : "light"
+          : "light",
       );
     } else {
       setTheme(opt == 1 ? "dark" : "light");

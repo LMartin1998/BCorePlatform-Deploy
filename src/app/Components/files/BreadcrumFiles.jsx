@@ -16,12 +16,12 @@ export default function BreadcrumFiles() {
               <IoArrowForwardOutline className="size-5 m-1"></IoArrowForwardOutline>
             )}
             <Link
-              className="flex rounded-full hover:bg-gray-300"
+              className="flex rounded-full hover:bg-gray-300 dark:hover:bg-[#BB86FC]"
               href={item.path}
               id={index ? index : 0}
               onClick={updateChildrenFilesFromBreadcrum}
             >
-              <p>{item.name}</p>
+              <p className="dark:text-white">{item.name}</p>
             </Link>
           </Fragment>
         ))}
