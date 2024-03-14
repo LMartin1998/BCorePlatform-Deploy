@@ -9,8 +9,8 @@ export default function TablePages({ table }) {
   return (
     <div className="flex w-full justify-between">
       <div className="flex justify-start space-x-2 mt-2">
-        <div className="flex items-center">Page</div>
-        <strong>
+        <div className="flex items-center dark:text-white">Page</div>
+        <strong className=" dark:text-white">
           {
             <input
               type="number"
@@ -21,7 +21,7 @@ export default function TablePages({ table }) {
                 const page = e.target.value ? Number(e.target.value) - 1 : 0;
                 table.setPageIndex(page);
               }}
-              className="border p-1 rounded w-16"
+              className="px-3 py-1 rounded-md focus:outline-none text-white dark:bg-gray-700"
             />
           }{" "}
           of {table.getPageCount()}

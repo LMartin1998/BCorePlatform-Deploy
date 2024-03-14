@@ -121,7 +121,7 @@ export default function Teams() {
       header: "Name",
       accessorFn: (row) => `${row.firstName} ${row.lastName}`,
       cell: (row) => (
-        <p className="text-gray-700 font-medium text-base dark:text-slate-50">{row.getValue()}</p>
+        <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">{row.getValue()}</p>
       ),
     },
     {
@@ -129,7 +129,7 @@ export default function Teams() {
       header: "Team",
       accessorKey: "team",
       cell: (row) => (
-        <div className="flex justify-start items-center">
+        <div className="flex justify-center items-center">
           {teamLabel[row.getValue()]}
           <p className="text-gray-700 font-medium text-sm pl-1 dark:text-slate-50">
             {row.getValue()}
@@ -142,7 +142,7 @@ export default function Teams() {
       header: "Role",
       accessorKey: "role",
       cell: (row) => (
-        <p className="text-gray-700 font-medium text-base dark:text-slate-50">{row.getValue()}</p>
+        <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">{row.getValue()}</p>
       ),
     },
     {
@@ -150,7 +150,7 @@ export default function Teams() {
       header: "Phone",
       accessorKey: "phone",
       cell: (row) => (
-        <p className="text-gray-700 font-medium text-base dark:text-slate-50">{row.getValue()}</p>
+        <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">{row.getValue()}</p>
       ),
     },
     {
@@ -168,7 +168,7 @@ export default function Teams() {
         return length <= 1 ? (
           vehicleLabel[firstFourDigits]
         ) : (
-          <div className="flex flex-wrap justify-start items-baseline mt-2 size-8">
+          <div className="flex flex-wrap justify-center mt-2">
             <div className="relative bg-white py-2 px-4 border border-black rounded-full">
               {vehicleLabel[firstFourDigits]}
               <span
@@ -201,7 +201,7 @@ export default function Teams() {
       header: "Status",
       accessorKey: "status",
       cell: ({ row }) => (
-        <div className="flex items-center">
+        <div className="flex items-center justify-center">
           <div
             className={`cursor-pointer relative ${
               rowStatus[row.id] && rowStatus[row.id].status
