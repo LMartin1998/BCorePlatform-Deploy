@@ -10,8 +10,11 @@ import DesignFiles from "@/app/components/files/DesignFiles";
 import FilterFiles from "@/app/components/files/FilterFiles";
 import AddFiles from "@/app/components/files/AddFiles";
 import Modal from "@/app/Components/Modal";
+import { ThemeContext } from "@/app/Contexts/ThemeContext";
 
 export default function Docs() {
+  const { theme } = useContext(ThemeContext);
+
   const {
     resetFolderPath,
     updateMainFiles,
@@ -27,6 +30,14 @@ export default function Docs() {
   useEffect(() => {
     resetFolderPath();
   }, []);
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.querySelector("html").classList.add("dark");
+    } else {
+      document.querySelector("html").classList.remove("dark");
+    }
+  }, [theme]);
 
   return (
     <main className="bg-gray-100 h-screen min-h-screen dark:bg-[#1A202C]">
