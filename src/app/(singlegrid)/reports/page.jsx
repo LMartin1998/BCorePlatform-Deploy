@@ -50,7 +50,7 @@ const columnsBlocks = [
     header: "Site",
     accessorKey: "site",
     cell: (row) => (
-      <p className="text-gray-700 font-medium text-base text-center">
+      <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">
         {row.getValue()}
       </p>
     ),
@@ -64,7 +64,7 @@ const columnsBlocks = [
       {
         return blocksInReport.map((r, index) => (
           <p
-            className="text-gray-700 font-medium text-sm text-center"
+            className="text-gray-700 font-medium text-sm text-center dark:text-slate-50"
             key={index}
           >
             {r}
@@ -78,7 +78,7 @@ const columnsBlocks = [
     header: "Date",
     accessorKey: "date",
     cell: (row) => (
-      <p className="text-gray-700 font-medium text-base text-center">
+      <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">
         {row.getValue()}
       </p>
     ),
@@ -89,7 +89,7 @@ const columnsBlocks = [
     accesorKey: "status",
     cell: (row) => {
       return (
-        <p className="text-gray-700 font-medium text-base text-center">
+        <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">
           {row.getValue() ? "True" : "False"}
         </p>
       );
@@ -133,7 +133,7 @@ const columnsTeams = [
     header: "Site",
     accessorKey: "site",
     cell: (row) => (
-      <p className="text-gray-700 font-medium text-base text-center">
+      <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">
         {row.getValue()}
       </p>
     ),
@@ -143,7 +143,7 @@ const columnsTeams = [
     header: "Team",
     accessorKey: "team",
     cell: (row) => (
-      <p className="text-gray-700 font-medium text-base text-center">
+      <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">
         {row.getValue()}
       </p>
     ),
@@ -153,7 +153,7 @@ const columnsTeams = [
     header: "Manager",
     accessorKey: "manager",
     cell: (row) => (
-      <p className="text-gray-700 font-medium text-base text-center">
+      <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">
         {row.getValue()}
       </p>
     ),
@@ -163,7 +163,7 @@ const columnsTeams = [
     header: "Date",
     accessorKey: "date",
     cell: (row) => (
-      <p className="text-gray-700 font-medium text-base text-center">
+      <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">
         {row.getValue()}
       </p>
     ),
@@ -206,7 +206,7 @@ const columnsDailyReports = [
     header: "Site",
     accessorKey: "site",
     cell: (row) => (
-      <p className="text-gray-700 font-medium text-base text-center">
+      <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">
         {row.getValue()}
       </p>
     ),
@@ -216,7 +216,7 @@ const columnsDailyReports = [
     header: "Date",
     accessorKey: "date",
     cell: (row) => (
-      <p className="text-gray-700 font-medium text-base text-center">
+      <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">
         {row.getValue()}
       </p>
     ),
@@ -226,7 +226,7 @@ const columnsDailyReports = [
     header: "Approved",
     accessorKey: "approved",
     cell: (row) => (
-      <p className="text-gray-700 font-medium text-base text-center">
+      <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">
         {row.getValue()}
       </p>
     ),
@@ -268,7 +268,7 @@ const columnsWeeklyReports = [
     header: "Site",
     accessorKey: "site",
     cell: (row) => (
-      <p className="text-gray-700 font-medium text-base text-center">
+      <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">
         {row.getValue()}
       </p>
     ),
@@ -278,7 +278,7 @@ const columnsWeeklyReports = [
     header: "Week Start",
     accessorKey: "startDate",
     cell: (row) => (
-      <p className="text-gray-700 font-medium text-base text-center">
+      <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">
         {row.getValue()}
       </p>
     ),
@@ -288,7 +288,7 @@ const columnsWeeklyReports = [
     header: "Week end",
     accessorKey: "endDate",
     cell: (row) => (
-      <p className="text-gray-700 font-medium text-base text-center">
+      <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">
         {row.getValue()}
       </p>
     ),
@@ -298,7 +298,7 @@ const columnsWeeklyReports = [
     header: "Approved",
     accessorKey: "approved",
     cell: (row) => (
-      <p className="text-gray-700 font-medium text-base text-center">
+      <p className="text-gray-700 font-medium text-base text-center dark:text-slate-50">
         {row.getValue()}
       </p>
     ),

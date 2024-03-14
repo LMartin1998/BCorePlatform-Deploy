@@ -89,19 +89,22 @@ export default function Teams() {
     {
       id: "selector-column",
       header: ({ table }) => (
-        <input
-          className="w-4 h-4 rounded-full border-2 border-gray-400 appearance-none checked:bg-blue-400 disable:bg-red"
-          type="checkbox"
-          checked={table.getIsAllRowsSelected()}
-          onChange={table.getToggleAllRowsSelectedHandler()}
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        ></input>
+        <div className="flex items-center">
+          <input
+            className="appearance-none h-4 w-4 border border-gray-300 rounded-sm checked:bg-blue-600 checked:border-transparent focus:outline-none transition-all duration-300 ease-in-out"
+            type="checkbox"
+            checked={table.getIsAllRowsSelected()}
+            onChange={table.getToggleAllRowsSelectedHandler()}
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          ></input>
+        </div>
       ),
       cell: ({ row }) => (
+      <div className="flex justify-center items-center ">
         <input
-          className="w-4 h-4 rounded-full border-2 border-gray-400 appearance-none checked:bg-blue-400 disable:bg-red"
+          className="appearance-none h-4 w-4 border border-gray-300 rounded-sm checked:bg-blue-600 checked:border-transparent focus:outline-none transition-all duration-300 ease-in-out"
           type="checkbox"
           checked={row.getIsSelected()}
           disabled={!row.getCanSelect()}
@@ -110,6 +113,7 @@ export default function Teams() {
             e.stopPropagation();
           }}
         ></input>
+      </div>
       ),
     },
     {
