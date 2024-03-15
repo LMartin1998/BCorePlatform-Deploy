@@ -7,23 +7,29 @@ import { IoDocumentOutline } from "react-icons/io5";
 import { AiOutlineTeam } from "react-icons/ai";
 import { SidebarContext } from "../contexts/SidebarContext";
 import { useContext, useEffect, useState } from "react";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 const Sidebar = ({ children, show, setter }) => {
   const { active, setActive } = useContext(SidebarContext);
+  const { theme } = useContext(ThemeContext);
 
   const [colors, setColors] = useState(
     Array(4).fill({
-      color: "#1E40AF",
-      bgColor: "bg-white",
-    }),
+      color: theme === "dark" ? "#BB86FC" : "#1E40AF",
+      bgColor: theme === "dark" ? "bg-blue-100" : "bg-white",
+    })
   );
 
   const updateColors = (id) => {
     const newColors = colors.map((color, index) => {
       if (id == index) {
-        return { color: "white", bgColor: "bg-blue-800" };
+        return theme === "dark"
+          ? { color: "white", bgColor: "bg-[#BB86FC]" }
+          : { color: "white", bgColor: "bg-blue-800" };
       } else {
-        return { color: "#1E40AF", bgColor: "bg-white" };
+        return theme === "dark"
+          ? { color: "black", bgColor: "bg-blue-100" }
+          : { color: "#1E40AF", bgColor: "bg-white" };
       }
     });
     setColors(newColors);
@@ -40,7 +46,7 @@ const Sidebar = ({ children, show, setter }) => {
       <div
         className={`${
           show ? "w-72" : "w-20"
-        } fixed h-screen p-4 bg-white border-r-[1px] flex flex-col justify-between`}
+        } fixed h-screen p-4 bg-white dark:bg-[#1A202C] border-r-[1px] flex flex-col justify-between`}
       >
         <div className="flex gap-x-4 flex-col ">
           <Link href="/">
@@ -64,7 +70,7 @@ const Sidebar = ({ children, show, setter }) => {
               updateColors(e.currentTarget.id);
             }}
           >
-            <div className="bg-gray-100 hover:bg-gray-200 justify-center  cursor-pointer my-4 p-3 rounded-lg flex">
+            <div className="bg-gray-100 hover:bg-gray-200 dark:bg-[#1F2733] dark:hover:bg-black justify-center  cursor-pointer my-4 p-3 rounded-lg flex">
               <div className="flex justify-center items-center">
                 <p
                   className={`${colors[0].bgColor} flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]`}
@@ -92,7 +98,7 @@ const Sidebar = ({ children, show, setter }) => {
               updateColors(e.currentTarget.id);
             }}
           >
-            <div className="bg-gray-100 hover:bg-gray-200 flex justify-center cursor-pointer my-4 p-3 rounded-lg inline-block flex">
+            <div className="bg-gray-100 hover:bg-gray-200 dark:bg-[#1F2733] dark:hover:bg-black flex justify-center cursor-pointer my-4 p-3 rounded-lg">
               <div className="flex justify-center items-center">
                 <p
                   className={`${colors[1].bgColor} flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]`}
@@ -119,7 +125,7 @@ const Sidebar = ({ children, show, setter }) => {
               updateColors(e.currentTarget.id);
             }}
           >
-            <div className="bg-gray-100 hover:bg-gray-200 flex justify-center cursor-pointer my-4 p-3 rounded-lg inline-block flex">
+            <div className="bg-gray-100 hover:bg-gray-200 dark:bg-[#1F2733] dark:hover:bg-black flex justify-center cursor-pointer my-4 p-3 rounded-lg">
               <div className="flex justify-center items-center">
                 <p
                   className={`${colors[2].bgColor} flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]`}
@@ -147,7 +153,7 @@ const Sidebar = ({ children, show, setter }) => {
               updateColors(e.currentTarget.id);
             }}
           >
-            <div className="bg-gray-100 hover:bg-gray-200 flex justify-center cursor-pointer my-4 p-3 rounded-lg inline-block flex">
+            <div className="bg-gray-100 hover:bg-gray-200 dark:bg-[#1F2733] dark:hover:bg-black flex justify-center cursor-pointer my-4 p-3 rounded-lg">
               <div className="flex justify-center items-center">
                 <p
                   className={`${colors[3].bgColor} flex justify-center items-center p-2 rounded-lg w-[35px] h-[35px]`}
@@ -168,7 +174,7 @@ const Sidebar = ({ children, show, setter }) => {
           <span className="border-b-[1px] border-gray-200 w-full p-2"></span>
           {/* Add new shortcut */}
           <div
-            className="bg-gray-100 hover:bg-gray-200 flex justify-center cursor-pointer my-4 p-3 rounded-lg inline-block flex justify-center"
+            className="bg-gray-100 hover:bg-gray-200 flex justify-center cursor-pointer my-4 p-3 rounded-lg"
             onClick={() => {
               setter((oldval) => !oldval);
             }}
