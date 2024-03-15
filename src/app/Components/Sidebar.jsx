@@ -15,7 +15,7 @@ const Sidebar = ({ children, show, setter }) => {
 
   const [colors, setColors] = useState(
     Array(4).fill({
-      color: theme === "dark" ? "#BB86FC" : "#1E40AF",
+      color: theme === "dark" ? "bg-gray-900" : "#1E40AF",
       bgColor: theme === "dark" ? "bg-blue-100" : "bg-white",
     })
   );
@@ -24,7 +24,7 @@ const Sidebar = ({ children, show, setter }) => {
     const newColors = colors.map((color, index) => {
       if (id == index) {
         return theme === "dark"
-          ? { color: "white", bgColor: "bg-[#BB86FC]" }
+          ? { color: "white", bgColor: "bg-gray-900" }
           : { color: "white", bgColor: "bg-blue-800" };
       } else {
         return theme === "dark"

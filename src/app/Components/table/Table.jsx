@@ -127,7 +127,7 @@ export default function Table({
             >
               {headerGroup.headers.map((header) => (
                 <th
-                  className="text-left p-1 text-gray-700 dark:text-white border-b border-solid border-gray-200"
+                  className="text-left p-1 text-gray-700 dark:text-white border-b border-solid border-gray-200 dark:border-gray-700"
                   key={header.id}
                   onClick={header.column.getToggleSortingHandler()}
                 >
@@ -148,7 +148,7 @@ export default function Table({
           {table.getRowModel().rows.map((row) => {
             return (
               <tr
-                className={`dark:bg-[#1a202c] border-b border-solid border-gray-200 ${
+                className={`dark:bg-[#1a202c] border-b border-solid border-gray-200 dark:border-gray-700 ${
                   select == row.id
                     ? "bg-indigo-50 transition-colors duration-300 ease-in-out"
                     : "bg-white hover:bg-blue-50"
