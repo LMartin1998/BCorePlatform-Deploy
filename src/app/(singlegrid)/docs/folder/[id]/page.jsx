@@ -22,38 +22,43 @@ export default function Folder() {
     image,
     showImage,
     setShowImage,
+    resetUrl,
   } = useContext(FilesContext);
 
   return (
-    <main className="bg-gray-100 h-screen min-h-screen">
-      <Header></Header>
-      <TopCards></TopCards>
-      <div className="flex items-center w-full">
-        <SearchFiles searchPage={searchChildren}></SearchFiles>
-      </div>
-      <div className="flex w-full justify-between items-center">
-        <BreadcrumFiles></BreadcrumFiles>
-        <DesignFiles></DesignFiles>
-      </div>
-      <div className="flex w-full lg:w-1/3 m-1 justify-center items-center">
-        <AddFiles></AddFiles>
-        <FilterFiles
-          type={childrenType}
-          updateType={updateChildrenType}
-        ></FilterFiles>
-      </div>
-      <div className="flex w-full h-96 sm:h-[50%] 2xl:h-[50%]">
-        <ShowFiles
-          filesList={filterChildren}
-          updateFiles={updateChildrenFiles}
-        ></ShowFiles>
+    <main className="bg-gray-100 h-screen min-h-screen dark:bg-[#1A202C] overflow-hidden">
+      <div className="w-full h-full overflow-auto">
+        <Header></Header>
+        <TopCards></TopCards>
+        <div className="flex items-center w-full">
+          <SearchFiles searchPage={searchChildren}></SearchFiles>
+        </div>
+        <div className="flex w-full justify-between items-center">
+          <BreadcrumFiles></BreadcrumFiles>
+          <DesignFiles></DesignFiles>
+        </div>
+        <div className="flex w-full lg:w-1/3 m-1 justify-center items-center">
+          <AddFiles></AddFiles>
+          <FilterFiles
+            type={childrenType}
+            updateType={updateChildrenType}
+          ></FilterFiles>
+        </div>
+        <div className="flex w-full h-[70%] bg-gray-100 dark:bg-[#1A202C]">
+          <ShowFiles
+            filesList={filterChildren}
+            updateFiles={updateChildrenFiles}
+          ></ShowFiles>
+        </div>
       </div>
       {showImage && (
-        <Modal
-          onClose={() => {
-            setShowImage(false);
-          }}
-          children={
+        <div className="absolute left-0 top-0 flex w-full h-full">
+          <Modal
+            onClose={() => {
+              setShowImage(false);
+              resetUrl();
+            }}
+          >
             <div className="flex w-6/12 h-5/6 rounded-lg shadow-lg bg-white z-50">
               <img
                 className="flex w-full h-full object-cover"
@@ -61,8 +66,8 @@ export default function Folder() {
                 src={image}
               ></img>
             </div>
-          }
-        ></Modal>
+          </Modal>
+        </div>
       )}
     </main>
   );

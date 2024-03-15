@@ -24,8 +24,10 @@ export default function AddFiles() {
       <div className="relative inline-block text-left">
         <button
           id="menu-button"
-          className={`flex items-center text-gray-700 rounded-lg text-white ${
-            open ? "bg-orange-300" : "bg-orange-500"
+          className={`flex items-center rounded-lg text-white hover:bg-orange-600 dark:text-black dark:bg-[#BB86FC] dark:hover:bg-[#BB70FC] ${
+            open
+              ? "bg-orange-600 dark:bg-[#BB70FC]"
+              : "bg-orange-500 dark:bg-[#BB86FC]"
           } py-1 px-3 m-2`}
           type="text"
           aria-haspopup="true"
@@ -39,7 +41,7 @@ export default function AddFiles() {
         </button>
         {open && (
           <div
-            className="absolute left-0 z-10 mt-1 w-28 origin-top-right divide-y divide-gray-200 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            className="absolute left-0 z-10 mt-1 w-28 origin-top-right divide-y divide-gray-200 dark:divide-black rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-purple-200 dark:text-black"
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="menu-button"
@@ -48,7 +50,7 @@ export default function AddFiles() {
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
+                className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200 dark:hover:bg-purple-400"
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-0"
@@ -59,7 +61,7 @@ export default function AddFiles() {
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
+                className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200 dark:hover:bg-purple-400"
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-0"
@@ -70,7 +72,7 @@ export default function AddFiles() {
             <div className="py-1" role="none">
               <a
                 href="#"
-                className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200"
+                className="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-200 dark:hover:bg-purple-400"
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-0"

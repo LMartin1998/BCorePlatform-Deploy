@@ -67,7 +67,7 @@ export default function TableFilters({
   return (
     <div className="flex items-center" ref={dropdownRef}>
       <input
-        className="mt-1 mb-1 p-1 w-full border rounded-md text-center dark:focus:outline-none dark:focus:outline-[#BB86FC]"
+        className="mt-1 mb-1 p-1 w-full border rounded-md text-center dark:focus:outline-none dark:focus:outline-blue-600 dark:placeholder-[#A0AEC0]"
         type="text"
         placeholder="Search..."
         onChange={filterSearch}
@@ -76,10 +76,10 @@ export default function TableFilters({
       <div className="relative inline-block text-left">
         <button
           id="menu-button"
-          className={`flex items-center text-gray-700 rounded-lg ml-1 dark:bg-[#BB86FC] dark:text-white ${
+          className={`flex items-center text-gray-700 rounded-lg ml-1 ${
             open
-              ? "bg-slate-400 text-white"
-              : "hover:bg-slate-400 hover:text-white"
+              ? "bg-slate-400 text-white dark:bg-blue-800 dark:text-white"
+              : "hover:bg-slate-400 hover:text-white dark:bg-blue-600 dark:hover:bg-blue-800 dark:text-white"
           } py-1 px-3`}
           type="text"
           aria-haspopup="true"

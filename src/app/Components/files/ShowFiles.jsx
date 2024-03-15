@@ -31,10 +31,11 @@ export default function ShowFiles({ filesList, updateFiles }) {
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
+      const currentRef = observerRef.current;
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach(({ target, isIntersecting }) => {
-            if (target === observerRef.current) {
+            if (target === currentRef) {
               setVisible(isIntersecting);
             }
           });
@@ -44,13 +45,13 @@ export default function ShowFiles({ filesList, updateFiles }) {
         }
       );
 
-      if (observerRef.current) {
-        observer.observe(observerRef.current);
+      if (currentRef) {
+        observer.observe(currentRef);
       }
 
       return () => {
-        if (observerRef.current) {
-          observer.unobserve(observerRef.current);
+        if (currentRef) {
+          observer.unobserve(currentRef);
         }
       };
     }, []);
@@ -59,8 +60,8 @@ export default function ShowFiles({ filesList, updateFiles }) {
       <div
         className={`h-12 w-full flex flex-row items-center justify-center rounded-lg ${
           open === file.id
-            ? "bg-blue-200 border border-blue-500 hover:none"
-            : "bg-white hover:bg-gray-200"
+            ? "bg-blue-200 border border-blue-500 hover:none dark:bg-black dark:border-white dark:hover:none"
+            : "bg-white hover:bg-gray-200 dark:bg-[#1F2733] dark:hover:bg-black"
         } ${visible ? "opacity-100" : "opacity-0"}`}
         key={file.id}
         id={file.id}
@@ -70,7 +71,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
       >
         {file.isFolder ? (
           <div className="flex size-6">
-            <HiOutlineFolder className="w-full h-full" />
+            <HiOutlineFolder className="w-full h-full dark:text-white" />
           </div>
         ) : (
           <div className="flex size-6">
@@ -78,7 +79,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
           </div>
         )}
         <div className="flex justify-center w-2/3 overflow-hidden">
-          <p className="truncate" title={file.fileName}>
+          <p className="truncate dark:text-white" title={file.fileName}>
             {file.fileName}
           </p>
         </div>
@@ -88,8 +89,8 @@ export default function ShowFiles({ filesList, updateFiles }) {
       <div
         className={`h-36 w-36 flex flex-col items-center border-2 rounded-lg ${
           open === file.id
-            ? "bg-blue-200 hover:none"
-            : "bg-white hover:bg-gray-100"
+            ? "bg-blue-200 hover:none dark:bg-black dark:hover:none"
+            : "bg-white hover:bg-gray-100 dark:bg-[#1F2733] dark:hover:bg-black"
         } ${visible ? "opacity-100" : "opacity-0"}`}
         key={file.id}
         id={file.id}
@@ -99,7 +100,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
       >
         <div className="w-full flex justify-center items-center">
           <div className="w-1/2 relative left-2 flex justify-start items-center overflow-hidden">
-            <p className="truncate" title={file.fileName}>
+            <p className="truncate dark:text-white" title={file.fileName}>
               {file.fileName}
             </p>
           </div>
@@ -109,7 +110,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
         </div>
         {file.isFolder ? (
           <div className="flex w-4/5 h-full items-center justify-center">
-            <HiOutlineFolder className="w-full h-full" />
+            <HiOutlineFolder className="w-full h-full dark:text-white" />
           </div>
         ) : (
           <div className="flex w-4/5 h-full items-center justify-center">
@@ -134,7 +135,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
 
   return (
     <div className="flex flex-col w-full h-full items-center">
-      <div className="flex flex-col w-11/12 h-full items-center rounded-lg shadow-xl overflow-auto bg-white mb-2">
+      <div className="flex flex-col w-11/12 h-full items-center rounded-lg shadow-xl overflow-auto bg-white dark:bg-[#1F2733] mb-2">
         <div
           className={`${
             design == 0

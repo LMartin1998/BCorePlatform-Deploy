@@ -1,18 +1,18 @@
 import { useContext, useEffect, useState } from "react";
 import { IoSettingsOutline } from "react-icons/io5";
 import SettingsModal from "./SettingsModal";
-import { ThemeContext } from "../Contexts/ThemeContext";
+import { ThemeContext } from "../contexts/ThemeContext";
+import UserOptions from "./user/UserOptions";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const [styles, setStyles] = useState({
     bgColor: theme === "light" ? "bg-gray-400" : "bg-blue-500",
     translate: theme === "light" ? "translate-x-0" : "translate-x-4",
   });
 
   const updateStyles = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
     setStyles((prevStyles) => ({
       ...prevStyles,
       bgColor:
@@ -46,31 +46,7 @@ const Header = () => {
       </div>
       {open && (
         <SettingsModal onClose={() => {}}>
-          <div className="flex flex-col w-full h-5/6">
-            <div className="flex items-center justify-between mt-4 m-2">
-              <p>Toggle theme</p>
-              <div
-                className={`cursor-pointer relative ${styles.bgColor} rounded-full w-8 h-4 transition`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  updateStyles();
-                }}
-              >
-                <div
-                  className={`absolute ${styles.translate} left-0 bg-white w-4 h-4 rounded-full shadow-md transition transform duration-300 ease-in-out`}
-                />
-              </div>
-            </div>
-            <button
-              className="flex w-1/3 py-1 items-center justify-center self-center rounded-lg bg-blue-500 text-white"
-              onClick={(e) => {
-                e.stopPropagation();
-                setOpen(false);
-              }}
-            >
-              Close
-            </button>
-          </div>
+          <UserOptions setOpen={setOpen}></UserOptions>
         </SettingsModal>
       )}
     </div>

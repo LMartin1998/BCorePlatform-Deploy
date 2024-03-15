@@ -49,8 +49,8 @@ export default function TableSort({ options, table }) {
           id="menu-button"
           className={`flex items-center text-gray-700 rounded-lg ${
             open
-              ? "bg-slate-400 text-white"
-              : "hover:bg-slate-400 hover:text-white"
+              ? "bg-slate-400 text-white dark:bg-blue-800 dark:text-white"
+              : "hover:bg-slate-400 hover:text-white dark:bg-blue-600 dark:hover:bg-blue-800 dark:text-white"
           } py-1 px-3`}
           type="text"
           aria-haspopup="true"

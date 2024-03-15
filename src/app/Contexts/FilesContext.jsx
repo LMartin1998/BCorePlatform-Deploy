@@ -148,6 +148,8 @@ function FilesProvider({ children }) {
       ) {
         setShowImage(true);
         setImage(mainFile.imageLink);
+        const newUrl = `/images/${mainFile.imageLink}`;
+        window.history.replaceState(null, null, newUrl);
       }
     }
   };
@@ -182,6 +184,8 @@ function FilesProvider({ children }) {
       ) {
         setShowImage(true);
         setImage(childrenFile.imageLink);
+        const newUrl = `/images/${childrenFile.imageLink}`;
+        window.history.replaceState(null, null, newUrl);
       }
     }
   };
@@ -206,6 +210,11 @@ function FilesProvider({ children }) {
     }
     const newPath = folderPath.slice(0, id + 1);
     setFolderPath(newPath);
+  };
+
+  const resetUrl = () => {
+    const newUrl = "/";
+    window.history.replaceState(null, null, newUrl);
   };
 
   const [design, setDesign] = useState(0);
@@ -248,6 +257,7 @@ function FilesProvider({ children }) {
         setImage,
         showImage,
         setShowImage,
+        resetUrl,
       }}
     >
       {children}

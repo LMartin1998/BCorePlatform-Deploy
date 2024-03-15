@@ -1,11 +1,13 @@
 export default function FilterFiles({ type, updateType }) {
   return (
     <div className="flex w-3/4 justify-center items-center">
-      <label className="m-2">Type</label>
+      <label className="m-2 dark:text-white">Type</label>
       <div className="flex justify-center items-center border border-black rounded-lg divide-x divide-black bg-white">
         <button
           className={`flex justify-center items-center p-2 rounded-l-lg hover:cursor-pointer ${
-            type == 0 ? "bg-blue-200" : "bg-white"
+            type == 0
+              ? "bg-blue-200 dark:bg-[#BB86FC]"
+              : "bg-white dark:bg-gray-300"
           }`}
           onClick={updateType}
           id="0"
@@ -14,7 +16,9 @@ export default function FilterFiles({ type, updateType }) {
         </button>
         <button
           className={`flex justify-center items-center p-2 hover:cursor-pointer ${
-            type == 1 ? "bg-blue-200" : "bg-white"
+            type == 1
+              ? "bg-blue-200 dark:bg-[#BB86FC]"
+              : "bg-white dark:bg-gray-300"
           }`}
           onClick={updateType}
           id="1"
@@ -23,7 +27,9 @@ export default function FilterFiles({ type, updateType }) {
         </button>
         <button
           className={`flex justify-center items-center p-2 rounded-r-lg hover:cursor-pointer ${
-            type == 2 ? "bg-blue-200" : "bg-white"
+            type == 2
+              ? "bg-blue-200 dark:bg-[#BB86FC]"
+              : "bg-white dark:bg-gray-300"
           }`}
           onClick={updateType}
           id="2"
