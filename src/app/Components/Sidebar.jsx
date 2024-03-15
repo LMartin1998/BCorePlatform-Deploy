@@ -28,7 +28,7 @@ const Sidebar = ({ children, show, setter }) => {
           : { color: "white", bgColor: "bg-blue-800" };
       } else {
         return theme === "dark"
-          ? { color: "black", bgColor: "bg-blue-100" }
+          ? { color: "black", bgColor: "bg-gray-100" }
           : { color: "#1E40AF", bgColor: "bg-white" };
       }
     });
