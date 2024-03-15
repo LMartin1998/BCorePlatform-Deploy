@@ -36,6 +36,10 @@ const Sidebar = ({ children, show, setter }) => {
   };
 
   useEffect(() => {
+    updateColors(active);
+  }, [theme]);
+
+  useEffect(() => {
     if (active !== null && active !== undefined) {
       updateColors(active);
     }
