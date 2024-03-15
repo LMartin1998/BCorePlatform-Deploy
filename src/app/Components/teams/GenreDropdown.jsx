@@ -33,7 +33,7 @@ export default function GenreDropdown() {
         <button
           id="menu-button"
           className="w-full items-center mt-1 mb-1 p-2 border rounded-md"
-          type="text"
+          type="button"
           aria-haspopup="true"
           onClick={(e) => {
             e.stopPropagation();
