@@ -10,7 +10,7 @@ import DesignFiles from "@/app/components/files/DesignFiles";
 import FilterFiles from "@/app/components/files/FilterFiles";
 import AddFiles from "@/app/components/files/AddFiles";
 import Modal from "@/app/Components/Modal";
-import { ThemeContext } from "@/app/Contexts/ThemeContext";
+import { ThemeContext } from "@/app/contexts/ThemeContext";
 
 export default function Docs() {
   const { theme } = useContext(ThemeContext);

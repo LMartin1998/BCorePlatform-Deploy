@@ -5,7 +5,7 @@ import DonaChart from "../../components/DoughnutChart";
 import Header from "../../components/Header";
 import { MapSite } from "../../components/MapSite";
 import TopCards from "../../components/TopCards";
-import { ThemeContext } from "@/app/Contexts/ThemeContext";
+import { ThemeContext } from "@/app/contexts/ThemeContext";
 
 export default function Home() {
   const { theme } = useContext(ThemeContext);

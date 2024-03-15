@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
-import { ThemeContext } from "../Contexts/ThemeContext";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 const BarChart = () => {
   const { theme } = useContext(ThemeContext);

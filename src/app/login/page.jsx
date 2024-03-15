@@ -4,7 +4,7 @@ import styles from "@/app/styles/Login.module.css";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { SidebarContext } from "../contexts/SidebarContext";
-import { ThemeContext } from "../Contexts/ThemeContext";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 {
   /* <button className="mt-20 bg-white" onClick={updateLogged}>Submit</button> */

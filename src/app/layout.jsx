@@ -5,7 +5,7 @@ import { UserProvider } from "./contexts/UserContext";
 import { FilesProvider } from "./contexts/FilesContext";
 import { TeamsProvider } from "./contexts/TeamsContext";
 import { SidebarProvider } from "./contexts/SidebarContext";
-import { ThemeProvider } from "./Contexts/ThemeContext";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 // export const metadata = {
 //   title: 'Project Manager',

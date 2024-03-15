@@ -16,7 +16,7 @@ import { MdOutlineCleaningServices } from "react-icons/md";
 import { FaTools } from "react-icons/fa";
 import Table from "@/app/components/table/Table";
 import { TeamsContext } from "@/app/contexts/TeamsContext";
-import { ThemeContext } from "@/app/Contexts/ThemeContext";
+import { ThemeContext } from "@/app/contexts/ThemeContext";
 
 export default function Teams() {
   const { usersList, updateUserInfoId } = useContext(TeamsContext);

@@ -12,7 +12,7 @@ import reportBlocks from "@/app/data/reportBlocks";
 import reportTeams from "@/app/data/reportTeams";
 import dailyReport from "@/app/data/dailyReport";
 import weeklyReport from "@/app/data/weeklyReport";
-import { ThemeContext } from "@/app/Contexts/ThemeContext";
+import { ThemeContext } from "@/app/contexts/ThemeContext";
 
 const columnsBlocks = [
   {
