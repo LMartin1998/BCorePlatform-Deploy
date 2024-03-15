@@ -31,10 +31,11 @@ export default function ShowFiles({ filesList, updateFiles }) {
     const [visible, setVisible] = useState(false);
 
     useEffect(() => {
+      const currentRef = observerRef.current;
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach(({ target, isIntersecting }) => {
-            if (target === observerRef.current) {
+            if (target === currentRef) {
               setVisible(isIntersecting);
             }
           });
@@ -44,13 +45,13 @@ export default function ShowFiles({ filesList, updateFiles }) {
         }
       );
 
-      if (observerRef.current) {
-        observer.observe(observerRef.current);
+      if (currentRef) {
+        observer.observe(currentRef);
       }
 
       return () => {
-        if (observerRef.current) {
-          observer.unobserve(observerRef.current);
+        if (currentRef) {
+          observer.unobserve(currentRef);
         }
       };
     }, []);
