@@ -1,10 +1,10 @@
 
 const BlockItem = (props) => {
   return (
-    <li className=" bg-slate-50 dark:bg-[#38404e] w-full mx-auto rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors duration-300 mb-2">
+    <li className=" bg-slate-50 w-full mx-auto rounded-lg flex items-center justify-between group hover:bg-gray-200 transition-colors duration-300 mb-2 dark:bg-gray-700">
       <div className="flex items-center">
-        {/* Container of svg block */}
-        <div className="bg-blue-800 dark:bg-gray-900 flex justify-center items-center p-2 rounded-lg w-[64px] h-[64px]  group-hover:bg-blue-600 dark:group-hover:bg-gray-800">
+        {/* Container of svg block */}     
+        <div className="bg-blue-800 flex justify-center items-center p-2 rounded-lg w-[64px] h-[64px]  group-hover:bg-blue-600 dark:bg-gray-900  dark:group-hover:bg-gray-800">
           <svg
             version="1.0"
             id="Capa_1"
@@ -25,7 +25,7 @@ const BlockItem = (props) => {
           </svg>
         </div>
         {/* Block name */}
-        <p className="ml-2 text-gray-700 dark:text-white font-semibold text-base group-hover:text-blue-600  dark:group-hover:text-white">
+        <p className="ml-2 text-gray-700 font-semibold text-base group-hover:text-blue-600 dark:text-white  dark:group-hover:text-white">
           {props.block} 
         </p>
       </div>

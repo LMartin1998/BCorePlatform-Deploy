@@ -46,10 +46,10 @@ const ReportsTeams = () => {
     }
 
     return ( 
-        <main className="bg-gray-100 min-h-screen">
+        <main className="bg-gray-100 min-h-screen dark:bg-[#1A202C]">
             <Header></Header>
             <div className="p-4">
-                <div className="md:w-3/4 mx-auto rounded-2xl pb-2 bg-white">
+                <div className="md:w-3/4 mx-auto rounded-2xl pb-2 bg-white dark:bg-[#1F2733]">
                     <div className="container horizontal mt-5">
                         <Stepper
                             steps = {steps}
