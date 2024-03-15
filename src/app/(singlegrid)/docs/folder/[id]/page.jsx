@@ -22,6 +22,7 @@ export default function Folder() {
     image,
     showImage,
     setShowImage,
+    resetUrl,
   } = useContext(FilesContext);
 
   return (
@@ -55,6 +56,7 @@ export default function Folder() {
           <Modal
             onClose={() => {
               setShowImage(false);
+              resetUrl();
             }}
           >
             <div className="flex w-6/12 h-5/6 rounded-lg shadow-lg bg-white z-50">

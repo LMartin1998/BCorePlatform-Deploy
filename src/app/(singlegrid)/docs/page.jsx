@@ -25,6 +25,7 @@ export default function Docs() {
     image,
     showImage,
     setShowImage,
+    resetUrl,
   } = useContext(FilesContext);
 
   useEffect(() => {
@@ -70,6 +71,7 @@ export default function Docs() {
           <Modal
             onClose={() => {
               setShowImage(false);
+              resetUrl();
             }}
           >
             <div className="flex w-6/12 h-5/6 rounded-lg shadow-lg bg-white z-50">
