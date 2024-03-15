@@ -16,14 +16,14 @@ const MyDatePicker = ({ blockId }) => {
 
   return (
     <div className="w-full rounded-md flex flex-col justify-center items-center">
-      <label className=" text-sm font-medium text-gray-700 dark:text-[#A0AEC0]">
+      <label className=" text-sm font-medium text-gray-700 dark:text-white">
         Choose a date
       </label>
       <DatePicker
         selected={selectedDate}
         onChange={handleDateChange}
         dateFormat="dd/MM/yyyy"
-        className="mt-1 mb-1 p-1 w-full border rounded-md text-center dark:text-black dark:border-[#00000005]"
+        className="mt-1 mb-1 p-1 w-full border rounded-md text-center dark:text-black dark:border-[#00000005] dark:bg-gray-300"
       />
     </div>
   );

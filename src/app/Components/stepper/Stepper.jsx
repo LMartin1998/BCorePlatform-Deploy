@@ -71,21 +71,21 @@ const Stepper = ({ steps, currentStep }) => {
             : "flex items-center"
         }
       >
-        <div className="relative flex flex-col items-center text-teal-600">
+        <div className="relative flex flex-col items-center text-teal-600 dark:text-white">
           <div
-            className={`rounded-full transition duration-500 ease-in-out border-2  h-12 w-12 flex items-center justify-center py-3 ${step.selected ? " bg-blue-800 text-white font-bold border border-white" : ""}`}
+            className={`rounded-full transition duration-500 ease-in-out border-2  h-12 w-12 flex items-center justify-center py-3 ${step.selected ? " bg-blue-800 dark:bg-gray-300 text-white font-bold border border-white dark:border-gray-300" : ""}`}
           >
             {/* {Display number} */} 
             {
                 step.completed ? (index + 1) : (index + 1) 
             }
           </div>
-          <div className={`absolute top-0 text-center mt-16 w-32 text-xs font-medium uppercase ${step.highlighted ? "text-gray-700" : " text-gray-400"}`}>
+          <div className={`absolute top-0 text-center mt-16 w-32 text-xs font-medium uppercase ${step.highlighted ? "text-gray-700 dark:text-slate-300" : " text-gray-400 dark:text-slate-50"}`}>
             {/* {Display description} */} 
             {step.description}
           </div>
         </div>
-        <div className={`flex-auto border-t-2 transition duration-500 ease-in-out ${step.completed ? "border-blue-700" : "border-gray-300"}`}>
+        <div className={`flex-auto border-t-2 transition duration-500 ease-in-out ${step.completed ? "border-blue-700 dark:border-blue-400" : "border-gray-300 dark:border-white"}`}>
           {/* {Display line} */}
         </div>
       </div>

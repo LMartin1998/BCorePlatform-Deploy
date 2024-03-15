@@ -14,7 +14,7 @@ const SearchBlock = () => {
         setSearchValue(event.target.value);
     }}
     placeholder="Search the block"
-    className='rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:border-blue-500 shadow focus:shadow-outline'
+    className='w-full bg-gray-100 rounded-md py-2 px-3 focus:outline-none dark:bg-[#38404e] dark:text-white dark:placeholder:text-slate-400'
     ></input> 
     );
 }

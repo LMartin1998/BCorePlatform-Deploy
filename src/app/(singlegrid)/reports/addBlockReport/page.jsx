@@ -7,18 +7,29 @@ import SelectBlock from "@/app/components/steps/blockReports/SelectBlock";
 import TaskInfo from "@/app/components/steps/blockReports/TaskInfo";
 import Resume from "@/app/components/steps/blockReports/Resume";
 import CompleteForm from "@/app/components/steps/blockReports/CompleteForm";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 import { StepperContext } from "@/app/contexts/StepperContext"; 
 import { GridContext } from "@/app/contexts/GridContext";
 
+import { ThemeContext } from "@/app/Contexts/ThemeContext";
+
 export default function Reports() {
+    const { theme } = useContext(ThemeContext);
     const { hasSelectedBlocks } = useContext(GridContext);
  
     const [currentStep, setCurrentStep] = useState(1);
 
     const [userData, setUserData] = useState('');
     const [finalData, setFinalData] = useState([]);
+
+    useEffect(() => {
+        if (theme === "dark") {
+          document.querySelector("html").classList.add("dark");
+        } else {
+          document.querySelector("html").classList.remove("dark");
+        }
+    }, [theme]);
     
     // TODO Cambiar segun sea el reporte
     const steps = [
@@ -52,11 +63,11 @@ export default function Reports() {
     }
       
     return (
-        <main className="bg-gray-100 min-h-screen">
+        <main className="bg-gray-100 min-h-screen dark:bg-[#1A202C]">
             <Header></Header>
             {/* <TopCards></TopCards> */}
             <div className="p-4">
-                <div className="md:w-3/4 mx-auto rounded-2xl pb-2 bg-white">
+                <div className="md:w-3/4 mx-auto rounded-2xl pb-2 bg-white dark:bg-[#1F2733]">
                     <div className="container horizontal mt-5">
                         <Stepper
                             steps = {steps}

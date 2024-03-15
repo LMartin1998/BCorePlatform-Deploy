@@ -54,7 +54,7 @@ const TaskBlock = ({ data, handleChange, optionsDrop, id }) => {
   return (
     <>
       <div className="flex justify-center items-center">
-        <p className="text-gray-700 font-normal text-lg w-3/4">Block {id}</p>
+        <p className="text-gray-700 dark:text-white font-normal text-lg w-3/4">Block {id}</p>
         <MyDatePicker blockId={id}></MyDatePicker>
       </div>
       <div className="container mx-auto my-2">
@@ -63,7 +63,7 @@ const TaskBlock = ({ data, handleChange, optionsDrop, id }) => {
           onChange={handleChange}
         ></ToggleButtonGroup>
       </div>
-      <p className="text-gray-700 font-normal text-base mt-2">Type of task</p>
+      <p className="text-gray-700 dark:text-white font-normal text-base mt-2">Type of task</p>
       <DropdownGeneral
         key={id}
         blockId={id}

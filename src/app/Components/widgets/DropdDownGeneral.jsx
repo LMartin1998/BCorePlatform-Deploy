@@ -35,7 +35,7 @@ const DropdownGeneral = ({ options, buttonText, blockId, onSelectionChange }) =>
         <button
           type="button"
           className={clsx(
-            "inline-flex justify-between w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm leading-5 font-medium text-gray-700 focus:outline-none focus:border-blue-300 transition ease-in-out duration-150",
+            "inline-flex justify-between w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white dark:bg-gray-300 text-sm leading-5 font-medium text-gray-700 dark:text-[#1F2733] focus:outline-none focus:border-blue-300 transition ease-in-out duration-150",
             { "rounded-t-md": !isOpen, "rounded-b-md": isOpen }
           )}
           onClick={handleToggleDropdown}
@@ -60,14 +60,14 @@ const DropdownGeneral = ({ options, buttonText, blockId, onSelectionChange }) =>
       </div>
 
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-white dark:bg-gray-300 ring-1 ring-black ring-opacity-5">
           <div className="py-1">
             {options.map((option) => (
               <button
                 key={option.value}
                 onClick={() => handleSelectOption(option, blockId)}
                 className={clsx(
-                  "flex items-center justify-between px-4 py-2 text-sm text-gray-700 w-full text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100",
+                  "flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-[#1F2733] w-full text-left hover:bg-gray-100 focus:outline-none focus:bg-gray-100",
                   { "rounded-b-md": option === options[options.length - 1] }
                 )}
               >

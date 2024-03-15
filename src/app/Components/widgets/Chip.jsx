@@ -19,7 +19,7 @@ const Chip = ({label, background}) => {
         background: color
     }
     return (  
-        <div style={chipStyle} className={`inline-flex items-center bg-ye px-3 py-1 border border-gray-300 rounded-full text-sm leading-5 font-medium text-gray-700`}>
+        <div style={chipStyle} className={`inline-flex items-center px-3 py-1 border border-gray-300 rounded-full text-sm leading-5 font-medium text-gray-700 dark:text-[#1F2733]`}>
             <span>{label}</span>
         </div>
     );
