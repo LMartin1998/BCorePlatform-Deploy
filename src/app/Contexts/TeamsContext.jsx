@@ -106,7 +106,7 @@ function TeamsProvider({ children }) {
         addUser,
       }}
     >
-      {children}
+      { children }
     </TeamsContext.Provider>
   );
 }

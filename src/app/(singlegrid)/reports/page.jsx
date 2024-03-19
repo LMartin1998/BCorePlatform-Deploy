@@ -1,6 +1,9 @@
 "use client";
 import { useState, useContext, useEffect } from "react";
 
+import { TfiWorld } from "react-icons/tfi";
+import { IoDocumentTextOutline } from "react-icons/io5";
+
 //Components imports
 import Header from "../../components/Header";
 import TopCards from "../../components/TopCards";
@@ -12,7 +15,9 @@ import reportBlocks from "@/app/data/reportBlocks";
 import reportTeams from "@/app/data/reportTeams";
 import dailyReport from "@/app/data/dailyReport";
 import weeklyReport from "@/app/data/weeklyReport";
+
 import { ThemeContext } from "@/app/contexts/ThemeContext";
+import { DailyReportContext } from "@/app/contexts/DailyReportContext";
 
 const columnsBlocks = [
   {
@@ -96,7 +101,6 @@ const columnsBlocks = [
     },
   },
 ];
-
 const columnsTeams = [
   {
     id: "selector-column",
@@ -169,7 +173,6 @@ const columnsTeams = [
     ),
   },
 ];
-
 const columnsDailyReports = [
   {
     id: "selector-column",
@@ -231,6 +234,17 @@ const columnsDailyReports = [
       </p>
     ),
   },
+  {
+    id: "action-buttons",
+    header: "",
+    accessorKey: "link",
+    cell: ({ row }) => (
+      <div className="flex justify-evenly items-center">
+        <TfiWorld size={20} className="dark:text-white"/>
+        <IoDocumentTextOutline size={20} className="dark:text-white" />
+      </div>
+    )
+  }
 ];
 const columnsWeeklyReports = [
   {
@@ -312,44 +326,8 @@ const columnsWeeklyReports = [
 //   { label: "Weekly", data: reportBlocks, columns: columnsBlocks, mainButton:"+ Add report"},
 // ];
 
-const tabsData = [
-  {
-    label: "Blocks",
-    content: (
-      <Table
-        data={reportBlocks}
-        columns={columnsBlocks}
-        mainButton={"+ Add block report"}
-        link={"/reports/addBlockReport"}
-      />
-    ),
-  },
-  {
-    label: "Teams",
-    content: (
-      <Table
-        data={reportTeams}
-        columns={columnsTeams}
-        mainButton={"+ Add team report"}
-        link={"/reports/addTeamsReport"}
-      />
-    ),
-  },
-  {
-    label: "Daily",
-    content: (
-      <Table data={dailyReport} columns={columnsDailyReports} diary={true} />
-    ),
-  },
-  {
-    label: "Weekly",
-    content: (
-      <Table data={weeklyReport} columns={columnsWeeklyReports} week={true} />
-    ),
-  },
-];
-
 export default function Reports() {
+  const { listDate, updateReportInfoId } = useContext(DailyReportContext);
   const { theme } = useContext(ThemeContext);
 
   useEffect(() => {
@@ -364,6 +342,43 @@ export default function Reports() {
   const handleTabChange = (index) => {
     setActiveTab(index);
   };
+
+  const tabsData = [
+    {
+      label: "Blocks",
+      content: (
+        <Table
+          data={reportBlocks}
+          columns={columnsBlocks}
+          mainButton={"+ Add block report"}
+          link={"/reports/addBlockReport"}
+        />
+      ),
+    },
+    {
+      label: "Teams",
+      content: (
+        <Table
+          data={reportTeams}
+          columns={columnsTeams}
+          mainButton={"+ Add team report"}
+          link={"/reports/addTeamsReport"}
+        />
+      ),
+    },
+    {
+      label: "Daily",
+      content: (
+        <Table data={listDate} columns={columnsDailyReports} daily={true} onDoubleClickEvent={updateReportInfoId} />
+      ),
+    },
+    {
+      label: "Weekly",
+      content: (
+        <Table data={weeklyReport} columns={columnsWeeklyReports} week={true} />
+      ),
+    },
+  ];
 
   return (
     <main className="bg-gray-100 min-h-screen dark:bg-[#1A202C]">

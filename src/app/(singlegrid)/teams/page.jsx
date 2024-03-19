@@ -32,19 +32,19 @@ export default function Teams() {
   const [newUser, setNewUser] = useState(false);
 
   const teamLabel = {
-    Logistics: <FaTruckPlane size={20} />,
-    Manager: <GrUserManager size={20} />,
-    Operator: <IoCall size={20} />,
-    Remediation: <GiAutoRepair size={20} />,
-    "Mechanical Remediation": <GiGearHammer size={20} />,
-    "DC Transtions & Road Crossing": <GiElectricalResistance size={20} />,
-    Cleaning: <MdOutlineCleaningServices size={20} />,
-    "Tool Room": <FaTools size={20} />,
+    Logistics: <FaTruckPlane size={20} className="dark:text-white" />,
+    Manager: <GrUserManager size={20}  className="dark:text-white" />,
+    Operator: <IoCall size={20} className="dark:text-white"/>,
+    Remediation: <GiAutoRepair size={20} className="dark:text-white" />,
+    "Mechanical Remediation": <GiGearHammer size={20} className="dark:text-white" />,
+    "DC Transtions & Road Crossing": <GiElectricalResistance size={20} className="dark:text-white" />,
+    Cleaning: <MdOutlineCleaningServices size={20} className="dark:text-white" />,
+    "Tool Room": <FaTools size={20} className="dark:text-white" />,
   };
 
   const vehicleLabel = {
-    "0000": <HiOutlineTruck size={16}></HiOutlineTruck>,
-    1111: <MdOutlineDirectionsBike size={16}></MdOutlineDirectionsBike>,
+    "0000": <HiOutlineTruck size={16} className="dark:text-white" ></HiOutlineTruck>,
+    1111: <MdOutlineDirectionsBike size={16} className="dark:text-white" ></MdOutlineDirectionsBike>,
   };
 
   let timeOutId;

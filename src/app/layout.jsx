@@ -6,7 +6,7 @@ import { FilesProvider } from "./contexts/FilesContext";
 import { TeamsProvider } from "./contexts/TeamsContext";
 import { SidebarProvider } from "./contexts/SidebarContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
-
+import { DailyReportProvider } from "./contexts/DailyReportContext";
 // export const metadata = {
 //   title: 'Project Manager',
 //   description: 'Development platform',
@@ -21,7 +21,11 @@ export default function RootLayout({ children }) {
             <UserProvider>
               <GridProvider>
                 <FilesProvider>
-                  <TeamsProvider>{children}</TeamsProvider>
+                  <TeamsProvider>
+                    <DailyReportProvider>
+                      {children}
+                    </DailyReportProvider>                    
+                  </TeamsProvider>
                 </FilesProvider>
               </GridProvider>
             </UserProvider>

@@ -27,7 +27,7 @@ export default function Table({
   sortOptions,
   onDoubleClickEvent,
   link,
-  diary,
+  daily,
   week,
 }) {
   const router = useRouter();
@@ -92,7 +92,7 @@ export default function Table({
           </Link>
         )}
         {week && <WeekPicker></WeekPicker>}
-        {diary && <DiaryPicker></DiaryPicker>}
+        {daily && <DiaryPicker></DiaryPicker>}
         <div className="flex items-center space-x-2">
           {table && (
             <button
