@@ -1,10 +1,10 @@
 "use client";
 import { useContext, useEffect } from "react";
-import BarChart from "../../components/BarChart";
-import DonaChart from "../../components/DoughnutChart";
+import BarChart from "../../components/charts/BarChart";
+import DonaChart from "../../components/charts/DoughnutChart";
 import Header from "../../components/Header";
 import { MapSite } from "../../components/MapSite";
-import TopCards from "../../components/TopCards";
+import TopCards from "../../components/widgets/TopCards";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 
 export default function Home() {

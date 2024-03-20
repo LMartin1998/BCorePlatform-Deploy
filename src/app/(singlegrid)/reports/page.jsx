@@ -6,7 +6,7 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 
 //Components imports
 import Header from "../../components/Header";
-import TopCards from "../../components/TopCards";
+import TopCards from "../../components/widgets/TopCards";
 import Table from "@/app/components/table/Table";
 import Tabs from "@/app/components/tabs/Tabs";
 

@@ -6,7 +6,7 @@ import styles from "@/app/styles/Singlegrid.module.css";
 import { ContainerRacks } from "../../../components/ContainerRacksComponent";
 import Header from "../../../components/Header";
 import { useParams } from "next/navigation";
-import TopCards from "@/app/components/TopCards";
+import TopCards from "@/app/components/widgets/TopCards";
 import Dropdown from "@/app/components/widgets/Dropdown";
 import ToggleSwitch from "@/app/components/ToggleSwitch";
 

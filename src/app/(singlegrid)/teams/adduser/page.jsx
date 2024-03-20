@@ -1,6 +1,6 @@
 "use client";
 import Header from "@/app/components/Header";
-import TopCards from "@/app/components/TopCards";
+import TopCards from "@/app/components/widgets/TopCards";
 import GenreDropdown from "@/app/components/teams/GenreDropdown";
 import TeamsDatePicker from "@/app/components/teams/TeamsDatePicker";
 import Head from "next/head";

@@ -1,6 +1,6 @@
 "use client";
 import Header from "@/app/components/Header";
-import TopCards from "@/app/components/TopCards";
+import TopCards from "@/app/components/widgets/TopCards";
 import { TeamsContext } from "@/app/contexts/TeamsContext";
 import { useContext, useState } from "react";
 import { HiOutlineInboxIn } from "react-icons/hi";

@@ -1,6 +1,6 @@
 "use client";
 import Header from "@/app/components/Header";
-import TopCards from "@/app/components/TopCards";
+import TopCards from "@/app/components/widgets/TopCards";
 import ShowFiles from "@/app/components/files/ShowFiles";
 import SearchFiles from "@/app/components/files/SearchFiles";
 import BreadcrumFiles from "@/app/components/files/BreadcrumFiles";

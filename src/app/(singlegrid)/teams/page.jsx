@@ -1,7 +1,7 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
 import Header from "../../components/Header";
-import TopCards from "../../components/TopCards";
+import TopCards from "../../components/widgets/TopCards";
 import { GrUserManager } from "react-icons/gr";
 import { FaTruckPlane } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
