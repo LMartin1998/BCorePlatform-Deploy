@@ -107,14 +107,18 @@ const DailyReport = () => {
     },
   ];
 
-  const labelsSiteStatus  = ["Modules installed", "Remaining to panel", "Remaining to rack"];
+  const labelsSiteStatus = [
+    "Modules installed",
+    "Remaining to panel",
+    "Remaining to rack",
+  ];
   const datasetSiteStatus = [
     {
       data: [64.8, 14.7, 21.1],
       backgroundColor: ["#55AA55", "#D49A6A", "#D46A6A"], // Colores para cada categoría
       hoverBackgroundColor: ["#88CC88", "#FFD1AA", "#FFAAAA"],
-    }
-  ]
+    },
+  ];
 
   return (
     <div className="bg-gray-100 min-h-screen dark:bg-[#1A202C]">
@@ -199,7 +203,7 @@ const DailyReport = () => {
 
       <div className="grid grid-cols-3 gap-4 p-4">
         <div className="bg-white p-2 max-h-96">
-          <DoughnutManP  
+          <DoughnutManP
             title={"Site Status"}
             labels={labelsSiteStatus}
             dataChart={datasetSiteStatus}
@@ -216,7 +220,9 @@ const DailyReport = () => {
 
       <div className="w-full bg-white p-4 dark:bg-[#1A202C]">
         <div className=" bg-blue-800 p-2">
-          <p className=" text-center px-6 text-white text-lg font-bold">Tasks</p>
+          <p className=" text-center px-6 text-white text-lg font-bold">
+            Tasks
+          </p>
         </div>
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
@@ -244,10 +250,18 @@ const DailyReport = () => {
           <tbody className="bg-white divide-y divide-gray-200">
             <tr>
               <td className="px-6 py-4 whitespace-nowrap text-center">
-                <p className="text-base text-gray-900 font-semibold">Harness remediation</p>
-                <p className="text-base text-gray-900 font-normal">Fixing all slack on Harnesses</p>
-                <p className="text-base text-gray-900 font-normal">Ensuring that all loops are no less than 5 inches</p>
-                <p className="text-base text-gray-900 font-normal">Ensuring all zip ties are all correctly placed</p>
+                <p className="text-base text-gray-900 font-semibold">
+                  Harness remediation
+                </p>
+                <p className="text-base text-gray-900 font-normal">
+                  Fixing all slack on Harnesses
+                </p>
+                <p className="text-base text-gray-900 font-normal">
+                  Ensuring that all loops are no less than 5 inches
+                </p>
+                <p className="text-base text-gray-900 font-normal">
+                  Ensuring all zip ties are all correctly placed
+                </p>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-center">28</td>
               <td className="px-6 py-4 whitespace-nowrap text-center">202</td>
@@ -255,12 +269,76 @@ const DailyReport = () => {
             <tr>
               <td className="px-6 py-4 whitespace-nowrap text-center">
                 <p className="text-base text-gray-900 font-semibold">CAB</p>
-                <p className="text-base text-gray-900 font-normal">Torque checking MC4 connectors</p>
-                <p className="text-base text-gray-900 font-normal">Organizing DC negative and positive cables in to CAB Hangers</p>
-                <p className="text-base text-gray-900 font-normal">Installing missing split loom and correcting prior split loom on PV Cables</p>
+                <p className="text-base text-gray-900 font-normal">
+                  Torque checking MC4 connectors
+                </p>
+                <p className="text-base text-gray-900 font-normal">
+                  Organizing DC negative and positive cables in to CAB Hangers
+                </p>
+                <p className="text-base text-gray-900 font-normal">
+                  Installing missing split loom and correcting prior split loom
+                  on PV Cables
+                </p>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-center">2</td>
               <td className="px-6 py-4 whitespace-nowrap text-center">104</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div className=" bg-blue-800 p-2 mt-8">
+          <p className=" text-center px-6 text-white text-lg font-bold">
+            Expectations for tomorrow
+          </p>
+        </div>
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
+              <th
+                scope="col"
+                className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Description
+              </th>
+
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            <tr>
+              <td className="px-6 py-4 whitespace-nowrap text-center">
+                <p className="text-base text-gray-900 font-semibold">
+                  Harness remediation
+                </p>
+                <p className="text-base text-gray-900 font-normal">
+                  Complete 100% of Harness remediation on block 201
+                </p>
+                <p className="text-base text-gray-900 font-normal">
+                  Fix all slack on Harnesses
+                </p>
+                <p className="text-base text-gray-900 font-normal">
+                  Ensure that all loops are no less than 5 inches
+                </p>
+                <p className="text-base text-gray-900 font-normal">
+                  Ensure that all zip ties are all correctly placed
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td className="px-6 py-4 whitespace-nowrap text-center">
+                <p className="text-base text-gray-900 font-semibold">CAB</p>
+                <p className="text-base text-gray-900 font-normal">
+                  Complete 100% of block 107 with:
+                </p>
+                <p className="text-base text-gray-900 font-normal">
+                  Organize DC Negative and Positive Cables in to CAB hangers 
+                </p>
+                <p className="text-base text-gray-900 font-normal">
+                  Organize PV Negative and Positive Cables in to CAB hangers
+                </p>
+                <p className="text-base text-gray-900 font-normal">
+                  Install missing split Loom and correcting prior Split Loom on PV Cables
+                </p>
+              </td>
             </tr>
           </tbody>
         </table>

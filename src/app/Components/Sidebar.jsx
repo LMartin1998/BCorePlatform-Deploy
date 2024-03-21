@@ -83,8 +83,8 @@ const Sidebar = ({ children, show, setter }) => {
                 </p>
               </div>
               <div className={`${show ? "" : "hidden"} w-full text-center`}>
-                <h2 className=" text-black-700">Site</h2>
-                <p className="text-gray-400">BlackBeard</p>
+                <h2 className=" text-black-700 dark:text-gray-400">Site</h2>
+                <p className="text-gray-400">BlackBear</p>
               </div>
             </div>
           </Link>
