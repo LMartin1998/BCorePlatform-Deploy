@@ -7,6 +7,7 @@ import { MdOutlinePeopleAlt } from "react-icons/md";
 
 import LineChart from "@/app/components/charts/LineChart";
 import DoughnutManP from "@/app/components/charts/DoughnutManP";
+import { data } from "autoprefixer";
 
 const DailyReport = () => {
   const [active, setActive] = useState(1);
@@ -106,6 +107,15 @@ const DailyReport = () => {
     },
   ];
 
+  const labelsSiteStatus  = ["Modules installed", "Remaining to panel", "Remaining to rack"];
+  const datasetSiteStatus = [
+    {
+      data: [64.8, 14.7, 21.1],
+      backgroundColor: ["#55AA55", "#D49A6A", "#D46A6A"], // Colores para cada categoría
+      hoverBackgroundColor: ["#88CC88", "#FFD1AA", "#FFAAAA"],
+    }
+  ]
+
   return (
     <div className="bg-gray-100 min-h-screen dark:bg-[#1A202C]">
       <div className="grid sm:grid-cols-3 gap-4 p-4">
@@ -171,7 +181,6 @@ const DailyReport = () => {
       </div>
 
       <div className="grid grid-cols-3 gap-4 p-4">
-        {/* Start of stadistics */}
         <div className="bg-white col-span-2 p-2 max-h-96">
           <LineChart
             title={"Torque Tubes"}
@@ -189,15 +198,19 @@ const DailyReport = () => {
       </div>
 
       <div className="grid grid-cols-3 gap-4 p-4">
+        <div className="bg-white p-2 max-h-96">
+          <DoughnutManP  
+            title={"Site Status"}
+            labels={labelsSiteStatus}
+            dataChart={datasetSiteStatus}
+          />
+        </div>
         <div className="bg-white col-span-2 p-2 max-h-96">
           <LineChart
             title={"Panels"}
             labels={daysOfWeek}
             dataChart={datasetsPanel}
           />
-        </div>
-        <div className="bg-white p-2">
-          <p>Hola</p>
         </div>
       </div>
 
