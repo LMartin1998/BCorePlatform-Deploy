@@ -12,7 +12,7 @@ import { useState, useContext, useEffect } from "react";
 import { StepperContext } from "@/app/contexts/StepperContext"; 
 import { GridContext } from "@/app/contexts/GridContext";
 
-import { ThemeContext } from "@/app/Contexts/ThemeContext";
+import { ThemeContext } from "@/app/contexts/ThemeContext";
 
 export default function Reports() {
     const { theme } = useContext(ThemeContext);
