@@ -114,7 +114,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
           </div>
         ) : (
           <div className="flex w-4/5 h-full items-center justify-center">
-            <Image src={file.imageLink} alt={file.fileName} loading="lazy" />
+            <img src={file.imageLink} alt={file.fileName} loading="lazy" />
           </div>
         )}
       </div>
