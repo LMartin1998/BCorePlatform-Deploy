@@ -39,11 +39,11 @@ export default function Login() {
             alt="Logo Empresa"
             className="w-28 h-28 object-contain dark:rounded-lg dark:bg-[#1a202c]"
           />
-          <Image 
+          {/* <Image 
             src={imageSrc} 
             alt="Logo Empresa"
             className="w-28 h-28 object-contain dark:rounded-lg dark:bg-[#1a202c]"
-          /> 
+          />  */}
           <h1 className="text-2xl font-semibold dark:text-white dark:font-bold">
             Welcome Back
           </h1>
