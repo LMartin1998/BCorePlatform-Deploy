@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { SidebarContext } from "../contexts/SidebarContext";
 import { ThemeContext } from "../contexts/ThemeContext";
-
+import Image from 'next/image';
 {
   /* <button className="mt-20 bg-white" onClick={updateLogged}>Submit</button> */
 }
@@ -39,6 +39,11 @@ export default function Login() {
             alt="Logo Empresa"
             className="w-28 h-28 object-contain dark:rounded-lg dark:bg-[#1a202c]"
           />
+          <Image 
+            src={imageSrc} 
+            alt="Logo Empresa"
+            className="w-28 h-28 object-contain dark:rounded-lg dark:bg-[#1a202c]"
+          /> 
           <h1 className="text-2xl font-semibold dark:text-white dark:font-bold">
             Welcome Back
           </h1>

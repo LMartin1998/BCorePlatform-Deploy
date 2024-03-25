@@ -11,6 +11,7 @@ import FilterFiles from "@/app/components/files/FilterFiles";
 import AddFiles from "@/app/components/files/AddFiles";
 import Modal from "@/app/Components/Modal";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
+import Image from 'next/image';
 
 export default function Docs() {
   const { theme } = useContext(ThemeContext);
@@ -75,12 +76,12 @@ export default function Docs() {
             }}
           >
             <div className="flex w-6/12 h-5/6 rounded-lg shadow-lg bg-white z-50">
-              <img
+              <Image 
                 className="flex w-full h-full object-cover"
                 loading="lazy"
                 alt="image"
                 src={image}
-              ></img>
+              />
             </div>
           </Modal>
         </div>

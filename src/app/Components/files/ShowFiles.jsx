@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { HiOutlineFolder } from "react-icons/hi";
 import DropdrownFiles from "./DropdownFiles";
 import { FilesContext } from "@/app/contexts/FilesContext";
+import Image from "next/image";
 
 export default function ShowFiles({ filesList, updateFiles }) {
   const { design } = useContext(FilesContext);
@@ -9,7 +10,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
   const [open, setOpen] = useState(-1);
   const updateOpen = (e) => {
     e.stopPropagation();
-    setOpen(Number(e.currentTarget.id));
+    setOpen(Number(e.currentTarget.id)); 
   };
 
   const divRef = useRef(null);
@@ -75,7 +76,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
           </div>
         ) : (
           <div className="flex size-6">
-            <img src={file.imageLink} alt={file.fileName} loading="lazy" />
+            <Image src={file.imageLink} alt={file.fileName} loading="lazy" />
           </div>
         )}
         <div className="flex justify-center w-2/3 overflow-hidden">
@@ -114,7 +115,7 @@ export default function ShowFiles({ filesList, updateFiles }) {
           </div>
         ) : (
           <div className="flex w-4/5 h-full items-center justify-center">
-            <img src={file.imageLink} alt={file.fileName} loading="lazy" />
+            <Image src={file.imageLink} alt={file.fileName} loading="lazy" />
           </div>
         )}
       </div>
