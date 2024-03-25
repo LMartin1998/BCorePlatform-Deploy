@@ -1,6 +1,6 @@
 import { PDFViewer } from "@react-pdf/renderer";
-import WebView from "../../pdf/WebView";
-import DocPDF from "../../pdf/DocPDF";
+import WebView from "../../PDF/WebView";
+import DocPDF from "../../PDF/DocPDF";
 import React, { useContext } from "react";
 import { GridContext } from "@/app/contexts/GridContext";
 

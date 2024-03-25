@@ -3,7 +3,7 @@ import styles from "@/app/styles/TorqueTube.module.css";
 import { useContext, useEffect } from "react";
 import { FixedSizeList } from "react-window";
 import { Panels } from "./PanelsComponent";
-import { changeState } from "../utils/stateChanges";
+import { changeState } from "../Utils/stateChanges";
 
 export function TorqueTubes(props) {
     const {

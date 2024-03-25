@@ -1,5 +1,5 @@
 import styles from "../Styles/Panels.module.css";
-import { changeState } from "../utils/stateChanges";
+import { changeState } from "../Utils/stateChanges";
 import { useContext } from "react";
 import { GridContext } from "../contexts/GridContext";
 
