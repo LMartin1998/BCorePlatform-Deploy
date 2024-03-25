@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { Sidebar } from "../LocalStorage/Sidebar";
+import { Sidebar } from "../localStorage/Sidebar";
 
 const SidebarContext = createContext();
 
