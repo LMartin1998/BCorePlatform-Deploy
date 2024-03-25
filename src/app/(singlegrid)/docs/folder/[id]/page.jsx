@@ -27,7 +27,7 @@ export default function Folder() {
 
   return (
     <main className="bg-gray-100 h-screen min-h-screen dark:bg-[#1A202C] overflow-hidden">
-      <div className="w-full h-full overflow-auto">
+      {/* <div className="w-full h-full overflow-auto">
         <Header></Header>
         <TopCards></TopCards>
         <div className="flex items-center w-full">
@@ -69,7 +69,7 @@ export default function Folder() {
             </div>
           </Modal>
         </div>
-      )}
+      )} */}
     </main>
   );
 }
