@@ -3,8 +3,8 @@
 import { createContext, useState, useEffect } from "react";
 import { TorqueTubesLocalStorage } from "../localStorage/TorqueTubesLocalStorage";
 import { PanelsLocalStorage } from "../localStorage/PanelsLocalStorage";
-import { toolSelect } from "../utils/toolSelect";
-import { filterSelect } from "../utils/filterSelect";
+import { toolSelect } from "../Utils/toolSelect";
+import { filterSelect } from "../Utils/filterSelect";
 
 import data from "@/app/data/data";
 
