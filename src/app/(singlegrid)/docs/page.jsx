@@ -1,15 +1,15 @@
 "use client";
 import { useContext, useEffect } from "react";
-import Header from "@/app/components/Header";
-import TopCards from "@/app/components/widgets/TopCards";
+// import Header from "@/app/components/Header";
+// import TopCards from "@/app/components/widgets/TopCards";
 import { FilesContext } from "@/app/contexts/FilesContext";
-import ShowFiles from "@/app/components/files/ShowFiles";
-import SearchFiles from "@/app/components/files/SearchFiles";
-import BreadcrumFiles from "@/app/components/files/BreadcrumFiles";
-import DesignFiles from "@/app/components/files/DesignFiles";
-import FilterFiles from "@/app/components/files/FilterFiles";
-import AddFiles from "@/app/components/files/AddFiles";
-import Modal from "@/app/Components/Modal";
+// import ShowFiles from "@/app/components/files/ShowFiles";
+// import SearchFiles from "@/app/components/files/SearchFiles";
+// import BreadcrumFiles from "@/app/components/files/BreadcrumFiles";
+// import DesignFiles from "@/app/components/files/DesignFiles";
+// import FilterFiles from "@/app/components/files/FilterFiles";
+// import AddFiles from "@/app/components/files/AddFiles";
+// import Modal from "@/app/Components/Modal";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 
 export default function Docs() {
@@ -42,7 +42,7 @@ export default function Docs() {
 
   return (
     <main className="bg-gray-100 h-screen min-h-screen dark:bg-[#1A202C] overflow-hidden">
-      <div className="w-full h-full overflow-auto">
+      {/* <div className="w-full h-full overflow-auto">
         <Header></Header>
         <TopCards></TopCards>
         <div className="flex items-center w-full">
@@ -84,7 +84,7 @@ export default function Docs() {
             </div>
           </Modal>
         </div>
-      )}
+      )} */}
     </main>
   );
 }
