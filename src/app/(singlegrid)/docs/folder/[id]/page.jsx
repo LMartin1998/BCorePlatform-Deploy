@@ -1,16 +1,16 @@
 "use client";
-import Header from "@/app/components/Header";
-import TopCards from "@/app/components/widgets/TopCards";
-import ShowFiles from "@/app/components/files/ShowFiles";
-import SearchFiles from "@/app/components/files/SearchFiles";
-import BreadcrumFiles from "@/app/components/files/BreadcrumFiles";
-import DesignFiles from "@/app/components/files/DesignFiles";
-import FilterFiles from "@/app/components/files/FilterFiles";
+// import Header from "@/app/components/Header";
+// import TopCards from "@/app/components/widgets/TopCards";
+// import ShowFiles from "@/app/components/files/ShowFiles";
+// import SearchFiles from "@/app/components/files/SearchFiles";
+// import BreadcrumFiles from "@/app/components/files/BreadcrumFiles";
+// import DesignFiles from "@/app/components/files/DesignFiles";
+// import FilterFiles from "@/app/components/files/FilterFiles";
 import { FilesContext } from "@/app/contexts/FilesContext";
 import { useContext } from "react";
-import { IoAddCircleOutline } from "react-icons/io5";
-import AddFiles from "@/app/components/files/AddFiles";
-import Modal from "@/app/Components/Modal";
+// import { IoAddCircleOutline } from "react-icons/io5";
+// import AddFiles from "@/app/components/files/AddFiles";
+// import Modal from "@/app/Components/Modal";
 
 export default function Folder() {
   const {
