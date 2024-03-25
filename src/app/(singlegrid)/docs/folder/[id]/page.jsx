@@ -12,6 +12,8 @@ import { IoAddCircleOutline } from "react-icons/io5";
 import AddFiles from "@/app/components/files/AddFiles";
 import Modal from "@/app/Components/Modal";
 
+import { Image } from "next/image";
+
 export default function Folder() {
   const {
     updateChildrenFiles,
@@ -60,11 +62,12 @@ export default function Folder() {
             }}
           >
             <div className="flex w-6/12 h-5/6 rounded-lg shadow-lg bg-white z-50">
-              <img
+              <Image
                 className="flex w-full h-full object-cover"
                 loading="lazy"
                 src={image}
-              ></img>
+                alt='Doc'
+              />
             </div>
           </Modal>
         </div>

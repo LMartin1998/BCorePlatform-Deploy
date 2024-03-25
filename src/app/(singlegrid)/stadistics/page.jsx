@@ -5,7 +5,7 @@ Total de paneles, torques tubes,
 
 import { useState } from "react";
 import Header from "../../components/Header";
-import ModalBlocks from "@/app/Components/stadistics/ModalBlocks";
+import ModalBlocks from "@/app/components/stadistics/ModalBlocks";
 
 export default function Stadistics() {
   const [filter, setFilter] = useState(0);

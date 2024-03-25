@@ -1,5 +1,5 @@
 import { StepperContext } from "@/app/contexts/StepperContext";
-import SearchBlock from "../../Searchs/SearchBlock";
+import SearchBlock from "../../searchs/SearchBlock";
 import BlockList from "./blocks/BlockList";
 import BlockItem from "./blocks/BlockItem";
 

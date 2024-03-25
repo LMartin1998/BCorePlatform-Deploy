@@ -1,5 +1,5 @@
 import { GridContext } from "@/app/contexts/GridContext";
-import SelectBlock from "@/app/components/steps/SelectBlock";
+import SelectBlock from "../steps/blockReports/SelectBlock";
 import styles from "@/app/styles/SlideTop.module.css";
 import { useContext } from "react";
 

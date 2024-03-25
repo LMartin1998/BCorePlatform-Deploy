@@ -2,7 +2,7 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import React, { useContext } from "react";
 import { GridContext } from "@/app/contexts/GridContext";
 import Link from "next/link";
-import DocPDF from "../../PDF/DocPDF";
+import DocPDF from "../../pdf/DocPDF";
 
 export default function CompleteForm() {
   const { groupedData } = useContext(GridContext);

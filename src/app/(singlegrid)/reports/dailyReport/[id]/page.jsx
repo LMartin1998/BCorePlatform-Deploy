@@ -7,7 +7,6 @@ import { MdOutlinePeopleAlt } from "react-icons/md";
 
 import LineChart from "@/app/components/charts/LineChart";
 import DoughnutManP from "@/app/components/charts/DoughnutManP";
-import { data } from "autoprefixer";
 
 const DailyReport = () => {
   const [active, setActive] = useState(1);

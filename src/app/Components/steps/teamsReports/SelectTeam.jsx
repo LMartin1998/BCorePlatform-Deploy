@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import SearchTeam from "../../Searchs/SearchTeam";
+import SearchTeam from "../../searchs/SearchTeam";
 import TeamItem from "./teams/TeamItem";
 import TeamList from "./teams/TeamList";
 
