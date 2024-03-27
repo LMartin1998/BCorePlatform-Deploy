@@ -1,18 +1,16 @@
 "use client";
-import Header from "@/app/components/Header";
-import TopCards from "@/app/components/widgets/TopCards";
-import ShowFiles from "@/app/components/files/ShowFiles";
-import SearchFiles from "@/app/components/files/SearchFiles";
-import BreadcrumFiles from "@/app/components/files/BreadcrumFiles";
-import DesignFiles from "@/app/components/files/DesignFiles";
-import FilterFiles from "@/app/components/files/FilterFiles";
+// import Header from "@/app/components/Header";
+// import TopCards from "@/app/components/widgets/TopCards";
+// import ShowFiles from "@/app/components/files/ShowFiles";
+// import SearchFiles from "@/app/components/files/SearchFiles";
+// import BreadcrumFiles from "@/app/components/files/BreadcrumFiles";
+// import DesignFiles from "@/app/components/files/DesignFiles";
+// import FilterFiles from "@/app/components/files/FilterFiles";
 import { FilesContext } from "@/app/contexts/FilesContext";
 import { useContext } from "react";
-import { IoAddCircleOutline } from "react-icons/io5";
-import AddFiles from "@/app/components/files/AddFiles";
-import Modal from "@/app/Components/Modal";
-
-import { Image } from "next/image";
+// import { IoAddCircleOutline } from "react-icons/io5";
+// import AddFiles from "@/app/components/files/AddFiles";
+// import Modal from "@/app/Components/Modal";
 
 export default function Folder() {
   const {
@@ -29,7 +27,7 @@ export default function Folder() {
 
   return (
     <main className="bg-gray-100 h-screen min-h-screen dark:bg-[#1A202C] overflow-hidden">
-      <div className="w-full h-full overflow-auto">
+      {/* <div className="w-full h-full overflow-auto">
         <Header></Header>
         <TopCards></TopCards>
         <div className="flex items-center w-full">
@@ -62,7 +60,7 @@ export default function Folder() {
             }}
           >
             <div className="flex w-6/12 h-5/6 rounded-lg shadow-lg bg-white z-50">
-              <Image
+              <img
                 className="flex w-full h-full object-cover"
                 loading="lazy"
                 src={image}
@@ -71,7 +69,7 @@ export default function Folder() {
             </div>
           </Modal>
         </div>
-      )}
+      )} */}
     </main>
   );
 }
