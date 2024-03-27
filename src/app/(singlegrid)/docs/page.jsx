@@ -12,7 +12,7 @@ import { FilesContext } from "@/app/contexts/FilesContext";
 // import Modal from "@/app/Components/Modal";
 import { ThemeContext } from "@/app/contexts/ThemeContext";
 
-export default function Docs() {
+export default function Docs() { 
   const { theme } = useContext(ThemeContext);
 
   const {
